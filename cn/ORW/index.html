@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">538</span> In Total
+              Words <span class="post-count">546</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -443,17 +443,29 @@ r.sendline(payload)</code></pre>
 <pre><code class="hljs python">payload = <span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">256</span> + <span class="hljs-string">b&#x27;junkjunk&#x27;</span>+p64(pop rdi)+p64(rop addr)+p64(gets addr)+p64(elf.symbols[<span class="hljs-string">&#x27;vuln&#x27;</span>])
 r.send(payload)</code></pre>
 <h5 id="libc泄露后可以在libc中寻找rop链">libc泄露后可以在libc中寻找rop链</h5>
-<p><img src="/cn/ORW/image-20230116000554299.png"></p>
+<figure>
+<img src="/cn/ORW/image-20230116000554299.png" alt="image-20230116000554299">
+<figcaption aria-hidden="true">image-20230116000554299</figcaption>
+</figure>
 <h4 id="puts-输出类函数-泄露libc基址">puts 输出类函数 泄露libc基址</h4>
-<p><img src="/cn/ORW/image-20230116000712178.png"></p>
+<figure>
+<img src="/cn/ORW/image-20230116000712178.png" alt="image-20230116000712178">
+<figcaption aria-hidden="true">image-20230116000712178</figcaption>
+</figure>
 <p>PS：最后可以再接溢出函数地址 再溢出一次</p>
 <h4 id="栈迁移实践">栈迁移！实践</h4>
-<p><img src="/cn/ORW/image-20230116000903633.png"></p>
+<figure>
+<img src="/cn/ORW/image-20230116000903633.png" alt="image-20230116000903633">
+<figcaption aria-hidden="true">image-20230116000903633</figcaption>
+</figure>
 <h5 id="为什么要栈迁移">为什么要栈迁移？</h5>
 <p>因为溢出的太少溢出的不够写rop链，找个地方写完rop链后再，迁移栈过去执行。</p>
 <p>同时纯真大佬的wp中给出了另外的解法（https://zqy.ink/2023/01/12/HGAME2023_wk1_wp/#orw）</p>
 <p>通过environ函数泄露栈的地址，然后整个rop就在buf中完成</p>
-<p><img src="/cn/ORW/image-20230116000554299.png"></p>
+<figure>
+<img src="/cn/ORW/image-20230116000554299.png" alt="image-20230116001412899">
+<figcaption aria-hidden="true">image-20230116001412899</figcaption>
+</figure>
 <h4 id="nx保护的理解">NX保护的理解</h4>
 <h5 id="在栈中无法执行指令但是不包括rop因为栈中是存着rop指令的地址而并不是指令的本身">1.在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。</h5>
 <p>2.NX保护指的是--栈不可执行--的意思，也就是栈上的数据不可以当作代码区执行的作用。</p>

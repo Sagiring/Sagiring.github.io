@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">402</span> In Total
+              Words <span class="post-count">412</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -424,12 +424,21 @@
 <h2 id="发生了什么">发生了什么</h2>
 <p>一大早起来，发现自己wsl2无法启动了，修调了3天这个问题，人麻了</p>
 <p>1.之后直接卸载了子系统Ubuntu重装。卡在了安装界面</p>
-<p><img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/img-1680096481436-3.png"></p>
+<figure>
+<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/img-1680096481436-3.png" alt="img (3)">
+<figcaption aria-hidden="true">img (3)</figcaption>
+</figure>
 <p>2.卸载了wsl与功能，未果。</p>
 <p>3.关闭虚拟机平台后发现，win报"我们无法完成此操作"，关闭不成功</p>
 <p>4.试了wsl1可以正常使用，但是gdb完全调试不了</p>
-<p><img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/img-1680096490683-5.png"></p>
-<p><img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/img-1680096494092-7.png"></p>
+<figure>
+<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/img-1680096490683-5.png" alt="img (2)">
+<figcaption aria-hidden="true">img (2)</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/img-1680096494092-7.png" alt="img (1)">
+<figcaption aria-hidden="true">img (1)</figcaption>
+</figure>
 <p>5.在wsl到处碰壁后，我决定向vm靠边，结果装完虚拟机也打不开，开在转圈的界面</p>
 <h2 id="如何解决">如何解决</h2>
 <p>最后想到了重装系统。偶然间看到了的教程</p>
@@ -437,7 +446,10 @@
 10系统</strong></a></p>
 <p>通过该工具不仅保留全部文件，还重置修复了系统！！！</p>
 <p>下载如图下工具</p>
-<p><img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/image-20230329213339590.png"></p>
+<figure>
+<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/image-20230329213339590.png" alt="image-20230329213339590">
+<figcaption aria-hidden="true">image-20230329213339590</figcaption>
+</figure>
 <p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/windows10">这里给出工具下载链接</a></p>
 <p>经过漫长的等待后成功修复。</p>
 <h2 id="修复完成后">修复完成后</h2>
@@ -448,7 +460,10 @@
 <p>1.Vmware的卸载工具可以修复Vmware，而后便可以正常运行了。</p>
 <p>2.注意使用系统还原点的功能，小心损坏C盘。</p>
 <p>3.ps:折腾完后还扩容了C盘 :)</p>
-<p><img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/image-20230329213841191.png"></p>
+<figure>
+<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/image-20230329213841191.png" alt="image-20230329213841191">
+<figcaption aria-hidden="true">image-20230329213841191</figcaption>
+</figure>
 <h1 id="qemu-环境配置">Qemu 环境配置</h1>
 <p>Linux</p>
 <pre><code class="hljs plaintext">sudo apt update

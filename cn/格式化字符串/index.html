@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">200</span> In Total
+              Words <span class="post-count">208</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -421,7 +421,7 @@
         
 
         <h2 id="格式化字符串">格式化字符串</h2>
-<p>特点：<img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121150856504.png"></p>
+<p>特点：<img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121150856504.png" alt="image-20230121150856504"></p>
 <h4 id="可以看查任意地址内容">可以看查任意地址内容</h4>
 <p>%p 或 %{num}$p</p>
 <h4 id="可以任意写地址">可以任意写地址</h4>
@@ -429,17 +429,29 @@
 <p>书写格式为 %{addr}c%{num}$n (一般不行 得逐字节写入)</p>
 <p>即：%{addr}c%{num}$hhn</p>
 <p>例如：写入0x40158a 到 stack_chk_fail_addr 中</p>
-<p><img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151552065.png"></p>
-<p><img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151407660.png"></p>
+<figure>
+<img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151552065.png" alt="image-20230121151552065">
+<figcaption aria-hidden="true">image-20230121151552065</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151407660.png" alt="image-20230121151407660">
+<figcaption aria-hidden="true">image-20230121151407660</figcaption>
+</figure>
 <h2 id="关于stack_chk_fail">关于stack_chk_fail</h2>
 <p>是canary保护中，如果xor失败就运行</p>
 <p>栈中的canary 在rbp前的一段以00结尾的数 十分明显</p>
 <h2 id="printf的输出漏洞">printf的输出漏洞</h2>
 <p>printf输出字符串遇到/0()才会终止。</p>
-<p><img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151957251.png"></p>
+<figure>
+<img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151957251.png" alt="image-20230121151957251">
+<figcaption aria-hidden="true">image-20230121151957251</figcaption>
+</figure>
 <p>例：当读进0x100个a时末尾便不带/0，print(%s)，便会显示0x100后的栈中数据，如果刚好时push的ebp的话，可以刚好泄露栈中地址</p>
 <h2 id="关于fmtstr的使用">关于fmtstr的使用</h2>
-<p><img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121152310178.png"></p>
+<figure>
+<img src="/cn/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121152310178.png" alt="image-20230121152310178">
+<figcaption aria-hidden="true">image-20230121152310178</figcaption>
+</figure>
 <p>此题可以采用在bss段和栈中同时写入达到使用的目的</p>
 
 

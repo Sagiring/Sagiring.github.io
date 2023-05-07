@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">385</span> In Total
+              Words <span class="post-count">399</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -423,11 +423,17 @@
         <h1 id="杂七杂八">杂七杂八</h1>
 <h2 id="strcmp作条件的绕过">Strcmp（）作条件的绕过</h2>
 <p>利用"\0"作为比较的第一个字符</p>
-<p><img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108093132384-1667871106786-1.png"></p>
+<figure>
+<img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108093132384-1667871106786-1.png" alt="image-20221108093132384-1667871106786-1">
+<figcaption aria-hidden="true">image-20221108093132384-1667871106786-1</figcaption>
+</figure>
 <pre><code class="hljs python">r.sendlineafter(<span class="hljs-string">b&quot;Enter your flag:\n&quot;</span>,<span class="hljs-string">&#x27;\0&#x27;</span>)</code></pre>
 <p>my_read读入”\0“到s1跳过判断直接到后门函数。</p>
 <h1 id="ctf-all-in-one--firmianay">CTF All In One--firmianay</h1>
-<p><img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108230123280.png"></p>
+<figure>
+<img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108230123280.png" alt="image-20221108230123280">
+<figcaption aria-hidden="true">image-20221108230123280</figcaption>
+</figure>
 <p>讲的特别详细 但是许多地方还看不明白 还在研究</p>
 <h2 id="格式化字符串">格式化字符串</h2>
 <p>格式字符串漏洞发生的条件就是格式字符串要求的参数和实际提供的参数不匹配。</p>
@@ -440,16 +446,28 @@
 <p>==&gt;ROP Emporium&lt;==平台</p>
 <p>很好的平台，提供了难度逐渐上涨的rop题</p>
 <p>1.ret2text</p>
-<p><img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108225923088.png"></p>
+<figure>
+<img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108225923088.png" alt="image-20221108225923088">
+<figcaption aria-hidden="true">image-20221108225923088</figcaption>
+</figure>
 <p>通过read读入一定数量的字符填满缓冲区，然后是 ROP
 链，通过覆盖栈上保存的返回地址（关了PIE）来实现函数跳转到后门函数中。这种类型的ROP名称叫ret2text.</p>
 <p>2.ret2text</p>
 <p>同样的溢出覆盖栈上地址，不过后门函数不能打印出flag。但是知道了system的函数地址</p>
-<p><img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108231326138.png"></p>
+<figure>
+<img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108231326138.png" alt="image-20221108231326138">
+<figcaption aria-hidden="true">image-20221108231326138</figcaption>
+</figure>
 <p>又在.data段找到了一串字符</p>
-<p><img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108231716296.png"></p>
+<figure>
+<img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108231716296.png" alt="image-20221108231716296">
+<figcaption aria-hidden="true">image-20221108231716296</figcaption>
+</figure>
 <p>刚好可以搭配system函数拿到flag，利用这两个地址（关了PIE）。所以这种方法称作ret2libc。做到这里拿到了flag但是原理还不是太明晰。</p>
-<p><img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108232130457.png"></p>
+<figure>
+<img src="/cn/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108232130457.png" alt="image-20221108232130457">
+<figcaption aria-hidden="true">image-20221108232130457</figcaption>
+</figure>
 <p>System()的两个地址：</p>
 <p>1.直接调用地址 （）</p>
 <p>2.System()的.plt地址</p>

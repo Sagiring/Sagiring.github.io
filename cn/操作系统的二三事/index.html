@@ -368,11 +368,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">23</span> Minutes
+              Estimated Reading Time <span class="post-count">24</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">6.6k</span> In Total
+              Words <span class="post-count">6.7k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -467,9 +467,15 @@
 	在内核态下运行的指令
 <span class="hljs-number">2.</span> <span class="hljs-string">&#x27;用户态&#x27;</span>（目态）
 	在用户态下运行的指令</code></pre>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423105740647.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423105740647.png" alt="image-20230423105740647">
+<figcaption aria-hidden="true">image-20230423105740647</figcaption>
+</figure>
 <h2 id="单道处理与多道处理">单道处理与多道处理</h2>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424212737664.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424212737664.png" alt="image-20230424212737664">
+<figcaption aria-hidden="true">image-20230424212737664</figcaption>
+</figure>
 <h2 id="操作系统概况小结">操作系统概况小结</h2>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>定义
 	<span class="hljs-number">1.</span>操作系统是控制和管理计算机系统内各种<span class="hljs-string">&#x27;硬件&#x27;</span>和<span class="hljs-string">&#x27;软件&#x27;</span>资源、有效地组织多道程序运行的<span class="hljs-string">&#x27;系统软件&#x27;</span>（或程序集合），是<span class="hljs-string">&#x27;用户&#x27;</span>与<span class="hljs-string">&#x27;计算机&#x27;</span>之间的接口。
@@ -482,11 +488,20 @@
 <span class="hljs-number">5.</span> 为了防止操作系统及关键数据受到用户程序的破坏，将CPU的执行状态分为<span class="hljs-string">&#x27;用户态&#x27;</span>和<span class="hljs-string">&#x27;系统态 &#x27;</span>。</code></pre>
 <h1 id="第二章-进程的描述与控制">第二章 进程的描述与控制</h1>
 <h2 id="前趋图">前趋图</h2>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111208291.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111208291.png" alt="image-20230423111208291">
+<figcaption aria-hidden="true">image-20230423111208291</figcaption>
+</figure>
 <h2 id="程序并发执行的特征">程序并发执行的特征</h2>
 <p>顺序与并发</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111553768.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111605105.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111553768.png" alt="image-20230423111553768">
+<figcaption aria-hidden="true">image-20230423111553768</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111605105.png" alt="image-20230423111605105">
+<figcaption aria-hidden="true">image-20230423111605105</figcaption>
+</figure>
 <h2 id="什么是进程">什么是进程</h2>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;进程&#x27;</span>是程序的一次执行。
 <span class="hljs-string">&#x27;进程&#x27;</span>是一个程序及其数据在处理机上顺序执行时所发生的活动。
@@ -497,7 +512,10 @@
 <h3 id="进程控制块process-control-block----pcb">进程控制块(process
 control block) --&gt; PCB</h3>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;进程标识符&#x27;</span>信息、<span class="hljs-string">&#x27;处理机状态&#x27;</span>信息、<span class="hljs-string">&#x27;进程调度&#x27;</span>信息、<span class="hljs-string">&#x27;进程控制&#x27;</span>信息</code></pre>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423172524392.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423172524392.png" alt="image-20230423172524392">
+<figcaption aria-hidden="true">image-20230423172524392</figcaption>
+</figure>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;PCB&#x27;</span>是进程实体的一部分，记录了<span class="hljs-string">&#x27;操作系统所需的、用于描述进程当前状况以及控制进程运行的全部信息&#x27;</span>
 <span class="hljs-number">2.</span> OS是根据<span class="hljs-string">&#x27;PCB&#x27;</span>来对<span class="hljs-string">&#x27;并发执行的进程&#x27;</span>进行<span class="hljs-string">&#x27;控制&#x27;</span>和<span class="hljs-string">&#x27;管理&#x27;</span>的
 <span class="hljs-number">3.</span> 进程控制块是进程存在的<span class="hljs-string">&#x27;唯一&#x27;</span>标志 -&gt; 进程任务完成时，系统收回它的PCB，进程也随之消亡
@@ -534,7 +552,10 @@ control block) --&gt; PCB</h3>
 <span class="hljs-number">3.</span> <span class="hljs-string">&#x27;阻塞状态&#x27;</span> 
 	进程主动申请进入阻塞状态
     阻塞态变为就绪态为被动行为</code></pre>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423171734528.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423171734528.png" alt="image-20230423171734528">
+<figcaption aria-hidden="true">image-20230423171734528</figcaption>
+</figure>
 <pre><code class="hljs python"><span class="hljs-number">4.</span> <span class="hljs-string">&#x27;创建状态&#x27;</span>
 	申请一个空白PCB；填写PCB；分配资源；设置就绪状态插入就绪队列
 <span class="hljs-number">5.</span> <span class="hljs-string">&#x27;终止状态&#x27;</span>
@@ -545,7 +566,10 @@ control block) --&gt; PCB</h3>
 		<span class="hljs-number">2.</span> 父进程请求
 		<span class="hljs-number">3.</span> 负荷调节的需要 （实时系统）
 		<span class="hljs-number">4.</span> 操作系统的需要</code></pre>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423172228929.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423172228929.png" alt="image-20230423172228929">
+<figcaption aria-hidden="true">image-20230423172228929</figcaption>
+</figure>
 <h4 id="section"></h4>
 <h3 id="进程的通信">进程的通信</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> 低级进程通信
@@ -619,7 +643,10 @@ block) TCB</h3>
 多线程应用不能利用多处理机
 进行多重处理的优点。</code></pre>
 <p>ULT与KST组合方式....</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423181714864.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423181714864.png" alt="image-20230423181714864">
+<figcaption aria-hidden="true">image-20230423181714864</figcaption>
+</figure>
 <h1 id="第三章-处理机调度与死锁">第三章 处理机调度与死锁</h1>
 <h2 id="处理机调度">处理机调度</h2>
 <p>多级调度</p>
@@ -634,7 +661,10 @@ block) TCB</h3>
 <span class="hljs-string">&#x27;低级调度&#x27;</span>（短程调度/<span class="hljs-string">&#x27;进程&#x27;</span>调度）</code></pre>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>引入<span class="hljs-string">&#x27;中级调度&#x27;</span>的主要目的，是为了<span class="hljs-string">&#x27;提高内存利用率和系统吞吐量&#x27;</span>；
 	使那些暂时不能运行的进程不再占用宝贵的内存资源，将它们调至外存上去等待，把此时的进程状态称为就绪驻外存状态或挂起状态;当这些进程具备运行条件、且内存又稍有空闲时，由中级调度来决定把就绪进程，重新调入内存，并修改其状	态为就绪状态，挂在就绪队列上等待进程调度</code></pre>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424101615476.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424101615476.png" alt="image-20230424101615476">
+<figcaption aria-hidden="true">image-20230424101615476</figcaption>
+</figure>
 <h3 id="进程调度的方式">进程调度的方式</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>非抢占方式
 	决不允许某进程抢占已经分配出去的处理机
@@ -642,7 +672,10 @@ block) TCB</h3>
 	优先权原则
     短作业优先原则
     时间片原则</code></pre>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424101906191.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424101906191.png" alt="image-20230424101906191">
+<figcaption aria-hidden="true">image-20230424101906191</figcaption>
+</figure>
 <h4 id="计算概念">计算概念</h4>
 <pre><code class="hljs python">批处理系统的目标
     <span class="hljs-number">1.</span><span class="hljs-string">&#x27;周转时间&#x27;</span> -&gt; <span class="hljs-string">&#x27;作业完成时刻-作业到达时刻&#x27;</span> <span class="hljs-string">&#x27;等待时间+服务时间&#x27;</span>
@@ -667,7 +700,10 @@ block) TCB</h3>
 <span class="hljs-number">2.</span><span class="hljs-string">&#x27;JCB包含内容&#x27;</span>：作业控制块JCB中包含了对作业进行管理的必要信息，JCB中的信息一部分是从用户提供的作业控制卡或作业说明书中得到，另一部分是记录作业运行过程中的动态信息。
 <span class="hljs-number">3.</span><span class="hljs-string">&#x27;JCB的生成&#x27;</span>：作业提交给系统后，便由“作业注册”程序为作业建立一个作业控制块JCB，放入后备队列
 </code></pre>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424103340016.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424103340016.png" alt="image-20230424103340016">
+<figcaption aria-hidden="true">image-20230424103340016</figcaption>
+</figure>
 <h3 id="作业调度算法">作业调度算法</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;FCFS&#x27;</span> 先来先服务调度算法
 <span class="hljs-number">2.</span><span class="hljs-string">&#x27;SJF&#x27;</span> 短作业优先调度算法
@@ -698,16 +734,25 @@ block) TCB</h3>
 <p>有利于长作业/进程，不利于短作业</p>
 <p>有利于CPU繁忙型的作业(如通常的科学计算)，而不利于I／O繁
 忙的作业/进程（如大多数的事务处理)</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104305185.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104305185.png" alt="image-20230424104305185">
+<figcaption aria-hidden="true">image-20230424104305185</figcaption>
+</figure>
 <h4 id="sjf">SJF</h4>
 <p>对作业：从后备队列中选择若干个估计运行时间最短的作业。</p>
 <p>对进程：关联到每个进程下次运行的CPU区间长度，调度最短的进程。</p>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;非抢占式&#x27;</span> SJF
 <span class="hljs-string">&#x27;抢占式&#x27;</span> SJF（来了个更短的进程）抢占发生在有比当前进程剩余时间片更短的进程到达时，也称为最短剩余时间优先调度</code></pre>
 <h5 id="非抢占式-sjf">非抢占式 SJF</h5>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104637961.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104637961.png" alt="image-20230424104637961">
+<figcaption aria-hidden="true">image-20230424104637961</figcaption>
+</figure>
 <h5 id="抢占式-sjf">抢占式 SJF</h5>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104718658.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104718658.png" alt="image-20230424104718658">
+<figcaption aria-hidden="true">image-20230424104718658</figcaption>
+</figure>
 <h5 id="缺点">缺点</h5>
 <p>只能估算进程的运行时间（估值不准确，作业说明书，偏长估计），所以通常
 用于作业调度</p>
@@ -728,27 +773,45 @@ block) TCB</h3>
 以及 <span class="hljs-string">&#x27;静态&#x27;</span>优先级
 	<span class="hljs-string">&#x27;动态&#x27;</span>优先级</code></pre>
 <h5 id="非抢占式">非抢占式</h5>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424105305806.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424105305806.png" alt="image-20230424105305806">
+<figcaption aria-hidden="true">image-20230424105305806</figcaption>
+</figure>
 <p>实现简单，考虑了进程的紧迫程度</p>
 <p>灵活，可模拟其它算法 （FCFS：等待时间；SJF：运行时间） 存在问题</p>
 <p>饥饿 ：低优先级的进程可能永远得不到运行 解决方法</p>
 <p>老化 ：视进程等待时间的延长提高其优先数</p>
 <h5 id="高相应比优先调度算法">高相应比优先调度算法</h5>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424105939270.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424105939270.png" alt="image-20230424105939270">
+<figcaption aria-hidden="true">image-20230424105939270</figcaption>
+</figure>
 <h4 id="rr">RR</h4>
 <p>响应时间（Response time） =第一次响应 - 到达时间</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110015358.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110015358.png" alt="image-20230424110015358">
+<figcaption aria-hidden="true">image-20230424110015358</figcaption>
+</figure>
 <p>一般准则：时间片/10&gt;进程上下文切换时间</p>
 <p>时间片大&gt;FCFS</p>
 <p>时间片小&gt;增加上下文切换的时间，效率降低</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110228327.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110228327.png" alt="image-20230424110228327">
+<figcaption aria-hidden="true">image-20230424110228327</figcaption>
+</figure>
 <h4 id="多级队列调度算法">多级队列调度算法</h4>
 <p>​ 就绪队列从一个分为多个（按性质）</p>
 <p>​ 每个队列有自己的调度算法</p>
 <p>​ 调度须在队列间进行（队列间有优先级）</p>
 <h4 id="多级反馈队列调度算法">多级反馈队列调度算法</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110711118.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111025412.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110711118.png" alt="image-20230424110711118">
+<figcaption aria-hidden="true">image-20230424110711118</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111025412.png" alt="image-20230424111025412">
+<figcaption aria-hidden="true">image-20230424111025412</figcaption>
+</figure>
 <h4 id="公平原则的调度算法">公平原则的调度算法</h4>
 <p>保证调度算法</p>
 <p>​ 性能保证</p>
@@ -765,9 +828,15 @@ block) TCB</h3>
 <h3 id="算法">算法</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;EDF&#x27;</span> 最早截止时间优先调度算法</code></pre>
 <h4 id="edf">EDF</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111740016.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111740016.png" alt="image-20230424111740016">
+<figcaption aria-hidden="true">image-20230424111740016</figcaption>
+</figure>
 <h4 id="抢占式">抢占式</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111812710.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111812710.png" alt="image-20230424111812710">
+<figcaption aria-hidden="true">image-20230424111812710</figcaption>
+</figure>
 <pre><code class="hljs python"><span class="hljs-number">2.</span><span class="hljs-string">&#x27;LLF&#x27;</span>最低松弛度优先算法</code></pre>
 <h4 id="llf">LLF</h4>
 <p>紧急程度越高（松弛度越低），优先级越高</p>
@@ -777,18 +846,36 @@ block) TCB</h3>
 <p>抢占式</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> 该算法主要用于可抢占调度方式中，当一任务的<span class="hljs-string">&#x27;最低松弛度减为0时&#x27;</span>，它必须<span class="hljs-string">&#x27;立即抢占CPU&#x27;</span>，以保证按截止时间的要求完成任务。
 <span class="hljs-number">2.</span>当出现多个进程松弛度相同且为最小时，按照“最近最久未调度”</code></pre>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112054362.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112054362.png" alt="image-20230424112054362">
+<figcaption aria-hidden="true">image-20230424112054362</figcaption>
+</figure>
 <p>最低松弛度减为0时</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112253774.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112329264.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112253774.png" alt="image-20230424112253774">
+<figcaption aria-hidden="true">image-20230424112253774</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112329264.png" alt="image-20230424112329264">
+<figcaption aria-hidden="true">image-20230424112329264</figcaption>
+</figure>
 <h3 id="优先级倒置">优先级倒置</h3>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112405189.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112405189.png" alt="image-20230424112405189">
+<figcaption aria-hidden="true">image-20230424112405189</figcaption>
+</figure>
 <p>解决方法：</p>
 <p>1.制定一些规定，如规定低优先级进程执行后，其所占用的处理机不允许被抢占（问题：高优先级进程可能会等待很长时间）</p>
 <p>2.建立动态优先级继承。</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112657060.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112657060.png" alt="image-20230424112657060">
+<figcaption aria-hidden="true">image-20230424112657060</figcaption>
+</figure>
 <h3 id="linux进程调度器">Linux进程调度器</h3>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112803882.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112803882.png" alt="image-20230424112803882">
+<figcaption aria-hidden="true">image-20230424112803882</figcaption>
+</figure>
 <pre><code class="hljs plaintext">普通进程调度：
 Ø 采用SCHED_NORMAL调度策略。
 Ø 分配优先级、挑选进程并允许、计算使其运行多久。
@@ -807,9 +894,18 @@ block) TCB</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>竞争<span class="hljs-string">&#x27;不可抢占性资源&#x27;</span>引起死锁
 <span class="hljs-number">2.</span>竞争<span class="hljs-string">&#x27;可消耗性资源&#x27;</span>引起死锁
 <span class="hljs-number">3.</span>进程推进顺序不当引起死锁</code></pre>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113212877.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113219637.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113233064.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113212877.png" alt="image-20230424113212877">
+<figcaption aria-hidden="true">image-20230424113212877</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113219637.png" alt="image-20230424113219637">
+<figcaption aria-hidden="true">image-20230424113219637</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113233064.png" alt="image-20230424113233064">
+<figcaption aria-hidden="true">image-20230424113233064</figcaption>
+</figure>
 <h3 id="产生死锁的必要条件">产生死锁的必要条件</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;互斥&#x27;</span>
 	一段时间内某资源只能被一个进程占用。
@@ -834,13 +930,25 @@ block) TCB</h3>
 如果一个系统不是处于安全状态，就有可能死锁
 如果存在一个<span class="hljs-string">&#x27;安全序列&#x27;</span>，则系统处于安全态</code></pre>
 <h4 id="银行家算法">银行家算法</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114026812.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114119073.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114026812.png" alt="image-20230424114026812">
+<figcaption aria-hidden="true">image-20230424114026812</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114119073.png" alt="image-20230424114119073">
+<figcaption aria-hidden="true">image-20230424114119073</figcaption>
+</figure>
 <p>若所有进程都可执
 行完毕，则系统处于安全状态，并根据可完成进程的分配顺序生成安全序列</p>
 <h4 id="资源分配图rag">资源分配图RAG</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114221715.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114301978.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114221715.png" alt="image-20230424114221715">
+<figcaption aria-hidden="true">image-20230424114221715</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114301978.png" alt="image-20230424114301978">
+<figcaption aria-hidden="true">image-20230424114301978</figcaption>
+</figure>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;死锁定理&#x27;</span> -&gt; S状态为死锁状态的充分条件是：当且仅当S的资源分配图是不可完全简化的。</code></pre>
 <h4 id="死锁的解除">死锁的解除</h4>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>抢占资源
@@ -861,7 +969,10 @@ block) TCB</h3>
 	进入区：用于检查是否可以进入临界区的代码段
 	退出区：将临界区正被访问的标志恢复为未被访问标志</code></pre>
 <h2 id="生产者-消费者问题">生产者-消费者问题</h2>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424154531148.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424154531148.png" alt="image-20230424154531148">
+<figcaption aria-hidden="true">image-20230424154531148</figcaption>
+</figure>
 <p>同步机制应遵循</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>空闲让进 <span class="hljs-number">2.</span>忙则等待 <span class="hljs-number">3.</span>有限等待 <span class="hljs-number">4.</span>让权等待</code></pre>
 <h2 id="进程同步机制">进程同步机制</h2>
@@ -896,23 +1007,50 @@ block) TCB</h3>
     <span class="hljs-number">2.</span> 管程相当于对临界资源的操作进行封装
     <span class="hljs-number">3.</span> 管程相当于对临界资源的操作进行封装</code></pre>
 <h3 id="swap指令">Swap指令</h3>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161300914.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161300914.png" alt="image-20230424161300914">
+<figcaption aria-hidden="true">image-20230424161300914</figcaption>
+</figure>
 <h3 id="信号量机制">信号量机制</h3>
 <h4 id="and型信号量">AND型信号量</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161847285.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161847285.png" alt="image-20230424161847285">
+<figcaption aria-hidden="true">image-20230424161847285</figcaption>
+</figure>
 <h4 id="利用信号量实现进程互斥">利用信号量实现进程互斥</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161929152.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161929152.png" alt="image-20230424161929152">
+<figcaption aria-hidden="true">image-20230424161929152</figcaption>
+</figure>
 <h4 id="利用信号量实现进程同步">利用信号量实现进程同步</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162103160.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162103160.png" alt="image-20230424162103160">
+<figcaption aria-hidden="true">image-20230424162103160</figcaption>
+</figure>
 <h4 id="信号量的同步异步问题">信号量的同步异步问题</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424210803925.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424210803925.png" alt="image-20230424210803925">
+<figcaption aria-hidden="true">image-20230424210803925</figcaption>
+</figure>
 <p>同步信号量在后，互斥信号量在前</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424210949639.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424210949639.png" alt="image-20230424210949639">
+<figcaption aria-hidden="true">image-20230424210949639</figcaption>
+</figure>
 <h4 id="利用信号量实现前趋关系">利用信号量实现前趋关系</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162140416.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162140416.png" alt="image-20230424162140416">
+<figcaption aria-hidden="true">image-20230424162140416</figcaption>
+</figure>
 <h3 id="管程">管程</h3>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162450798.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162534333.png"></p>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162450798.png" alt="image-20230424162450798">
+<figcaption aria-hidden="true">image-20230424162450798</figcaption>
+</figure>
+<figure>
+<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162534333.png" alt="image-20230424162534333">
+<figcaption aria-hidden="true">image-20230424162534333</figcaption>
+</figure>
 <h2 id="经典的进程同步问题">经典的进程同步问题</h2>
 <h3 id="生产者-消费者问题-1">1.生产者-消费者问题</h3>
 <h3 id="哲学家进餐问题">2.哲学家进餐问题</h3>
