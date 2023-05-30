@@ -111,10 +111,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://sagiring.github.io/cn/痛苦的环境配置/">
+  <link rel="canonical" href="https://sagiring.github.io/archives/2023/05/">
   <title>
     
-      痛苦的环境配置 - 茗茗之中的blog
+      茗茗之中的blog
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -320,19 +320,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: url('my_love.png');
-      --intro-header-background-image-url-page: url('/my_love.png');
+      --intro-header-background-image-url-post: url('');
+      --intro-header-background-image-url-page: url('/img/header_img/my_love (8).png');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('my_love.png');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/my_love.png');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love (8).png');
     }
 
     header.intro-header {
-       /*post*/
-        background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('my_love.png'); */
+       /*page*/
+        background-image: var(--intro-header-background-image-url-page);
+        /* background-image: url('/img/header_img/my_love (8).png'); */
       
     }
 
@@ -350,42 +350,10 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="post-heading">
-            <div class="tags">
-              
-              <a class="tag" href="/tags/#pwn" title="pwn">pwn</a>
-              
-            </div>
-            <h1>痛苦的环境配置</h1>
-            <h2 class="subheading"></h2>
-            <span class="meta">
-              Posted by 茗 on
-              2023-03-29
-            </span>
-
-
-            
-            <!-- WordCount start -->
-            <div class="blank_box"></div>
-            <span class="meta">
-              Estimated Reading Time <span class="post-count">1</span> Minutes
-            </span>
-            <div class="blank_box"></div>
-            <span class="meta">
-              Words <span class="post-count">412</span> In Total
-            </span>
-            <div class="blank_box"></div>
-            <!-- WordCount end -->
-            
-            
-            <!-- 不蒜子统计 start -->
-            <span class="meta" id="busuanzi_container_page_pv">
-              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
-            </span>
-            <!-- 不蒜子统计 end -->
-            
-
-
+          <div class="site-heading">
+            <h1>茗茗之中</h1>
+            <!--<hr class="small">-->
+            <span class="subheading">人生苦短,及时行乐</span>
           </div>
           
         </div>
@@ -410,261 +378,413 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Modify by Yu-Hsuan Yen -->
-<!-- Post Content -->
+		<!-- Main Content -->
+<div class="container">
+  <div class="row">
+    
 
-<article>
-  <div class="container">
-    <div class="row">
-      <!-- Post Container -->
-      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
-        
+    <!-- USE SIDEBAR -->
+    <!-- Post Container -->
+    <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
 
-        <h1 id="痛苦的环境配置">痛苦的环境配置</h1>
-<h2 id="发生了什么">发生了什么</h2>
-<p>一大早起来，发现自己wsl2无法启动了，修调了3天这个问题，人麻了</p>
-<p>1.之后直接卸载了子系统Ubuntu重装。卡在了安装界面</p>
-<figure>
-<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/img-1680096481436-3.png" alt="img (3)">
-<figcaption aria-hidden="true">img (3)</figcaption>
-</figure>
-<p>2.卸载了wsl与功能，未果。</p>
-<p>3.关闭虚拟机平台后发现，win报"我们无法完成此操作"，关闭不成功</p>
-<p>4.试了wsl1可以正常使用，但是gdb完全调试不了</p>
-<figure>
-<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/img-1680096490683-5.png" alt="img (2)">
-<figcaption aria-hidden="true">img (2)</figcaption>
-</figure>
-<figure>
-<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/img-1680096494092-7.png" alt="img (1)">
-<figcaption aria-hidden="true">img (1)</figcaption>
-</figure>
-<p>5.在wsl到处碰壁后，我决定向vm靠边，结果装完虚拟机也打不开，开在转圈的界面</p>
-<h2 id="如何解决">如何解决</h2>
-<p>最后想到了重装系统。偶然间看到了的教程</p>
-<p><a target="_blank" rel="noopener" href="https://answers.microsoft.com/zh-hans/windows/forum/all/%e4%bd%bf%e7%94%a8mediacreationtool%e4%bf%ae/97d7cefd-5571-4146-9a92-e6615226c912"><strong>使用MediaCreationTool无损修复Windows
-10系统</strong></a></p>
-<p>通过该工具不仅保留全部文件，还重置修复了系统！！！</p>
-<p>下载如图下工具</p>
-<figure>
-<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/image-20230329213339590.png" alt="image-20230329213339590">
-<figcaption aria-hidden="true">image-20230329213339590</figcaption>
-</figure>
-<p><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/windows10">这里给出工具下载链接</a></p>
-<p>经过漫长的等待后成功修复。</p>
-<h2 id="修复完成后">修复完成后</h2>
-<p>可以成功关闭 <em>虚拟机平台</em> 的功能了</p>
-<p>之后重新安装wsl后成功解决！</p>
-<p>得去重新配置pwn环境咯....</p>
-<h2 id="tips">tips：</h2>
-<p>1.Vmware的卸载工具可以修复Vmware，而后便可以正常运行了。</p>
-<p>2.注意使用系统还原点的功能，小心损坏C盘。</p>
-<p>3.ps:折腾完后还扩容了C盘 :)</p>
-<figure>
-<img src="/cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/image-20230329213841191.png" alt="image-20230329213841191">
-<figcaption aria-hidden="true">image-20230329213841191</figcaption>
-</figure>
-<h1 id="qemu-环境配置">Qemu 环境配置</h1>
-<p>Linux</p>
-<pre><code class="hljs plaintext">sudo apt update
-sudo apt install qemu-user
-#(sudo apt install qemu-user-static)暂时不知区别
-sudo apt install gdb-multiarch</code></pre>
-<p>Pwntools</p>
-<pre><code class="hljs python">r = process([<span class="hljs-string">&quot;qemu-ppc&quot;</span>,<span class="hljs-string">&quot;./pwn&quot;</span>]) <span class="hljs-comment">#直接运行</span>
- r = process([<span class="hljs-string">&quot;qemu-ppc&quot;</span>, <span class="hljs-string">&quot;-g&quot;</span>, <span class="hljs-string">&quot;12345&quot;</span>, <span class="hljs-string">&quot;./pwn&quot;</span>]) <span class="hljs-comment">#调试用 端口12345</span>
- 
- gdb.attach(r,<span class="hljs-string">&#x27;target remote localhost:12345&#x27;</span>)
- pause()</code></pre>
+      <!-- Main Content -->
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
+      <!-- 归档列表 -->
 
+      
 
-        <hr>
-        <!-- Pager -->
-        <ul class="pager">
+      <!-- 归档列表 -->
+      
+      <div class="one-tag-list">
+        <span class="fa fa-calendar-times-o listing-seperator" id="2023">
+          <span class="tag-text">2023</span>
+        </span>
+        <ul>
           
-          <li class="previous">
-            <a href="/cn/操作系统的二三事/" data-toggle="tooltip" data-placement="top" title="操作系统的二三事">&larr; Previous Post</a>
+          <li>
+            05-29
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/计算机网络学习/" style="color: #0085a1">
+              <span>
+                计算机网络学习
+                
+                -- cn
+                
+              </span>
+            </a>
           </li>
           
+          <li>
+            04-26
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/密码学的那些知识/" style="color: #0085a1">
+              <span>
+                密码学的那些知识
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
           
-          <li class="next">
-            <a href="/cn/关于发呆/" data-toggle="tooltip" data-placement="top" title="关于发呆">Next Post &rarr;</a>
+          <li>
+            04-23
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/操作系统的二三事/" style="color: #0085a1">
+              <span>
+                操作系统的二三事
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-29
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/痛苦的环境配置/" style="color: #0085a1">
+              <span>
+                痛苦的环境配置
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-27
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/关于发呆/" style="color: #0085a1">
+              <span>
+                关于发呆
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-21
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/tcache题的亿点点细节/" style="color: #0085a1">
+              <span>
+                tcache题的亿点点细节
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-19
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/初识堆/" style="color: #0085a1">
+              <span>
+                初识堆
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-17
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/格式化字符串auto与LibcSearcher/" style="color: #0085a1">
+              <span>
+                格式化字符串auto与LibcSearcher
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-15
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/ORW/" style="color: #0085a1">
+              <span>
+                ORW
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-12
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/一些小细节/" style="color: #0085a1">
+              <span>
+                一些小细节
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-11
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/格式化字符串/" style="color: #0085a1">
+              <span>
+                格式化字符串
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-10
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/传参方式/" style="color: #0085a1">
+              <span>
+                传参方式
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-01
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/栈迁移的学习/" style="color: #0085a1">
+              <span>
+                栈迁移的学习
+                
+                -- cn
+                
+              </span>
+            </a>
+          </li>
+          
+          <li>
+            03-01
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+            <a href="/cn/杂七杂八/" style="color: #0085a1">
+              <span>
+                杂七杂八
+                
+                -- cn
+                
+              </span>
+            </a>
           </li>
           
         </ul>
-
-        
-        <!-- tip start -->
-        <!-- tip -->
-<!-- tip start -->
-<div class="tip">
-  <p>
-    
-      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
-    
-  </p>
+      </div>
+      
+    </div>
+  </div>
 </div>
-<!-- tip end -->
 
-        <!-- tip end -->
-        
 
-        
-        <!-- Sharing Srtart -->
-        <!-- Social Social Share Post -->
-<!-- Docs:https://github.com/overtrue/share.js -->
+      <!-- 如果开启评论功能 -->
+      
+    </div>
 
-<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
-  <ul class="list-inline text-center social-share-ul">
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-twitter">
-        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a class="social-share-icon icon-wechat">
-        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-weibo">
-        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-qq">
-        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=痛苦的环境配置&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/痛苦的环境配置/">
-        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
+    <!-- Sidebar Container -->
+<div class="
+    col-lg-3 col-lg-offset-0
+    col-md-3 col-md-offset-0
+    col-sm-12
+    col-xs-12
+    sidebar-container
+">
+    
+        <!-- Visitors -->
+<h5><a href="/">来访者</a></h5>
+
+<div class="widget">
+  <span>
+    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
+  </span>
+  <br />
+  <span>
+    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
+  </span>
+</div>
+
+
+        <hr>
+    
+        <!-- Featured Tags -->
+
+<section>
+  <h5><a href="/tags/">特色标签</a></h5>
+  <div class="tags">
+    
+    
+    <a href="/tags/#pwn" title="pwn" rel="10">pwn</a>
+    
+    
+    
+    <a href="/tags/#我" title="我" rel="1">我</a>
+    
+    
+    
+    <a href="/tags/#学科" title="学科" rel="3">学科</a>
+    
+    
+  </div>
+</section>
+
+
+        <hr>
+    
+        <!-- Short About -->
+<section class="visible-md visible-lg">
+  <h5><a href="/about/">关于自己</a></h5>
+  <div class="short-about">
+
+    
+    <img id="avatar_pic" src="/img/avatar/good_to_look.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
+    
+
+    
+    <p>I don&#39;t know where I am going ,but I am on my way...</p>
+    
+
+    <!-- SNS Link -->
+    <ul class="list-inline">
+      
+
+      
+      <li>
+        <a target="_blank" href="https://github.com/Sagiring">
+          <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+      </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+    </ul>
+  </div>
+</section>
+
+        <hr>
+    
+        <!-- RECENT POSTS -->
+
+<h5><a href="/">最近博文</a></h5>
+<div class="widget">
+  <ul>
+    
+    <a href="../../../cn/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/">
+      <li>计算机网络学习</li>
+    </a>
+    
+    <a href="../../../cn/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E9%82%A3%E4%BA%9B%E7%9F%A5%E8%AF%86/">
+      <li>密码学的那些知识</li>
+    </a>
+    
+    <a href="../../../cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/">
+      <li>操作系统的二三事</li>
+    </a>
+    
+    <a href="../../../cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+      <li>痛苦的环境配置</li>
+    </a>
+    
+    <a href="../../../cn/%E5%85%B3%E4%BA%8E%E5%8F%91%E5%91%86/">
+      <li>关于发呆</li>
+    </a>
+    
   </ul>
 </div>
 
-<!-- css & js -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
-<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
 
-        <!-- Sharing End -->
-        
         <hr>
-
-        <!-- comments start -->
-        <!-- 1. gitalk comment -->
-
-  <!-- gitalk start -->
-  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
-
-  <div id="gitalk-container"></div>
-
-  
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
-    <script src="/js/comment/gitalk.js"></script>
-  
-
-  <script>
-    var gitalk = new Gitalk({
-      clientID: 'd4759980b8c82fe1a32a',
-      clientSecret: '0e870d007deb9e146ba167987e446ea4f50dff34',
-      repo: 'Sagiring.github.io',
-      owner: 'Sagiring',
-      admin: 'Sagiring',
-      id: 'Wed Mar 29 2023 21:30:00 GMT+0800', // Ensure uniqueness and length less than 50
-      distractionFreeMode: false, // Facebook-like distraction free mode
-      perPage: 10,
-      pagerDirection: 'last',
-      createIssueManually: true,
-      language: 'zh-CN',
-      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
-    });
-    gitalk.render('gitalk-container');
-
-    var gtFolded = () => {
-      setTimeout(function () {
-        let markdownBody = document.getElementsByClassName("markdown-body");
-        let list = Array.from(markdownBody);
-        list.forEach(item => {
-          if (item.clientHeight > 250) {
-            item.classList.add('gt-comment-body-folded');
-            item.style.maxHeight = '250px';
-            item.title = 'Click to Expand';
-            item.onclick = function () {
-              item.classList.remove('gt-comment-body-folded');
-              item.style.maxHeight = '';
-              item.title = '';
-              item.onclick = null;
-            };
-          }
-        })
-      }, 800);
-    }
-  </script>
-
-  <!-- gitalk end -->
-
-
-<!-- 2. gitment comment -->
-
-
-<!-- 3. disqus comment -->
-
-
-        <!-- comments end -->
-        <hr>
-
-      </div>
-
-      <!-- Catalog: Tabe of Content -->
-      <!-- Table of Contents -->
-
     
-      <aside id="sidebar">
-        <div id="toc" class="toc-article">
-        <strong class="toc-title">目录</strong>
-        
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">痛苦的环境配置</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%91%E7%94%9F%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">发生了什么</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">如何解决</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BF%AE%E5%A4%8D%E5%AE%8C%E6%88%90%E5%90%8E"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">修复完成后</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#tips"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">tips：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#qemu-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Qemu 环境配置</span></a></li></ol>
-        
-        </div>
-      </aside>
-    
-
-
-
-      <!-- Sidebar Container -->
-      <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-10 col-md-offset-1
-                sidebar-container">
-
-        <!-- Featured Tags -->
-        
-        <section>
-          <!-- no hr -->
-          <h5>
-            <a href="/tags/">特色标签</a>
-          </h5>
-          <div class="tags">
-            
-            <a class="tag" href="/tags/#pwn" title="pwn">pwn</a>
-            
-          </div>
-        </section>
-        
-
         <!-- Friends Blog -->
-        
-      </div>
-    </div>
+
+
+        <hr>
+    
+        <!-- Archives -->
+
+<h5><a href="/archives/">archives</a></h5>
+<div class="widget">
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../04/">April 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../03/">March 2023</a><span class="archive-list-count">11</span></li></ul>
+</div>
+
+
+        <hr>
+    
+        <!-- Categories -->
+
+<h5><a href="/categories/">categories</a></h5>
+<div class="widget">
+  <ul>
+    
+    <a href="/categories/#pwn">
+      <li>pwn</li>
+    </a>
+    
+    <a href="/categories/#自己的知识">
+      <li>自己的知识</li>
+    </a>
+    
+    <a href="/categories/#密码学">
+      <li>密码学</li>
+    </a>
+    
+    <a href="/categories/#操作系统">
+      <li>操作系统</li>
+    </a>
+    
+    <a href="/categories/#计算机网络">
+      <li>计算机网络</li>
+    </a>
+    
+  </ul>
+</div>
+
+
+        <hr>
+    
+</div>
+
+
+    
   </div>
-</article>
-
-
-
-
-
+</div>
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
