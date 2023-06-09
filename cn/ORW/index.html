@@ -230,6 +230,17 @@
           
           
           <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
             <a href="/categories/">
               
               分类
@@ -244,17 +255,6 @@
             <a href="/tags/">
               
               标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/archive/">
-              
-              归档
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">532</span> In Total
+              Words <span class="post-count">536</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,7 +420,9 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h2 id="ORW"><a href="#ORW" class="headerlink" title="ORW"></a>ORW</h2><h4 id="rop链"><a href="#rop链" class="headerlink" title="rop链"></a>rop链</h4><pre><code class="hljs Python">payload = p64(pop_rdi) + p64(rop_addr + <span class="hljs-number">0x98</span>) + p64(pop_rsi) + p64(<span class="hljs-number">0</span>)+ p64(open_addr)
+        <h2 id="ORW">ORW</h2>
+<h4 id="rop链">rop链</h4>
+<pre><code class="hljs Python">payload = p64(pop_rdi) + p64(rop_addr + <span class="hljs-number">0x98</span>) + p64(pop_rsi) + p64(<span class="hljs-number">0</span>)+ p64(open_addr)
 
 payload += p64(pop_rdi) + p64(<span class="hljs-number">3</span>) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) + p64(<span class="hljs-number">0x30</span>) + p64(read_addr)
 
@@ -431,23 +433,32 @@ payload += <span class="hljs-string">b&#x27;flag&#x27;</span>**.**ljust(<span cl
 r.sendline(payload)</code></pre>
 <p>注：</p>
 <p>1.open函数指向的文件是一个指针，得先把flag存起来，再指向</p>
-<p>2.read函数第一个参数3，指向open打开的文件 ，第二个参数指向写入的地方 </p>
+<p>2.read函数第一个参数3，指向open打开的文件 ，第二个参数指向写入的地方</p>
 <p>3.write函数第一个参数1，代表写入到输出，第二参数指原数据</p>
-<p>（输入0，输出1，异常2）（linux输入输出重定向）（exec 1&gt;&amp;2 ）-&gt; 将输出重定向到异常2 </p>
+<p>（输入0，输出1，异常2）（linux输入输出重定向）（exec 1&gt;&amp;2 ）-&gt; 将输出重定向到异常2</p>
 <p>(0,1,2-&gt;Linux终端)</p>
-<h5 id="通过gets函数读取到任意位置"><a href="#通过gets函数读取到任意位置" class="headerlink" title="通过gets函数读取到任意位置"></a>通过gets函数读取到任意位置</h5><pre><code class="hljs python">payload = <span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">256</span> + <span class="hljs-string">b&#x27;junkjunk&#x27;</span>+p64(pop rdi)+p64(rop addr)+p64(gets addr)+p64(elf.symbols[<span class="hljs-string">&#x27;vuln&#x27;</span>])
+<h5 id="通过gets函数读取到任意位置">通过gets函数读取到任意位置</h5>
+<pre><code class="hljs python">payload = <span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">256</span> + <span class="hljs-string">b&#x27;junkjunk&#x27;</span>+p64(pop rdi)+p64(rop addr)+p64(gets addr)+p64(elf.symbols[<span class="hljs-string">&#x27;vuln&#x27;</span>])
 r.send(payload)</code></pre>
-<h5 id="libc泄露后可以在libc中寻找rop链"><a href="#libc泄露后可以在libc中寻找rop链" class="headerlink" title="libc泄露后可以在libc中寻找rop链"></a>libc泄露后可以在libc中寻找rop链</h5><p><img src="/cn/ORW/image-20230116000554299.png" alt="image-20230116000554299"></p>
-<h4 id="puts-输出类函数-泄露libc基址"><a href="#puts-输出类函数-泄露libc基址" class="headerlink" title="puts 输出类函数 泄露libc基址"></a>puts 输出类函数 泄露libc基址</h4><p><img src="/cn/ORW/image-20230116000712178.png" alt="image-20230116000712178"></p>
+<h5 id="libc泄露后可以在libc中寻找rop链">libc泄露后可以在libc中寻找rop链</h5>
+<p><img src="/cn/ORW/image-20230116000554299.png" alt="image-20230116000554299"></p>
+<h4 id="puts-输出类函数-泄露libc基址">puts 输出类函数 泄露libc基址</h4>
+<p><img src="/cn/ORW/image-20230116000712178.png" alt="image-20230116000712178"></p>
 <p>PS：最后可以再接溢出函数地址 再溢出一次</p>
-<h4 id="栈迁移！实践"><a href="#栈迁移！实践" class="headerlink" title="栈迁移！实践"></a>栈迁移！实践</h4><p><img src="/cn/ORW/image-20230116000903633.png" alt="image-20230116000903633"></p>
-<h5 id="为什么要栈迁移？"><a href="#为什么要栈迁移？" class="headerlink" title="为什么要栈迁移？"></a>为什么要栈迁移？</h5><p>因为溢出的太少溢出的不够写rop链，找个地方写完rop链后再，迁移栈过去执行。</p>
-<p>同时纯真大佬的wp中给出了另外的解法（<a target="_blank" rel="noopener" href="https://zqy.ink/2023/01/12/HGAME2023_wk1_wp/#orw）">https://zqy.ink/2023/01/12/HGAME2023_wk1_wp/#orw）</a></p>
+<h4 id="栈迁移！实践">栈迁移！实践</h4>
+<p><img src="/cn/ORW/image-20230116000903633.png" alt="image-20230116000903633"></p>
+<h5 id="为什么要栈迁移？">为什么要栈迁移？</h5>
+<p>因为溢出的太少溢出的不够写rop链，找个地方写完rop链后再，迁移栈过去执行。</p>
+<p>同时纯真大佬的wp中给出了另外的解法（<a target="_blank" rel="noopener" href="https://zqy.ink/2023/01/12/HGAME2023_wk1_wp/#orw%EF%BC%89">https://zqy.ink/2023/01/12/HGAME2023_wk1_wp/#orw）</a></p>
 <p>通过environ函数泄露栈的地址，然后整个rop就在buf中完成</p>
 <p><img src="/cn/ORW/image-20230116000554299.png" alt="image-20230116001412899"></p>
-<h4 id="NX保护的理解"><a href="#NX保护的理解" class="headerlink" title="NX保护的理解"></a>NX保护的理解</h4><h5 id="1-在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。"><a href="#1-在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。" class="headerlink" title="1.在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。"></a>1.在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。</h5><p>2.NX保护指的是—栈不可执行—的意思，也就是栈上的数据不可以当作代码区执行的作用。</p>
-<h3 id="找空白可写地址是有讲究的！"><a href="#找空白可写地址是有讲究的！" class="headerlink" title="找空白可写地址是有讲究的！"></a>找空白可写地址是有讲究的！</h3><p>通过readelf -S xxx 找只能看各个段的权限大小与开始地址</p>
-<h5 id="通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！"><a href="#通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！" class="headerlink" title="通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！"></a>通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！</h5><p>视图 -&gt; 打开子视图 -&gt; 段 </p>
+<h4 id="NX保护的理解">NX保护的理解</h4>
+<h5 id="1-在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。">1.在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。</h5>
+<p>2.NX保护指的是–栈不可执行–的意思，也就是栈上的数据不可以当作代码区执行的作用。</p>
+<h3 id="找空白可写地址是有讲究的！">找空白可写地址是有讲究的！</h3>
+<p>通过readelf -S xxx 找只能看各个段的权限大小与开始地址</p>
+<h5 id="通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！">通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！</h5>
+<p>视图 -&gt; 打开子视图 -&gt; 段</p>
 <p>来查看</p>
 <p><img src="/cn/ORW/image-20230116002907838.png" alt="image-20230116002907838"></p>
 <p>交界处差距很大，存在空白位置给其写入 从0x3FF598开始（好地方）</p>
