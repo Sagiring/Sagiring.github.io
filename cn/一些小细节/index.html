@@ -219,9 +219,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -252,9 +252,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">153</span> In Total
+              Words <span class="post-count">141</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,48 +420,25 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h2 id="异或避开敏感字符检测">异或避开敏感字符检测</h2>
-<p>本地先行异或 加码 避开字符检测</p>
-<figure>
-<img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000449878.png" alt="image-20230112000449878">
-<figcaption aria-hidden="true">image-20230112000449878</figcaption>
-</figure>
+        <h2 id="异或避开敏感字符检测"><a href="#异或避开敏感字符检测" class="headerlink" title="异或避开敏感字符检测"></a>异或避开敏感字符检测</h2><p>本地先行异或 加码 避开字符检测</p>
+<p><img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000449878.png" alt="image-20230112000449878"></p>
 <p>将结果存入data段后</p>
-<figure>
-<img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000625442.png" alt="image-20230112000625442">
-<figcaption aria-hidden="true">image-20230112000625442</figcaption>
-</figure>
+<p><img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000625442.png" alt="image-20230112000625442"></p>
 <p>利用ROP的XOR进行解密</p>
-<figure>
-<img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000649256.png" alt="image-20230112000649256">
-<figcaption aria-hidden="true">image-20230112000649256</figcaption>
-</figure>
+<p><img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000649256.png" alt="image-20230112000649256"></p>
 <p>最后再读取</p>
-<figure>
-<img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000735119.png" alt="image-20230112000735119">
-<figcaption aria-hidden="true">image-20230112000735119</figcaption>
-</figure>
+<p><img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000735119.png" alt="image-20230112000735119"></p>
 <pre><code class="hljs plaintext">`PS：查询段权限 $&gt; readelf -S xxxx` 或者 vmmap</code></pre>
 <p>！！！</p>
-<h2 id="send-与-sendline-有巨大差别-不能混为一谈">Send 与 Sendline
-有巨大差别 不能混为一谈</h2>
-<figure>
-<img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230114151500856.png" alt="image-20230114151500856">
-<figcaption aria-hidden="true">image-20230114151500856</figcaption>
-</figure>
-<h2 id="本地调试要自己加载库libc与ld">本地调试要自己加载库libc与ld！！</h2>
-<h4 id="section">`</h4>
-<pre><code class="hljs plaintext">patchelf --set-interpreter ld路径 ./pwn`
+<h2 id="Send-与-Sendline-有巨大差别-不能混为一谈"><a href="#Send-与-Sendline-有巨大差别-不能混为一谈" class="headerlink" title="Send 与 Sendline 有巨大差别 不能混为一谈"></a>Send 与 Sendline 有巨大差别 不能混为一谈</h2><p><img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230114151500856.png" alt="image-20230114151500856"></p>
+<h2 id="本地调试要自己加载库libc与ld！！"><a href="#本地调试要自己加载库libc与ld！！" class="headerlink" title="本地调试要自己加载库libc与ld！！"></a>本地调试要自己加载库libc与ld！！</h2><h4 id><a href="#" class="headerlink" title="`"></a>`</h4><pre><code class="hljs plaintext">patchelf --set-interpreter ld路径 ./pwn`
 
 patchelf --replace-needed libc.so.6 libc路径 ./pwn`
 
 #libc.so.6为需要替换的libc路径 第二个参数是需要加载的glibc的目录    pwn 是二进制文件`
 
 `ldd ./bin #查看elf的ld和libc`</code></pre>
-<figure>
-<img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230224100740222.png" alt="image-20230224100740222">
-<figcaption aria-hidden="true">image-20230224100740222</figcaption>
-</figure>
+<p><img src="/cn/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230224100740222.png" alt="image-20230224100740222"></p>
 
 
         <hr>
@@ -611,8 +588,7 @@ patchelf --replace-needed libc.so.6 libc路径 ./pwn`
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%82%E6%88%96%E9%81%BF%E5%BC%80%E6%95%8F%E6%84%9F%E5%AD%97%E7%AC%A6%E6%A3%80%E6%B5%8B"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">异或避开敏感字符检测</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#send-%E4%B8%8E-sendline-%E6%9C%89%E5%B7%A8%E5%A4%A7%E5%B7%AE%E5%88%AB-%E4%B8%8D%E8%83%BD%E6%B7%B7%E4%B8%BA%E4%B8%80%E8%B0%88"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Send 与 Sendline
-有巨大差别 不能混为一谈</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%E8%A6%81%E8%87%AA%E5%B7%B1%E5%8A%A0%E8%BD%BD%E5%BA%93libc%E4%B8%8Eld"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">本地调试要自己加载库libc与ld！！</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#section"><span class="toc-nav-number">3.0.1.</span> <span class="toc-nav-text">&#96;</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%82%E6%88%96%E9%81%BF%E5%BC%80%E6%95%8F%E6%84%9F%E5%AD%97%E7%AC%A6%E6%A3%80%E6%B5%8B"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">异或避开敏感字符检测</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Send-%E4%B8%8E-Sendline-%E6%9C%89%E5%B7%A8%E5%A4%A7%E5%B7%AE%E5%88%AB-%E4%B8%8D%E8%83%BD%E6%B7%B7%E4%B8%BA%E4%B8%80%E8%B0%88"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Send 与 Sendline 有巨大差别 不能混为一谈</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%E8%A6%81%E8%87%AA%E5%B7%B1%E5%8A%A0%E8%BD%BD%E5%BA%93libc%E4%B8%8Eld%EF%BC%81%EF%BC%81"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">本地调试要自己加载库libc与ld！！</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">3.0.1.</span> <span class="toc-nav-text">&#96;</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

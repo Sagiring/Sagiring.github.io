@@ -219,9 +219,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -252,9 +252,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -368,11 +368,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">30</span> Minutes
+              Estimated Reading Time <span class="post-count">29</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">8.3k</span> In Total
+              Words <span class="post-count">8.2k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,11 +420,8 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="序言">序言</h1>
-<p>个人感觉操作系统记忆背诵的知识点多杂，因而写下这篇blog方便自己记忆背诵。</p>
-<h1 id="第1章-引论">第1章 引论</h1>
-<h2 id="操作系统分类">操作系统分类</h2>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> 无操作系统的计算机系统
+        <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>个人感觉操作系统记忆背诵的知识点多杂，因而写下这篇blog方便自己记忆背诵。</p>
+<h1 id="第1章-引论"><a href="#第1章-引论" class="headerlink" title="第1章 引论"></a>第1章 引论</h1><h2 id="操作系统分类"><a href="#操作系统分类" class="headerlink" title="操作系统分类"></a>操作系统分类</h2><pre><code class="hljs python"><span class="hljs-number">1.</span> 无操作系统的计算机系统
 <span class="hljs-number">2.</span> 单道<span class="hljs-string">&#x27;批处理系统&#x27;</span>
 	监督程序：相当于早期操作系统，负责将磁盘中程序调入内存，以及将内存中的程序交给CPU处理。
 <span class="hljs-number">3.</span> 多道<span class="hljs-string">&#x27;批处理系统&#x27;</span>
@@ -441,13 +438,9 @@
 <span class="hljs-number">9.</span> 分布式操作系统
 	基于软件实现的一种多处理机系统，是多个处理机通过通信线路互连而构成的松耦合系统。
     例如：万维网、鸿蒙OS</code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423104215702.png" alt="image-20230423104215702">
-<figcaption aria-hidden="true">image-20230423104215702</figcaption>
-</figure>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423104215702.png" alt="image-20230423104215702"></p>
 <p>分时操作系统</p>
-<h2 id="操作系统的基本特征">操作系统的基本特征</h2>
-<pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;并发&#x27;</span>
+<h2 id="操作系统的基本特征"><a href="#操作系统的基本特征" class="headerlink" title="操作系统的基本特征"></a>操作系统的基本特征</h2><pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;并发&#x27;</span>
 	两个或多个事件在同一时间间隔内发生 
     <span class="hljs-string">&#x27;多核&#x27;</span>CPU:<span class="hljs-string">&#x27;并行&#x27;</span>：两个或多个事件在同一时刻发生
 <span class="hljs-number">2.</span><span class="hljs-string">&#x27;共享&#x27;</span>
@@ -456,8 +449,7 @@
 	虚拟处理机、虚拟设备\虚拟存储
 <span class="hljs-number">4.</span><span class="hljs-string">&#x27;异步&#x27;</span>
 	进程是以人们不可预知的速度向前推进的</code></pre>
-<h2 id="操作系统内核">操作系统内核</h2>
-<pre><code class="hljs python">支撑功能：
+<h2 id="操作系统内核"><a href="#操作系统内核" class="headerlink" title="操作系统内核"></a>操作系统内核</h2><pre><code class="hljs python">支撑功能：
 	<span class="hljs-number">1.</span> 中断处理
 	<span class="hljs-number">2.</span> 时钟管理
 	<span class="hljs-number">3.</span> 原语操作
@@ -467,17 +459,9 @@
 	在内核态下运行的指令
 <span class="hljs-number">2.</span> <span class="hljs-string">&#x27;用户态&#x27;</span>（目态）
 	在用户态下运行的指令</code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423105740647.png" alt="image-20230423105740647">
-<figcaption aria-hidden="true">image-20230423105740647</figcaption>
-</figure>
-<h2 id="单道处理与多道处理">单道处理与多道处理</h2>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424212737664.png" alt="image-20230424212737664">
-<figcaption aria-hidden="true">image-20230424212737664</figcaption>
-</figure>
-<h2 id="操作系统概况小结">操作系统概况小结</h2>
-<pre><code class="hljs python"><span class="hljs-number">1.</span>定义
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423105740647.png" alt="image-20230423105740647"></p>
+<h2 id="单道处理与多道处理"><a href="#单道处理与多道处理" class="headerlink" title="单道处理与多道处理"></a>单道处理与多道处理</h2><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424212737664.png" alt="image-20230424212737664"></p>
+<h2 id="操作系统概况小结"><a href="#操作系统概况小结" class="headerlink" title="操作系统概况小结"></a>操作系统概况小结</h2><pre><code class="hljs python"><span class="hljs-number">1.</span>定义
 	<span class="hljs-number">1.</span>操作系统是控制和管理计算机系统内各种<span class="hljs-string">&#x27;硬件&#x27;</span>和<span class="hljs-string">&#x27;软件&#x27;</span>资源、有效地组织多道程序运行的<span class="hljs-string">&#x27;系统软件&#x27;</span>（或程序集合），是<span class="hljs-string">&#x27;用户&#x27;</span>与<span class="hljs-string">&#x27;计算机&#x27;</span>之间的接口。
 <span class="hljs-number">2.</span>分类
 	<span class="hljs-number">1.</span>根据服务对象不同，常用的处理机操作系统主要分为如下三种类型：允许多个用户在其终端上同时交互地使用计算机的操作系统称为<span class="hljs-string">&#x27;分时操作系统&#x27;</span>，它通常采用<span class="hljs-string">&#x27;时间片轮转策略&#x27;</span>为用户服务；
@@ -486,36 +470,17 @@
 <span class="hljs-number">3.</span> UNIX 系统是<span class="hljs-string">&#x27;分时操作系统&#x27;</span>，DOS 系统是<span class="hljs-string">&#x27;单用户操作系统&#x27;</span>。
 <span class="hljs-number">4.</span> 现代操作系统通常为用户提供三种使用界面：<span class="hljs-string">&#x27;命令界面&#x27;</span>、<span class="hljs-string">&#x27;图形界面&#x27;</span>和<span class="hljs-string">&#x27;系统调用界面&#x27;</span>。
 <span class="hljs-number">5.</span> 为了防止操作系统及关键数据受到用户程序的破坏，将CPU的执行状态分为<span class="hljs-string">&#x27;用户态&#x27;</span>和<span class="hljs-string">&#x27;系统态 &#x27;</span>。</code></pre>
-<h1 id="第二章-进程的描述与控制">第二章 进程的描述与控制</h1>
-<h2 id="前趋图">前趋图</h2>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111208291.png" alt="image-20230423111208291">
-<figcaption aria-hidden="true">image-20230423111208291</figcaption>
-</figure>
-<h2 id="程序并发执行的特征">程序并发执行的特征</h2>
-<p>顺序与并发</p>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111553768.png" alt="image-20230423111553768">
-<figcaption aria-hidden="true">image-20230423111553768</figcaption>
-</figure>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111605105.png" alt="image-20230423111605105">
-<figcaption aria-hidden="true">image-20230423111605105</figcaption>
-</figure>
-<h2 id="什么是进程">什么是进程</h2>
-<pre><code class="hljs python"><span class="hljs-string">&#x27;进程&#x27;</span>是程序的一次执行。
+<h1 id="第二章-进程的描述与控制"><a href="#第二章-进程的描述与控制" class="headerlink" title="第二章 进程的描述与控制"></a>第二章 进程的描述与控制</h1><h2 id="前趋图"><a href="#前趋图" class="headerlink" title="前趋图"></a>前趋图</h2><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111208291.png" alt="image-20230423111208291"></p>
+<h2 id="程序并发执行的特征"><a href="#程序并发执行的特征" class="headerlink" title="程序并发执行的特征"></a>程序并发执行的特征</h2><p>顺序与并发</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111553768.png" alt="image-20230423111553768"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423111605105.png" alt="image-20230423111605105"></p>
+<h2 id="什么是进程"><a href="#什么是进程" class="headerlink" title="什么是进程"></a>什么是进程</h2><pre><code class="hljs python"><span class="hljs-string">&#x27;进程&#x27;</span>是程序的一次执行。
 <span class="hljs-string">&#x27;进程&#x27;</span>是一个程序及其数据在处理机上顺序执行时所发生的活动。
 <span class="hljs-string">&#x27;进程&#x27;</span>是程序在一个数据集合上运行的过程，它是系统进行<span class="hljs-string">&#x27;资源分配和调度&#x27;</span>的<span class="hljs-string">&#x27;一个独立单位&#x27;</span>。
 <span class="hljs-string">&#x27;进程&#x27;</span>是进程实体的运行过程，是系统进行<span class="hljs-string">&#x27;资源分配和调度&#x27;</span>的<span class="hljs-string">&#x27;一个独立单位&#x27;</span>。</code></pre>
-<h3 id="引入目的">引入目的</h3>
-<pre><code class="hljs python">使多个程序并发执行，提高资源利用率及系统吞吐量</code></pre>
-<h3 id="进程控制块process-control-block----pcb">进程控制块(process
-control block) --&gt; PCB</h3>
-<pre><code class="hljs python"><span class="hljs-string">&#x27;进程标识符&#x27;</span>信息、<span class="hljs-string">&#x27;处理机状态&#x27;</span>信息、<span class="hljs-string">&#x27;进程调度&#x27;</span>信息、<span class="hljs-string">&#x27;进程控制&#x27;</span>信息</code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423172524392.png" alt="image-20230423172524392">
-<figcaption aria-hidden="true">image-20230423172524392</figcaption>
-</figure>
+<h3 id="引入目的"><a href="#引入目的" class="headerlink" title="引入目的"></a>引入目的</h3><pre><code class="hljs python">使多个程序并发执行，提高资源利用率及系统吞吐量</code></pre>
+<h3 id="进程控制块-process-control-block-—-gt-PCB"><a href="#进程控制块-process-control-block-—-gt-PCB" class="headerlink" title="进程控制块(process control block) —&gt; PCB"></a>进程控制块(process control block) —&gt; PCB</h3><pre><code class="hljs python"><span class="hljs-string">&#x27;进程标识符&#x27;</span>信息、<span class="hljs-string">&#x27;处理机状态&#x27;</span>信息、<span class="hljs-string">&#x27;进程调度&#x27;</span>信息、<span class="hljs-string">&#x27;进程控制&#x27;</span>信息</code></pre>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423172524392.png" alt="image-20230423172524392"></p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;PCB&#x27;</span>是进程实体的一部分，记录了<span class="hljs-string">&#x27;操作系统所需的、用于描述进程当前状况以及控制进程运行的全部信息&#x27;</span>
 <span class="hljs-number">2.</span> OS是根据<span class="hljs-string">&#x27;PCB&#x27;</span>来对<span class="hljs-string">&#x27;并发执行的进程&#x27;</span>进行<span class="hljs-string">&#x27;控制&#x27;</span>和<span class="hljs-string">&#x27;管理&#x27;</span>的
 <span class="hljs-number">3.</span> 进程控制块是进程存在的<span class="hljs-string">&#x27;唯一&#x27;</span>标志 -&gt; 进程任务完成时，系统收回它的PCB，进程也随之消亡
@@ -526,12 +491,10 @@ control block) --&gt; PCB</h3>
 <span class="hljs-number">3.</span> 提供进程管理所需要的信息；
 <span class="hljs-number">4.</span> 提供进程调度所需要的信息；
 <span class="hljs-number">5.</span> 实现与其他进程的同步与通信。</code></pre>
-<h4 id="链接方式">链接方式</h4>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> 线形表
+<h4 id="链接方式"><a href="#链接方式" class="headerlink" title="链接方式"></a>链接方式</h4><pre><code class="hljs python"><span class="hljs-number">1.</span> 线形表
 <span class="hljs-number">2.</span> 链表 + 索引表</code></pre>
 <p>（跳过了进程操作的一些原语操作）</p>
-<h3 id="进程的特征-重点记忆">进程的特征 （重点记忆）</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;动态性&#x27;</span>
+<h3 id="进程的特征-（重点记忆）"><a href="#进程的特征-（重点记忆）" class="headerlink" title="进程的特征 （重点记忆）"></a>进程的特征 （重点记忆）</h3><pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;动态性&#x27;</span>
 	生命期
 <span class="hljs-number">2.</span> <span class="hljs-string">&#x27;并发性&#x27;</span>
 	一段时间内同时运行
@@ -540,22 +503,17 @@ control block) --&gt; PCB</h3>
     是系统中独立获得资源和独立调度的基本单位
 <span class="hljs-number">4.</span> <span class="hljs-string">&#x27;异步性&#x27;</span>
 	按各自独立的、不可预知的速度向前推进</code></pre>
-<h3 id="进程-vs-程序">进程 vs 程序</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span>进程是程序的执行，属于动态，程序是静态的
+<h3 id="进程-vs-程序"><a href="#进程-vs-程序" class="headerlink" title="进程 vs 程序"></a>进程 vs 程序</h3><pre><code class="hljs python"><span class="hljs-number">1.</span>进程是程序的执行，属于动态，程序是静态的
 进程的存在是暂时的，程序的存在是永久的
 
 <span class="hljs-number">2.</span>一个程序可以对应多个进程
 一个进程可以包含多个程序</code></pre>
-<h3 id="进程的状态">进程的状态</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;就绪状态&#x27;</span>
+<h3 id="进程的状态"><a href="#进程的状态" class="headerlink" title="进程的状态"></a>进程的状态</h3><pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;就绪状态&#x27;</span>
 <span class="hljs-number">2.</span> <span class="hljs-string">&#x27;执行状态&#x27;</span>
 <span class="hljs-number">3.</span> <span class="hljs-string">&#x27;阻塞状态&#x27;</span> 
 	进程主动申请进入阻塞状态
     阻塞态变为就绪态为被动行为</code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423171734528.png" alt="image-20230423171734528">
-<figcaption aria-hidden="true">image-20230423171734528</figcaption>
-</figure>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423171734528.png" alt="image-20230423171734528"></p>
 <pre><code class="hljs python"><span class="hljs-number">4.</span> <span class="hljs-string">&#x27;创建状态&#x27;</span>
 	申请一个空白PCB；填写PCB；分配资源；设置就绪状态插入就绪队列
 <span class="hljs-number">5.</span> <span class="hljs-string">&#x27;终止状态&#x27;</span>
@@ -566,18 +524,12 @@ control block) --&gt; PCB</h3>
 		<span class="hljs-number">2.</span> 父进程请求
 		<span class="hljs-number">3.</span> 负荷调节的需要 （实时系统）
 		<span class="hljs-number">4.</span> 操作系统的需要</code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423172228929.png" alt="image-20230423172228929">
-<figcaption aria-hidden="true">image-20230423172228929</figcaption>
-</figure>
-<h4 id="section"></h4>
-<h3 id="进程的通信">进程的通信</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> 低级进程通信
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423172228929.png" alt="image-20230423172228929"></p>
+<h4 id><a href="#" class="headerlink" title=" "></a> </h4><h3 id="进程的通信"><a href="#进程的通信" class="headerlink" title="进程的通信"></a>进程的通信</h3><pre><code class="hljs python"><span class="hljs-number">1.</span> 低级进程通信
 	所交换的信息量相对较少
 <span class="hljs-number">2.</span> 高级进程通信
 	用户可直接利用OS所提供的一组通信命令，高效地传送大量数据的一种通信方式</code></pre>
-<h4 id="通信方法">通信方法</h4>
-<pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;管道&#x27;</span>
+<h4 id="通信方法"><a href="#通信方法" class="headerlink" title="通信方法"></a>通信方法</h4><pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;管道&#x27;</span>
 	互斥 同步 确定对方是否存在，只有确定了对方已存在时，才能进行通信
 	<span class="hljs-number">1.</span> 匿名管道 (环形队列,内存)
     <span class="hljs-number">2.</span> 有名管道 (文件, 外存)
@@ -589,13 +541,10 @@ control block) --&gt; PCB</h3>
 <span class="hljs-number">4.</span><span class="hljs-string">&#x27;信号量&#x27;</span>
 
 <span class="hljs-number">5.</span><span class="hljs-string">&#x27;socket&#x27;</span></code></pre>
-<h2 id="线程是什么">线程是什么</h2>
-<h3 id="引入目的-1">引入目的</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> 减少程序在<span class="hljs-string">&#x27;并发执行&#x27;</span>时所付出的<span class="hljs-string">&#x27;时空开销&#x27;</span>
+<h2 id="线程是什么"><a href="#线程是什么" class="headerlink" title="线程是什么"></a>线程是什么</h2><h3 id="引入目的-1"><a href="#引入目的-1" class="headerlink" title="引入目的"></a>引入目的</h3><pre><code class="hljs python"><span class="hljs-number">1.</span> 减少程序在<span class="hljs-string">&#x27;并发执行&#x27;</span>时所付出的<span class="hljs-string">&#x27;时空开销&#x27;</span>
 <span class="hljs-number">2.</span> 使OS具有更好的并发性
 <span class="hljs-number">3.</span> 适用于SMP结构的计算机系统</code></pre>
-<h3 id="线程-vs-进程">线程 vs 进程</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;线程&#x27;</span>作为<span class="hljs-string">&#x27;调度&#x27;</span>和<span class="hljs-string">&#x27;分派&#x27;</span>的<span class="hljs-string">&#x27;基本单位&#x27;</span>（又称为轻型进程）
+<h3 id="线程-vs-进程"><a href="#线程-vs-进程" class="headerlink" title="线程 vs 进程"></a>线程 vs 进程</h3><pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;线程&#x27;</span>作为<span class="hljs-string">&#x27;调度&#x27;</span>和<span class="hljs-string">&#x27;分派&#x27;</span>的<span class="hljs-string">&#x27;基本单位&#x27;</span>（又称为轻型进程）
 <span class="hljs-number">2.</span> <span class="hljs-string">&#x27;进程&#x27;</span>是拥有<span class="hljs-string">&#x27;资源&#x27;</span>的<span class="hljs-string">&#x27;基本单位&#x27;</span>（传统进程称为重型进程）</code></pre>
 <pre><code class="hljs python">关于资源
     <span class="hljs-string">&#x27;进程&#x27;</span>是系统中拥有资源的一个基本单位，它可以拥有资源。
@@ -607,17 +556,12 @@ control block) --&gt; PCB</h3>
 	在创建或撤消进程时，OS所付出的开销将显著大于创建或撤消线程时的开销。
 	线程切换的代价远低于进程切换的代价。
 	同一进程中的多个线程之间的同步和通信也比进程的简单。</code></pre>
-<h3 id="线程状态">线程状态</h3>
-<pre><code class="hljs python"><span class="hljs-string">&#x27;执行态&#x27;</span>、<span class="hljs-string">&#x27;就绪态&#x27;</span>、<span class="hljs-string">&#x27;阻塞态&#x27;</span>
+<h3 id="线程状态"><a href="#线程状态" class="headerlink" title="线程状态"></a>线程状态</h3><pre><code class="hljs python"><span class="hljs-string">&#x27;执行态&#x27;</span>、<span class="hljs-string">&#x27;就绪态&#x27;</span>、<span class="hljs-string">&#x27;阻塞态&#x27;</span>
 线程状态转换与进程状态转换<span class="hljs-string">&#x27;一样&#x27;</span></code></pre>
-<h3 id="线程控制块thread-control-block-tcb">线程控制块（thread control
-block) TCB</h3>
-<h3 id="线程实现">线程实现</h3>
-<pre><code class="hljs python"><span class="hljs-string">&#x27;内核支持线程KST&#x27;</span>
+<h3 id="线程控制块（thread-control-block-TCB"><a href="#线程控制块（thread-control-block-TCB" class="headerlink" title="线程控制块（thread control block) TCB"></a>线程控制块（thread control block) TCB</h3><h3 id="线程实现"><a href="#线程实现" class="headerlink" title="线程实现"></a>线程实现</h3><pre><code class="hljs python"><span class="hljs-string">&#x27;内核支持线程KST&#x27;</span>
 <span class="hljs-string">&#x27;用户级线程ULT&#x27;</span>
 组合方式</code></pre>
-<h4 id="内核支持线程kst">内核支持线程KST</h4>
-<pre><code class="hljs python"><span class="hljs-number">1.</span>
+<h4 id="内核支持线程KST"><a href="#内核支持线程KST" class="headerlink" title="内核支持线程KST"></a>内核支持线程KST</h4><pre><code class="hljs python"><span class="hljs-number">1.</span>
 无论用户进程中的线程，还是系统进程中的线程，其创建、撤销和切换都依靠内核，在内核空间通过系统调用实现
 在内核空间为每个线程设置了一个线程控制块，内核根据该控制块感知该线程存在，并加以控制
 
@@ -629,8 +573,7 @@ block) TCB</h3>
 
 <span class="hljs-number">3.</span>缺点
 对用户线程切换，开销较大。</code></pre>
-<h4 id="用户级线程ult">用户级线程ULT</h4>
-<pre><code class="hljs python"><span class="hljs-number">1.</span>
+<h4 id="用户级线程ULT"><a href="#用户级线程ULT" class="headerlink" title="用户级线程ULT"></a>用户级线程ULT</h4><pre><code class="hljs python"><span class="hljs-number">1.</span>
 用户级线程仅在用户空间中，与内核无关，所有对线程的操作(创建、撤销、同步、互斥等)也在用户空间中由线程库的函数（过程）完成，而无需内核帮助
 
 <span class="hljs-number">2.</span>优点
@@ -642,17 +585,11 @@ block) TCB</h3>
 系统调用的阻塞问题。
 多线程应用不能利用多处理机
 进行多重处理的优点。</code></pre>
-<p>ULT与KST组合方式....</p>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423181714864.png" alt="image-20230423181714864">
-<figcaption aria-hidden="true">image-20230423181714864</figcaption>
-</figure>
-<h1 id="第三章-处理机调度与死锁">第三章 处理机调度与死锁</h1>
-<h2 id="处理机调度">处理机调度</h2>
-<p>多级调度</p>
+<p>ULT与KST组合方式….</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230423181714864.png" alt="image-20230423181714864"></p>
+<h1 id="第三章-处理机调度与死锁"><a href="#第三章-处理机调度与死锁" class="headerlink" title="第三章 处理机调度与死锁"></a>第三章 处理机调度与死锁</h1><h2 id="处理机调度"><a href="#处理机调度" class="headerlink" title="处理机调度"></a>处理机调度</h2><p>多级调度</p>
 <p>运行性能</p>
-<h3 id="进程调度的级别">进程调度的级别</h3>
-<pre><code class="hljs python"><span class="hljs-string">&#x27;高级调度&#x27;</span>：也称宏观调度，决定哪些程序可以进入系统
+<h3 id="进程调度的级别"><a href="#进程调度的级别" class="headerlink" title="进程调度的级别"></a>进程调度的级别</h3><pre><code class="hljs python"><span class="hljs-string">&#x27;高级调度&#x27;</span>：也称宏观调度，决定哪些程序可以进入系统
 <span class="hljs-string">&#x27;中级调度&#x27;</span>：也称内存调度，决定内存中程序的位置和状态
 <span class="hljs-string">&#x27;低级调度&#x27;</span>：也称微观调度，决定CPU资源在就绪进程间的分配
 或
@@ -661,23 +598,15 @@ block) TCB</h3>
 <span class="hljs-string">&#x27;低级调度&#x27;</span>（短程调度/<span class="hljs-string">&#x27;进程&#x27;</span>调度）</code></pre>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>引入<span class="hljs-string">&#x27;中级调度&#x27;</span>的主要目的，是为了<span class="hljs-string">&#x27;提高内存利用率和系统吞吐量&#x27;</span>；
 	使那些暂时不能运行的进程不再占用宝贵的内存资源，将它们调至外存上去等待，把此时的进程状态称为就绪驻外存状态或挂起状态;当这些进程具备运行条件、且内存又稍有空闲时，由中级调度来决定把就绪进程，重新调入内存，并修改其状	态为就绪状态，挂在就绪队列上等待进程调度</code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424101615476.png" alt="image-20230424101615476">
-<figcaption aria-hidden="true">image-20230424101615476</figcaption>
-</figure>
-<h3 id="进程调度的方式">进程调度的方式</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span>非抢占方式
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424101615476.png" alt="image-20230424101615476"></p>
+<h3 id="进程调度的方式"><a href="#进程调度的方式" class="headerlink" title="进程调度的方式"></a>进程调度的方式</h3><pre><code class="hljs python"><span class="hljs-number">1.</span>非抢占方式
 	决不允许某进程抢占已经分配出去的处理机
 <span class="hljs-number">2.</span>抢占方式:(现代OS广泛采用)
 	优先权原则
     短作业优先原则
     时间片原则</code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424101906191.png" alt="image-20230424101906191">
-<figcaption aria-hidden="true">image-20230424101906191</figcaption>
-</figure>
-<h4 id="计算概念">计算概念</h4>
-<pre><code class="hljs python">批处理系统的目标
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424101906191.png" alt="image-20230424101906191"></p>
+<h4 id="计算概念"><a href="#计算概念" class="headerlink" title="计算概念"></a>计算概念</h4><pre><code class="hljs python">批处理系统的目标
     <span class="hljs-number">1.</span><span class="hljs-string">&#x27;周转时间&#x27;</span> -&gt; <span class="hljs-string">&#x27;作业完成时刻-作业到达时刻&#x27;</span> <span class="hljs-string">&#x27;等待时间+服务时间&#x27;</span>
         作业被提交给系统开始，到作业完成为止的这段时间间隔
     <span class="hljs-number">2.</span>平均周转时间 <span class="hljs-string">&#x27;-&gt;&#x27;</span> 作业周转总时间/作业个数
@@ -686,31 +615,23 @@ block) TCB</h3>
     <span class="hljs-number">5.</span><span class="hljs-string">&#x27;服务时间&#x27;</span> -&gt; 进程在CPU中运行的时间
     <span class="hljs-number">6.</span>吞吐量
     <span class="hljs-number">7.</span>等待时间（进程调度）</code></pre>
-<h2 id="调度算法">调度算法</h2>
-<h3 id="什么是作业">什么是作业</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;作业&#x27;</span>：在多道批处理操作系统中，用户提交给系统的一项相对独立的工作
+<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><h3 id="什么是作业"><a href="#什么是作业" class="headerlink" title="什么是作业"></a>什么是作业</h3><pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;作业&#x27;</span>：在多道批处理操作系统中，用户提交给系统的一项相对独立的工作
 	是用户在一次算题过程中或一次事务处理中，要求计算机系统所做的工作的集合。在批处理系统中，以作业为单位从外存调入内存
 <span class="hljs-number">2.</span>作业和进程的关系
 	作业是比进程更广泛的概念，不仅包含了通常的程序和数据，而且还配有一份作业说明书，系统根据作业说明书对程序运行进行控制
 <span class="hljs-number">3.</span>作业步
 	作业运行期间，每个作业由若干相互独立又相互关联的顺序加工步骤才能得到结果。每个加工步骤称为一个作业步</code></pre>
-<h4 id="作业控制块">作业控制块</h4>
-<pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;作业控制块（JCB）&#x27;</span>
+<h4 id="作业控制块"><a href="#作业控制块" class="headerlink" title="作业控制块"></a>作业控制块</h4><pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;作业控制块（JCB）&#x27;</span>
     多道批处理系统中，为每个作业设置一个作业控制块。 JCB是一个作业在系统中存在的惟一标志，系统根据JCB才感知到作业的存在。
 <span class="hljs-number">2.</span><span class="hljs-string">&#x27;JCB包含内容&#x27;</span>：作业控制块JCB中包含了对作业进行管理的必要信息，JCB中的信息一部分是从用户提供的作业控制卡或作业说明书中得到，另一部分是记录作业运行过程中的动态信息。
 <span class="hljs-number">3.</span><span class="hljs-string">&#x27;JCB的生成&#x27;</span>：作业提交给系统后，便由“作业注册”程序为作业建立一个作业控制块JCB，放入后备队列
 </code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424103340016.png" alt="image-20230424103340016">
-<figcaption aria-hidden="true">image-20230424103340016</figcaption>
-</figure>
-<h3 id="作业调度算法">作业调度算法</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;FCFS&#x27;</span> 先来先服务调度算法
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424103340016.png" alt="image-20230424103340016"></p>
+<h3 id="作业调度算法"><a href="#作业调度算法" class="headerlink" title="作业调度算法"></a>作业调度算法</h3><pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;FCFS&#x27;</span> 先来先服务调度算法
 <span class="hljs-number">2.</span><span class="hljs-string">&#x27;SJF&#x27;</span> 短作业优先调度算法
 <span class="hljs-number">3.</span><span class="hljs-string">&#x27;PR&#x27;</span> 优先级调度算法
 <span class="hljs-number">4.</span>HRRN 高响应比优先调度算法</code></pre>
-<h2 id="进程调度">进程调度</h2>
-<pre><code class="hljs python">任务
+<h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2><pre><code class="hljs python">任务
 	<span class="hljs-number">1.</span> 保存处理机现场信息。
     <span class="hljs-number">2.</span> 按某种算法挑选进程。
     <span class="hljs-number">3.</span> 把处理器分配给进程。
@@ -721,161 +642,86 @@ block) TCB</h3>
     	把进程调度程序选定的进程，从就绪队列中取出，进行上下文切换，把处理器分配给它
     <span class="hljs-number">3.</span>上下文切换机制
     	<span class="hljs-number">1.</span>保存当前进程上下文装入分派程序上下文，分派程序运行 <span class="hljs-number">2.</span>移出分派程序，装入新选进程上下文</code></pre>
-<h3 id="进程调度算法">进程调度算法</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;FCFS&#x27;</span> 先来先服务调度算法
+<h3 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h3><pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;FCFS&#x27;</span> 先来先服务调度算法
 <span class="hljs-number">2.</span><span class="hljs-string">&#x27;SJF&#x27;</span> 短作业优先调度算法
 <span class="hljs-number">3.</span><span class="hljs-string">&#x27;PR&#x27;</span> 优先权调度算法
 <span class="hljs-number">4.</span><span class="hljs-string">&#x27;RR&#x27;</span> 时间片轮转调度算法
 <span class="hljs-number">5.</span>多级队列调度算法
 <span class="hljs-number">6.</span>多级反馈队列调度算法
 <span class="hljs-number">7.</span>基于公平原则的调度算法</code></pre>
-<h4 id="fcfs">FCFS</h4>
-<p>作业调度和进程调度均可，最简单，本质上属非抢占方式</p>
+<h4 id="FCFS"><a href="#FCFS" class="headerlink" title="FCFS"></a>FCFS</h4><p>作业调度和进程调度均可，最简单，本质上属非抢占方式</p>
 <p>有利于长作业/进程，不利于短作业</p>
-<p>有利于CPU繁忙型的作业(如通常的科学计算)，而不利于I／O繁
-忙的作业/进程（如大多数的事务处理)</p>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104305185.png" alt="image-20230424104305185">
-<figcaption aria-hidden="true">image-20230424104305185</figcaption>
-</figure>
-<h4 id="sjf">SJF</h4>
-<p>对作业：从后备队列中选择若干个估计运行时间最短的作业。</p>
+<p>有利于CPU繁忙型的作业(如通常的科学计算)，而不利于I／O繁 忙的作业/进程（如大多数的事务处理)</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104305185.png" alt="image-20230424104305185"></p>
+<h4 id="SJF"><a href="#SJF" class="headerlink" title="SJF"></a>SJF</h4><p>对作业：从后备队列中选择若干个估计运行时间最短的作业。</p>
 <p>对进程：关联到每个进程下次运行的CPU区间长度，调度最短的进程。</p>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;非抢占式&#x27;</span> SJF
 <span class="hljs-string">&#x27;抢占式&#x27;</span> SJF（来了个更短的进程）抢占发生在有比当前进程剩余时间片更短的进程到达时，也称为最短剩余时间优先调度</code></pre>
-<h5 id="非抢占式-sjf">非抢占式 SJF</h5>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104637961.png" alt="image-20230424104637961">
-<figcaption aria-hidden="true">image-20230424104637961</figcaption>
-</figure>
-<h5 id="抢占式-sjf">抢占式 SJF</h5>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104718658.png" alt="image-20230424104718658">
-<figcaption aria-hidden="true">image-20230424104718658</figcaption>
-</figure>
-<h5 id="缺点">缺点</h5>
-<p>只能估算进程的运行时间（估值不准确，作业说明书，偏长估计），所以通常
-用于作业调度</p>
-<p>对长作业不利（周转时间明显增加，SJF完全忽视等待时间进程饥饿发生 -&gt;
-进程饥饿发生）</p>
+<h5 id="非抢占式-SJF"><a href="#非抢占式-SJF" class="headerlink" title="非抢占式 SJF"></a>非抢占式 SJF</h5><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104637961.png" alt="image-20230424104637961"></p>
+<h5 id="抢占式-SJF"><a href="#抢占式-SJF" class="headerlink" title="抢占式 SJF"></a>抢占式 SJF</h5><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424104718658.png" alt="image-20230424104718658"></p>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>只能估算进程的运行时间（估值不准确，作业说明书，偏长估计），所以通常 用于作业调度 </p>
+<p>对长作业不利（周转时间明显增加，SJF完全忽视等待时间进程饥饿发生 -&gt; 进程饥饿发生） </p>
 <p>采用SJF算法时，人-机无法实现交互</p>
 <p>完全未考虑作业的紧迫程度（优先级）</p>
-<h4 id="pr">PR</h4>
-<p>既可用于作业调度，也可用于进程调度。</p>
-<p>基于作业/进程的紧迫程度，由外部赋予作业相应的优先级，调度算法
-根据优先级进行调度。</p>
-<p>​ 每个进程都有一个优先数，优先数为整数。</p>
-<p>​ 默认：小的优先数具有高优先级。</p>
-<p>​ 目前主流的操作系统调度算法</p>
+<h4 id="PR"><a href="#PR" class="headerlink" title="PR"></a>PR</h4><p>既可用于作业调度，也可用于进程调度。</p>
+<p>基于作业/进程的紧迫程度，由外部赋予作业相应的优先级，调度算法 根据优先级进行调度。</p>
+<p>​    每个进程都有一个优先数，优先数为整数。</p>
+<p>​    默认：小的优先数具有高优先级。</p>
+<p>​    目前主流的操作系统调度算法</p>
 <p>高响应比优先调度算法是一种优先级调度算法，用于作业调度。</p>
 <pre><code class="hljs python">分为 非抢占式
 	抢占式
 以及 <span class="hljs-string">&#x27;静态&#x27;</span>优先级
 	<span class="hljs-string">&#x27;动态&#x27;</span>优先级</code></pre>
-<h5 id="非抢占式">非抢占式</h5>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424105305806.png" alt="image-20230424105305806">
-<figcaption aria-hidden="true">image-20230424105305806</figcaption>
-</figure>
-<p>实现简单，考虑了进程的紧迫程度</p>
-<p>灵活，可模拟其它算法 （FCFS：等待时间；SJF：运行时间） 存在问题</p>
-<p>饥饿 ：低优先级的进程可能永远得不到运行 解决方法</p>
+<h5 id="非抢占式"><a href="#非抢占式" class="headerlink" title="非抢占式"></a>非抢占式</h5><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424105305806.png" alt="image-20230424105305806"></p>
+<p>实现简单，考虑了进程的紧迫程度 </p>
+<p>灵活，可模拟其它算法 （FCFS：等待时间；SJF：运行时间） 存在问题 </p>
+<p>饥饿 ：低优先级的进程可能永远得不到运行 解决方法 </p>
 <p>老化 ：视进程等待时间的延长提高其优先数</p>
-<h5 id="高相应比优先调度算法">高相应比优先调度算法</h5>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424105939270.png" alt="image-20230424105939270">
-<figcaption aria-hidden="true">image-20230424105939270</figcaption>
-</figure>
-<h4 id="rr">RR</h4>
-<p>响应时间（Response time） =第一次响应 - 到达时间</p>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110015358.png" alt="image-20230424110015358">
-<figcaption aria-hidden="true">image-20230424110015358</figcaption>
-</figure>
+<h5 id="高相应比优先调度算法"><a href="#高相应比优先调度算法" class="headerlink" title="高相应比优先调度算法"></a>高相应比优先调度算法</h5><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424105939270.png" alt="image-20230424105939270"></p>
+<h4 id="RR"><a href="#RR" class="headerlink" title="RR"></a>RR</h4><p>响应时间（Response time） =第一次响应 - 到达时间</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110015358.png" alt="image-20230424110015358"></p>
 <p>一般准则：时间片/10&gt;进程上下文切换时间</p>
-<p>时间片大&gt;FCFS</p>
+<p>时间片大&gt;FCFS </p>
 <p>时间片小&gt;增加上下文切换的时间，效率降低</p>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110228327.png" alt="image-20230424110228327">
-<figcaption aria-hidden="true">image-20230424110228327</figcaption>
-</figure>
-<h4 id="多级队列调度算法">多级队列调度算法</h4>
-<p>​ 就绪队列从一个分为多个（按性质）</p>
-<p>​ 每个队列有自己的调度算法</p>
-<p>​ 调度须在队列间进行（队列间有优先级）</p>
-<h4 id="多级反馈队列调度算法">多级反馈队列调度算法</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110711118.png" alt="image-20230424110711118">
-<figcaption aria-hidden="true">image-20230424110711118</figcaption>
-</figure>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111025412.png" alt="image-20230424111025412">
-<figcaption aria-hidden="true">image-20230424111025412</figcaption>
-</figure>
-<h4 id="公平原则的调度算法">公平原则的调度算法</h4>
-<p>保证调度算法</p>
-<p>​ 性能保证</p>
-<p>​ 如保证处理机分配的公平性</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110228327.png" alt="image-20230424110228327"></p>
+<h4 id="多级队列调度算法"><a href="#多级队列调度算法" class="headerlink" title="多级队列调度算法"></a>多级队列调度算法</h4><p>​    就绪队列从一个分为多个（按性质）</p>
+<p>​    每个队列有自己的调度算法</p>
+<p>​    调度须在队列间进行（队列间有优先级）</p>
+<h4 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424110711118.png" alt="image-20230424110711118"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111025412.png" alt="image-20230424111025412"></p>
+<h4 id="公平原则的调度算法"><a href="#公平原则的调度算法" class="headerlink" title="公平原则的调度算法"></a>公平原则的调度算法</h4><p>保证调度算法</p>
+<p>​    性能保证</p>
+<p>​    如保证处理机分配的公平性</p>
 <p>公平分享</p>
-<p>​ 调度的公平性主要针对用户而言</p>
-<h3 id="实时调度">实时调度</h3>
-<p>基本条件</p>
+<p>​    调度的公平性主要针对用户而言</p>
+<h3 id="实时调度"><a href="#实时调度" class="headerlink" title="实时调度"></a>实时调度</h3><p>基本条件</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> 提供必要的信息（向调度程序提供）
 <span class="hljs-number">2.</span> 系统处理能力强
 <span class="hljs-number">3.</span> 采用抢占式调度机制
 <span class="hljs-number">4.</span> 具有快速切换机制
 系统规模小、中断时间短、进程切换快、OS管理深度高</code></pre>
-<h3 id="算法">算法</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;EDF&#x27;</span> 最早截止时间优先调度算法</code></pre>
-<h4 id="edf">EDF</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111740016.png" alt="image-20230424111740016">
-<figcaption aria-hidden="true">image-20230424111740016</figcaption>
-</figure>
-<h4 id="抢占式">抢占式</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111812710.png" alt="image-20230424111812710">
-<figcaption aria-hidden="true">image-20230424111812710</figcaption>
-</figure>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;EDF&#x27;</span> 最早截止时间优先调度算法</code></pre>
+<h4 id="EDF"><a href="#EDF" class="headerlink" title="EDF"></a>EDF</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111740016.png" alt="image-20230424111740016"></p>
+<h4 id="抢占式"><a href="#抢占式" class="headerlink" title="抢占式"></a>抢占式</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424111812710.png" alt="image-20230424111812710"></p>
 <pre><code class="hljs python"><span class="hljs-number">2.</span><span class="hljs-string">&#x27;LLF&#x27;</span>最低松弛度优先算法</code></pre>
-<h4 id="llf">LLF</h4>
-<p>紧急程度越高（松弛度越低），优先级越高</p>
+<h4 id="LLF"><a href="#LLF" class="headerlink" title="LLF"></a>LLF</h4><p>紧急程度越高（松弛度越低），优先级越高 </p>
 <p>松弛度slack time=必须完成时间－其本身的运行时间－当前时间</p>
-<p>如果已经运行一段时间</p>
+<p>如果已经运行一段时间 </p>
 <p>松弛度=必须完成时间 - 剩余运行时间 - 当前时间</p>
 <p>抢占式</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> 该算法主要用于可抢占调度方式中，当一任务的<span class="hljs-string">&#x27;最低松弛度减为0时&#x27;</span>，它必须<span class="hljs-string">&#x27;立即抢占CPU&#x27;</span>，以保证按截止时间的要求完成任务。
 <span class="hljs-number">2.</span>当出现多个进程松弛度相同且为最小时，按照“最近最久未调度”</code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112054362.png" alt="image-20230424112054362">
-<figcaption aria-hidden="true">image-20230424112054362</figcaption>
-</figure>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112054362.png" alt="image-20230424112054362"></p>
 <p>最低松弛度减为0时</p>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112253774.png" alt="image-20230424112253774">
-<figcaption aria-hidden="true">image-20230424112253774</figcaption>
-</figure>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112329264.png" alt="image-20230424112329264">
-<figcaption aria-hidden="true">image-20230424112329264</figcaption>
-</figure>
-<h3 id="优先级倒置">优先级倒置</h3>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112405189.png" alt="image-20230424112405189">
-<figcaption aria-hidden="true">image-20230424112405189</figcaption>
-</figure>
-<p>解决方法：</p>
-<p>1.制定一些规定，如规定低优先级进程执行后，其所占用的处理机不允许被抢占（问题：高优先级进程可能会等待很长时间）</p>
-<p>2.建立动态优先级继承。</p>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112657060.png" alt="image-20230424112657060">
-<figcaption aria-hidden="true">image-20230424112657060</figcaption>
-</figure>
-<h3 id="linux进程调度器">Linux进程调度器</h3>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112803882.png" alt="image-20230424112803882">
-<figcaption aria-hidden="true">image-20230424112803882</figcaption>
-</figure>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112253774.png" alt="image-20230424112253774"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112329264.png" alt="image-20230424112329264"></p>
+<h3 id="优先级倒置"><a href="#优先级倒置" class="headerlink" title="优先级倒置"></a>优先级倒置</h3><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112405189.png" alt="image-20230424112405189"></p>
+<p>解决方法： </p>
+<p>1.制定一些规定，如规定低优先级进程执行后，其所占用的处理机不允许被抢占（问题：高优先级进程可能会等待很长时间） </p>
+<p> 2.建立动态优先级继承。</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112657060.png" alt="image-20230424112657060"></p>
+<h3 id="Linux进程调度器"><a href="#Linux进程调度器" class="headerlink" title="Linux进程调度器"></a>Linux进程调度器</h3><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424112803882.png" alt="image-20230424112803882"></p>
 <pre><code class="hljs plaintext">普通进程调度：
 Ø 采用SCHED_NORMAL调度策略。
 Ø 分配优先级、挑选进程并允许、计算使其运行多久。
@@ -886,28 +732,16 @@ block) TCB</h3>
 或者主动放弃CPU。
 Ø SCHED_RR：与SCHED_FIFO大致相同，只是进程在耗尽其时间片后，不能
 再执行，而是需要接受CPU的调度。</code></pre>
-<h2 id="死锁">死锁</h2>
-<pre><code class="hljs python"><span class="hljs-number">1.</span>指多个进程在运行过程中因争夺资源而造成的一种僵局，当进程处于这种僵持状态时，<span class="hljs-string">&#x27;若无外力作用&#x27;</span>，这些进程都将永远不能再向前推进。
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><pre><code class="hljs python"><span class="hljs-number">1.</span>指多个进程在运行过程中因争夺资源而造成的一种僵局，当进程处于这种僵持状态时，<span class="hljs-string">&#x27;若无外力作用&#x27;</span>，这些进程都将永远不能再向前推进。
 <span class="hljs-number">2.</span>对资源不加限制地分配可能导致进程间由于竞争资源而相互制约以至于无法继续运行的局面，人们把这种局面称为<span class="hljs-string">&#x27;死锁&#x27;</span> (deadlock)。
 <span class="hljs-number">3.</span><span class="hljs-string">&#x27;一组等待的进程，其中每一个进程都持有资源，并且等待着由这个组中其他进程所持有的资源&#x27;</span>。</code></pre>
-<h3 id="死锁原因">死锁原因</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span>竞争<span class="hljs-string">&#x27;不可抢占性资源&#x27;</span>引起死锁
+<h3 id="死锁原因"><a href="#死锁原因" class="headerlink" title="死锁原因"></a>死锁原因</h3><pre><code class="hljs python"><span class="hljs-number">1.</span>竞争<span class="hljs-string">&#x27;不可抢占性资源&#x27;</span>引起死锁
 <span class="hljs-number">2.</span>竞争<span class="hljs-string">&#x27;可消耗性资源&#x27;</span>引起死锁
 <span class="hljs-number">3.</span>进程推进顺序不当引起死锁</code></pre>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113212877.png" alt="image-20230424113212877">
-<figcaption aria-hidden="true">image-20230424113212877</figcaption>
-</figure>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113219637.png" alt="image-20230424113219637">
-<figcaption aria-hidden="true">image-20230424113219637</figcaption>
-</figure>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113233064.png" alt="image-20230424113233064">
-<figcaption aria-hidden="true">image-20230424113233064</figcaption>
-</figure>
-<h3 id="产生死锁的必要条件">产生死锁的必要条件</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;互斥&#x27;</span>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113212877.png" alt="image-20230424113212877"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113219637.png" alt="image-20230424113219637"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424113233064.png" alt="image-20230424113233064"></p>
+<h3 id="产生死锁的必要条件"><a href="#产生死锁的必要条件" class="headerlink" title="产生死锁的必要条件"></a>产生死锁的必要条件</h3><pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;互斥&#x27;</span>
 	一段时间内某资源只能被一个进程占用。
 <span class="hljs-number">2.</span><span class="hljs-string">&#x27;请求和保持&#x27;</span>
 	一个至少持有一个资源的进程等待获得额外的由其他进程所持有的资源。
@@ -916,8 +750,7 @@ block) TCB</h3>
 <span class="hljs-number">4.</span>循环等待
 	等待资源的进程之间存在环 &#123;P0, P1, …, Pn&#125; 。
 上述死锁的四个必要条件不是彼此独立的，比如条件 <span class="hljs-number">4</span> 包含了前三个条件。将它们分别列出是为了方便我们研究各种防止死锁的方法。</code></pre>
-<h3 id="处理死锁">处理死锁</h3>
-<pre><code class="hljs python"><span class="hljs-number">1.</span>设计无死锁的OS：确保系统永远不会进入死锁状态
+<h3 id="处理死锁"><a href="#处理死锁" class="headerlink" title="处理死锁"></a>处理死锁</h3><pre><code class="hljs python"><span class="hljs-number">1.</span>设计无死锁的OS：确保系统永远不会进入死锁状态
 	<span class="hljs-string">&#x27;死锁预防&#x27;</span>
     <span class="hljs-string">&#x27;死锁避免&#x27;</span>
 <span class="hljs-number">2.</span>先礼后兵：允许系统进入死锁状态，然后恢复系统
@@ -925,39 +758,19 @@ block) TCB</h3>
     <span class="hljs-string">&#x27;死锁恢复&#x27;</span>
 <span class="hljs-number">3.</span>鸵鸟策略：忽略这个问题，假装系统中从未出现过死锁。这个方法被大部分的操作系统采用，包括UNIX、Windows
 	之所以被某些系统采用，是因为死锁不常发生</code></pre>
-<h4 id="定义">定义</h4>
-<pre><code class="hljs python">如果一个系统在<span class="hljs-string">&#x27;安全状态&#x27;</span>，就没有死锁
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><pre><code class="hljs python">如果一个系统在<span class="hljs-string">&#x27;安全状态&#x27;</span>，就没有死锁
 如果一个系统不是处于安全状态，就有可能死锁
 如果存在一个<span class="hljs-string">&#x27;安全序列&#x27;</span>，则系统处于安全态</code></pre>
-<h4 id="银行家算法">银行家算法</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114026812.png" alt="image-20230424114026812">
-<figcaption aria-hidden="true">image-20230424114026812</figcaption>
-</figure>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114119073.png" alt="image-20230424114119073">
-<figcaption aria-hidden="true">image-20230424114119073</figcaption>
-</figure>
-<p>若所有进程都可执
-行完毕，则系统处于安全状态，并根据可完成进程的分配顺序生成安全序列</p>
-<h4 id="资源分配图rag">资源分配图RAG</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114221715.png" alt="image-20230424114221715">
-<figcaption aria-hidden="true">image-20230424114221715</figcaption>
-</figure>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114301978.png" alt="image-20230424114301978">
-<figcaption aria-hidden="true">image-20230424114301978</figcaption>
-</figure>
+<h4 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114026812.png" alt="image-20230424114026812"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114119073.png" alt="image-20230424114119073"></p>
+<p>若所有进程都可执 行完毕，则系统处于安全状态，并根据可完成进程的分配顺序生成安全序列</p>
+<h4 id="资源分配图RAG"><a href="#资源分配图RAG" class="headerlink" title="资源分配图RAG"></a>资源分配图RAG</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114221715.png" alt="image-20230424114221715"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424114301978.png" alt="image-20230424114301978"></p>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;死锁定理&#x27;</span> -&gt; S状态为死锁状态的充分条件是：当且仅当S的资源分配图是不可完全简化的。</code></pre>
-<h4 id="死锁的解除">死锁的解除</h4>
-<pre><code class="hljs python"><span class="hljs-number">1.</span>抢占资源
+<h4 id="死锁的解除"><a href="#死锁的解除" class="headerlink" title="死锁的解除"></a>死锁的解除</h4><pre><code class="hljs python"><span class="hljs-number">1.</span>抢占资源
 <span class="hljs-number">2.</span>终止或撤消进程</code></pre>
-<h1 id="第4章-进程同步">第4章 进程同步</h1>
-<p>使并发执行的诸进程之间能有效地共享资源和相互合作，从而使程序的执行具
-有可再现性</p>
-<h2 id="定义-1">定义</h2>
-<pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;临界资源&#x27;</span>
+<h1 id="第4章-进程同步"><a href="#第4章-进程同步" class="headerlink" title="第4章 进程同步"></a>第4章 进程同步</h1><p>使并发执行的诸进程之间能有效地共享资源和相互合作，从而使程序的执行具 有可再现性</p>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;临界资源&#x27;</span>
 	系统中某些资源一次只允许一个进程使用，称这样的资源为临界资源或互斥资源或共享变量
    	诸进程间应采取互斥方式，实现对这种资源的共享。
     
@@ -968,15 +781,10 @@ block) TCB</h3>
 <span class="hljs-number">3.</span> <span class="hljs-string">&#x27;临界区&#x27;</span>：进程中涉及临界资源的代码段
 	进入区：用于检查是否可以进入临界区的代码段
 	退出区：将临界区正被访问的标志恢复为未被访问标志</code></pre>
-<h2 id="生产者-消费者问题">生产者-消费者问题</h2>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424154531148.png" alt="image-20230424154531148">
-<figcaption aria-hidden="true">image-20230424154531148</figcaption>
-</figure>
+<h2 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h2><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424154531148.png" alt="image-20230424154531148"></p>
 <p>同步机制应遵循</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>空闲让进 <span class="hljs-number">2.</span>忙则等待 <span class="hljs-number">3.</span>有限等待 <span class="hljs-number">4.</span>让权等待</code></pre>
-<h2 id="进程同步机制">进程同步机制</h2>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;软件&#x27;</span>同步机制
+<h2 id="进程同步机制"><a href="#进程同步机制" class="headerlink" title="进程同步机制"></a>进程同步机制</h2><pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;软件&#x27;</span>同步机制
 	<span class="hljs-number">1.</span>单标志法 -&gt; 共享变量:可实现同一时刻最多只允许一个进程访问临界区，且是轮流访问的，缺陷：违背空闲让进原则
     <span class="hljs-number">2.</span> 双标志（后）检查法
     <span class="hljs-number">3.</span> Peterson解决方案
@@ -1006,63 +814,22 @@ block) TCB</h3>
 	<span class="hljs-number">1.</span>类似 类方法
     <span class="hljs-number">2.</span> 管程相当于对临界资源的操作进行封装
     <span class="hljs-number">3.</span> 管程相当于对临界资源的操作进行封装</code></pre>
-<h3 id="swap指令">Swap指令</h3>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161300914.png" alt="image-20230424161300914">
-<figcaption aria-hidden="true">image-20230424161300914</figcaption>
-</figure>
-<h3 id="信号量机制">信号量机制</h3>
-<h4 id="and型信号量">AND型信号量</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161847285.png" alt="image-20230424161847285">
-<figcaption aria-hidden="true">image-20230424161847285</figcaption>
-</figure>
-<h4 id="利用信号量实现进程互斥">利用信号量实现进程互斥</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161929152.png" alt="image-20230424161929152">
-<figcaption aria-hidden="true">image-20230424161929152</figcaption>
-</figure>
-<h4 id="利用信号量实现进程同步">利用信号量实现进程同步</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162103160.png" alt="image-20230424162103160">
-<figcaption aria-hidden="true">image-20230424162103160</figcaption>
-</figure>
-<h4 id="信号量的同步异步问题">信号量的同步异步问题</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424210803925.png" alt="image-20230424210803925">
-<figcaption aria-hidden="true">image-20230424210803925</figcaption>
-</figure>
+<h3 id="Swap指令"><a href="#Swap指令" class="headerlink" title="Swap指令"></a>Swap指令</h3><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161300914.png" alt="image-20230424161300914"></p>
+<h3 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h3><h4 id="AND型信号量"><a href="#AND型信号量" class="headerlink" title="AND型信号量"></a>AND型信号量</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161847285.png" alt="image-20230424161847285"></p>
+<h4 id="利用信号量实现进程互斥"><a href="#利用信号量实现进程互斥" class="headerlink" title="利用信号量实现进程互斥"></a>利用信号量实现进程互斥</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424161929152.png" alt="image-20230424161929152"></p>
+<h4 id="利用信号量实现进程同步"><a href="#利用信号量实现进程同步" class="headerlink" title="利用信号量实现进程同步"></a>利用信号量实现进程同步</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162103160.png" alt="image-20230424162103160"></p>
+<h4 id="信号量的同步异步问题"><a href="#信号量的同步异步问题" class="headerlink" title="信号量的同步异步问题"></a>信号量的同步异步问题</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424210803925.png" alt="image-20230424210803925"></p>
 <p>同步信号量在后，互斥信号量在前</p>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424210949639.png" alt="image-20230424210949639">
-<figcaption aria-hidden="true">image-20230424210949639</figcaption>
-</figure>
-<h4 id="利用信号量实现前趋关系">利用信号量实现前趋关系</h4>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162140416.png" alt="image-20230424162140416">
-<figcaption aria-hidden="true">image-20230424162140416</figcaption>
-</figure>
-<h3 id="管程">管程</h3>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162450798.png" alt="image-20230424162450798">
-<figcaption aria-hidden="true">image-20230424162450798</figcaption>
-</figure>
-<figure>
-<img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162534333.png" alt="image-20230424162534333">
-<figcaption aria-hidden="true">image-20230424162534333</figcaption>
-</figure>
-<h2 id="经典的进程同步问题">经典的进程同步问题</h2>
-<h3 id="生产者-消费者问题-1">1.生产者-消费者问题</h3>
-<h3 id="哲学家进餐问题">2.哲学家进餐问题</h3>
-<h3 id="读者-写者问题">3.读者-写者问题</h3>
-<h2 id="linux进程同步机制">Linux进程同步机制</h2>
-<pre><code class="hljs python">同步方法
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424210949639.png" alt="image-20230424210949639"></p>
+<h4 id="利用信号量实现前趋关系"><a href="#利用信号量实现前趋关系" class="headerlink" title="利用信号量实现前趋关系"></a>利用信号量实现前趋关系</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162140416.png" alt="image-20230424162140416"></p>
+<h3 id="管程"><a href="#管程" class="headerlink" title="管程"></a>管程</h3><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162450798.png" alt="image-20230424162450798"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230424162534333.png" alt="image-20230424162534333"></p>
+<h2 id="经典的进程同步问题"><a href="#经典的进程同步问题" class="headerlink" title="经典的进程同步问题"></a>经典的进程同步问题</h2><h3 id="1-生产者-消费者问题"><a href="#1-生产者-消费者问题" class="headerlink" title="1.生产者-消费者问题"></a>1.生产者-消费者问题</h3><h3 id="2-哲学家进餐问题"><a href="#2-哲学家进餐问题" class="headerlink" title="2.哲学家进餐问题"></a>2.哲学家进餐问题</h3><h3 id="3-读者-写者问题"><a href="#3-读者-写者问题" class="headerlink" title="3.读者-写者问题"></a>3.读者-写者问题</h3><h2 id="Linux进程同步机制"><a href="#Linux进程同步机制" class="headerlink" title="Linux进程同步机制"></a>Linux进程同步机制</h2><pre><code class="hljs python">同步方法
 	<span class="hljs-number">1.</span>自旋锁
 	<span class="hljs-number">2.</span>信号量
      <span class="hljs-number">3.</span>互斥锁
      <span class="hljs-number">4.</span>禁止中断</code></pre>
-<h1 id="第五章-存储器管理">第五章 存储器管理</h1>
-<p>功能</p>
+<h1 id="第五章-存储器管理"><a href="#第五章-存储器管理" class="headerlink" title="第五章 存储器管理"></a>第五章 存储器管理</h1><p>功能</p>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;内存分配&#x27;</span>
 	静态分配
 	动态分配
@@ -1079,114 +846,68 @@ block) TCB</h3>
 <pre><code class="hljs plaintext">CPU寄存器
 主存
 辅存</code></pre>
-<h2 id="程序的装入">程序的装入</h2>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;绝对装入&#x27;</span>
+<h2 id="程序的装入"><a href="#程序的装入" class="headerlink" title="程序的装入"></a>程序的装入</h2><pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;绝对装入&#x27;</span>
 	单道程序中，由编译程序或程序员指定内存地址，装入时直接定位在上述(即文件中记录的地址)内存地址。逻辑地址和物理地址完全相同。
 <span class="hljs-number">2.</span> <span class="hljs-string">&#x27;可重定位装入&#x27;</span>
 	多道程序环境中，单一装入模块中采用逻辑地址，根据当前内存情况，将装入模块装入到适当位置；操作系统装入模块进行地址映射。地址映射（地址转换）是在装入模块装入内存时一次性进行的，即采用静态重定位；以后不能更改
 <span class="hljs-number">3.</span> <span class="hljs-string">&#x27;动态运行时装入&#x27;</span>
 	将装入模块原样装入内存，而地址映射工作推迟到程序真正执行时才进行，即采用态重定位。</code></pre>
-<h2 id="程序的链接">程序的链接</h2>
-<pre><code class="hljs python"><span class="hljs-number">1.</span> 静态链接
+<h2 id="程序的链接"><a href="#程序的链接" class="headerlink" title="程序的链接"></a>程序的链接</h2><pre><code class="hljs python"><span class="hljs-number">1.</span> 静态链接
 <span class="hljs-number">2.</span> 装入时动态链接
 <span class="hljs-number">3.</span> 运行时动态链接</code></pre>
-<h2 id="对换与覆盖">对换与覆盖</h2>
-<h2 id="连续分配存储管理方式">连续分配存储管理方式</h2>
-<h3 id="连续分配">连续分配</h3>
-<h4 id="单一连续分配">单一连续分配</h4>
-<p>单道程序环境下，仅装有一道用户程序，即整个内存
-的用户空间由该程序独占</p>
-<h4 id="固定分区分配">固定分区分配</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609103320104.png"></p>
-<h4 id="动态分区分配">动态分区分配</h4>
-<h5 id="基于顺序搜索的动态分区分配算法">基于顺序搜索的动态分区分配算法</h5>
-<h6 id="首次适应算法">首次适应算法</h6>
-<p>按空闲分区表（或空闲分区链）的先后次序，
-从头查找，找到符合要求的第一个分区，没有按升序降序的顺序</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609103825355.png"></p>
-<h6 id="循环首次适应算法">循环首次适应算法</h6>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609103926565.png"></p>
-<h6 id="最佳适应算法">最佳适应算法</h6>
-<p>按空闲分区表（或空闲分区链）的先后次序
-(空闲区容量从小到大排序)，从头查找，找到符合要求的第一个
-分区。就说明它是最适合的（即最佳的）</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609104128007.png"></p>
-<h6 id="最坏适应算法">最坏适应算法</h6>
-<p>按各空闲分区容量大小的降序方法</p>
-<p>每次分配时，总是将最大的空闲区切去一部分分配给请求者，其依据是当
-一个很大的空闲区被切割了一部分后可能仍是一个较大的空闲区</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609104200937.png"></p>
-<h5 id="索引搜索的动态分区分配">索引搜索的动态分区分配</h5>
-<p>为提高空闲分区搜索速度，大中型系统往往采用基于索引搜索的动态分区分配算法</p>
-<h6 id="快速适应算法">快速适应算法</h6>
-<p>将空闲分区按容量大小进行分类，系统有多个空闲分区链表，在内存中设立一张管理索引表，每个表项对应一类
-空闲分区，并记录该类空闲分区链表表头指针（<code>glic</code>的堆<code>freechunk</code>）</p>
-<h6 id="伙伴系统">伙伴系统</h6>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609104822234.png"></p>
-<h6 id="哈希算法">哈希算法</h6>
-<p>建立哈希函数，构造一 张以空闲分区大小为关 键字的哈希表，该表的
-每一个表项对应于一个 空闲分区链表的头指针，进行分配时，根据空闲区大
-小，通过计算哈希函数，得 到在哈希表中的位置，找到
-对应的空闲分区链表。</p>
-<h4 id="动态重定位分配">动态重定位分配</h4>
-<p>零头的方法是拼接（或称紧凑），即向一个方向（例
-如向低地址端）移动已分配的作业，使那些零散的小空闲区在另
-一方向连成一片</p>
-<p>分区的拼接技术，一方面是要求能够对作业进行重定
-位，另一方面系统在拼接时要耗费较多的时间</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609105316485.png"></p>
+<h2 id="对换与覆盖"><a href="#对换与覆盖" class="headerlink" title="对换与覆盖"></a>对换与覆盖</h2><h2 id="连续分配存储管理方式"><a href="#连续分配存储管理方式" class="headerlink" title="连续分配存储管理方式"></a>连续分配存储管理方式</h2><h3 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h3><h4 id="单一连续分配"><a href="#单一连续分配" class="headerlink" title="单一连续分配"></a>单一连续分配</h4><p>单道程序环境下，仅装有一道用户程序，即整个内存 的用户空间由该程序独占</p>
+<h4 id="固定分区分配"><a href="#固定分区分配" class="headerlink" title="固定分区分配"></a>固定分区分配</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609103320104.png" alt></p>
+<h4 id="动态分区分配"><a href="#动态分区分配" class="headerlink" title="动态分区分配"></a>动态分区分配</h4><h5 id="基于顺序搜索的动态分区分配算法"><a href="#基于顺序搜索的动态分区分配算法" class="headerlink" title="基于顺序搜索的动态分区分配算法"></a>基于顺序搜索的动态分区分配算法</h5><h6 id="首次适应算法"><a href="#首次适应算法" class="headerlink" title="首次适应算法"></a>首次适应算法</h6><p>按空闲分区表（或空闲分区链）的先后次序， 从头查找，找到符合要求的第一个分区，没有按升序降序的顺序</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609103825355.png" alt></p>
+<h6 id="循环首次适应算法"><a href="#循环首次适应算法" class="headerlink" title="循环首次适应算法"></a>循环首次适应算法</h6><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609103926565.png" alt></p>
+<h6 id="最佳适应算法"><a href="#最佳适应算法" class="headerlink" title="最佳适应算法"></a>最佳适应算法</h6><p>按空闲分区表（或空闲分区链）的先后次序 (空闲区容量从小到大排序)，从头查找，找到符合要求的第一个 分区。就说明它是最适合的（即最佳的）</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609104128007.png" alt></p>
+<h6 id="最坏适应算法"><a href="#最坏适应算法" class="headerlink" title="最坏适应算法"></a>最坏适应算法</h6><p>按各空闲分区容量大小的降序方法</p>
+<p>每次分配时，总是将最大的空闲区切去一部分分配给请求者，其依据是当 一个很大的空闲区被切割了一部分后可能仍是一个较大的空闲区</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609104200937.png" alt></p>
+<h5 id="索引搜索的动态分区分配"><a href="#索引搜索的动态分区分配" class="headerlink" title="索引搜索的动态分区分配"></a>索引搜索的动态分区分配</h5><p>为提高空闲分区搜索速度，大中型系统往往采用基于索引搜索的动态分区分配算法</p>
+<h6 id="快速适应算法"><a href="#快速适应算法" class="headerlink" title="快速适应算法"></a>快速适应算法</h6><p>将空闲分区按容量大小进行分类，系统有多个空闲分区链表，在内存中设立一张管理索引表，每个表项对应一类 空闲分区，并记录该类空闲分区链表表头指针（<code>glic</code>的堆<code>freechunk</code>）</p>
+<h6 id="伙伴系统"><a href="#伙伴系统" class="headerlink" title="伙伴系统"></a>伙伴系统</h6><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609104822234.png" alt></p>
+<h6 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h6><p>建立哈希函数，构造一 张以空闲分区大小为关 键字的哈希表，该表的 每一个表项对应于一个 空闲分区链表的头指针，进行分配时，根据空闲区大 小，通过计算哈希函数，得 到在哈希表中的位置，找到 对应的空闲分区链表。</p>
+<h4 id="动态重定位分配"><a href="#动态重定位分配" class="headerlink" title="动态重定位分配"></a>动态重定位分配</h4><p>零头的方法是拼接（或称紧凑），即向一个方向（例 如向低地址端）移动已分配的作业，使那些零散的小空闲区在另 一方向连成一片</p>
+<p>分区的拼接技术，一方面是要求能够对作业进行重定 位，另一方面系统在拼接时要耗费较多的时间</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609105316485.png" alt></p>
 <p>访问的内存地址是相对地址与重定位寄存器中的地址相加而形成的</p>
-<h3 id="离散分配">离散分配</h3>
-<p>概念</p>
+<h3 id="离散分配"><a href="#离散分配" class="headerlink" title="离散分配"></a>离散分配</h3><p>概念</p>
 <p>页面：将一个进程的“逻辑地址空间”分成若干个大小相等的“页”</p>
-<p>物理块：把内存“物理地址空间”分成与页面相同大小的若干个存
-储块，称为(物理)“块”</p>
-<p>页内碎片：由于进程的最后一页经常装不满一块而形成了不可利用
-的“碎片”，称之为“页内碎片”</p>
-<h4 id="分页存储管理方式">分页存储管理方式</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609105504002.png"></p>
+<p>物理块：把内存“物理地址空间”分成与页面相同大小的若干个存 储块，称为(物理)“块”</p>
+<p>页内碎片：由于进程的最后一页经常装不满一块而形成了不可利用 的“碎片”，称之为“页内碎片”</p>
+<h4 id="分页存储管理方式"><a href="#分页存储管理方式" class="headerlink" title="分页存储管理方式"></a>分页存储管理方式</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609105504002.png" alt></p>
 <p>系统为每个进程建立了一张页表。记录在该进 程的PCB中</p>
 <p>页表的作用：实现从页 号到物理块号的地址映射。</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609105656314.png"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609105656314.png" alt></p>
 <p>每一次的数据/指令存取需要两次内存访问</p>
-<p>解决两次访问的问题，是采用小但专用且快速的硬件缓冲，这种缓冲称为转换表缓冲器(<code>TLB</code>)
-或联想寄存器。</p>
+<p>解决两次访问的问题，是采用小但专用且快速的硬件缓冲，这种缓冲称为转换表缓冲器(<code>TLB</code>) 或联想寄存器。</p>
 <p>地址变换</p>
 <pre><code class="hljs python">以<span class="hljs-string">&#x27;页号&#x27;</span>查页表，得到对应页装入内存的块号，并将<span class="hljs-string">&#x27;块号&#x27;</span>，转换成二进制数填入地址寄存器的高位部分
 将<span class="hljs-string">&#x27;位移量&#x27;</span><span class="hljs-string">&#x27;直接复制&#x27;</span>到内存地址寄存器的低位部分
 <span class="hljs-string">&#x27;页号&#x27;</span> + <span class="hljs-string">&#x27;页内地址&#x27;</span>-&gt; <span class="hljs-string">&#x27;&#x27;&#x27;块号&#x27;&#x27;&#x27;</span> + <span class="hljs-string">&#x27;&#x27;&#x27;页内地址&#x27;&#x27;&#x27;</span></code></pre>
 <p>硬件(动态地址变换机构DAT)实现</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110030350.png"></p>
-<h5 id="概念">概念</h5>
-<p>内存有效访问时间（ Effective Access Time
-，简称为<code>EAT</code>）</p>
-<p>快表：存放页表部分内容的快速存储器称为联想寄存器，联想寄存器
-中存放的部分页表称为“快表”</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110219123.png"></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110030350.png" alt></p>
+<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p>内存有效访问时间（ Effective Access Time ，简称为<code>EAT</code>）</p>
+<p>快表：存放页表部分内容的快速存储器称为联想寄存器，联想寄存器 中存放的部分页表称为“快表”</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110219123.png" alt></p>
 <p>引入两级页表结构</p>
-<h5 id="反置页表">反置页表</h5>
-<p>一个系统一张页表</p>
+<h5 id="反置页表"><a href="#反置页表" class="headerlink" title="反置页表"></a>反置页表</h5><p>一个系统一张页表</p>
 <p>对每个内存物理块设置一个条目（反置）</p>
 <p>每个条目保存页号，以及包括拥有这个页的进程的信息</p>
-<h4 id="分段存储管理方式">分段存储管理方式</h4>
-<p>为了满足用户（程序员）在编程和使用上多方面的要求</p>
+<h4 id="分段存储管理方式"><a href="#分段存储管理方式" class="headerlink" title="分段存储管理方式"></a>分段存储管理方式</h4><p>为了满足用户（程序员）在编程和使用上多方面的要求 </p>
 <p>一个程序是一些段的集合，一个段是一个逻辑单位</p>
-<p>在分段存储管理方式中，作业的地址空间被划分为若干个段，每个段定
-义了一组逻辑信息。</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110526906.png"></p>
-<p>为每个分段分配一个连续的分区；进
-程中的各个段可以离散地装入内存中不同的分区中</p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110708272.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110728158.png"></p>
-<p>分段的一个突出优点， 是易于实现段的共享，
-即允许若干个进程共享一个或多个分段</p>
+<p>在分段存储管理方式中，作业的地址空间被划分为若干个段，每个段定 义了一组逻辑信息。</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110526906.png" alt></p>
+<p>为每个分段分配一个连续的分区；进 程中的各个段可以离散地装入内存中不同的分区中</p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110708272.png" alt></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110728158.png" alt></p>
+<p>分段的一个突出优点， 是易于实现段的共享， 即允许若干个进程共享一个或多个分段</p>
 <p>可重入代码</p>
-<h4 id="段页式存储管理方式">段页式存储管理方式</h4>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110901749.png"></p>
-<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110919562.png"></p>
-<h1 id="第六章-虚拟存储器">第六章 虚拟存储器</h1>
-<h1 id="第七章-输入输出系统">第七章 输入输出系统</h1>
-
+<h4 id="段页式存储管理方式"><a href="#段页式存储管理方式" class="headerlink" title="段页式存储管理方式"></a>段页式存储管理方式</h4><p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110901749.png" alt></p>
+<p><img src="/cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/image-20230609110919562.png" alt></p>
+<h1 id="第六章-虚拟存储器"><a href="#第六章-虚拟存储器" class="headerlink" title="第六章 虚拟存储器"></a>第六章 虚拟存储器</h1><h1 id="第七章-输入输出系统"><a href="#第七章-输入输出系统" class="headerlink" title="第七章 输入输出系统"></a>第七章 输入输出系统</h1>
 
         <hr>
         <!-- Pager -->
@@ -1335,9 +1056,7 @@ block) TCB</h3>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%BA%8F%E8%A8%80"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">序言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E5%BC%95%E8%AE%BA"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">第1章 引论</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%88%86%E7%B1%BB"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">操作系统分类</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">操作系统的基本特征</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">操作系统内核</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8D%95%E9%81%93%E5%A4%84%E7%90%86%E4%B8%8E%E5%A4%9A%E9%81%93%E5%A4%84%E7%90%86"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">单道处理与多道处理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%86%B5%E5%B0%8F%E7%BB%93"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">操作系统概况小结</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%8E%E6%8E%A7%E5%88%B6"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">第二章 进程的描述与控制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%89%8D%E8%B6%8B%E5%9B%BE"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">前趋图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8C%E7%9A%84%E7%89%B9%E5%BE%81"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">程序并发执行的特征</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">什么是进程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BC%95%E5%85%A5%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">3.3.1.</span> <span class="toc-nav-text">引入目的</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97process-control-block----pcb"><span class="toc-nav-number">3.3.2.</span> <span class="toc-nav-text">进程控制块(process
-control block) --&gt; PCB</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%93%BE%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">3.3.2.1.</span> <span class="toc-nav-text">链接方式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%89%B9%E5%BE%81-%E9%87%8D%E7%82%B9%E8%AE%B0%E5%BF%86"><span class="toc-nav-number">3.3.3.</span> <span class="toc-nav-text">进程的特征 （重点记忆）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B-vs-%E7%A8%8B%E5%BA%8F"><span class="toc-nav-number">3.3.4.</span> <span class="toc-nav-text">进程 vs 程序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-nav-number">3.3.5.</span> <span class="toc-nav-text">进程的状态</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#section"><span class="toc-nav-number">3.3.5.1.</span> <span class="toc-nav-text"></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-nav-number">3.3.6.</span> <span class="toc-nav-text">进程的通信</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%80%9A%E4%BF%A1%E6%96%B9%E6%B3%95"><span class="toc-nav-number">3.3.6.1.</span> <span class="toc-nav-text">通信方法</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">线程是什么</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BC%95%E5%85%A5%E7%9B%AE%E7%9A%84-1"><span class="toc-nav-number">3.4.1.</span> <span class="toc-nav-text">引入目的</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B-vs-%E8%BF%9B%E7%A8%8B"><span class="toc-nav-number">3.4.2.</span> <span class="toc-nav-text">线程 vs 进程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-nav-number">3.4.3.</span> <span class="toc-nav-text">线程状态</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97thread-control-block-tcb"><span class="toc-nav-number">3.4.4.</span> <span class="toc-nav-text">线程控制块（thread control
-block) TCB</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">3.4.5.</span> <span class="toc-nav-text">线程实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%86%85%E6%A0%B8%E6%94%AF%E6%8C%81%E7%BA%BF%E7%A8%8Bkst"><span class="toc-nav-number">3.4.5.1.</span> <span class="toc-nav-text">内核支持线程KST</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8Bult"><span class="toc-nav-number">3.4.5.2.</span> <span class="toc-nav-text">用户级线程ULT</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6%E4%B8%8E%E6%AD%BB%E9%94%81"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">第三章 处理机调度与死锁</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">处理机调度</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%9A%84%E7%BA%A7%E5%88%AB"><span class="toc-nav-number">4.1.1.</span> <span class="toc-nav-text">进程调度的级别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">4.1.2.</span> <span class="toc-nav-text">进程调度的方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">4.1.2.1.</span> <span class="toc-nav-text">计算概念</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">调度算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BD%9C%E4%B8%9A"><span class="toc-nav-number">4.2.1.</span> <span class="toc-nav-text">什么是作业</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BD%9C%E4%B8%9A%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-nav-number">4.2.1.1.</span> <span class="toc-nav-text">作业控制块</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.2.2.</span> <span class="toc-nav-text">作业调度算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">进程调度</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.</span> <span class="toc-nav-text">进程调度算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#fcfs"><span class="toc-nav-number">4.3.1.1.</span> <span class="toc-nav-text">FCFS</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#sjf"><span class="toc-nav-number">4.3.1.2.</span> <span class="toc-nav-text">SJF</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%9D%9E%E6%8A%A2%E5%8D%A0%E5%BC%8F-sjf"><span class="toc-nav-number">4.3.1.2.1.</span> <span class="toc-nav-text">非抢占式 SJF</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%8A%A2%E5%8D%A0%E5%BC%8F-sjf"><span class="toc-nav-number">4.3.1.2.2.</span> <span class="toc-nav-text">抢占式 SJF</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-nav-number">4.3.1.2.3.</span> <span class="toc-nav-text">缺点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#pr"><span class="toc-nav-number">4.3.1.3.</span> <span class="toc-nav-text">PR</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%9D%9E%E6%8A%A2%E5%8D%A0%E5%BC%8F"><span class="toc-nav-number">4.3.1.3.1.</span> <span class="toc-nav-text">非抢占式</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%AB%98%E7%9B%B8%E5%BA%94%E6%AF%94%E4%BC%98%E5%85%88%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.3.2.</span> <span class="toc-nav-text">高相应比优先调度算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#rr"><span class="toc-nav-number">4.3.1.4.</span> <span class="toc-nav-text">RR</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.5.</span> <span class="toc-nav-text">多级队列调度算法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.6.</span> <span class="toc-nav-text">多级反馈队列调度算法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%85%AC%E5%B9%B3%E5%8E%9F%E5%88%99%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.7.</span> <span class="toc-nav-text">公平原则的调度算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6"><span class="toc-nav-number">4.3.2.</span> <span class="toc-nav-text">实时调度</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.3.</span> <span class="toc-nav-text">算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#edf"><span class="toc-nav-number">4.3.3.1.</span> <span class="toc-nav-text">EDF</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8A%A2%E5%8D%A0%E5%BC%8F"><span class="toc-nav-number">4.3.3.2.</span> <span class="toc-nav-text">抢占式</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#llf"><span class="toc-nav-number">4.3.3.3.</span> <span class="toc-nav-text">LLF</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E5%80%92%E7%BD%AE"><span class="toc-nav-number">4.3.4.</span> <span class="toc-nav-text">优先级倒置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#linux%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="toc-nav-number">4.3.5.</span> <span class="toc-nav-text">Linux进程调度器</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%AD%BB%E9%94%81"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">死锁</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%AD%BB%E9%94%81%E5%8E%9F%E5%9B%A0"><span class="toc-nav-number">4.4.1.</span> <span class="toc-nav-text">死锁原因</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BA%A7%E7%94%9F%E6%AD%BB%E9%94%81%E7%9A%84%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="toc-nav-number">4.4.2.</span> <span class="toc-nav-text">产生死锁的必要条件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%84%E7%90%86%E6%AD%BB%E9%94%81"><span class="toc-nav-number">4.4.3.</span> <span class="toc-nav-text">处理死锁</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-nav-number">4.4.3.1.</span> <span class="toc-nav-text">定义</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.4.3.2.</span> <span class="toc-nav-text">银行家算法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BErag"><span class="toc-nav-number">4.4.3.3.</span> <span class="toc-nav-text">资源分配图RAG</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E8%A7%A3%E9%99%A4"><span class="toc-nav-number">4.4.3.4.</span> <span class="toc-nav-text">死锁的解除</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC4%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">第4章 进程同步</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">定义</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">生产者-消费者问题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">进程同步机制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#swap%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">5.3.1.</span> <span class="toc-nav-text">Swap指令</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">5.3.2.</span> <span class="toc-nav-text">信号量机制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#and%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-nav-number">5.3.2.1.</span> <span class="toc-nav-text">AND型信号量</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%A9%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5"><span class="toc-nav-number">5.3.2.2.</span> <span class="toc-nav-text">利用信号量实现进程互斥</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%A9%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-nav-number">5.3.2.3.</span> <span class="toc-nav-text">利用信号量实现进程同步</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E7%9A%84%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.3.2.4.</span> <span class="toc-nav-text">信号量的同步异步问题</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%A9%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%AE%9E%E7%8E%B0%E5%89%8D%E8%B6%8B%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">5.3.2.5.</span> <span class="toc-nav-text">利用信号量实现前趋关系</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AE%A1%E7%A8%8B"><span class="toc-nav-number">5.3.3.</span> <span class="toc-nav-text">管程</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9A%84%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text">经典的进程同步问题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98-1"><span class="toc-nav-number">5.4.1.</span> <span class="toc-nav-text">1.生产者-消费者问题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.4.2.</span> <span class="toc-nav-text">2.哲学家进餐问题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AF%BB%E8%80%85-%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.4.3.</span> <span class="toc-nav-text">3.读者-写者问题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#linux%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text">Linux进程同步机制</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">第五章 存储器管理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%A3%85%E5%85%A5"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">程序的装入</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">程序的链接</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AF%B9%E6%8D%A2%E4%B8%8E%E8%A6%86%E7%9B%96"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">对换与覆盖</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text">连续分配存储管理方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.</span> <span class="toc-nav-text">连续分配</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8D%95%E4%B8%80%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.1.</span> <span class="toc-nav-text">单一连续分配</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%9B%BA%E5%AE%9A%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.2.</span> <span class="toc-nav-text">固定分区分配</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.3.</span> <span class="toc-nav-text">动态分区分配</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E5%9F%BA%E4%BA%8E%E9%A1%BA%E5%BA%8F%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.</span> <span class="toc-nav-text">基于顺序搜索的动态分区分配算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E9%A6%96%E6%AC%A1%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.1.</span> <span class="toc-nav-text">首次适应算法</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%A6%96%E6%AC%A1%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.2.</span> <span class="toc-nav-text">循环首次适应算法</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E6%9C%80%E4%BD%B3%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.3.</span> <span class="toc-nav-text">最佳适应算法</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E6%9C%80%E5%9D%8F%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.4.</span> <span class="toc-nav-text">最坏适应算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E7%B4%A2%E5%BC%95%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.3.2.</span> <span class="toc-nav-text">索引搜索的动态分区分配</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E5%BF%AB%E9%80%9F%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.2.1.</span> <span class="toc-nav-text">快速适应算法</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E4%BC%99%E4%BC%B4%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">6.4.1.3.2.2.</span> <span class="toc-nav-text">伙伴系统</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.2.3.</span> <span class="toc-nav-text">哈希算法</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8A%A8%E6%80%81%E9%87%8D%E5%AE%9A%E4%BD%8D%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.4.</span> <span class="toc-nav-text">动态重定位分配</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A6%BB%E6%95%A3%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.2.</span> <span class="toc-nav-text">离散分配</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%86%E9%A1%B5%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">6.4.2.1.</span> <span class="toc-nav-text">分页存储管理方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">6.4.2.1.1.</span> <span class="toc-nav-text">概念</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E5%8F%8D%E7%BD%AE%E9%A1%B5%E8%A1%A8"><span class="toc-nav-number">6.4.2.1.2.</span> <span class="toc-nav-text">反置页表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%86%E6%AE%B5%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">6.4.2.2.</span> <span class="toc-nav-text">分段存储管理方式</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%AE%B5%E9%A1%B5%E5%BC%8F%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">6.4.2.3.</span> <span class="toc-nav-text">段页式存储管理方式</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">第六章 虚拟存储器</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">第七章 输入输出系统</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%BA%8F%E8%A8%80"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">序言</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC1%E7%AB%A0-%E5%BC%95%E8%AE%BA"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">第1章 引论</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%88%86%E7%B1%BB"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">操作系统分类</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">操作系统的基本特征</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">操作系统内核</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8D%95%E9%81%93%E5%A4%84%E7%90%86%E4%B8%8E%E5%A4%9A%E9%81%93%E5%A4%84%E7%90%86"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">单道处理与多道处理</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%86%B5%E5%B0%8F%E7%BB%93"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">操作系统概况小结</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E7%9A%84%E6%8F%8F%E8%BF%B0%E4%B8%8E%E6%8E%A7%E5%88%B6"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">第二章 进程的描述与控制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%89%8D%E8%B6%8B%E5%9B%BE"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">前趋图</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E5%B9%B6%E5%8F%91%E6%89%A7%E8%A1%8C%E7%9A%84%E7%89%B9%E5%BE%81"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">程序并发执行的特征</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%BF%9B%E7%A8%8B"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">什么是进程</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BC%95%E5%85%A5%E7%9B%AE%E7%9A%84"><span class="toc-nav-number">3.3.1.</span> <span class="toc-nav-text">引入目的</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97-process-control-block-%E2%80%94-gt-PCB"><span class="toc-nav-number">3.3.2.</span> <span class="toc-nav-text">进程控制块(process control block) —&gt; PCB</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%93%BE%E6%8E%A5%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">3.3.2.1.</span> <span class="toc-nav-text">链接方式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%89%B9%E5%BE%81-%EF%BC%88%E9%87%8D%E7%82%B9%E8%AE%B0%E5%BF%86%EF%BC%89"><span class="toc-nav-number">3.3.3.</span> <span class="toc-nav-text">进程的特征 （重点记忆）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B-vs-%E7%A8%8B%E5%BA%8F"><span class="toc-nav-number">3.3.4.</span> <span class="toc-nav-text">进程 vs 程序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81"><span class="toc-nav-number">3.3.5.</span> <span class="toc-nav-text">进程的状态</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">3.3.5.1.</span> <span class="toc-nav-text"> </span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E7%9A%84%E9%80%9A%E4%BF%A1"><span class="toc-nav-number">3.3.6.</span> <span class="toc-nav-text">进程的通信</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%80%9A%E4%BF%A1%E6%96%B9%E6%B3%95"><span class="toc-nav-number">3.3.6.1.</span> <span class="toc-nav-text">通信方法</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">线程是什么</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BC%95%E5%85%A5%E7%9B%AE%E7%9A%84-1"><span class="toc-nav-number">3.4.1.</span> <span class="toc-nav-text">引入目的</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B-vs-%E8%BF%9B%E7%A8%8B"><span class="toc-nav-number">3.4.2.</span> <span class="toc-nav-text">线程 vs 进程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81"><span class="toc-nav-number">3.4.3.</span> <span class="toc-nav-text">线程状态</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97%EF%BC%88thread-control-block-TCB"><span class="toc-nav-number">3.4.4.</span> <span class="toc-nav-text">线程控制块（thread control block) TCB</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">3.4.5.</span> <span class="toc-nav-text">线程实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%86%85%E6%A0%B8%E6%94%AF%E6%8C%81%E7%BA%BF%E7%A8%8BKST"><span class="toc-nav-number">3.4.5.1.</span> <span class="toc-nav-text">内核支持线程KST</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%94%A8%E6%88%B7%E7%BA%A7%E7%BA%BF%E7%A8%8BULT"><span class="toc-nav-number">3.4.5.2.</span> <span class="toc-nav-text">用户级线程ULT</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6%E4%B8%8E%E6%AD%BB%E9%94%81"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">第三章 处理机调度与死锁</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%84%E7%90%86%E6%9C%BA%E8%B0%83%E5%BA%A6"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">处理机调度</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%9A%84%E7%BA%A7%E5%88%AB"><span class="toc-nav-number">4.1.1.</span> <span class="toc-nav-text">进程调度的级别</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">4.1.2.</span> <span class="toc-nav-text">进程调度的方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">4.1.2.1.</span> <span class="toc-nav-text">计算概念</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">调度算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E4%BD%9C%E4%B8%9A"><span class="toc-nav-number">4.2.1.</span> <span class="toc-nav-text">什么是作业</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BD%9C%E4%B8%9A%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-nav-number">4.2.1.1.</span> <span class="toc-nav-text">作业控制块</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BD%9C%E4%B8%9A%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.2.2.</span> <span class="toc-nav-text">作业调度算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">进程调度</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.</span> <span class="toc-nav-text">进程调度算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#FCFS"><span class="toc-nav-number">4.3.1.1.</span> <span class="toc-nav-text">FCFS</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#SJF"><span class="toc-nav-number">4.3.1.2.</span> <span class="toc-nav-text">SJF</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%9D%9E%E6%8A%A2%E5%8D%A0%E5%BC%8F-SJF"><span class="toc-nav-number">4.3.1.2.1.</span> <span class="toc-nav-text">非抢占式 SJF</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%8A%A2%E5%8D%A0%E5%BC%8F-SJF"><span class="toc-nav-number">4.3.1.2.2.</span> <span class="toc-nav-text">抢占式 SJF</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-nav-number">4.3.1.2.3.</span> <span class="toc-nav-text">缺点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#PR"><span class="toc-nav-number">4.3.1.3.</span> <span class="toc-nav-text">PR</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%9D%9E%E6%8A%A2%E5%8D%A0%E5%BC%8F"><span class="toc-nav-number">4.3.1.3.1.</span> <span class="toc-nav-text">非抢占式</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%AB%98%E7%9B%B8%E5%BA%94%E6%AF%94%E4%BC%98%E5%85%88%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.3.2.</span> <span class="toc-nav-text">高相应比优先调度算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#RR"><span class="toc-nav-number">4.3.1.4.</span> <span class="toc-nav-text">RR</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.5.</span> <span class="toc-nav-text">多级队列调度算法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.6.</span> <span class="toc-nav-text">多级反馈队列调度算法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%85%AC%E5%B9%B3%E5%8E%9F%E5%88%99%E7%9A%84%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.1.7.</span> <span class="toc-nav-text">公平原则的调度算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6"><span class="toc-nav-number">4.3.2.</span> <span class="toc-nav-text">实时调度</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.3.3.</span> <span class="toc-nav-text">算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#EDF"><span class="toc-nav-number">4.3.3.1.</span> <span class="toc-nav-text">EDF</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8A%A2%E5%8D%A0%E5%BC%8F"><span class="toc-nav-number">4.3.3.2.</span> <span class="toc-nav-text">抢占式</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#LLF"><span class="toc-nav-number">4.3.3.3.</span> <span class="toc-nav-text">LLF</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E5%80%92%E7%BD%AE"><span class="toc-nav-number">4.3.4.</span> <span class="toc-nav-text">优先级倒置</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Linux%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E5%99%A8"><span class="toc-nav-number">4.3.5.</span> <span class="toc-nav-text">Linux进程调度器</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%AD%BB%E9%94%81"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">死锁</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%AD%BB%E9%94%81%E5%8E%9F%E5%9B%A0"><span class="toc-nav-number">4.4.1.</span> <span class="toc-nav-text">死锁原因</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BA%A7%E7%94%9F%E6%AD%BB%E9%94%81%E7%9A%84%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="toc-nav-number">4.4.2.</span> <span class="toc-nav-text">产生死锁的必要条件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%84%E7%90%86%E6%AD%BB%E9%94%81"><span class="toc-nav-number">4.4.3.</span> <span class="toc-nav-text">处理死锁</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-nav-number">4.4.3.1.</span> <span class="toc-nav-text">定义</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.4.3.2.</span> <span class="toc-nav-text">银行家算法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%B5%84%E6%BA%90%E5%88%86%E9%85%8D%E5%9B%BERAG"><span class="toc-nav-number">4.4.3.3.</span> <span class="toc-nav-text">资源分配图RAG</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%AD%BB%E9%94%81%E7%9A%84%E8%A7%A3%E9%99%A4"><span class="toc-nav-number">4.4.3.4.</span> <span class="toc-nav-text">死锁的解除</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC4%E7%AB%A0-%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">第4章 进程同步</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">定义</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">生产者-消费者问题</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">5.3.</span> <span class="toc-nav-text">进程同步机制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Swap%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">5.3.1.</span> <span class="toc-nav-text">Swap指令</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">5.3.2.</span> <span class="toc-nav-text">信号量机制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#AND%E5%9E%8B%E4%BF%A1%E5%8F%B7%E9%87%8F"><span class="toc-nav-number">5.3.2.1.</span> <span class="toc-nav-text">AND型信号量</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%A9%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E4%BA%92%E6%96%A5"><span class="toc-nav-number">5.3.2.2.</span> <span class="toc-nav-text">利用信号量实现进程互斥</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%A9%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%AE%9E%E7%8E%B0%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-nav-number">5.3.2.3.</span> <span class="toc-nav-text">利用信号量实现进程同步</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E9%87%8F%E7%9A%84%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.3.2.4.</span> <span class="toc-nav-text">信号量的同步异步问题</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%A9%E7%94%A8%E4%BF%A1%E5%8F%B7%E9%87%8F%E5%AE%9E%E7%8E%B0%E5%89%8D%E8%B6%8B%E5%85%B3%E7%B3%BB"><span class="toc-nav-number">5.3.2.5.</span> <span class="toc-nav-text">利用信号量实现前趋关系</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%AE%A1%E7%A8%8B"><span class="toc-nav-number">5.3.3.</span> <span class="toc-nav-text">管程</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%8F%E5%85%B8%E7%9A%84%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.4.</span> <span class="toc-nav-text">经典的进程同步问题</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E7%94%9F%E4%BA%A7%E8%80%85-%E6%B6%88%E8%B4%B9%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.4.1.</span> <span class="toc-nav-text">1.生产者-消费者问题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E5%93%B2%E5%AD%A6%E5%AE%B6%E8%BF%9B%E9%A4%90%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.4.2.</span> <span class="toc-nav-text">2.哲学家进餐问题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E8%AF%BB%E8%80%85-%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98"><span class="toc-nav-number">5.4.3.</span> <span class="toc-nav-text">3.读者-写者问题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Linux%E8%BF%9B%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%9C%BA%E5%88%B6"><span class="toc-nav-number">5.5.</span> <span class="toc-nav-text">Linux进程同步机制</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">第五章 存储器管理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%A3%85%E5%85%A5"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">程序的装入</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%93%BE%E6%8E%A5"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">程序的链接</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AF%B9%E6%8D%A2%E4%B8%8E%E8%A6%86%E7%9B%96"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">对换与覆盖</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text">连续分配存储管理方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.</span> <span class="toc-nav-text">连续分配</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8D%95%E4%B8%80%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.1.</span> <span class="toc-nav-text">单一连续分配</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%9B%BA%E5%AE%9A%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.2.</span> <span class="toc-nav-text">固定分区分配</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.3.</span> <span class="toc-nav-text">动态分区分配</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E5%9F%BA%E4%BA%8E%E9%A1%BA%E5%BA%8F%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.</span> <span class="toc-nav-text">基于顺序搜索的动态分区分配算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E9%A6%96%E6%AC%A1%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.1.</span> <span class="toc-nav-text">首次适应算法</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%A6%96%E6%AC%A1%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.2.</span> <span class="toc-nav-text">循环首次适应算法</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E6%9C%80%E4%BD%B3%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.3.</span> <span class="toc-nav-text">最佳适应算法</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E6%9C%80%E5%9D%8F%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.1.4.</span> <span class="toc-nav-text">最坏适应算法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E7%B4%A2%E5%BC%95%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8A%A8%E6%80%81%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.3.2.</span> <span class="toc-nav-text">索引搜索的动态分区分配</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E5%BF%AB%E9%80%9F%E9%80%82%E5%BA%94%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.2.1.</span> <span class="toc-nav-text">快速适应算法</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E4%BC%99%E4%BC%B4%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">6.4.1.3.2.2.</span> <span class="toc-nav-text">伙伴系统</span></a></li><li class="toc-nav-item toc-nav-level-6"><a class="toc-nav-link" href="#%E5%93%88%E5%B8%8C%E7%AE%97%E6%B3%95"><span class="toc-nav-number">6.4.1.3.2.3.</span> <span class="toc-nav-text">哈希算法</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8A%A8%E6%80%81%E9%87%8D%E5%AE%9A%E4%BD%8D%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.1.4.</span> <span class="toc-nav-text">动态重定位分配</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A6%BB%E6%95%A3%E5%88%86%E9%85%8D"><span class="toc-nav-number">6.4.2.</span> <span class="toc-nav-text">离散分配</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%86%E9%A1%B5%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">6.4.2.1.</span> <span class="toc-nav-text">分页存储管理方式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">6.4.2.1.1.</span> <span class="toc-nav-text">概念</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E5%8F%8D%E7%BD%AE%E9%A1%B5%E8%A1%A8"><span class="toc-nav-number">6.4.2.1.2.</span> <span class="toc-nav-text">反置页表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%86%E6%AE%B5%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">6.4.2.2.</span> <span class="toc-nav-text">分段存储管理方式</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%AE%B5%E9%A1%B5%E5%BC%8F%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">6.4.2.3.</span> <span class="toc-nav-text">段页式存储管理方式</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E8%99%9A%E6%8B%9F%E5%AD%98%E5%82%A8%E5%99%A8"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">第六章 虚拟存储器</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">第七章 输入输出系统</span></a></li></ol>
         
         </div>
       </aside>

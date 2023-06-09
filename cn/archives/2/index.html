@@ -219,9 +219,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -252,9 +252,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -412,18 +412,15 @@
       
     </h3>
     <div class="post-content-preview">
-      格式化字符串
-特点：
-可以看查任意地址内容
-%p 或 %{num}$p
-可以任意写地址
-%n 或 %{num}$n 须：栈中拥有指针
+      格式化字符串特点：
+可以看查任意地址内容%p  或 %{num}$p
+可以任意写地址%n 或 %{num}$n  须：栈中拥有指针
 书写格式为 %{addr}c%{num}$n (一般不行 得逐字节写入)
 即：%{addr}c%{num}$hhn
 例如：写入0x40158a 到 stack_chk_fail_addr 中
 
 
-image-202301211515520......
+关于stack_chk_fail是canary保护中，如果xor失......
     </div>
   </a>
   
@@ -456,25 +453,21 @@ image-202301211515520......
       
     </h3>
     <div class="post-content-preview">
-      学习了传参方式
-64位与32位的区别
-64-&gt;rdi ......先寄存器再栈
+      学习了传参方式 64位与32位的区别64-&gt;rdi ……先寄存器再栈
 
-
-image-20230110145137612
-
-
-
-image-20230110000546106
 
 32-&gt;栈传参
-学习了call
-system函数与system函数在64位与32位下分别的区别
-32位下
+学习了call system函数与system函数在64位与32位下分别的区别32位下
+
+64位下 
 
 
-image-20230110000716996
-......
+调试过后 也确实是crash掉在
+
+set $rsp += 1 后 无法通过
+Pwndbg的一些学习指令1.file xx后
+rop —grep “pop rdi”查找这个的地址
+2.f......
     </div>
   </a>
   
@@ -507,15 +500,14 @@ image-20230110000716996
       
     </h3>
     <div class="post-content-preview">
-      栈迁移的学习
-unctf的一道题
+      栈迁移的学习unctf的一道题
 `ssize_t back()`
 `&#123;`
   `char buf[32]; // [rsp+0h] [rbp-20h] BYREF`
   `printf(&quot;gift:%p\n&quot;, buf);`
   `return read(0, buf, 0x30uLL);`
 `&#125;`
-能运行到后门函数 后门函数给了一块栈中的空间......
+能运行到后门函数 后门函数给了一块栈中的空间和开始的......
     </div>
   </a>
   
@@ -548,16 +540,13 @@ unctf的一道题
       
     </h3>
     <div class="post-content-preview">
-      杂七杂八
-Strcmp（）作条件的绕过
-利用"\0"作为比较的第一个字符
-
-
-image-20221108093132384-1667871106786-1
+      杂七杂八Strcmp（）作条件的绕过利用”\0”作为比较的第一个字符
 
 r.sendlineafter(b&quot;Enter your flag:\n&quot;,&#x27;\0&#x27;)
 my_read读入”\0“到s1跳过判断直接到后门函数。
-CTF All In One-......
+CTF All In One—firmianay
+讲的特别详细 但是许多地方还看不明白 还在研究
+格式化字符串格式字符串漏洞发生的条件就......
     </div>
   </a>
   
