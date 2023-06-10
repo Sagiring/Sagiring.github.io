@@ -219,9 +219,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -252,9 +252,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -415,15 +415,16 @@
       格式化字符串
 特点：
 可以看查任意地址内容
-%p 或 %{num}$p
+%p  或 %{num}$p
 可以任意写地址
-%n 或 %{num}$n 须：栈中拥有指针
+%n 或 %{num}$n  须：栈中拥有指针
 书写格式为 %{addr}c%{num}$n (一般不行 得逐字节写入)
 即：%{addr}c%{num}$hhn
 例如：写入0x40158a 到 stack_chk_fail_addr 中
 
 
-image-202301211515520......
+关于stack_chk_fail
+是canary保护中，如果......
     </div>
   </a>
   
@@ -456,25 +457,23 @@ image-202301211515520......
       
     </h3>
     <div class="post-content-preview">
-      学习了传参方式
-64位与32位的区别
-64-&gt;rdi ......先寄存器再栈
+      学习了传参方式 64位与32位的区别
+64-&gt;rdi …先寄存器再栈
 
-
-image-20230110145137612
-
-
-
-image-20230110000546106
 
 32-&gt;栈传参
-学习了call
-system函数与system函数在64位与32位下分别的区别
+学习了call system函数与system函数在64位与32位下分别的区别
 32位下
 
+64位下
 
-image-20230110000716996
-......
+
+调试过后 也确实是crash掉在
+
+set $rsp += 1 后 无法通过
+Pwndbg的一些学习指令
+1.file xx后
+rop --grep &quot;pop rdi&quot......
     </div>
   </a>
   
@@ -515,7 +514,7 @@ unctf的一道题
   `printf(&quot;gift:%p\n&quot;, buf);`
   `return read(0, buf, 0x30uLL);`
 `&#125;`
-能运行到后门函数 后门函数给了一块栈中的空间......
+能运行到后门函数 后门函数给了一块栈中的空间和开始......
     </div>
   </a>
   
@@ -550,14 +549,14 @@ unctf的一道题
     <div class="post-content-preview">
       杂七杂八
 Strcmp（）作条件的绕过
-利用"\0"作为比较的第一个字符
-
-
-image-20221108093132384-1667871106786-1
+利用&quot;\0&quot;作为比较的第一个字符
 
 r.sendlineafter(b&quot;Enter your flag:\n&quot;,&#x27;\0&#x27;)
 my_read读入”\0“到s1跳过判断直接到后门函数。
-CTF All In One-......
+CTF All In One–firmianay
+
+讲的特别详细 但是许多地方还看不明白 还在研究
+格式化字符串......
     </div>
   </a>
   
@@ -694,16 +693,16 @@ CTF All In One-......
 <div class="widget">
   <ul>
     
+    <a href="../../cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/">
+      <li>操作系统的二三事</li>
+    </a>
+    
     <a href="../../cn/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/">
       <li>计算机网络学习</li>
     </a>
     
     <a href="../../cn/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E9%82%A3%E4%BA%9B%E7%9F%A5%E8%AF%86/">
       <li>密码学的那些知识</li>
-    </a>
-    
-    <a href="../../cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/">
-      <li>操作系统的二三事</li>
     </a>
     
     <a href="../../cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
@@ -729,7 +728,7 @@ CTF All In One-......
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/04/">April 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/03/">March 2023</a><span class="archive-list-count">11</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2023/06/">June 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/05/">May 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/03/">March 2023</a><span class="archive-list-count">11</span></li></ul>
 </div>
 
 

