@@ -4,8 +4,11 @@ $(function () {
 
   $('pre').before($highlight_lang);
   $('pre').each(function () {
-    var code_language = $(this)[0]['innerHTML'].split('"')[1].substr(5);
-    
+    try{
+    var code_language = $(this)[0]['innerHTML'].split('"')[1].slice(5);
+    }catch(e){
+      var code_language = 'error'
+    }
 
     if (!code_language || code_language == 'plaintext') {
       return true;

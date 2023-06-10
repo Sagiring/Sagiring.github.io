@@ -331,17 +331,6 @@ mjx-container[display="true"] + br {
           
           
           <li>
-            <a href="/categories/">
-              
-              分类
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/about/">
               
               关于
@@ -353,9 +342,9 @@ mjx-container[display="true"] + br {
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              标签
+              分类
               
               
             </a>
@@ -367,6 +356,17 @@ mjx-container[display="true"] + br {
             <a href="/archive/">
               
               归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
               
               
             </a>
@@ -532,7 +532,7 @@ mjx-container[display="true"] + br {
 2. 单道&#x27;批处理系统&#x27;
 	监督程序：相当于早期操作系统，负责将磁盘中程序调入内存，以及将内存中的程序交给CPU处理。
 3. 多道&#x27;批处理系统&#x27;
-	微观而言，在任一特定时刻，在处理机上运行的作业只有&#x27;一......
+	微观而言，在任一特定时刻，在处理机上运行的作业只有&#x......
     </div>
   </a>
   
@@ -568,11 +568,14 @@ mjx-container[display="true"] + br {
       第一章概论
 层级结构
 
+
+image-20230420164600731
+
 &#x27;各层的作用&#x27; -&gt; 课本
 &#x27;路由器&#x27; -&gt; 数据链路层
 （1）	&#x27;物理层&#x27;：使原始的数据位流能在物理媒体上传输。
 （2）	&#x27;数据链路层&#x27;：位流被组织成数据链协议数据单元（通常称为帧）传输。
-（3）	&#x27;网络层&#x27;：数据以网络协议数据单元（分组）为单位进行传输。......
+（3）	&#x27;......
     </div>
   </a>
   
@@ -607,28 +610,25 @@ mjx-container[display="true"] + br {
     <div class="post-content-preview">
       古典密码学
 代换密码
-​	代换是古典密码中 用到的最基本的处理技巧之一。所谓代换，就是将明文中的一个字母由其它字母、数字或符号替代的一种方法。
+​ 代换是古典密码中
+用到的最基本的处理技巧之一。所谓代换，就是将明文中的一个字母由其它字母、数字或符号替代的一种方法。
 凯撒密码
 明文，密文，密钥取
-加密：§
-解密：©
+加密：
+解密：
 仿射密码
 明文，密文，密钥且
-加密：§
-解密：©
+加密：
+解密：
+
+
+image-20230426165545280
 
 单表代换密码
 明文，密文，密钥定义在上的置换
-加密§
-解密©
-多表代换密码
-维吉尼亚密码
-明文，密文，密钥
 加密
 解密
-
-置换密码
-是古典密码中用到......
+多表代......
     </div>
   </a>
   
@@ -666,12 +666,19 @@ mjx-container[display="true"] + br {
 一大早起来，发现自己wsl2无法启动了，修调了3天这个问题，人麻了
 1.之后直接卸载了子系统Ubuntu重装。卡在了安装界面
 
+
+img (3)
+
 2.卸载了wsl与功能，未果。
-3.关闭虚拟机平台后发现，win报&quot;我们无法完成此操作&quot;，关闭不成功
+3.关闭虚拟机平台后发现，win报"我们无法完成此操作"，关闭不成功
 4.试了wsl1可以正常使用，但是gdb完全调试不了
 
 
-5.在wsl到处碰壁后，我决定向vm靠边，结果装完虚拟机也......
+img (2)
+
+
+
+i......
     </div>
   </a>
   
@@ -706,15 +713,16 @@ mjx-container[display="true"] + br {
     <div class="post-content-preview">
       关于发呆
 我似乎是一个很喜欢发呆的家伙。
-–这是我
+--这是我
+
+
+image-20230327235840120
 
 （一点也不奇怪的图）
 喜欢和最好朋友坐在一起发呆，即使什么都不做，也感觉到非常开心。
 喜欢在骑单车的时候发呆，也许我只是喜欢发呆，而不是喜欢骑车。
 高中的时候似乎没空发呆，不知为何到了大学反而发更多的呆。
-发呆的时候在想什么呢？似乎没太关心过，可能是有趣的事情和想法吧。
-为什么要写这样的话？
-这是第一篇关于自己的想法，感觉还挺有趣的，便记......
+发呆的时候在想什么呢？似乎没太关心过，可能是有趣的事情和想......
     </div>
   </a>
   
@@ -751,10 +759,10 @@ mjx-container[display="true"] + br {
 复现safe_note -&gt;hgame/week3
 glibc版本2.32
 写函数sendline与send一定要确定
-避免出现一些难以排查的bug，不要随便Copy…
+避免出现一些难以排查的bug，不要随便Copy....
 def edit_note(page , content):
     r.sendlineafter(b&#x27;Exit&#x27;,b&#x27;3&#x27;)
-    r.send......
+  ......
     </div>
   </a>
   
@@ -789,9 +797,10 @@ def edit_note(page , content):
     <div class="post-content-preview">
       泄露libc
 知道libc版本
-通过将freebin加入到unsortedbin ，此时unsorted的freebin中的fd即可泄露libc中的main_arena地址
+通过将freebin加入到unsortedbin
+，此时unsorted的freebin中的fd即可泄露libc中的main_arena地址
 可通过gdb中的vmmap查看libc计算相对地址
-main_arena_addr = u64(r.recvuntil(b&#x27;1.&#x27;)[1:-3].ljust(8,b&#x27;\x00&#x27;))......
+main_arena_addr = u64(r.recvuntil(b&#x27;1.&#x27;)[1:-3].ljust(8,b&#x27;\x00&#x......
     </div>
   </a>
   
@@ -826,7 +835,13 @@ main_arena_addr = u64(r.recvuntil(b&#x27;1.&#x27;)[1:-3].ljust(8,b&#x27;\x00&#x2
     <div class="post-content-preview">
       格式化字符串auto
 
+
+image-20230226173902166
+
 LibcSearcher
+
+
+image-20230226173952210
 
 查找各个版本libc算偏移！好工具
 ...
@@ -866,7 +881,7 @@ LibcSearcher
 rop链
 payload = p64(pop_rdi) + p64(rop_addr + 0x98) + p64(pop_rsi) + p64(0)+ p64(open_addr)
 
-payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) + p64(0x30) + p64(rea......
+payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) + p64(0x30) + p64(r......
     </div>
   </a>
   
@@ -902,19 +917,25 @@ payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) 
       异或避开敏感字符检测
 本地先行异或 加码 避开字符检测
 
+
+image-20230112000449878
+
 将结果存入data段后
+
+
+image-20230112000625442
 
 利用ROP的XOR进行解密
 
+
+image-20230112000649256
+
 最后再读取
 
-`PS：查询段权限 $&gt; readelf -S xxxx` 或者 vmmap
-！！！
-Send 与 Sendline 有巨大差别 不能混为一谈
 
-本地调试要自己加载库libc与ld！！
-`
-patchelf --set-interpreter ld路径 ./p......
+image-20230112000735119
+
+`PS：查询段权......
     </div>
   </a>
   
