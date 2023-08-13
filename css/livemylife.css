@@ -504,20 +504,8 @@ li.archive-list-item:hover a {
 }
 
 
-code {
-  padding: 1px 5px;
-  font-family: Consolas, Monaco, monospace!important;
-  /* font-size: 0.91rem; */
-  color: #e96900;
-  background-color: #f8f8f8;
-  border-radius: 2px;
-}
 
-pre code {
-  padding: 0;
-  color: #e8eaf6;
-  background-color: #272822;
-}
+
 
 pre[class*="language-"] {
   padding: 1.2em;
@@ -575,12 +563,9 @@ pre::after {
 }
 
 code {
-  padding: 1px 5px;
   font-family: Consolas, Monaco, monospace!important;
-  font-size: 0.91rem;
-  color: #e96900;
-  background-color: #f8f8f8;
-  border-radius: 2px;
+  background: transparent;
+  color: #DB7093;
 }
 
 .code_copy {
@@ -634,11 +619,6 @@ code {
   height: 0px;
 }
 
-pre code {
-  padding: 0;
-  color: #e8eaf6;
-  background-color: #272822;
-}
 
 pre[class*="language-"] {
   padding: 1.2em;
