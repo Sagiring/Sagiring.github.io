@@ -219,9 +219,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -241,9 +241,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/about/">
               
-              标签
+              关于
               
               
             </a>
@@ -252,9 +252,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">549</span> In Total
+              Words <span class="post-count">539</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,7 +420,7 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h2 id="orw">ORW</h2>
+        <h2 id="ORW">ORW</h2>
 <h4 id="rop链">rop链</h4>
 <pre><code class="hljs Python">payload = p64(pop_rdi) + p64(rop_addr + <span class="hljs-number">0x98</span>) + p64(pop_rsi) + p64(<span class="hljs-number">0</span>)+ p64(open_addr)
 
@@ -432,53 +432,35 @@ payload += <span class="hljs-string">b&#x27;flag&#x27;</span>.ljust(<span class=
 
 r.sendline(payload)</code></pre>
 <p>注：</p>
-<p>1.open函数指向的文件是一个指针，得先把flag存起来，再指向
--&gt;<code>rop_addr + 0x98</code></p>
-<p>2.read函数第一个参数3，指向open打开的文件
-，第二个参数指向写入的地方</p>
+<p>1.open函数指向的文件是一个指针，得先把flag存起来，再指向 -&gt;<code>rop_addr + 0x98</code></p>
+<p>2.read函数第一个参数3，指向open打开的文件 ，第二个参数指向写入的地方</p>
 <p>3.write函数第一个参数1，代表写入到输出，第二参数指原数据</p>
-<p>（输入0，输出1，异常2）（linux输入输出重定向）（exec 1&gt;&amp;2
-）-&gt; 将输出重定向到异常2</p>
+<p>（输入0，输出1，异常2）（linux输入输出重定向）（exec 1&gt;&amp;2 ）-&gt; 将输出重定向到异常2</p>
 <p>(0,1,2-&gt;Linux终端)</p>
 <h5 id="通过gets函数读取到任意位置">通过gets函数读取到任意位置</h5>
 <pre><code class="hljs python">payload = <span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">256</span> + <span class="hljs-string">b&#x27;junkjunk&#x27;</span>+p64(pop rdi)+p64(rop addr)+p64(gets addr)+p64(elf.symbols[<span class="hljs-string">&#x27;vuln&#x27;</span>])
 r.send(payload)</code></pre>
 <h5 id="libc泄露后可以在libc中寻找rop链">libc泄露后可以在libc中寻找rop链</h5>
-<figure>
-<img src="/cn/ORW/image-20230116000554299.png" alt="image-20230116000554299">
-<figcaption aria-hidden="true">image-20230116000554299</figcaption>
-</figure>
+<p><img src="/cn/ORW/image-20230116000554299.png" alt="image-20230116000554299"></p>
 <h4 id="puts-输出类函数-泄露libc基址">puts 输出类函数 泄露libc基址</h4>
-<figure>
-<img src="/cn/ORW/image-20230116000712178.png" alt="image-20230116000712178">
-<figcaption aria-hidden="true">image-20230116000712178</figcaption>
-</figure>
+<p><img src="/cn/ORW/image-20230116000712178.png" alt="image-20230116000712178"></p>
 <p>PS：最后可以再接溢出函数地址 再溢出一次</p>
-<h4 id="栈迁移实践">栈迁移！实践</h4>
-<figure>
-<img src="/cn/ORW/image-20230116000903633.png" alt="image-20230116000903633">
-<figcaption aria-hidden="true">image-20230116000903633</figcaption>
-</figure>
-<h5 id="为什么要栈迁移">为什么要栈迁移？</h5>
+<h4 id="栈迁移！实践">栈迁移！实践</h4>
+<p><img src="/cn/ORW/image-20230116000903633.png" alt="image-20230116000903633"></p>
+<h5 id="为什么要栈迁移？">为什么要栈迁移？</h5>
 <p>因为溢出的太少溢出的不够写rop链，找个地方写完rop链后再，迁移栈过去执行。</p>
-<p>同时纯真大佬的wp中给出了另外的解法（https://zqy.ink/2023/01/12/HGAME2023_wk1_wp/#orw）</p>
+<p>同时纯真大佬的wp中给出了另外的解法（<a target="_blank" rel="noopener" href="https://zqy.ink/2023/01/12/HGAME2023_wk1_wp/#orw%EF%BC%89">https://zqy.ink/2023/01/12/HGAME2023_wk1_wp/#orw）</a></p>
 <p>通过environ函数泄露栈的地址，然后整个rop就在buf中完成</p>
-<figure>
-<img src="/cn/ORW/image-20230116000554299.png" alt="image-20230116001412899">
-<figcaption aria-hidden="true">image-20230116001412899</figcaption>
-</figure>
-<h4 id="nx保护的理解">NX保护的理解</h4>
-<h5 id="在栈中无法执行指令但是不包括rop因为栈中是存着rop指令的地址而并不是指令的本身">1.在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。</h5>
-<p>2.NX保护指的是--栈不可执行--的意思，也就是栈上的数据不可以当作代码区执行的作用。</p>
-<h3 id="找空白可写地址是有讲究的">找空白可写地址是有讲究的！</h3>
+<p><img src="/cn/ORW/image-20230116000554299.png" alt="image-20230116001412899"></p>
+<h4 id="NX保护的理解">NX保护的理解</h4>
+<h5 id="1-在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。">1.在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。</h5>
+<p>2.NX保护指的是–栈不可执行–的意思，也就是栈上的数据不可以当作代码区执行的作用。</p>
+<h3 id="找空白可写地址是有讲究的！">找空白可写地址是有讲究的！</h3>
 <p>通过readelf -S xxx 找只能看各个段的权限大小与开始地址</p>
-<h5 id="通过ida找可以更方便的查看段的位置是否有数据能找到完全空白的地方防止程序的崩溃">通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！</h5>
+<h5 id="通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！">通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！</h5>
 <p>视图 -&gt; 打开子视图 -&gt; 段</p>
 <p>来查看</p>
-<figure>
-<img src="/cn/ORW/image-20230116002907838.png" alt="image-20230116002907838">
-<figcaption aria-hidden="true">image-20230116002907838</figcaption>
-</figure>
+<p><img src="/cn/ORW/image-20230116002907838.png" alt="image-20230116002907838"></p>
 <p>交界处差距很大，存在空白位置给其写入 从0x3FF598开始（好地方）</p>
 
 
@@ -629,7 +611,7 @@ r.send(payload)</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#orw"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">ORW</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#rop%E9%93%BE"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">rop链</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87gets%E5%87%BD%E6%95%B0%E8%AF%BB%E5%8F%96%E5%88%B0%E4%BB%BB%E6%84%8F%E4%BD%8D%E7%BD%AE"><span class="toc-nav-number">1.0.1.1.</span> <span class="toc-nav-text">通过gets函数读取到任意位置</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#libc%E6%B3%84%E9%9C%B2%E5%90%8E%E5%8F%AF%E4%BB%A5%E5%9C%A8libc%E4%B8%AD%E5%AF%BB%E6%89%BErop%E9%93%BE"><span class="toc-nav-number">1.0.1.2.</span> <span class="toc-nav-text">libc泄露后可以在libc中寻找rop链</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#puts-%E8%BE%93%E5%87%BA%E7%B1%BB%E5%87%BD%E6%95%B0-%E6%B3%84%E9%9C%B2libc%E5%9F%BA%E5%9D%80"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">puts 输出类函数 泄露libc基址</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%88%E8%BF%81%E7%A7%BB%E5%AE%9E%E8%B7%B5"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">栈迁移！实践</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%A0%88%E8%BF%81%E7%A7%BB"><span class="toc-nav-number">1.0.3.1.</span> <span class="toc-nav-text">为什么要栈迁移？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#nx%E4%BF%9D%E6%8A%A4%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">NX保护的理解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E5%9C%A8%E6%A0%88%E4%B8%AD%E6%97%A0%E6%B3%95%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A4%E4%BD%86%E6%98%AF%E4%B8%8D%E5%8C%85%E6%8B%ACrop%E5%9B%A0%E4%B8%BA%E6%A0%88%E4%B8%AD%E6%98%AF%E5%AD%98%E7%9D%80rop%E6%8C%87%E4%BB%A4%E7%9A%84%E5%9C%B0%E5%9D%80%E8%80%8C%E5%B9%B6%E4%B8%8D%E6%98%AF%E6%8C%87%E4%BB%A4%E7%9A%84%E6%9C%AC%E8%BA%AB"><span class="toc-nav-number">1.0.4.1.</span> <span class="toc-nav-text">1.在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%89%BE%E7%A9%BA%E7%99%BD%E5%8F%AF%E5%86%99%E5%9C%B0%E5%9D%80%E6%98%AF%E6%9C%89%E8%AE%B2%E7%A9%B6%E7%9A%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">找空白可写地址是有讲究的！</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87ida%E6%89%BE%E5%8F%AF%E4%BB%A5%E6%9B%B4%E6%96%B9%E4%BE%BF%E7%9A%84%E6%9F%A5%E7%9C%8B%E6%AE%B5%E7%9A%84%E4%BD%8D%E7%BD%AE%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%B0%E6%8D%AE%E8%83%BD%E6%89%BE%E5%88%B0%E5%AE%8C%E5%85%A8%E7%A9%BA%E7%99%BD%E7%9A%84%E5%9C%B0%E6%96%B9%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%B4%A9%E6%BA%83"><span class="toc-nav-number">1.1.0.1.</span> <span class="toc-nav-text">通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！</span></a></li></ol></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ORW"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">ORW</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#rop%E9%93%BE"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">rop链</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87gets%E5%87%BD%E6%95%B0%E8%AF%BB%E5%8F%96%E5%88%B0%E4%BB%BB%E6%84%8F%E4%BD%8D%E7%BD%AE"><span class="toc-nav-number">1.0.1.1.</span> <span class="toc-nav-text">通过gets函数读取到任意位置</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#libc%E6%B3%84%E9%9C%B2%E5%90%8E%E5%8F%AF%E4%BB%A5%E5%9C%A8libc%E4%B8%AD%E5%AF%BB%E6%89%BErop%E9%93%BE"><span class="toc-nav-number">1.0.1.2.</span> <span class="toc-nav-text">libc泄露后可以在libc中寻找rop链</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#puts-%E8%BE%93%E5%87%BA%E7%B1%BB%E5%87%BD%E6%95%B0-%E6%B3%84%E9%9C%B2libc%E5%9F%BA%E5%9D%80"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">puts 输出类函数 泄露libc基址</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%88%E8%BF%81%E7%A7%BB%EF%BC%81%E5%AE%9E%E8%B7%B5"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">栈迁移！实践</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%A0%88%E8%BF%81%E7%A7%BB%EF%BC%9F"><span class="toc-nav-number">1.0.3.1.</span> <span class="toc-nav-text">为什么要栈迁移？</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#NX%E4%BF%9D%E6%8A%A4%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">NX保护的理解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#1-%E5%9C%A8%E6%A0%88%E4%B8%AD%E6%97%A0%E6%B3%95%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A4%EF%BC%81%E4%BD%86%E6%98%AF%E4%B8%8D%E5%8C%85%E6%8B%ACrop%EF%BC%8C%E5%9B%A0%E4%B8%BA%E6%A0%88%E4%B8%AD%E6%98%AF%E5%AD%98%E7%9D%80rop%E6%8C%87%E4%BB%A4%E7%9A%84%E5%9C%B0%E5%9D%80%EF%BC%8C%E8%80%8C%E5%B9%B6%E4%B8%8D%E6%98%AF%E6%8C%87%E4%BB%A4%E7%9A%84%E6%9C%AC%E8%BA%AB%E3%80%82"><span class="toc-nav-number">1.0.4.1.</span> <span class="toc-nav-text">1.在栈中无法执行指令！但是不包括rop，因为栈中是存着rop指令的地址，而并不是指令的本身。</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%89%BE%E7%A9%BA%E7%99%BD%E5%8F%AF%E5%86%99%E5%9C%B0%E5%9D%80%E6%98%AF%E6%9C%89%E8%AE%B2%E7%A9%B6%E7%9A%84%EF%BC%81"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">找空白可写地址是有讲究的！</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%80%9A%E8%BF%87IDA%E6%89%BE%E5%8F%AF%E4%BB%A5%E6%9B%B4%E6%96%B9%E4%BE%BF%E7%9A%84%E6%9F%A5%E7%9C%8B%E6%AE%B5%E7%9A%84%E4%BD%8D%E7%BD%AE%E6%98%AF%E5%90%A6%E6%9C%89%E6%95%B0%E6%8D%AE%EF%BC%8C%E8%83%BD%E6%89%BE%E5%88%B0%E5%AE%8C%E5%85%A8%E7%A9%BA%E7%99%BD%E7%9A%84%E5%9C%B0%E6%96%B9%EF%BC%8C%E9%98%B2%E6%AD%A2%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%B4%A9%E6%BA%83%EF%BC%81%EF%BC%81"><span class="toc-nav-number">1.1.0.1.</span> <span class="toc-nav-text">通过IDA找可以更方便的查看段的位置是否有数据，能找到完全空白的地方，防止程序的崩溃！！</span></a></li></ol></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
