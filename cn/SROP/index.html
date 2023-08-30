@@ -216,6 +216,17 @@
 
           
           
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
           
           
           <li>
@@ -233,17 +244,6 @@
             <a href="/about/">
               
               关于
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/archive/">
-              
-              归档
               
               
             </a>
@@ -420,59 +420,63 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1>SROP</h1>
+        <h1 id="srop">SROP</h1>
 <h2 id="简单介绍">简单介绍</h2>
-<p><code>SROP</code>，即 Sigreturn Oriented Programming，正是利用了 <code>Sigreturn</code> 机制的弱点，来进行攻击。</p>
-<p>在执行 <code>sigreturn</code> 系统调用的时候，不会对 signal 做检查</p>
-<p><img src="/cn/SROP/spaces%2F-MGvsJHYreZx4FTJt1gV%2Fuploads%2Fgit-blob-127b55183cffd2ac45354931d57e715c335f1348%2F6.1.4_sigret.jpg" alt></p>
+<p><code>SROP</code>，即 Sigreturn Oriented Programming，正是利用了
+<code>Sigreturn</code> 机制的弱点，来进行攻击。</p>
+<p>在执行 <code>sigreturn</code> 系统调用的时候，不会对 signal
+做检查</p>
+<p><img src="/cn/SROP/spaces%2F-MGvsJHYreZx4FTJt1gV%2Fuploads%2Fgit-blob-127b55183cffd2ac45354931d57e715c335f1348%2F6.1.4_sigret.jpg"></p>
 <p>简单来说就是通过<code>sigreturn</code>的系统调用<code>0xf</code>的<code>syscall</code>，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核态时候而<code>sigreturn</code>本身是用来恢复上下文的</p>
-<h2 id="NepCTF2023-Srop">NepCTF2023 Srop</h2>
+<h2 id="nepctf2023-srop">NepCTF2023 Srop</h2>
 <p>先<code>checksec</code></p>
-<p><img src="/cn/SROP/image-20230813115015089.png" alt></p>
-<p><code>RELRO</code>全开 <code>got</code>表不能改；<code>NX</code>开，栈不可执行</p>
+<p><img src="/cn/SROP/image-20230813115015089.png"></p>
+<p><code>RELRO</code>全开
+<code>got</code>表不能改；<code>NX</code>开，栈不可执行</p>
 <p>题目给了<code>ld</code>和<code>libc</code>,设置一下</p>
 <pre><code class="hljs plaintext">patchelf --set-interpreter ld路径 ./pwn</code></pre>
 <pre><code class="hljs plaintext">patchelf --replace-needed libc.so.6 libc路径 ./pwn</code></pre>
 <pre><code class="hljs plaintext">ldd ./pwn</code></pre>
 <p>题目本身给的代码很简单</p>
-<p><img src="/cn/SROP/image-20230813115614859.png" alt></p>
-<p><img src="/cn/SROP/image-20230813115530879.png" alt></p>
+<p><img src="/cn/SROP/image-20230813115614859.png"></p>
+<p><img src="/cn/SROP/image-20230813115530879.png"></p>
 <p>一个简单的系统调用<code>read</code>栈溢出</p>
 <p>此处贴出常用系统调用</p>
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>函数</th>
 <th>调用号</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td><code>read</code></td>
 <td>0</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>write</code></td>
 <td>1</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>open</code></td>
 <td>2</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>rt_sigreturn</code></td>
 <td>0xf</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>execve</code></td>
 <td>59</td>
 </tr>
 </tbody>
 </table>
 <p>同时注意到开了沙箱</p>
-<p><img src="/cn/SROP/image-20230813120434408.png" alt></p>
-<p>目标就明确了 使用<code>srop</code>通过<code>orw</code>进行<code>flag</code>的读取</p>
-<p><img src="/cn/SROP/image-20230813120633751.png" alt></p>
+<p><img src="/cn/SROP/image-20230813120434408.png"></p>
+<p>目标就明确了
+使用<code>srop</code>通过<code>orw</code>进行<code>flag</code>的读取</p>
+<p><img src="/cn/SROP/image-20230813120633751.png"></p>
 <p>看一下<code>syscall</code>对准一下寄存器</p>
 <p>贴出<code>exp</code></p>
 <pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> * 
@@ -723,7 +727,7 @@ r.interactive()
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">SROP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简单介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#NepCTF2023-Srop"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">NepCTF2023 Srop</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#srop"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">SROP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简单介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#nepctf2023-srop"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">NepCTF2023 Srop</span></a></li></ol></li></ol>
         
         </div>
       </aside>
