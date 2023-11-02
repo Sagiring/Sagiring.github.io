@@ -219,17 +219,6 @@
           
           
           <li>
-            <a href="/archive/">
-              
-              归档
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/categories/">
               
               分类
@@ -241,9 +230,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -255,6 +244,17 @@
             <a href="/tags/">
               
               标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">457</span> In Total
+              Words <span class="post-count">456</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,18 +420,12 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="io_2_1_stdin-与-bss_format"><em>IO_2_1_stdin</em> 与
-bss_format</h1>
-<h2 id="io_2_1_stdin">IO_2_1_stdin</h2>
-<h3 id="附件">附件：</h3>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104230478.png"></p>
+        <h1 id="IO-2-1-stdin-与-bss-format"><a href="#IO-2-1-stdin-与-bss-format" class="headerlink" title="IO_2_1_stdin 与 bss_format"></a><em>IO_2_1_stdin</em> 与 bss_format</h1><h2 id="IO-2-1-stdin"><a href="#IO-2-1-stdin" class="headerlink" title="IO_2_1_stdin"></a>IO_2_1_stdin</h2><h3 id="附件："><a href="#附件：" class="headerlink" title="附件："></a>附件：</h3><p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104230478.png" alt></p>
 <p><code>bss</code>数组越界</p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104328361.png"></p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104507982.png"></p>
-<p><code>flag</code>在内存里，<code>puts</code> +
-<code>0x16D2E0</code>的地方（这里<code>F5</code>之后 +
-的不对，不知为何）</p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104551388.png"></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104328361.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104507982.png" alt></p>
+<p><code>flag</code>在内存里，<code>puts</code> +  <code>0x16D2E0</code>的地方（这里<code>F5</code>之后 + 的不对，不知为何）</p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104551388.png" alt></p>
 <p>防护全开</p>
 <p>总结一下，给了个<code>bss</code>的任意指针写！考虑打<code>stdout</code>泄露地址</p>
 <p>这里第一次接触<code>_IO_FILE</code>结构，久仰大名了属于是</p>
@@ -467,7 +461,7 @@ type = <span class="hljs-keyword">struct</span> _IO_FILE &#123;
     <span class="hljs-type">int</span> _mode;
     <span class="hljs-type">char</span> _unused2[<span class="hljs-number">20</span>];
 &#125; *</code></pre>
-<p>https://blog.csdn.net/qq_41202237/article/details/113845320</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41202237/article/details/113845320">https://blog.csdn.net/qq_41202237/article/details/113845320</a></p>
 <p>贴一下好好说话系列，讲的也很清楚。</p>
 <p>首先<code>_flag</code>的设定需要满足</p>
 <pre><code class="hljs python">_flags = <span class="hljs-number">0xFBAD1800</span></code></pre>
@@ -486,13 +480,12 @@ type = <span class="hljs-keyword">struct</span> _IO_FILE &#123;
 <p>遇到<code>puts</code>或者 <code>printf</code>输出函数，便会泄露</p>
 <p>最后泄露<code>flag</code>即可</p>
 <pre><code class="hljs python">payload = p64(<span class="hljs-number">0xfbad1800</span>)+p64(<span class="hljs-number">0x0</span>)*<span class="hljs-number">3</span> + p64(flag_addr) + p64(flag_addr + flag_size)</code></pre>
-<h2 id="bss_format">bss_format</h2>
-<p>格式化字符串，但是存储在<code>bss</code>上。不能用传统的传地址在栈上完成任意写。</p>
+<h2 id="bss-format"><a href="#bss-format" class="headerlink" title="bss_format"></a>bss_format</h2><p>格式化字符串，但是存储在<code>bss</code>上。不能用传统的传地址在栈上完成任意写。</p>
 <p>栈的结构如下</p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110434394.png"></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110434394.png" alt></p>
 <p>此时可以找如<code>ebp</code>那种指向栈内的指针，先用格式化字符对那个地址任意写，写入我们想修改的地址，再找偏移，对<code>ebp</code>写入的地址再写入，这样便可达成任意写。栈上跳板。</p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110811636.png"></p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110737039.png"></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110811636.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110737039.png" alt></p>
 
 
         <hr>
@@ -642,8 +635,7 @@ type = <span class="hljs-keyword">struct</span> _IO_FILE &#123;
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#io_2_1_stdin-%E4%B8%8E-bss_format"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">IO_2_1_stdin 与
-bss_format</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#io_2_1_stdin"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">IO_2_1_stdin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%99%84%E4%BB%B6"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">附件：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bss_format"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">bss_format</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#IO-2-1-stdin-%E4%B8%8E-bss-format"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">IO_2_1_stdin 与 bss_format</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#IO-2-1-stdin"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">IO_2_1_stdin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%99%84%E4%BB%B6%EF%BC%9A"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">附件：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bss-format"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">bss_format</span></a></li></ol></li></ol>
         
         </div>
       </aside>
