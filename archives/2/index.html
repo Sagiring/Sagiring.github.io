@@ -219,9 +219,20 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -241,20 +252,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/about/">
-              
-              关于
+              分类
               
               
             </a>
@@ -404,6 +404,49 @@
   <!-- top end -->
   
 
+  <a href="/cn/Sagiring_markdown/痛苦的环境配置/">
+    <h2 class="post-title">
+      痛苦的环境配置
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+    <div class="post-content-preview">
+      痛苦的环境配置
+发生了什么
+一大早起来，发现自己wsl2无法启动了，修调了3天这个问题，人麻了
+1.之后直接卸载了子系统Ubuntu重装。卡在了安装界面
+
+2.卸载了wsl与功能，未果。
+3.关闭虚拟机平台后发现，win报&quot;我们无法完成此操作&quot;，关闭不成功
+4.试了wsl1可以正常使用，但是gdb完全调试不了
+
+
+5.在wsl到处碰壁后，我决定向vm靠边，结果装完虚拟机也......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by 茗 on
+    2023-03-29
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#pwn" title="pwn">pwn</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
   <a href="/cn/Sagiring_markdown/关于发呆/">
     <h2 class="post-title">
       关于发呆
@@ -412,15 +455,17 @@
       
     </h3>
     <div class="post-content-preview">
-      关于发呆我似乎是一个很喜欢发呆的家伙。
-—这是我
+      关于发呆
+我似乎是一个很喜欢发呆的家伙。
+–这是我
 
 （一点也不奇怪的图）
 喜欢和最好朋友坐在一起发呆，即使什么都不做，也感觉到非常开心。
 喜欢在骑单车的时候发呆，也许我只是喜欢发呆，而不是喜欢骑车。
 高中的时候似乎没空发呆，不知为何到了大学反而发更多的呆。
 发呆的时候在想什么呢？似乎没太关心过，可能是有趣的事情和想法吧。
-为什么要写这样的话？这是第一篇关于自己的想法，感觉还挺有趣的，便记录下......
+为什么要写这样的话？
+这是第一篇关于自己的想法，感觉还挺有趣的，便记......
     </div>
   </a>
   
@@ -453,11 +498,14 @@
       
     </h3>
     <div class="post-content-preview">
-      tcache题的亿点点细节复现safe_note -&gt;hgame/week3glibc版本2.32
-写函数sendline与send一定要确定避免出现一些难以排查的bug，不要随便Copy….
+      tcache题的亿点点细节
+复现safe_note -&gt;hgame/week3
+glibc版本2.32
+写函数sendline与send一定要确定
+避免出现一些难以排查的bug，不要随便Copy…
 def edit_note(page , content):
     r.sendlineafter(b&#x27;Exit&#x27;,b&#x27;3&#x27;)
-    r.sendli......
+    r.send......
     </div>
   </a>
   
@@ -491,7 +539,9 @@ def edit_note(page , content):
     </h3>
     <div class="post-content-preview">
       格式化字符串auto
+
 LibcSearcher
+
 查找各个版本libc算偏移！好工具
 ...
     </div>
@@ -526,9 +576,11 @@ LibcSearcher
       
     </h3>
     <div class="post-content-preview">
-      ORWrop链payload = p64(pop_rdi) + p64(rop_addr + 0x98) + p64(pop_rsi) + p64(0)+ p64(open_addr)
+      ORW
+rop链
+payload = p64(pop_rdi) + p64(rop_addr + 0x98) + p64(pop_rsi) + p64(0)+ p64(open_addr)
 
-payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) + p64(0x30) + p64(read_......
+payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) + p64(0x30) + p64(rea......
     </div>
   </a>
   
@@ -561,7 +613,8 @@ payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) 
       
     </h3>
     <div class="post-content-preview">
-      异或避开敏感字符检测本地先行异或 加码 避开字符检测
+      异或避开敏感字符检测
+本地先行异或 加码 避开字符检测
 
 将结果存入data段后
 
@@ -572,8 +625,10 @@ payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) 
 `PS：查询段权限 $&gt; readelf -S xxxx` 或者 vmmap
 ！！！
 Send 与 Sendline 有巨大差别 不能混为一谈
-本地调试要自己加载库libc与ld！！`patchelf --set-interpreter ld路径 ./pwn`
-......
+
+本地调试要自己加载库libc与ld！！
+`
+patchelf --set-interpreter ld路径 ./p......
     </div>
   </a>
   
@@ -606,15 +661,19 @@ Send 与 Sendline 有巨大差别 不能混为一谈
       
     </h3>
     <div class="post-content-preview">
-      格式化字符串特点：
-可以看查任意地址内容%p  或 %{num}$p
-可以任意写地址%n 或 %{num}$n  须：栈中拥有指针
+      格式化字符串
+特点：
+可以看查任意地址内容
+%p  或 %{num}$p
+可以任意写地址
+%n 或 %{num}$n  须：栈中拥有指针
 书写格式为 %{addr}c%{num}$n (一般不行 得逐字节写入)
 即：%{addr}c%{num}$hhn
 例如：写入0x40158a 到 stack_chk_fail_addr 中
 
 
-关于stack_chk_fail是canary保护中，如果xor失......
+关于stack_chk_fail
+是canary保护中，如果......
     </div>
   </a>
   
@@ -647,21 +706,23 @@ Send 与 Sendline 有巨大差别 不能混为一谈
       
     </h3>
     <div class="post-content-preview">
-      学习了传参方式 64位与32位的区别64-&gt;rdi ……先寄存器再栈
+      学习了传参方式 64位与32位的区别
+64-&gt;rdi …先寄存器再栈
 
 
 32-&gt;栈传参
-学习了call system函数与system函数在64位与32位下分别的区别32位下
+学习了call system函数与system函数在64位与32位下分别的区别
+32位下
 
-64位下 
+64位下
 
 
 调试过后 也确实是crash掉在
 
 set $rsp += 1 后 无法通过
-Pwndbg的一些学习指令1.file xx后
-rop —grep “pop rdi”查找这个的地址
-2.f......
+Pwndbg的一些学习指令
+1.file xx后
+rop --grep &quot;pop rdi&quot......
     </div>
   </a>
   
@@ -694,14 +755,15 @@ rop —grep “pop rdi”查找这个的地址
       
     </h3>
     <div class="post-content-preview">
-      栈迁移的学习unctf的一道题
+      栈迁移的学习
+unctf的一道题
 `ssize_t back()`
 `&#123;`
   `char buf[32]; // [rsp+0h] [rbp-20h] BYREF`
   `printf(&quot;gift:%p\n&quot;, buf);`
   `return read(0, buf, 0x30uLL);`
 `&#125;`
-能运行到后门函数 后门函数给了一块栈中的空间和开始的......
+能运行到后门函数 后门函数给了一块栈中的空间和开始......
     </div>
   </a>
   
@@ -734,13 +796,16 @@ rop —grep “pop rdi”查找这个的地址
       
     </h3>
     <div class="post-content-preview">
-      杂七杂八Strcmp（）作条件的绕过利用”\0”作为比较的第一个字符
+      杂七杂八
+Strcmp（）作条件的绕过
+利用&quot;\0&quot;作为比较的第一个字符
 
 r.sendlineafter(b&quot;Enter your flag:\n&quot;,&#x27;\0&#x27;)
 my_read读入”\0“到s1跳过判断直接到后门函数。
-CTF All In One—firmianay
+CTF All In One–firmianay
+
 讲的特别详细 但是许多地方还看不明白 还在研究
-格式化字符串格式字符串漏洞发生的条件就......
+格式化字符串......
     </div>
   </a>
   
@@ -806,7 +871,7 @@ CTF All In One—firmianay
   <div class="tags">
     
     
-    <a href="/tags/#pwn" title="pwn" rel="15">pwn</a>
+    <a href="/tags/#pwn" title="pwn" rel="16">pwn</a>
     
     
     
@@ -877,6 +942,10 @@ CTF All In One—firmianay
 <div class="widget">
   <ul>
     
+    <a href="../../cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/">
+      <li>Setcontext与Magic-Gadget</li>
+    </a>
+    
     <a href="../../cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/">
       <li>LargebinsAttact与TcachebinsPosioning</li>
     </a>
@@ -891,10 +960,6 @@ CTF All In One—firmianay
     
     <a href="../../cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/">
       <li>_IO_2_1_stdin_ 与 bss_format</li>
-    </a>
-    
-    <a href="../../cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/">
-      <li>堆知识合集一</li>
     </a>
     
   </ul>
@@ -912,7 +977,7 @@ CTF All In One—firmianay
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2023/11/">November 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../2023/11/">November 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
 </div>
 
 

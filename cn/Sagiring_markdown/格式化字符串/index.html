@@ -219,9 +219,20 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -241,20 +252,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/about/">
-              
-              关于
+              分类
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">200</span> In Total
+              Words <span class="post-count">202</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,20 +420,26 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h2 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h2><p>特点：<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121150856504.png" alt="image-20230121150856504"></p>
-<h4 id="可以看查任意地址内容"><a href="#可以看查任意地址内容" class="headerlink" title="可以看查任意地址内容"></a>可以看查任意地址内容</h4><p>%p  或 %{num}$p</p>
-<h4 id="可以任意写地址"><a href="#可以任意写地址" class="headerlink" title="可以任意写地址"></a>可以任意写地址</h4><p>%n 或 %{num}$n  须：栈中拥有指针</p>
+        <h2 id="格式化字符串">格式化字符串</h2>
+<p>特点：<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121150856504.png" alt="image-20230121150856504"></p>
+<h4 id="可以看查任意地址内容">可以看查任意地址内容</h4>
+<p>%p  或 %{num}$p</p>
+<h4 id="可以任意写地址">可以任意写地址</h4>
+<p>%n 或 %{num}$n  须：栈中拥有指针</p>
 <p>书写格式为 %{addr}c%{num}$n (一般不行 得逐字节写入)</p>
 <p>即：%{addr}c%{num}$hhn</p>
 <p>例如：写入0x40158a 到 stack_chk_fail_addr 中</p>
 <p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151552065.png" alt="image-20230121151552065"></p>
 <p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151407660.png" alt="image-20230121151407660"></p>
-<h2 id="关于stack-chk-fail"><a href="#关于stack-chk-fail" class="headerlink" title="关于stack_chk_fail"></a>关于stack_chk_fail</h2><p>是canary保护中，如果xor失败就运行</p>
+<h2 id="关于stack-chk-fail">关于stack_chk_fail</h2>
+<p>是canary保护中，如果xor失败就运行</p>
 <p>栈中的canary 在rbp前的一段以\x00结尾的数 十分明显</p>
-<h2 id="printf的输出漏洞"><a href="#printf的输出漏洞" class="headerlink" title="printf的输出漏洞"></a>printf的输出漏洞</h2><p>printf输出字符串遇到/0(\x00)才会终止。</p>
+<h2 id="printf的输出漏洞">printf的输出漏洞</h2>
+<p>printf输出字符串遇到/0(\x00)才会终止。</p>
 <p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151957251.png" alt="image-20230121151957251"></p>
 <p>例：当读进0x100个a时末尾便不带/0，print(%s)，便会显示0x100后的栈中数据，如果刚好时push的ebp的话，可以刚好泄露栈中地址</p>
-<h2 id="关于fmtstr的使用"><a href="#关于fmtstr的使用" class="headerlink" title="关于fmtstr的使用"></a>关于fmtstr的使用</h2><p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121152310178.png" alt="image-20230121152310178"></p>
+<h2 id="关于fmtstr的使用">关于fmtstr的使用</h2>
+<p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121152310178.png" alt="image-20230121152310178"></p>
 <p>此题可以采用在bss段和栈中同时写入达到使用的目的</p>
 
 

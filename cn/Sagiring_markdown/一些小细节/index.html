@@ -219,9 +219,20 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -241,20 +252,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/about/">
-              
-              关于
+              分类
               
               
             </a>
@@ -420,7 +420,8 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h2 id="异或避开敏感字符检测"><a href="#异或避开敏感字符检测" class="headerlink" title="异或避开敏感字符检测"></a>异或避开敏感字符检测</h2><p>本地先行异或 加码 避开字符检测</p>
+        <h2 id="异或避开敏感字符检测">异或避开敏感字符检测</h2>
+<p>本地先行异或 加码 避开字符检测</p>
 <p><img src="/cn/Sagiring_markdown/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000449878.png" alt="image-20230112000449878"></p>
 <p>将结果存入data段后</p>
 <p><img src="/cn/Sagiring_markdown/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000625442.png" alt="image-20230112000625442"></p>
@@ -430,8 +431,11 @@
 <p><img src="/cn/Sagiring_markdown/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230112000735119.png" alt="image-20230112000735119"></p>
 <pre><code class="hljs plaintext">`PS：查询段权限 $&gt; readelf -S xxxx` 或者 vmmap</code></pre>
 <p>！！！</p>
-<h2 id="Send-与-Sendline-有巨大差别-不能混为一谈"><a href="#Send-与-Sendline-有巨大差别-不能混为一谈" class="headerlink" title="Send 与 Sendline 有巨大差别 不能混为一谈"></a>Send 与 Sendline 有巨大差别 不能混为一谈</h2><p><img src="/cn/Sagiring_markdown/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230114151500856.png" alt="image-20230114151500856"></p>
-<h2 id="本地调试要自己加载库libc与ld！！"><a href="#本地调试要自己加载库libc与ld！！" class="headerlink" title="本地调试要自己加载库libc与ld！！"></a>本地调试要自己加载库libc与ld！！</h2><h4 id><a href="#" class="headerlink" title="`"></a>`</h4><pre><code class="hljs plaintext">patchelf --set-interpreter ld路径 ./pwn`
+<h2 id="Send-与-Sendline-有巨大差别-不能混为一谈">Send 与 Sendline 有巨大差别 不能混为一谈</h2>
+<p><img src="/cn/Sagiring_markdown/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%BB%86%E8%8A%82/image-20230114151500856.png" alt="image-20230114151500856"></p>
+<h2 id="本地调试要自己加载库libc与ld！！">本地调试要自己加载库libc与ld！！</h2>
+<h4 id>`</h4>
+<pre><code class="hljs plaintext">patchelf --set-interpreter ld路径 ./pwn`
 
 patchelf --replace-needed libc.so.6 libc路径 ./pwn`
 

@@ -219,9 +219,20 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -241,20 +252,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/about/">
-              
-              关于
+              分类
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">385</span> In Total
+              Words <span class="post-count">387</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,17 +420,23 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="杂七杂八"><a href="#杂七杂八" class="headerlink" title="杂七杂八"></a>杂七杂八</h1><h2 id="Strcmp（）作条件的绕过"><a href="#Strcmp（）作条件的绕过" class="headerlink" title="Strcmp（）作条件的绕过"></a>Strcmp（）作条件的绕过</h2><p>利用”\0”作为比较的第一个字符</p>
+        <h1>杂七杂八</h1>
+<h2 id="Strcmp（）作条件的绕过">Strcmp（）作条件的绕过</h2>
+<p>利用&quot;\0&quot;作为比较的第一个字符</p>
 <p><img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108093132384-1667871106786-1.png" alt="image-20221108093132384-1667871106786-1"></p>
 <pre><code class="hljs python">r.sendlineafter(<span class="hljs-string">b&quot;Enter your flag:\n&quot;</span>,<span class="hljs-string">&#x27;\0&#x27;</span>)</code></pre>
 <p>my_read读入”\0“到s1跳过判断直接到后门函数。</p>
-<h1 id="CTF-All-In-One—firmianay"><a href="#CTF-All-In-One—firmianay" class="headerlink" title="CTF All In One—firmianay"></a>CTF All In One—firmianay</h1><p><img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108230123280.png" alt="image-20221108230123280"></p>
+<h1>CTF All In One–firmianay</h1>
+<p><img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108230123280.png" alt="image-20221108230123280"></p>
 <p>讲的特别详细 但是许多地方还看不明白 还在研究</p>
-<h2 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h2><p>格式字符串漏洞发生的条件就是格式字符串要求的参数和实际提供的参数不匹配。</p>
+<h2 id="格式化字符串">格式化字符串</h2>
+<p>格式字符串漏洞发生的条件就是格式字符串要求的参数和实际提供的参数不匹配。</p>
 <p>提供的参数可以手动输入</p>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>栈中数据，内存数据</p>
-<p>推算函数地址…..（补原理）</p>
-<h2 id="ROP的学习-理清了很多概念"><a href="#ROP的学习-理清了很多概念" class="headerlink" title="ROP的学习(理清了很多概念)"></a>ROP的学习(理清了很多概念)</h2><p>返回导向编程（Return-Oriented Programming，缩写：ROP）</p>
+<h3 id="作用">作用</h3>
+<p>栈中数据，内存数据</p>
+<p>推算函数地址…（补原理）</p>
+<h2 id="ROP的学习-理清了很多概念">ROP的学习(理清了很多概念)</h2>
+<p>返回导向编程（Return-Oriented Programming，缩写：ROP）</p>
 <p>==&gt;ROP Emporium&lt;==平台</p>
 <p>很好的平台，提供了难度逐渐上涨的rop题</p>
 <p>1.ret2text</p>
@@ -441,7 +447,7 @@
 <p><img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108231326138.png" alt="image-20221108231326138"></p>
 <p>又在.data段找到了一串字符</p>
 <p><img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108231716296.png" alt="image-20221108231716296"></p>
-<p>刚好可以搭配system函数拿到flag，利用这两个地址（关了PIE）。所以这种方法称作ret2libc。做到这里拿到了flag但是原理还不是太明晰。 </p>
+<p>刚好可以搭配system函数拿到flag，利用这两个地址（关了PIE）。所以这种方法称作ret2libc。做到这里拿到了flag但是原理还不是太明晰。</p>
 <p><img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108232130457.png" alt="image-20221108232130457"></p>
 <p>System()的两个地址：</p>
 <p>1.直接调用地址 （）</p>
@@ -592,7 +598,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">杂七杂八</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Strcmp%EF%BC%88%EF%BC%89%E4%BD%9C%E6%9D%A1%E4%BB%B6%E7%9A%84%E7%BB%95%E8%BF%87"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Strcmp（）作条件的绕过</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#CTF-All-In-One%E2%80%94firmianay"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">CTF All In One—firmianay</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">格式化字符串</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">作用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ROP%E7%9A%84%E5%AD%A6%E4%B9%A0-%E7%90%86%E6%B8%85%E4%BA%86%E5%BE%88%E5%A4%9A%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">ROP的学习(理清了很多概念)</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">杂七杂八</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Strcmp%EF%BC%88%EF%BC%89%E4%BD%9C%E6%9D%A1%E4%BB%B6%E7%9A%84%E7%BB%95%E8%BF%87"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Strcmp（）作条件的绕过</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">CTF All In One–firmianay</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">格式化字符串</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">作用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ROP%E7%9A%84%E5%AD%A6%E4%B9%A0-%E7%90%86%E6%B8%85%E4%BA%86%E5%BE%88%E5%A4%9A%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">ROP的学习(理清了很多概念)</span></a></li></ol></li></ol>
         
         </div>
       </aside>

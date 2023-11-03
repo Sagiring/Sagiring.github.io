@@ -331,9 +331,20 @@ mjx-container[display="true"] + br {
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -353,20 +364,9 @@ mjx-container[display="true"] + br {
           
           
           <li>
-            <a href="/tags/">
+            <a href="/categories/">
               
-              标签
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/about/">
-              
-              关于
+              分类
               
               
             </a>
@@ -516,6 +516,45 @@ mjx-container[display="true"] + br {
   <!-- top end -->
   
 
+  <a href="/cn/Sagiring_markdown/Setcontext与Magic-Gadget/">
+    <h2 class="post-title">
+      Setcontext与Magic-Gadget
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+    <div class="post-content-preview">
+      Setcontext与Magic-Gadget
+题目在LargebinsAttact与TcachebinsPosioning中基本一样，只是开了沙箱ban了execve。
+
+考虑使用orw，在上一篇的基础上来继续探究如何orw
+方法1
+考虑使用setcontext，栈迁移rop --glibc2.32
+首先先来看setcontext，以rdx为基地址设置寄存器。注意这里从setcontext......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by 茗 on
+    2023-11-03
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#pwn" title="pwn">pwn</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
   <a href="/cn/Sagiring_markdown/LargebinsAttact与TcachebinsPosioning/">
     <h2 class="post-title">
       LargebinsAttact与TcachebinsPosioning
@@ -524,9 +563,11 @@ mjx-container[display="true"] + br {
       
     </h3>
     <div class="post-content-preview">
-      LargebinsAttact与TcachebinsPosioning复现hgame_week3 - large_note
+      LargebinsAttact与TcachebinsPosioning
+复现hgame_week3 - large_note
 环境 glibc-2.32
 题目
+
 看下菜单
 
 Add-note 限制了malloc大小 0x500 - 0x900
@@ -537,7 +578,9 @@ Edit-note 没有限制
 
 Show-note 没有限制
 
-解题准备解题思路目标明确打largebin_atta......
+
+解题思路
+目标明确打largebin_atta......
     </div>
   </a>
   
@@ -570,9 +613,11 @@ Show-note 没有限制
       
     </h3>
     <div class="post-content-preview">
-      Heap利用与TLS-Canary覆盖复现DASCTF Binding。
+      Heap利用与TLS-Canary覆盖
+复现DASCTF Binding。
 感谢翰青师傅的帮助。
-题目堆题 libc-2.31
+题目
+堆题 libc-2.31
 
 功能表
 
@@ -584,7 +629,8 @@ Delet里有UAF
 
 Show里也没有限制
 
-解题准备题目给了配置docker文件夹，只有libc文件，利用glibc-all-in-one查找ld文件,使用patch......
+解题准备
+题目给了配置docker文件夹，只有libc文件，利用glibc-all-in-one查找ld文件,使用pa......
     </div>
   </a>
   
@@ -617,11 +663,12 @@ Show里也没有限制
       
     </h3>
     <div class="post-content-preview">
-      pwn环境搭建新弄了台机子，重新搭下环境，整理一下各种工具。
-pwntoolssudo apt-get update
+      pwn环境搭建
+新弄了台机子，重新搭下环境，整理一下各种工具。
+pwntools
+sudo apt-get update
 sudo apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
-sudo python3 -m pip install --upgrade pip
-s......
+sudo python3 -m pip install --upgrade pip......
     </div>
   </a>
   
@@ -654,17 +701,13 @@ s......
       
     </h3>
     <div class="post-content-preview">
-      IO_2_1_stdin 与 bss_formatIO_2_1_stdin附件：
+      IO_2_1_stdin 与 bss_format
+IO_2_1_stdin
+附件：
+![](./IO_2_1_stdin 与 bss_format/image-20230828104230478.png)
 bss数组越界
-
-
-flag在内存里，puts +  0x16D2E0的地方（这里F5之后 + 的不对，不知为何）
-
-防护全开
-总结一下，给了个bss的任意指针写！考虑打stdout泄露地址
-这里第一次接触_IO_FILE结构，久仰大名了属于是
-pwndbg&gt; ptype stdout
-type = st......
+![](./IO_2_1_stdin 与 bss_format/image-20230828104328361.png)
+![](./IO_2_1_stdin 与 bss......
     </div>
   </a>
   
@@ -697,14 +740,16 @@ type = st......
       
     </h3>
     <div class="post-content-preview">
-      堆知识合集一由于许久没有看堆题了，打算多做点题整理整理
+      堆知识合集一
+由于许久没有看堆题了，打算多做点题整理整理
 题目方面主要以hgame和ctf_all_in_one中例题为例子
-chunk结构贴一下学习的师傅文章
+chunk结构
+贴一下学习的师傅文章
 https://www.jianshu.com/p/484926468136
 https://blog.csdn.net/qq_39563369/article/details/103943077
 使用中的chunk
 
-free ch......
+free ......
     </div>
   </a>
   
@@ -737,10 +782,12 @@ free ch......
       
     </h3>
     <div class="post-content-preview">
-      SROP简单介绍SROP，即 Sigreturn Oriented Programming，正是利用了 Sigreturn 机制的弱点，来进行攻击。
+      SROP
+简单介绍
+SROP，即 Sigreturn Oriented Programming，正是利用了 Sigreturn 机制的弱点，来进行攻击。
 在执行 sigreturn 系统调用的时候，不会对 signal 做检查
 
-简单来说就是通过sigreturn的系统调用0xf的syscall，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核态时候而sigre......
+简单来说就是通过sigreturn的系统调用0xf的syscall，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核态时候而sig......
     </div>
   </a>
   
@@ -773,13 +820,14 @@ free ch......
       
     </h3>
     <div class="post-content-preview">
-      第一章概论层级结构
+      第一章概论
+层级结构
+
 &#x27;各层的作用&#x27; -&gt; 课本
 &#x27;路由器&#x27; -&gt; 数据链路层
 （1）	&#x27;物理层&#x27;：使原始的数据位流能在物理媒体上传输。
 （2）	&#x27;数据链路层&#x27;：位流被组织成数据链协议数据单元（通常称为帧）传输。
-（3）	&#x27;网络层&#x27;：数据以网络协议数据单元（分组）为单位进行传输。
-（......
+（3）	&#x27;网络层&#x27;：数据以网络协议数据单元（分组）为单位进行传输。......
     </div>
   </a>
   
@@ -812,12 +860,15 @@ free ch......
       
     </h3>
     <div class="post-content-preview">
-      序言个人感觉操作系统记忆背诵的知识点多杂，因而写下这篇blog方便自己记忆背诵。
-第1章 引论操作系统分类1. 无操作系统的计算机系统
+      序言
+个人感觉操作系统记忆背诵的知识点多杂，因而写下这篇blog方便自己记忆背诵。
+第1章 引论
+操作系统分类
+1. 无操作系统的计算机系统
 2. 单道&#x27;批处理系统&#x27;
 	监督程序：相当于早期操作系统，负责将磁盘中程序调入内存，以及将内存中的程序交给CPU处理。
 3. 多道&#x27;批处理系统&#x27;
-	微观而言，在任一特定时刻，在处理机上运行的作业只有&#x27;一个&#......
+	微观而言，在任一特定时刻，在处理机上运行的作业只有&#x27;一......
     </div>
   </a>
   
@@ -850,12 +901,30 @@ free ch......
       
     </h3>
     <div class="post-content-preview">
-      古典密码学代换密码​    代换是古典密码中 用到的最基本的处理技巧之一。所谓代换，就是将明文中的一个字母由其它字母、数字或符号替代的一种方法。
+      古典密码学
+代换密码
+​	代换是古典密码中 用到的最基本的处理技巧之一。所谓代换，就是将明文中的一个字母由其它字母、数字或符号替代的一种方法。
 凯撒密码
-明文p ∈Z26，密文c ∈Z26 ，密钥k取[1,25]
-加密：c = E(p) = (p + k) mod 26
-解密：p = D(c) = (c – k) mod 26仿射密码
-明文p ∈Z26，密文c ∈Z26 ，密钥k=(a,b......
+明文，密文，密钥取
+加密：§
+解密：©
+仿射密码
+明文，密文，密钥且
+加密：§
+解密：©
+
+单表代换密码
+明文，密文，密钥定义在上的置换
+加密§
+解密©
+多表代换密码
+维吉尼亚密码
+明文，密文，密钥
+加密
+解密
+
+置换密码
+是古典密码中用到......
     </div>
   </a>
   
@@ -866,48 +935,6 @@ free ch......
   <div class="tags">
     
     <a href="/tags/#学科" title="学科">学科</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/Sagiring_markdown/痛苦的环境配置/">
-    <h2 class="post-title">
-      痛苦的环境配置
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      痛苦的环境配置发生了什么一大早起来，发现自己wsl2无法启动了，修调了3天这个问题，人麻了
-1.之后直接卸载了子系统Ubuntu重装。卡在了安装界面
-
-2.卸载了wsl与功能，未果。
-3.关闭虚拟机平台后发现，win报”我们无法完成此操作”，关闭不成功
-4.试了wsl1可以正常使用，但是gdb完全调试不了
-
-
-5.在wsl到处碰壁后，我决定向vm靠边，结果装完虚拟机也打不开，开在转圈的界面
-......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by 茗 on
-    2023-03-29
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#pwn" title="pwn">pwn</a>
     
   </div>
   
@@ -963,7 +990,7 @@ free ch......
   <div class="tags">
     
     
-    <a href="/tags/#pwn" title="pwn" rel="15">pwn</a>
+    <a href="/tags/#pwn" title="pwn" rel="16">pwn</a>
     
     
     
@@ -1034,6 +1061,10 @@ free ch......
 <div class="widget">
   <ul>
     
+    <a href="cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/">
+      <li>Setcontext与Magic-Gadget</li>
+    </a>
+    
     <a href="cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/">
       <li>LargebinsAttact与TcachebinsPosioning</li>
     </a>
@@ -1048,10 +1079,6 @@ free ch......
     
     <a href="cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/">
       <li>_IO_2_1_stdin_ 与 bss_format</li>
-    </a>
-    
-    <a href="cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/">
-      <li>堆知识合集一</li>
     </a>
     
   </ul>
@@ -1069,7 +1096,7 @@ free ch......
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/11/">November 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/11/">November 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="archives/2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
 </div>
 
 
