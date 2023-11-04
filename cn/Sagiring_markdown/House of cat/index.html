@@ -219,9 +219,9 @@
           
           
           <li>
-            <a href="/tags/">
+            <a href="/archive/">
               
-              标签
+              归档
               
               
             </a>
@@ -241,9 +241,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -252,9 +252,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/tags/">
               
-              分类
+              标签
               
               
             </a>
@@ -483,6 +483,8 @@ call qword ptr [rax + 0x18] //system、setcontext</code></pre>
 在<code>_wide_data=fake_io_addr+0x30</code>条件下,当然可以自主调整</p>
 <pre><code class="hljs c">fp-&gt;_lock是一个可写地址（堆地址、libc中的可写地址）</code></pre>
 <pre><code class="hljs c">fp-&gt;_mode = <span class="hljs-number">0</span></code></pre>
+<pre><code class="hljs c">fp-vtable = _IO_wfile_jumps + <span class="hljs-number">0x30</span>  -&gt; FSOP
+fp-vtable = _IO_wfile_jumps + <span class="hljs-number">0x10</span>  -&gt; __malloc_assert</code></pre>
 <h2 id="另外">另外</h2>
 <p>pwndbg可以直接b _IO_Fuction 来进行调试
 ，也可以<code>p *(sruct _IO_FILE_plus *) 0x233333</code>或者p
