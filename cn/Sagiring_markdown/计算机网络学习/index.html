@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">9k</span> In Total
+              Words <span class="post-count">9.1k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,9 +420,12 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1>第一章概论</h1>
+        <h1 id="第一章概论">第一章概论</h1>
 <h2 id="层级结构">层级结构</h2>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420164600731.png" alt="image-20230420164600731"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420164600731.png" alt="image-20230420164600731">
+<figcaption aria-hidden="true">image-20230420164600731</figcaption>
+</figure>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;各层的作用&#x27;</span> -&gt; 课本
 <span class="hljs-string">&#x27;路由器&#x27;</span> -&gt; 数据链路层</code></pre>
 <pre><code class="hljs python">（<span class="hljs-number">1</span>）	<span class="hljs-string">&#x27;物理层&#x27;</span>：使原始的数据位流能在物理媒体上传输。
@@ -458,8 +461,11 @@
  <span class="hljs-number">6.</span><span class="hljs-string">&#x27;无线局域网&#x27;</span>WLAN
     <span class="hljs-number">7.</span>其它无线接入方式
        蓝牙、卫星</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420172001882.png" alt="image-20230420172001882"></p>
-<h3 id></h3>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420172001882.png" alt="image-20230420172001882">
+<figcaption aria-hidden="true">image-20230420172001882</figcaption>
+</figure>
+<h3 id="section"></h3>
 <h3 id="网络核心">网络核心</h3>
 <p>向网络边缘中的大量主机提供连通性</p>
 <p>核心设备：路由器</p>
@@ -474,7 +480,10 @@
         查找转发表（路由表），找出到某个目的地址应从哪个端口转发
         把分组送到适当的端口转发出去</code></pre>
 <p>分组交换与电路交换的时延</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420173114531.png" alt="image-20230420173114531"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420173114531.png" alt="image-20230420173114531">
+<figcaption aria-hidden="true">image-20230420173114531</figcaption>
+</figure>
 <p>广域网WAN</p>
 <h3 id="计算相关">计算相关</h3>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;发送时延&#x27;</span> = <span class="hljs-string">&#x27;数据块长度 / 信道带宽&#x27;</span>
@@ -492,20 +501,21 @@
 <span class="hljs-string">&#x27;服务访问点&#x27;</span>SAP:同一系统相邻两层的实体进行交互的地方
 <span class="hljs-string">&#x27;协议&#x27;</span>是<span class="hljs-string">&quot;水平&quot;</span>的，即协议是控制对等实体之间通信的规则
 <span class="hljs-string">&#x27;服务&#x27;</span>是<span class="hljs-string">&quot;垂直&quot;</span>的，即服务是由下层向上层通过层间接口提供的</code></pre>
-<h1>第二章应用层</h1>
+<h1 id="第二章应用层">第二章应用层</h1>
 <h2 id="应用层的体系结构">应用层的体系结构</h2>
-<h3 id="C-S-和-P2P">C/S 和 P2P</h3>
-<p>​	C/S体系 客户端和服务器（进程）</p>
-<p>​	P2P体系 没有严格的服务器-客户机之分</p>
+<h3 id="cs-和-p2p">C/S 和 P2P</h3>
+<p>​ C/S体系 客户端和服务器（进程）</p>
+<p>​ P2P体系 没有严格的服务器-客户机之分</p>
 <p>不同主机间通信的接口：Sockets</p>
 <h2 id="进程标识">进程标识</h2>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;主机IP地址&#x27;</span> + <span class="hljs-string">&#x27;进程端口号&#x27;</span></code></pre>
-<h2 id="DNS">DNS</h2>
-<p>​	端口号53</p>
-<p>​	完成域名与IP地址的转换</p>
-<p>​	采用C/S模型，传输层采用UDP，服务器访问端口号是53，是其他应用层协议的支撑协议</p>
-<p>​		<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230418111753323.png" alt="image-20230418111753323"></p>
-<h3 id="DNS服务器">DNS服务器</h3>
+<h2 id="dns">DNS</h2>
+<p>​ 端口号53</p>
+<p>​ 完成域名与IP地址的转换</p>
+<p>​
+采用C/S模型，传输层采用UDP，服务器访问端口号是53，是其他应用层协议的支撑协议</p>
+<p>​ <img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230418111753323.png" alt="image-20230418111753323"></p>
+<h3 id="dns服务器">DNS服务器</h3>
 <p>每个区设置相应的<strong>权威服务器</strong>，来保存和维护该区中所有域名到IP地址的映射</p>
 <p>根域名服务器（Root Name Server）</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> 为下级域名服务器提供域名解析服务 
@@ -521,23 +531,29 @@
 <span class="hljs-number">2.</span> 一般来说，权威域名服务器是主机所在单位的DNS服务器</code></pre>
 <p>本地域名服务器（Local Name Server）</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> 即每个组织/企业的DNS服务器</code></pre>
-<h3 id="DNS名字解析">DNS名字解析</h3>
+<h3 id="dns名字解析">DNS名字解析</h3>
 <h4 id="迭代查询">迭代查询</h4>
 <pre><code class="hljs python">当根域名服务器收到本地域名服务器发出的迭代查询请求报文时，要么给出所要查询的 IP 地址，要么告诉本地服务器：“你下一步应当向哪一个域名服务器进行查询”。然后让本地服务器进行后续的查询。</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420175404003.png" alt="image-20230420175404003"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420175404003.png" alt="image-20230420175404003">
+<figcaption aria-hidden="true">image-20230420175404003</figcaption>
+</figure>
 <h4 id="递归查询">递归查询</h4>
 <pre><code class="hljs python">如果主机所询问的本地域名服务器不知道被查询的域名的IP地址，那么<span class="hljs-string">&#x27;本地域名服务器&#x27;</span>就以DNS客户的<span class="hljs-string">&#x27;身份&#x27;</span>，向其它根域名服务器继续发出查询请求报文(即替主机继续查询)，而<span class="hljs-string">&#x27;不是让主机自己&#x27;</span>进行下一步查询。因此，递归查询返回的查询结果或者是所要查询的 IP 地址，或者是报错，表示无法查询到所需的 IP 地址。</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420175617581.png" alt="image-20230420175617581"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230420175617581.png" alt="image-20230420175617581">
+<figcaption aria-hidden="true">image-20230420175617581</figcaption>
+</figure>
 <pre><code class="hljs python">总结：
 <span class="hljs-string">&#x27;递归查询&#x27;</span>是客户端解析器发送请求到本地DNS服务器，本地DNS服务器负责完成查询并提供完整响应。
 <span class="hljs-string">&#x27;迭代查询&#x27;</span>是请求发送到服务器，如果服务器不能匹配请求，将提供另一个负责解析这个域名空间的服务器，客户端将查询请求重新发送到这个新的DNS服务器上。</code></pre>
 <p>(DNS资源记录)</p>
-<h3 id="DNS协议消息">DNS协议消息</h3>
+<h3 id="dns协议消息">DNS协议消息</h3>
 <p>包括：请求/应答</p>
-<h2 id="WWW与HTTP">WWW与HTTP</h2>
-<p>​	C/S模式</p>
-<p>​	HTTP与HTML</p>
-<p>​	HTTP端口80，要求TCP</p>
+<h2 id="www与http">WWW与HTTP</h2>
+<p>​ C/S模式</p>
+<p>​ HTTP与HTML</p>
+<p>​ HTTP端口80，要求TCP</p>
 <p>网页分类为</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>静态网页
 	以文件形式保存\不同的用户、不同时间访问，返回相同的结果
@@ -545,7 +561,7 @@
 	收到浏览器请求后，服务器端动态生成网页
 <span class="hljs-number">3.</span>活跃网页
 	收到服务器响应后，客户端动态生成网页</code></pre>
-<h3 id="HTTP连接">HTTP连接</h3>
+<h3 id="http连接">HTTP连接</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;HTTP 1.0&#x27;</span>	
 	<span class="hljs-string">&#x27;非持久连接&#x27;</span> -&gt; 一个连接只传输一个对象
      每个对象都会有<span class="hljs-number">2</span>×RTT -&gt; <span class="hljs-number">1</span>个TCP <span class="hljs-number">1</span>个HTTP
@@ -553,29 +569,48 @@
 	<span class="hljs-string">&#x27;持久连接&#x27;</span> -&gt; 一个TCP连接可以传输多个对象
     	<span class="hljs-string">&#x27;流水线&#x27;</span> -&gt; Client可以连续发出多个请求，而不必等待前一个请求的响应完成</code></pre>
 <h4 id="image-20230421102029815"><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421102029815.png" alt="image-20230421102029815"></h4>
-<h4 id="RTT-Round-Trip-Time-往返时间">RTT(Round Trip Time)往返时间</h4>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421101402236.png" alt="image-20230421101402236"></p>
-<h4 id="HTTP消息">HTTP消息</h4>
+<h4 id="rttround-trip-time往返时间">RTT(Round Trip Time)往返时间</h4>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421101402236.png" alt="image-20230421101402236">
+<figcaption aria-hidden="true">image-20230421101402236</figcaption>
+</figure>
+<h4 id="http消息">HTTP消息</h4>
 <p>请求与响应</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421102317409.png" alt="image-20230421102317409"></p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421102344625.png" alt="image-20230421102344625"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421102317409.png" alt="image-20230421102317409">
+<figcaption aria-hidden="true">image-20230421102317409</figcaption>
+</figure>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421102344625.png" alt="image-20230421102344625">
+<figcaption aria-hidden="true">image-20230421102344625</figcaption>
+</figure>
 <p>Cookie</p>
-<p>Web服务器对于访问用户的 标识信息，可用于识别用户、 记录用户信息和访问情况</p>
+<p>Web服务器对于访问用户的 标识信息，可用于识别用户、
+记录用户信息和访问情况</p>
 <p>代理服务器 (Proxy Server)</p>
 <p>在浏览器程序中设置通过代理访问、浏览器将所有HTTP请求均发送给代理</p>
 <p>浏览器Caching： 浏览器缓存访问过的网页，进一步减少网络负载</p>
-<p>​	条件GET -&gt; 在HTTP请求中包含对象的最后更新时间：</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421103226728.png" alt="image-20230421103226728"></p>
-<h2 id="Email">Email</h2>
-<p>​	构成</p>
-<p>​		用户代理(user agents, UA)</p>
-<p>​		邮件服务器(mail servers)</p>
-<p>​		邮件传输协议：SMTP</p>
-<p>​		邮件访问协议：POP3或IMAP</p>
-<h3 id="Email过程">Email过程</h3>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421103521624.png" alt="image-20230421103521624"></p>
+<p>​ 条件GET -&gt; 在HTTP请求中包含对象的最后更新时间：</p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421103226728.png" alt="image-20230421103226728">
+<figcaption aria-hidden="true">image-20230421103226728</figcaption>
+</figure>
+<h2 id="email">Email</h2>
+<p>​ 构成</p>
+<p>​ 用户代理(user agents, UA)</p>
+<p>​ 邮件服务器(mail servers)</p>
+<p>​ 邮件传输协议：SMTP</p>
+<p>​ 邮件访问协议：POP3或IMAP</p>
+<h3 id="email过程">Email过程</h3>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421103521624.png" alt="image-20230421103521624">
+<figcaption aria-hidden="true">image-20230421103521624</figcaption>
+</figure>
 <p>格式 -&gt; RFC5322</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421103634786.png" alt="image-20230421103634786"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421103634786.png" alt="image-20230421103634786">
+<figcaption aria-hidden="true">image-20230421103634786</figcaption>
+</figure>
 <h3 id="通信协议">通信协议</h3>
 <pre><code class="hljs python">通信协议
 	<span class="hljs-number">1.</span> <span class="hljs-string">&#x27;SMTP&#x27;</span> -&gt; push服务
@@ -593,15 +628,22 @@
          	port <span class="hljs-number">143</span>
             可以在邮件服务器上处理邮件
      <span class="hljs-number">3.</span> Webmail -&gt; <span class="hljs-string">&#x27;HTTP&#x27;</span></code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421104241693.png" alt="image-20230421104241693"></p>
-<h4 id="MIME">MIME</h4>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421104241693.png" alt="image-20230421104241693">
+<figcaption aria-hidden="true">image-20230421104241693</figcaption>
+</figure>
+<h4 id="mime">MIME</h4>
 <p>通用因特网邮件扩充 -&gt; 在邮件头增加字段，说明媒体数据的类型</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421104628546.png" alt="image-20230421104628546"></p>
-<h4 id="Base64">Base64</h4>
-<h4 id="SSL协议-为SMTP-与POP3提供安全传输">SSL协议 为SMTP 与POP3提供安全传输</h4>
-<h2 id="FTP">FTP</h2>
-<p>​	C/S</p>
-<h3 id="两个TCP连接">两个TCP连接</h3>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421104628546.png" alt="image-20230421104628546">
+<figcaption aria-hidden="true">image-20230421104628546</figcaption>
+</figure>
+<h4 id="base64">Base64</h4>
+<h4 id="ssl协议-为smtp-与pop3提供安全传输">SSL协议 为SMTP
+与POP3提供安全传输</h4>
+<h2 id="ftp">FTP</h2>
+<p>​ C/S</p>
+<h3 id="两个tcp连接">两个TCP连接</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;控制连接 &#x27;</span>
 	port <span class="hljs-number">21</span>
 	进行身份验证
@@ -612,15 +654,21 @@
 	port <span class="hljs-number">20</span>
 	数据传输完，连接即关闭
     临时连接:如果要传输下一个文件，需要重新建立数据连接</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421105225386.png" alt="image-20230421105225386"></p>
-<h2 id="Telnet">Telnet</h2>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421105225386.png" alt="image-20230421105225386">
+<figcaption aria-hidden="true">image-20230421105225386</figcaption>
+</figure>
+<h2 id="telnet">Telnet</h2>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;C/S&#x27;</span> <span class="hljs-string">&#x27;TCP&#x27;</span>  port <span class="hljs-number">23</span></code></pre>
-<h3 id="NVT格式">NVT格式</h3>
+<h3 id="nvt格式">NVT格式</h3>
 <p>由于终端和主机数据格式不统一 -&gt; 标准的数据格式</p>
 <p>TELNET 客户和服务器完成NVT格式和 本系统格式之间的转换</p>
 <p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421110007644.png" alt="image-20230421110007644"><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421110022132.png" alt="image-20230421110022132"></p>
 <p>8为字符：</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421105558811.png" alt="image-20230421105558811"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421105558811.png" alt="image-20230421105558811">
+<figcaption aria-hidden="true">image-20230421105558811</figcaption>
+</figure>
 <h2 id="本章重点">本章重点</h2>
 <pre><code class="hljs python">掌握DNS、WWW、Email的应用层协议的要点和原理、FTP和Telnet的功能及主要概念
 <span class="hljs-number">1.</span>集中式/分布式
@@ -630,26 +678,29 @@
 <span class="hljs-number">5.</span>控制信息vs. 数据信息
 <span class="hljs-number">6.</span>是否在同一条连接上传输
 <span class="hljs-number">7.</span>有状态/无状态</code></pre>
-<h1>第三章传输层</h1>
+<h1 id="第三章传输层">第三章传输层</h1>
 <h2 id="传输层">传输层</h2>
 <pre><code class="hljs python"><span class="hljs-number">1.</span><span class="hljs-string">&#x27;传输层&#x27;</span>:为不同主机上的应用<span class="hljs-string">&#x27;进程&#x27;</span>提供逻辑通信功能
 	将应用层消息封装成报文段 (segments)或数据报，然后交给网络层
 
 <span class="hljs-number">2.</span><span class="hljs-string">&#x27;网络层&#x27;</span>:负责<span class="hljs-string">&#x27;主机&#x27;</span>之间的通信</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted_image.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted_image.png"></p>
 <h2 id="复用与解复用">复用与解复用</h2>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421110255916.png" alt="image-20230421110255916"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421110255916.png" alt="image-20230421110255916">
+<figcaption aria-hidden="true">image-20230421110255916</figcaption>
+</figure>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;多路复用&#x27;</span>：传输层多个应用进程的消息在同一个网络接口上传输
 
 <span class="hljs-string">&#x27;复用&#x27;</span>：源主机消息传输层在网络层前加源端口号于目的端口
 
 <span class="hljs-string">&#x27;解复用&#x27;</span>：传输层在目的主机上反向解包</code></pre>
-<h2 id="可靠数据传输-RDT">可靠数据传输 RDT</h2>
+<h2 id="可靠数据传输-rdt">可靠数据传输 RDT</h2>
 <h3 id="数据传输协议">数据传输协议</h3>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;停止-等待ARQ协议&#x27;</span>
 <span class="hljs-string">&#x27;Go-back-N协议&#x27;</span>
 <span class="hljs-string">&#x27;选择重传协议&#x27;</span></code></pre>
-<h3 id="出错，丢失处理">出错，丢失处理</h3>
+<h3 id="出错丢失处理">出错，丢失处理</h3>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;不错&#x27;</span>：
 	查错 纠错：
 	<span class="hljs-number">1.</span> 直接纠错 
@@ -662,35 +713,48 @@
 		数据包的序号 = 当前包的序号
 	（NAK不需要了）
 重复，乱序 -&gt; 序号 1bit (<span class="hljs-number">0</span>,<span class="hljs-number">1</span>)</code></pre>
-<h3 id="计算性能指标！">计算性能指标！</h3>
+<h3 id="计算性能指标">计算性能指标！</h3>
 <h4 id="一次传输">一次传输</h4>
 <pre><code class="hljs python">Data发送 Tt
 传播 Tp
 ACK Tp
 <span class="hljs-string">&#x27;总和&#x27;</span> = <span class="hljs-string">&#x27;Tt + 2Tp&#x27;</span></code></pre>
-<h4 id="信道利用率-：发送时间-成功传输总时间">信道利用率 ：发送时间/成功传输总时间</h4>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0_image_2.png" alt="计算机网络学习_image_2"></p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230417214434477.png" alt="image-20230417214434477"></p>
+<h4 id="信道利用率-发送时间成功传输总时间">信道利用率
+：发送时间/成功传输总时间</h4>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/计算机网络学习_image_2.png" alt="计算机网络学习_image_2">
+<figcaption aria-hidden="true">计算机网络学习_image_2</figcaption>
+</figure>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230417214434477.png" alt="image-20230417214434477">
+<figcaption aria-hidden="true">image-20230417214434477</figcaption>
+</figure>
 <h3 id="流水线">流水线</h3>
 <p>在收到ACK之前，发送方可以连续发送多个 数据包</p>
-<h3 id="连续ARQ协议">连续ARQ协议</h3>
-<h4 id="回退N步协议-：-Go-Back-N">回退N步协议 ： Go-Back-N</h4>
+<h3 id="连续arq协议">连续ARQ协议</h3>
+<h4 id="回退n步协议-go-back-n">回退N步协议 ： Go-Back-N</h4>
 <pre><code class="hljs python">一次<span class="hljs-string">&#x27;发N个&#x27;</span>包（收到ACK之前）
 一次<span class="hljs-string">&#x27;只能收1个&#x27;</span>包 （按序接收）</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0_image_3.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/计算机网络学习_image_3.png"></p>
 <pre><code class="hljs python">滑动窗口：
 	<span class="hljs-number">1.</span> 发送窗口 <span class="hljs-number">1</span>&lt;Wt =&lt; ==<span class="hljs-number">2</span>^n - <span class="hljs-number">1</span>==
 	<span class="hljs-number">2.</span> 接收窗口 Wr = <span class="hljs-number">1</span>
 累积ACK ：ACK m  -&gt; 确认 m 及以前</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0_image_4.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/计算机网络学习_image_4.png"></p>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;发送窗口&#x27;</span>最大值为 <span class="hljs-string">&#x27;2^n -1&#x27;</span> -&gt; 防止最后一个<span class="hljs-string">&#x27;重复包&#x27;</span>无法识别</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230417225613780.png" alt="image-20230417225613780"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230417225613780.png" alt="image-20230417225613780">
+<figcaption aria-hidden="true">image-20230417225613780</figcaption>
+</figure>
 <h3 id="选择重传协议">选择重传协议</h3>
 <pre><code class="hljs python">Ws + Wr  =&lt; <span class="hljs-number">2</span>^n
 一般取Ws = Wr = <span class="hljs-number">2</span>^(n-<span class="hljs-number">1</span>)
  <span class="hljs-string">&#x27;只重传出错的数据包&#x27;</span></code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421111138821.png" alt="image-20230421111138821"></p>
-<h2 id="UDP">UDP</h2>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421111138821.png" alt="image-20230421111138821">
+<figcaption aria-hidden="true">image-20230421111138821</figcaption>
+</figure>
+<h2 id="udp">UDP</h2>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;无连接协议&#x27;</span>
 快，但是<span class="hljs-string">&#x27;不提供可靠&#x27;</span>
 可靠要应用层自己实现
@@ -700,16 +764,19 @@ ACK Tp
     <span class="hljs-number">2.</span>DNS
     <span class="hljs-number">3.</span>网络管理协议(SNMP)
     <span class="hljs-number">4.</span>路由表更新</code></pre>
-<h3 id="UDP的数据报格式">UDP的数据报格式</h3>
+<h3 id="udp的数据报格式">UDP的数据报格式</h3>
 <pre><code class="hljs python">报头：固定为<span class="hljs-string">&#x27;8字节&#x27;</span>
 	<span class="hljs-number">1.</span>源端口号：<span class="hljs-number">16</span>位
 	<span class="hljs-number">2.</span>目的端口号：<span class="hljs-number">16</span>位
     <span class="hljs-number">3.</span>数据报长度：<span class="hljs-number">16</span>位，以字节为单位，表示<span class="hljs-string">&#x27;报头+数据&#x27;</span>
     <span class="hljs-number">4.</span>校验和：<span class="hljs-number">16</span>位</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421111619123.png" alt="image-20230421111619123"></p>
-<h4 id="校验和">校验和:<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0_image_5.png" alt></h4>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421111619123.png" alt="image-20230421111619123">
+<figcaption aria-hidden="true">image-20230421111619123</figcaption>
+</figure>
+<h4 id="校验和">校验和:<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/计算机网络学习_image_5.png"></h4>
 <p>这里的1的补码是指：最高位进位到最低位</p>
-<h2 id="TCP">TCP</h2>
+<h2 id="tcp">TCP</h2>
 <p>面向连接、端到端传输</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span>功能：
 	<span class="hljs-number">1.</span>采用连续ARQ协议，流水线方式工作
@@ -720,26 +787,28 @@ ACK Tp
 <h3 id="报文段">报文段</h3>
 <pre><code class="hljs python">段头长度 4bit  数值表示的<span class="hljs-string">&#x27;单位为4字节&#x27;</span>
 可变段头长度值 <span class="hljs-number">5</span>～<span class="hljs-number">15</span> 即 20B～60B</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421112044451.png" alt="image-20230421112044451"></p>
-<h3 id="TCP连接建立示例">TCP连接建立示例</h3>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0_image_6.png" alt></p>
-<h3 id="TCP连接释放">TCP连接释放</h3>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0_image_7.png" alt></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230421112044451.png" alt="image-20230421112044451">
+<figcaption aria-hidden="true">image-20230421112044451</figcaption>
+</figure>
+<h3 id="tcp连接建立示例">TCP连接建立示例</h3>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/计算机网络学习_image_6.png"></p>
+<h3 id="tcp连接释放">TCP连接释放</h3>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/计算机网络学习_image_7.png"></p>
 <h4 id="建立连接例题">建立连接例题</h4>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0_image_8.jpg" alt><br>
-server先发…</p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/计算机网络学习_image_8.jpg">
+server先发...</p>
 <h3 id="动态滑动窗口">动态滑动窗口</h3>
 <p>（发送窗口不超过对端通知的接收窗口值）</p>
-<h3 id="TCP环境下RTO的估计">TCP环境下RTO的估计</h3>
+<h3 id="tcp环境下rto的估计">TCP环境下RTO的估计</h3>
 <p><strong>计算</strong></p>
 <pre><code class="hljs python">算超时定时器的时间
 <span class="hljs-string">&#x27;RTT估计值&#x27;</span> = <span class="hljs-string">&#x27;∂ * RTT估值历史 + （1 - ∂ ）* RTT的测量值&#x27;</span>
 如何记忆？（一般取历史值比例大，想要比较稳定，不想变动太大）
 
 <span class="hljs-string">&#x27;RTT测量值&#x27;</span> = <span class="hljs-string">&#x27;ACK到达时刻 - TCP报文段发送时刻&#x27;</span></code></pre>
-<h3 id="TCP的流量控制">TCP的流量控制</h3>
-<p>接收方反馈：<br>
-接收窗口 字段说明了接收方最多可以接收的数据字节数</p>
+<h3 id="tcp的流量控制">TCP的流量控制</h3>
+<p>接收方反馈： 接收窗口 字段说明了接收方最多可以接收的数据字节数</p>
 <h3 id="提高效率">提高效率</h3>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;MSS&#x27;</span>：最大报文段长度，一个报文段中的最大数据长度，在建立连接时协商
 <span class="hljs-string">&#x27;Nagle算法 MSS&#x27;</span>
@@ -757,29 +826,28 @@ Clark算法 在较大缓存时，才发送窗口更新通知</code></pre>
 TCP用塞控制
 发送窗口 &lt;= Min (对方的接收窗口, 拥塞窗口)cwnd 
 				流量控制       拥塞控制</code></pre>
-<h4 id="1-慢启动阶段SS">1.慢启动阶段SS</h4>
+<h4 id="慢启动阶段ss">1.慢启动阶段SS</h4>
 <pre><code class="hljs python">cwnd = 1MSS 但 指数级增长 -&gt; x2
 增长到 
 <span class="hljs-number">1.</span> 达到阈值
 <span class="hljs-number">2.</span> 出现数据丢失</code></pre>
-<h4 id="2-拥塞避免阶段CA">2.拥塞避免阶段CA</h4>
+<h4 id="拥塞避免阶段ca">2.拥塞避免阶段CA</h4>
 <pre><code class="hljs python">每收到一个ACK，cwnd = cwnd + <span class="hljs-number">1</span>/本轮开始到cwnd
 线性增长AI --&gt; <span class="hljs-string">&quot;一轮结束cwnd = cwnd + 1&quot;</span></code></pre>
-<h4 id="3-出现数据丢失-MD">3.出现数据丢失 MD</h4>
+<h4 id="出现数据丢失-md">3.出现数据丢失 MD</h4>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> 定时器超时 -&gt; cwnd =<span class="hljs-number">1</span> <span class="hljs-keyword">and</span> 阈值 = <span class="hljs-string">&quot;当前&quot;</span>cwnd/<span class="hljs-number">2</span> （新的SS）
 <span class="hljs-number">2.</span> <span class="hljs-number">3</span>次重复的ACK -&gt; 阈值 = cwnd/<span class="hljs-number">2</span> <span class="hljs-keyword">and</span> cwnd = 阈值 （开始新的AI)
 		(快速重传)</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0_image_9.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/计算机网络学习_image_9.png"></p>
 <p><strong>计算效率必考～</strong></p>
-<h1>第四章网络层</h1>
-<p>功能<br>
-路由选择(查表选择下一跳)<br>
-转发分组(IP包)<br>
+<h1 id="第四章网络层">第四章网络层</h1>
+<p>功能 路由选择(查表选择下一跳) 转发分组(IP包)
 网络互联(不同网络协议大转换，IP包的分段/重装)</p>
 <p>虚电路网络</p>
 <p>数据报网络</p>
-<h2 id="路由选择算法（路由表的由来）">路由选择算法（路由表的由来）</h2>
-<p>根据数据包中携带的目的地址，路由器查表，然后选择==下一跳(Next Hop)==而不是完整路由。</p>
+<h2 id="路由选择算法路由表的由来">路由选择算法（路由表的由来）</h2>
+<p>根据数据包中携带的目的地址，路由器查表，然后选择==下一跳(Next
+Hop)==而不是完整路由。</p>
 <p>转发与路由选择不同。路由选择有查表。</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> 静态选路算法
    路由表生成 
@@ -790,15 +858,15 @@ TCP用塞控制
 <span class="hljs-number">2.</span> 动态选路算法 DVR与LSR
    测量路由、更新路由信息的协议、计算路由开销
 </code></pre>
-<h3 id="距离矢量选路算法DVR">距离矢量选路算法DVR</h3>
-<p>​      	周期性的与邻居节点交换路由信息 -&gt; 交换路由表中的距离项（目的地、距离）</p>
-<p>​	<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230413144201.png" alt><br>
-​	优缺点：<br>
-​		优点 -&gt; 计算简单、开销小<br>
-​		缺点 -&gt; 坏消息传播慢,路径消息可能不一致,路径信息不一致，信息量大，不适合大型网络<br>
-​		<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230413144128.png" alt><br>
-​		（BA = BC + CA 环路)交换着提升次数</p>
-<h3 id="链路状态选路算法-LSR-、SPF">链路状态选路算法 LSR 、SPF</h3>
+<h3 id="距离矢量选路算法dvr">距离矢量选路算法DVR</h3>
+<p>​ 周期性的与邻居节点交换路由信息 -&gt;
+交换路由表中的距离项（目的地、距离）</p>
+<p>​ <img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230413144201.png"> ​
+优缺点： ​ 优点 -&gt; 计算简单、开销小 ​ 缺点 -&gt;
+坏消息传播慢,路径消息可能不一致,路径信息不一致，信息量大，不适合大型网络
+​<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230413144128.png"> ​ （BA =
+BC + CA 环路)交换着提升次数</p>
+<h3 id="链路状态选路算法-lsr-spf">链路状态选路算法 LSR 、SPF</h3>
 <pre><code class="hljs python">使用Dijkstra算法计算最短路径
     路由器之间通过交换路由信息，构造出全网拓扑结构，再计算
     其中
@@ -811,40 +879,39 @@ TCP用塞控制
         路由器需要较大的存储空间
         最短路径计算工作量大</code></pre>
 <h2 id="网络层协议">网络层协议</h2>
-<h3 id="IP地址">IP地址</h3>
+<h3 id="ip地址">IP地址</h3>
 <pre><code class="hljs python">构成 网络号+主机号 <span class="hljs-number">32</span>位
 一个网络接口有一个IP地址
 路由器总是具有两个或以上的IP地址，且每个接口都有一个不同网络号IP地址</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230420132034.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230420132034.png"></p>
 <h3 id="子网">子网</h3>
 <pre><code class="hljs python">从主机号拿出几位作为子网号</code></pre>
 <h3 id="子网掩码">子网掩码</h3>
 <pre><code class="hljs python">子网掩码 <span class="hljs-keyword">and</span> IP地址 （与操作） 得到 网络号
 逐位计算</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230420134000.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230420134000.png"></p>
 <h3 id="超网">超网</h3>
 <pre><code class="hljs python">小网络合并大网络 把网络号拿过来用
 超网掩码</code></pre>
-<h3 id="无类别地址-CIDR">无类别地址 CIDR</h3>
+<h3 id="无类别地址-cidr">无类别地址 CIDR</h3>
 <pre><code class="hljs python">IP地址  = 网络地址/x 
 x为网络号位数
 计算</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230420144136.png" alt><br>
-<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230420144254.jpg" alt><br>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230420144136.png"> <img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/Pasted%20image%2020230420144254.jpg">
 两种方法～</p>
-<h3 id="NAT">NAT</h3>
+<h3 id="nat">NAT</h3>
 <p>完成私有地址和全局地址的转换</p>
 <pre><code class="hljs python">功能与方法
 网络私有地址</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507161912850.png" alt></p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507161944846.png" alt></p>
-<h2 id="IP">IP</h2>
-<h3 id="DHCP">DHCP</h3>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507161912850.png"></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507161944846.png"></p>
+<h2 id="ip">IP</h2>
+<h3 id="dhcp">DHCP</h3>
 <pre><code class="hljs python">C/S模式，服务器端口号为 <span class="hljs-number">67</span>  客户端口号为 <span class="hljs-number">68</span>
 采用 UDP 传输</code></pre>
-<h4 id="IP包">IP包</h4>
+<h4 id="ip包">IP包</h4>
 <h5 id="构成">构成</h5>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507162209645.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507162209645.png"></p>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;包头长度&#x27;</span> 单位是 <span class="hljs-string">&#x27;4字节&#x27;</span> 
 <span class="hljs-string">&#x27;协议字段&#x27;</span>:
   TCP=<span class="hljs-number">6</span>
@@ -861,7 +928,7 @@ x为网络号位数
 
 <span class="hljs-number">1.</span>若 MF = <span class="hljs-number">0</span> ， 偏移量也为 <span class="hljs-number">0</span> 
 	则该包是未分过的数据报</code></pre>
-<h4 id="ICMP">ICMP</h4>
+<h4 id="icmp">ICMP</h4>
 <pre><code class="hljs python">ICMP 报文作为 IP 数据报的数据，加上数据报的首部， 组成 IP 数据报发送出去。
 
 差错报告
@@ -880,20 +947,20 @@ PING 使用了 ICMP 回声请求/应答报文</code></pre>
 	在一个自治系统内部使用，如<span class="hljs-string">&#x27;RIP&#x27;</span> 和 <span class="hljs-string">&#x27;OSPF&#x27;</span> 协议
 <span class="hljs-string">&#x27;外部网关协议&#x27;</span> EGP
 	在自治系统之间使用，如<span class="hljs-string">&#x27;BGP-4&#x27;</span>协议</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507163714113.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507163714113.png"></p>
 <h4 id="算法">算法</h4>
-<h5 id="RIP">RIP</h5>
+<h5 id="rip">RIP</h5>
 <pre><code class="hljs python">基于<span class="hljs-string">&#x27;距离矢量算法&#x27;</span>
 距离：跳数
 问题 无穷计算
 限制网络规模：RIP（网络直径&lt;<span class="hljs-number">16</span>跳）</code></pre>
-<h5 id="OSPF">OSPF</h5>
+<h5 id="ospf">OSPF</h5>
 <pre><code class="hljs python">基于<span class="hljs-string">&#x27;链路状态选路&#x27;</span>算法
 经过信息交换，每个路由器都知道全网的拓扑结构，
 因此不会出现无穷计算问题
 支持分级选路
 </code></pre>
-<h5 id="BGP">BGP</h5>
+<h5 id="bgp">BGP</h5>
 <pre><code class="hljs python">AS边界路由器使用BGP来交换路由信息，包含完整的
 路径信息
   <span class="hljs-string">&#x27;路径矢量算法&#x27;</span>
@@ -903,22 +970,20 @@ PING 使用了 ICMP 回声请求/应答报文</code></pre>
 <h2 id="组播">组播</h2>
 <p>源主机只发送一次数据，由路由器复制并转发给其他组成员主机</p>
 <h3 id="组播地址">组播地址</h3>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507164411070.png" alt><br>
-$$<br>
-共2^{28}个组地址\<br>
-组地址由IANA分配\<br>
-组地址只能用于目的地址，不能用于源地址\<br>
-主机发送组播数据时，IP包的目的地址为组播地址<br>
-$$<br>
-<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507164600234.png" alt></p>
-<h3 id="IGMP">IGMP</h3>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507164411070.png"> <span class="math display">\[
+共2^{28}个组地址\\
+组地址由IANA分配\\
+组地址只能用于目的地址，不能用于源地址\\
+主机发送组播数据时，IP包的目的地址为组播地址
+\]</span> <img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507164600234.png"></p>
+<h3 id="igmp">IGMP</h3>
 <p>因特网组管理协议</p>
 <h3 id="应用层组播">(应用层组播)</h3>
 <h2 id="路由器">路由器</h2>
 <pre><code class="hljs python">路由器采取<span class="hljs-string">&#x27;存储-转发&#x27;</span>方式工作。
 若路由器处理包的速率低于包进入队列的速率，则队列的存储空间将一直减少到零，后面再进入队列的分组只能被丢弃。
 路由器中的输入或输出队列产生溢出是造成IP包丢失的重要原因。</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507164831022.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507164831022.png"></p>
 <h3 id="队列调度算法">队列调度算法</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> FIFO队列
 <span class="hljs-number">2.</span> 优先级队列 PQ
@@ -930,22 +995,28 @@ $$<br>
 	2）特定主机选路表项：路由表中的目的地址是 主机地址
 	3）非直达网络，即下一跳是另一个路由器
 	4）默认路由，即下一跳是默认路由器</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507165247205.png" alt></p>
-<h2 id="IPv6">IPv6</h2>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507165247205.png"></p>
+<h2 id="ipv6">IPv6</h2>
 <pre><code class="hljs plaintext">1. 更大的地址空间：16字节，128位
 2. 包头简化：只有7个字段，取消了分段相关字段和校验和，以便更快地处理IP包，提高路由器的吞吐量，缩短延时
 3. 更好地支持选项：选项有次序，以便路由器可简单地跳过与它无关的选项，加快分组的处理速度
 4. 增强了安全性：身份认证和加密
 5. 更加关注服务质量：支持多媒体应用</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507165422959.png" alt></p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507165506653.png" alt="对IPv4包头的修改"></p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507165518369.png" alt="IPv6包格式"></p>
-<h3 id="IPv6与IPv4的互通">IPv6与IPv4的互通</h3>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507165422959.png"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507165506653.png" alt="对IPv4包头的修改">
+<figcaption aria-hidden="true">对IPv4包头的修改</figcaption>
+</figure>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230507165518369.png" alt="IPv6包格式">
+<figcaption aria-hidden="true">IPv6包格式</figcaption>
+</figure>
+<h3 id="ipv6与ipv4的互通">IPv6与IPv4的互通</h3>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> <span class="hljs-string">&#x27;双栈方案&#x27;</span>
 <span class="hljs-number">2.</span> <span class="hljs-string">&#x27;隧道方案&#x27;</span>
 <span class="hljs-number">3.</span> <span class="hljs-string">&#x27;包头翻译方案&#x27;</span></code></pre>
 <h2 id="第五章-数据链路层">第五章 数据链路层</h2>
-<h3 id="为什么需要数据链路层？">为什么需要数据链路层？</h3>
+<h3 id="为什么需要数据链路层">为什么需要数据链路层？</h3>
 <p>物理信道是不可靠的!</p>
 <pre><code class="hljs python">需要进行<span class="hljs-string">&#x27;差错检测和纠正&#x27;</span>
 
@@ -974,7 +1045,7 @@ $$<br>
 <h4 id="数据链路和帧">数据链路和帧</h4>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;帧&#x27;</span>：数据链路层处理的数据单元（PDU: 协议数据单元）</code></pre>
 <h3 id="成帧">成帧</h3>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528195559877.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528195559877.png"></p>
 <h4 id="成帧方法">成帧方法</h4>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;字符计数法&#x27;</span>
 	在帧中增加一个长度字段，表示帧的总字节数
@@ -987,8 +1058,8 @@ $$<br>
     当帧中的数据出现连续<span class="hljs-number">5</span>个<span class="hljs-number">1</span>时，在其后插入一个<span class="hljs-number">0</span>
 <span class="hljs-string">&#x27;物理层编码违例法&#x27;</span>
 	曼彻斯特编码:码元中间的跳变表示<span class="hljs-number">0</span>和<span class="hljs-number">1</span></code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230530104027712.png" alt></p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230530104356460.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230530104027712.png"></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230530104356460.png"></p>
 <h3 id="差错控制">差错控制</h3>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;奇偶校验&#x27;</span>
 	检错码：发送方在传输的数据中加入校验信息，接收方通过计算可以发现传输差错
@@ -1002,7 +1073,7 @@ $$<br>
         不进位、不借位
     余数即是所求的校验码 
     将余数附在数据之后发送到信道上</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528201848135.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528201848135.png"></p>
 <h3 id="差错纠正方法">差错纠正方法</h3>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;重传&#x27;</span>（ARQ协议）
  发送方发送完一帧数据后，启动一个定时器
@@ -1011,12 +1082,12 @@ $$<br>
 <span class="hljs-string">&#x27;纠错码&#x27;</span>
  校验码足够长，不但能够检测出差错，而且能够发现差错的位置，直接恢复原始数据
  示例：汉明码（Hamming code，海明码），能纠正单比特翻转错误</code></pre>
-<h3 id="物理地址MAC">物理地址MAC</h3>
+<h3 id="物理地址mac">物理地址MAC</h3>
 <p>前24位为生产厂商标识OUI（Organizationally Unique Identifier）</p>
 <p>后24位为由厂商设定的内部编号</p>
-<h4 id="ARP">ARP</h4>
+<h4 id="arp">ARP</h4>
 <p>将IP地址转换为MAC地址</p>
-<h5 id="ARP缓存表">ARP缓存表</h5>
+<h5 id="arp缓存表">ARP缓存表</h5>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> LAN的每个站点都有一个ARP缓存表，记录MAC地址与IP地址的 映射关系
 
 <span class="hljs-number">2.</span> 在LAN内发送IP包之前，源节点<span class="hljs-string">&#x27;广播ARP请求&#x27;</span>，包含目的节点的 IP地址
@@ -1026,14 +1097,14 @@ $$<br>
 <span class="hljs-number">4.</span> 源节点将ARP映射关系加入ARP表
 
 <span class="hljs-number">5.</span> ARP缓存表会定时删除无用的内容</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528202701919.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528202701919.png"></p>
 <h3 id="帧结构">帧结构</h3>
 <pre><code class="hljs python">在以太网中，数据链路层封装IP包的过程如下：
 <span class="hljs-number">1.</span> 首先，将<span class="hljs-string">&#x27;IP包&#x27;</span>添加到数据链路层的<span class="hljs-string">&#x27;数据部分&#x27;</span>。
 <span class="hljs-number">2</span>． 在数据链路层的<span class="hljs-string">&#x27;头部&#x27;</span>添加以太网的目标<span class="hljs-string">&#x27; MAC地址和源MAC地址&#x27;</span>，用于标识数据包的接收方和发送方。
 <span class="hljs-number">3.</span> 在数据链路层的<span class="hljs-string">&#x27;尾部&#x27;</span>添加<span class="hljs-string">&#x27;帧检验序列 (FCS)年手数据的错误检测&#x27;</span>。封装完成后，数据链路层将帧发送到物理介质上，供接收方的数据链路层解封装并将数据包传递给网络层进行处理。</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230530131417992.png" alt></p>
-<h4 id="HDLC协议">HDLC协议</h4>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230530131417992.png"></p>
+<h4 id="hdlc协议">HDLC协议</h4>
 <pre><code class="hljs python">高级数据链路控制规程
 面向比特的协议，支持全双工传输
 提供<span class="hljs-string">&#x27;面向连接&#x27;</span>的服务
@@ -1043,8 +1114,8 @@ $$<br>
 帧首尾标志：<span class="hljs-string">&#x27;0111 1110&#x27;</span>
 地址：从站/应答站的地址
 FCS：采用CRC-<span class="hljs-number">16</span>计算出的校验信息</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230530112128188.png" alt></p>
-<h4 id="PPP协议">PPP协议</h4>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230530112128188.png"></p>
+<h4 id="ppp协议">PPP协议</h4>
 <p>点对点协议</p>
 <pre><code class="hljs python">提供了建立<span class="hljs-string">&#x27;数据链路连接&#x27;</span>、<span class="hljs-string">&#x27;用户认证&#x27;</span>、<span class="hljs-string">&#x27;帧头压缩&#x27;</span>协商等多种能力
 PPP取消了HDLC的下列功能：
@@ -1053,15 +1124,15 @@ PPP取消了HDLC的下列功能：
 	<span class="hljs-string">&#x27;序号&#x27;</span>
 	点到多点链路</code></pre>
 <p><code>PPP</code>的帧格式：<code>PPPoE</code></p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528204652814.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528204652814.png"></p>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;面向字符&#x27;</span>，即整个帧的长度为字节的整数倍
 地址：FF表示任意站点
 控制：03表示无编号帧（没有序号）
 协议：表示数据部分是哪个协议的数据包，例如LCP、
 NCP、IP、IPX、AppleTalk……
 FCS：采用CRC-<span class="hljs-number">16</span></code></pre>
-<h3 id="ARP欺骗">ARP欺骗</h3>
-<h1>第六章 局域网（LAN）</h1>
+<h3 id="arp欺骗">ARP欺骗</h3>
+<h1 id="第六章-局域网lan">第六章 局域网（LAN）</h1>
 <p>数据链路层：实现相邻节点间的通信</p>
 <p>两种信道类型</p>
 <pre><code class="hljs python"><span class="hljs-number">1.</span> 点到点信道
@@ -1081,7 +1152,7 @@ FCS：采用CRC-<span class="hljs-number">16</span></code></pre>
 	LAN对 LLC 子层是透明的
 	各LAN的LLC子层相同，差别在于MAC子层和物理层</code></pre>
 <p>数据链路层分为两个子层：逻辑链路控制子层和介质访问控制子层</p>
-<h4 id="LLC子层的功能">LLC子层的功能</h4>
+<h4 id="llc子层的功能">LLC子层的功能</h4>
 <pre><code class="hljs python">遵循IEEE802<span class="hljs-number">.2</span>标准
  向高层提供统一的链路访问形式
  成帧/拆帧
@@ -1091,13 +1162,16 @@ FCS：采用CRC-<span class="hljs-number">16</span></code></pre>
  提供网络层接口
  不同的LAN标准，LLC子层都是一样的
  区别在于MAC子层和物理层</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528210951437.png" alt="image-20230528210951437"></p>
-<h4 id="MAC子层的功能">MAC子层的功能</h4>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230528210951437.png" alt="image-20230528210951437">
+<figcaption aria-hidden="true">image-20230528210951437</figcaption>
+</figure>
+<h4 id="mac子层的功能">MAC子层的功能</h4>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;发送站点&#x27;</span>：封装LLC帧、组成带有地址和校验码的MAC帧
 <span class="hljs-string">&#x27;接收站点&#x27;</span>：对MAC帧进行拆卸，执行地址识别和差错校验
 实现和维护MAC协议
 MAC帧的大致格式</code></pre>
-<h3 id="介质访问控制（MAC）方法">介质访问控制（MAC）方法</h3>
+<h3 id="介质访问控制mac方法">介质访问控制（MAC）方法</h3>
 <pre><code class="hljs python">广播信道：多个站点共享同一信道。
 	各站点如何访问共享信道？
 	如何解决同时访问造成的冲突（信道争用）？
@@ -1110,7 +1184,7 @@ MAC帧的大致格式</code></pre>
 <h3 id="以太网">以太网</h3>
 <p>CSMA/CD 协议</p>
 <p>载波监听多点接入/冲突检测协议</p>
-<h4 id="MAC协议要点">MAC协议要点</h4>
+<h4 id="mac协议要点">MAC协议要点</h4>
 <pre><code class="hljs python">多个站点如何安全地使用共享信道？
 <span class="hljs-string">&#x27;载波监听&#x27;</span>(CSMA)：发送前先检测一下其它站点是否正在发送（即信道是否忙）
 	若信道空闲，是否可以立即发送？ -&gt; 立即发送（<span class="hljs-number">1</span>坚持的CSMA）
@@ -1126,9 +1200,15 @@ MAC帧的大致格式</code></pre>
 以太网的最短帧长：<span class="hljs-string">&#x27;64&#x27;</span>字节</code></pre>
 <p>等待多久才能重发?</p>
 <p>截断二进制指数算法</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529164258979.png" alt="image-20230529164258979"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529164258979.png" alt="image-20230529164258979">
+<figcaption aria-hidden="true">image-20230529164258979</figcaption>
+</figure>
 <p>以太网的帧格式</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529164332212.png" alt="image-20230529164332212"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529164332212.png" alt="image-20230529164332212">
+<figcaption aria-hidden="true">image-20230529164332212</figcaption>
+</figure>
 <p>无效的MAC帧丢弃</p>
 <pre><code class="hljs python">帧的长度不是整数个字节
 校验查出有错
@@ -1136,7 +1216,7 @@ MAC帧的大致格式</code></pre>
 有效 MAC 帧长度不在 <span class="hljs-number">64</span> ~ <span class="hljs-number">1518</span> 字节之间
 IEEE802<span class="hljs-number">.3</span>数据帧，数据字段的长度与长度字段的值不一致</code></pre>
 <p>帧间最小间隔（IFG）</p>
-<h3 id="无线局域网（WLAN）">无线局域网（WLAN）</h3>
+<h3 id="无线局域网wlan">无线局域网（WLAN）</h3>
 <p>CSMA/CD不适用</p>
 <p>隐蔽站问题、暴露站问题</p>
 <pre><code class="hljs python">增加冲突避免(Collision Avoidance)，尽量减少冲突概率 <span class="hljs-string">&#x27;CSMA/CA&#x27;</span>
@@ -1152,7 +1232,7 @@ IEEE802<span class="hljs-number">.3</span>数据帧，数据字段的长度与�
 	高优先级帧IFS较短，优先发送
 	低优先级帧IFS较长；且在发送之前若其他站的高优先级帧已到达，则信道变为忙，低优先级帧只能再推迟发送
 </code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529171736886.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529171736886.png"></p>
 <p>DIFS，即分布协调功能帧间间隔</p>
 <p>SIFS，即短 (Short) 帧间间隔</p>
 <pre><code class="hljs python">冲突避免措施：
@@ -1172,8 +1252,8 @@ IEEE802<span class="hljs-number">.3</span>数据帧，数据字段的长度与�
             若检测到信道忙，就冻结退避计时器的剩余时间，重新等待信道变为空闲，并再经过时间 DIFS 后，从剩余时间开始继续倒计时
             退避计时器的时间减小到零时，开始发送整个数据帧
 <span class="hljs-string">&#x27;握手预约（可选）&#x27;</span></code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529173008591.png" alt></p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529172807057.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529173008591.png"></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529172807057.png"></p>
 <h3 id="数据链路层互连设备">数据链路层互连设备</h3>
 <h4 id="网桥与交换机">网桥与交换机</h4>
 <pre><code class="hljs python"><span class="hljs-string">&#x27;中继器、集线器&#x27;</span>
@@ -1198,57 +1278,57 @@ IEEE802<span class="hljs-number">.3</span>数据帧，数据字段的长度与�
             若有（且不是进入端口），则转发到表中的对应端口 若有且等于进入端口，则丢弃这个帧（过滤）
             对于广播帧，则洪泛转发
 多端口网桥：<span class="hljs-string">&#x27;以太网交换机&#x27;</span></code></pre>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529173636589.png" alt></p>
-<h1>第七章物理层</h1>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230529173636589.png"></p>
+<h1 id="第七章物理层">第七章物理层</h1>
 <p>物理层的功能和主要概念</p>
 <p>数据通信的基本概念和理论基础</p>
 <p>常用的调制、编码和复用的方法要点</p>
 <p>HUB的功能</p>
-<h2 id="概念-2">概念</h2>
+<h2 id="概念-1">概念</h2>
 <p>模拟信号与数字信号</p>
 <p>双绞线与同轴电缆与光纤、无线电</p>
-<h2 id="最大数据率（信道容量）公式">最大数据率（信道容量）公式</h2>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605110426114.png" alt></p>
+<h2 id="最大数据率信道容量公式">最大数据率（信道容量）公式</h2>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605110426114.png"></p>
 <h2 id="调制技术和编码技术">调制技术和编码技术</h2>
 <p>基本调制方法</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605110957566.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605110957566.png"></p>
 <h3 id="多级调制方法">多级调制方法</h3>
 <p>pass</p>
 <h3 id="数字数据编码技术">数字数据编码技术</h3>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111240496.png" alt></p>
-<h3 id="脉冲编码调制PCM">脉冲编码调制PCM</h3>
-<h4 id="奈奎斯特（Nyquest）采样定理">奈奎斯特（Nyquest）采样定理</h4>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111240496.png"></p>
+<h3 id="脉冲编码调制pcm">脉冲编码调制PCM</h3>
+<h4 id="奈奎斯特nyquest采样定理">奈奎斯特（Nyquest）采样定理</h4>
 <p>pass</p>
 <h2 id="复用">复用</h2>
-<h3 id="频分复用FDM">频分复用FDM</h3>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111522127.png" alt></p>
-<h3 id="波分复用WDM">波分复用WDM</h3>
+<h3 id="频分复用fdm">频分复用FDM</h3>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111522127.png"></p>
+<h3 id="波分复用wdm">波分复用WDM</h3>
 <h4 id="按照波长划分子信道">按照波长划分子信道</h4>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111619444.png" alt></p>
-<h3 id="时分复用TDM">时分复用TDM</h3>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111657143.png" alt></p>
-<h3 id="同步时分复用示例：E1帧">同步时分复用示例：E1帧</h3>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111724945.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111619444.png"></p>
+<h3 id="时分复用tdm">时分复用TDM</h3>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111657143.png"></p>
+<h3 id="同步时分复用示例e1帧">同步时分复用示例：E1帧</h3>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111724945.png"></p>
 <h4 id="同步时分复用的不足">同步时分复用的不足</h4>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111757499.png" alt></p>
-<h4 id="统计时分复用STDM">统计时分复用STDM</h4>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111818999.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111757499.png"></p>
+<h4 id="统计时分复用stdm">统计时分复用STDM</h4>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111818999.png"></p>
 <h2 id="物理层互连设备">物理层互连设备</h2>
 <h4 id="中继器">中继器</h4>
 <p>连接两个LAN网段(Segment)</p>
 <p>将信号再生，以便传输得更远</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111918213.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605111918213.png"></p>
 <p>一个冲突域</p>
-<h4 id="HUB（集线器）">HUB（集线器）</h4>
+<h4 id="hub集线器">HUB（集线器）</h4>
 <p>多端口中继器</p>
 <p>将主机连接起来组成LAN</p>
-<p>​	物理拓扑结构为星形</p>
-<p>​	逻辑拓扑结构为总线形</p>
+<p>​ 物理拓扑结构为星形</p>
+<p>​ 逻辑拓扑结构为总线形</p>
 <p>将信号放大再生</p>
 <p>广播信道：从一个端口收到的数据 将转发到所有其他端口</p>
 <p>共享式LAN</p>
-<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605114645440.png" alt></p>
-<h1>总结</h1>
+<p><img src="/cn/Sagiring_markdown/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0/image-20230605114645440.png"></p>
+<h1 id="总结">总结</h1>
 
 
         <hr>
@@ -1398,7 +1478,9 @@ IEEE802<span class="hljs-number">.3</span>数据帧，数据字段的长度与�
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">第一章概论</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">层级结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">计算机网络的组成</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E8%BE%B9%E7%BC%98"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">网络边缘</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%BB%E6%9C%BA%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">主机之间通信</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E9%93%BE%E8%B7%AF"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">网络接入链路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">网络接入方式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E6%A0%B8%E5%BF%83"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">网络核心</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E7%9B%B8%E5%85%B3"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">计算相关</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E5%B1%82%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">分层体系结构</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">第二章应用层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">应用层的体系结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#C-S-%E5%92%8C-P2P"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">C&#x2F;S 和 P2P</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E6%A0%87%E8%AF%86"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">进程标识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#DNS"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">DNS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DNS%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-nav-number">2.3.1.</span> <span class="toc-nav-text">DNS服务器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DNS%E5%90%8D%E5%AD%97%E8%A7%A3%E6%9E%90"><span class="toc-nav-number">2.3.2.</span> <span class="toc-nav-text">DNS名字解析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2"><span class="toc-nav-number">2.3.2.1.</span> <span class="toc-nav-text">迭代查询</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2"><span class="toc-nav-number">2.3.2.2.</span> <span class="toc-nav-text">递归查询</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DNS%E5%8D%8F%E8%AE%AE%E6%B6%88%E6%81%AF"><span class="toc-nav-number">2.3.3.</span> <span class="toc-nav-text">DNS协议消息</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WWW%E4%B8%8EHTTP"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">WWW与HTTP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#HTTP%E8%BF%9E%E6%8E%A5"><span class="toc-nav-number">2.4.1.</span> <span class="toc-nav-text">HTTP连接</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#image-20230421102029815"><span class="toc-nav-number">2.4.1.1.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#RTT-Round-Trip-Time-%E5%BE%80%E8%BF%94%E6%97%B6%E9%97%B4"><span class="toc-nav-number">2.4.1.2.</span> <span class="toc-nav-text">RTT(Round Trip Time)往返时间</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#HTTP%E6%B6%88%E6%81%AF"><span class="toc-nav-number">2.4.1.3.</span> <span class="toc-nav-text">HTTP消息</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Email"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">Email</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Email%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">2.5.1.</span> <span class="toc-nav-text">Email过程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">2.5.2.</span> <span class="toc-nav-text">通信协议</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#MIME"><span class="toc-nav-number">2.5.2.1.</span> <span class="toc-nav-text">MIME</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Base64"><span class="toc-nav-number">2.5.2.2.</span> <span class="toc-nav-text">Base64</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#SSL%E5%8D%8F%E8%AE%AE-%E4%B8%BASMTP-%E4%B8%8EPOP3%E6%8F%90%E4%BE%9B%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93"><span class="toc-nav-number">2.5.2.3.</span> <span class="toc-nav-text">SSL协议 为SMTP 与POP3提供安全传输</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#FTP"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">FTP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%A4%E4%B8%AATCP%E8%BF%9E%E6%8E%A5"><span class="toc-nav-number">2.6.1.</span> <span class="toc-nav-text">两个TCP连接</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Telnet"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">Telnet</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#NVT%E6%A0%BC%E5%BC%8F"><span class="toc-nav-number">2.7.1.</span> <span class="toc-nav-text">NVT格式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%AC%E7%AB%A0%E9%87%8D%E7%82%B9"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">本章重点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">第三章传输层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">传输层</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%8D%E7%94%A8%E4%B8%8E%E8%A7%A3%E5%A4%8D%E7%94%A8"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">复用与解复用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93-RDT"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">可靠数据传输 RDT</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">3.3.1.</span> <span class="toc-nav-text">数据传输协议</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%87%BA%E9%94%99%EF%BC%8C%E4%B8%A2%E5%A4%B1%E5%A4%84%E7%90%86"><span class="toc-nav-number">3.3.2.</span> <span class="toc-nav-text">出错，丢失处理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%EF%BC%81"><span class="toc-nav-number">3.3.3.</span> <span class="toc-nav-text">计算性能指标！</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%80%E6%AC%A1%E4%BC%A0%E8%BE%93"><span class="toc-nav-number">3.3.3.1.</span> <span class="toc-nav-text">一次传输</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BF%A1%E9%81%93%E5%88%A9%E7%94%A8%E7%8E%87-%EF%BC%9A%E5%8F%91%E9%80%81%E6%97%B6%E9%97%B4-%E6%88%90%E5%8A%9F%E4%BC%A0%E8%BE%93%E6%80%BB%E6%97%B6%E9%97%B4"><span class="toc-nav-number">3.3.3.2.</span> <span class="toc-nav-text">信道利用率 ：发送时间&#x2F;成功传输总时间</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="toc-nav-number">3.3.4.</span> <span class="toc-nav-text">流水线</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9E%E7%BB%ADARQ%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">3.3.5.</span> <span class="toc-nav-text">连续ARQ协议</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%9B%9E%E9%80%80N%E6%AD%A5%E5%8D%8F%E8%AE%AE-%EF%BC%9A-Go-Back-N"><span class="toc-nav-number">3.3.5.1.</span> <span class="toc-nav-text">回退N步协议 ： Go-Back-N</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">3.3.6.</span> <span class="toc-nav-text">选择重传协议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#UDP"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">UDP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#UDP%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F"><span class="toc-nav-number">3.4.1.</span> <span class="toc-nav-text">UDP的数据报格式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%A1%E9%AA%8C%E5%92%8C"><span class="toc-nav-number">3.4.1.1.</span> <span class="toc-nav-text">校验和:</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#TCP"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">TCP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8A%A5%E6%96%87%E6%AE%B5"><span class="toc-nav-number">3.5.1.</span> <span class="toc-nav-text">报文段</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TCP%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E7%A4%BA%E4%BE%8B"><span class="toc-nav-number">3.5.2.</span> <span class="toc-nav-text">TCP连接建立示例</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TCP%E8%BF%9E%E6%8E%A5%E9%87%8A%E6%94%BE"><span class="toc-nav-number">3.5.3.</span> <span class="toc-nav-text">TCP连接释放</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E4%BE%8B%E9%A2%98"><span class="toc-nav-number">3.5.3.1.</span> <span class="toc-nav-text">建立连接例题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8A%A8%E6%80%81%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-nav-number">3.5.4.</span> <span class="toc-nav-text">动态滑动窗口</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TCP%E7%8E%AF%E5%A2%83%E4%B8%8BRTO%E7%9A%84%E4%BC%B0%E8%AE%A1"><span class="toc-nav-number">3.5.5.</span> <span class="toc-nav-text">TCP环境下RTO的估计</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TCP%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-nav-number">3.5.6.</span> <span class="toc-nav-text">TCP的流量控制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87"><span class="toc-nav-number">3.5.7.</span> <span class="toc-nav-text">提高效率</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-nav-number">3.5.8.</span> <span class="toc-nav-text">拥塞控制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-%E6%85%A2%E5%90%AF%E5%8A%A8%E9%98%B6%E6%AE%B5SS"><span class="toc-nav-number">3.5.8.1.</span> <span class="toc-nav-text">1.慢启动阶段SS</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D%E9%98%B6%E6%AE%B5CA"><span class="toc-nav-number">3.5.8.2.</span> <span class="toc-nav-text">2.拥塞避免阶段CA</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-%E5%87%BA%E7%8E%B0%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1-MD"><span class="toc-nav-number">3.5.8.3.</span> <span class="toc-nav-text">3.出现数据丢失 MD</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">第四章网络层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95%EF%BC%88%E8%B7%AF%E7%94%B1%E8%A1%A8%E7%9A%84%E7%94%B1%E6%9D%A5%EF%BC%89"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">路由选择算法（路由表的由来）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B7%9D%E7%A6%BB%E7%9F%A2%E9%87%8F%E9%80%89%E8%B7%AF%E7%AE%97%E6%B3%95DVR"><span class="toc-nav-number">4.1.1.</span> <span class="toc-nav-text">距离矢量选路算法DVR</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E9%80%89%E8%B7%AF%E7%AE%97%E6%B3%95-LSR-%E3%80%81SPF"><span class="toc-nav-number">4.1.2.</span> <span class="toc-nav-text">链路状态选路算法 LSR 、SPF</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">网络层协议</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">4.2.1.</span> <span class="toc-nav-text">IP地址</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AD%90%E7%BD%91"><span class="toc-nav-number">4.2.2.</span> <span class="toc-nav-text">子网</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-nav-number">4.2.3.</span> <span class="toc-nav-text">子网掩码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B6%85%E7%BD%91"><span class="toc-nav-number">4.2.4.</span> <span class="toc-nav-text">超网</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%A0%E7%B1%BB%E5%88%AB%E5%9C%B0%E5%9D%80-CIDR"><span class="toc-nav-number">4.2.5.</span> <span class="toc-nav-text">无类别地址 CIDR</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#NAT"><span class="toc-nav-number">4.2.6.</span> <span class="toc-nav-text">NAT</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#IP"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">IP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#DHCP"><span class="toc-nav-number">4.3.1.</span> <span class="toc-nav-text">DHCP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#IP%E5%8C%85"><span class="toc-nav-number">4.3.1.1.</span> <span class="toc-nav-text">IP包</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%9E%84%E6%88%90"><span class="toc-nav-number">4.3.1.1.1.</span> <span class="toc-nav-text">构成</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ICMP"><span class="toc-nav-number">4.3.1.2.</span> <span class="toc-nav-text">ICMP</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E9%80%89%E8%B7%AF%E4%BD%93%E7%B3%BB"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">因特网的选路体系</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%A4%E7%B1%BB%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">4.4.1.</span> <span class="toc-nav-text">两类路由选择协议</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.4.1.1.</span> <span class="toc-nav-text">算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#RIP"><span class="toc-nav-number">4.4.1.1.1.</span> <span class="toc-nav-text">RIP</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#OSPF"><span class="toc-nav-number">4.4.1.1.2.</span> <span class="toc-nav-text">OSPF</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#BGP"><span class="toc-nav-number">4.4.1.1.3.</span> <span class="toc-nav-text">BGP</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%84%E6%92%AD"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">组播</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%84%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">4.5.1.</span> <span class="toc-nav-text">组播地址</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#IGMP"><span class="toc-nav-number">4.5.2.</span> <span class="toc-nav-text">IGMP</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E7%BB%84%E6%92%AD"><span class="toc-nav-number">4.5.3.</span> <span class="toc-nav-text">(应用层组播)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-nav-number">4.6.</span> <span class="toc-nav-text">路由器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.6.1.</span> <span class="toc-nav-text">队列调度算法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B7%AF%E7%94%B1%E8%A1%A8"><span class="toc-nav-number">4.6.2.</span> <span class="toc-nav-text">路由表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#IPv6"><span class="toc-nav-number">4.7.</span> <span class="toc-nav-text">IPv6</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#IPv6%E4%B8%8EIPv4%E7%9A%84%E4%BA%92%E9%80%9A"><span class="toc-nav-number">4.7.1.</span> <span class="toc-nav-text">IPv6与IPv4的互通</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-nav-number">4.8.</span> <span class="toc-nav-text">第五章 数据链路层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%EF%BC%9F"><span class="toc-nav-number">4.8.1.</span> <span class="toc-nav-text">为什么需要数据链路层？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-nav-number">4.8.2.</span> <span class="toc-nav-text">主要功能</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%8D%E5%8A%A1"><span class="toc-nav-number">4.8.3.</span> <span class="toc-nav-text">服务</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">4.8.4.</span> <span class="toc-nav-text">概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%92%8C%E5%B8%A7"><span class="toc-nav-number">4.8.4.1.</span> <span class="toc-nav-text">数据链路和帧</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%88%90%E5%B8%A7"><span class="toc-nav-number">4.8.5.</span> <span class="toc-nav-text">成帧</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%88%90%E5%B8%A7%E6%96%B9%E6%B3%95"><span class="toc-nav-number">4.8.5.1.</span> <span class="toc-nav-text">成帧方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B7%AE%E9%94%99%E6%8E%A7%E5%88%B6"><span class="toc-nav-number">4.8.6.</span> <span class="toc-nav-text">差错控制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B7%AE%E9%94%99%E7%BA%A0%E6%AD%A3%E6%96%B9%E6%B3%95"><span class="toc-nav-number">4.8.7.</span> <span class="toc-nav-text">差错纠正方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80MAC"><span class="toc-nav-number">4.8.8.</span> <span class="toc-nav-text">物理地址MAC</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ARP"><span class="toc-nav-number">4.8.8.1.</span> <span class="toc-nav-text">ARP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#ARP%E7%BC%93%E5%AD%98%E8%A1%A8"><span class="toc-nav-number">4.8.8.1.1.</span> <span class="toc-nav-text">ARP缓存表</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B8%A7%E7%BB%93%E6%9E%84"><span class="toc-nav-number">4.8.9.</span> <span class="toc-nav-text">帧结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#HDLC%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">4.8.9.1.</span> <span class="toc-nav-text">HDLC协议</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#PPP%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">4.8.9.2.</span> <span class="toc-nav-text">PPP协议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ARP%E6%AC%BA%E9%AA%97"><span class="toc-nav-number">4.8.10.</span> <span class="toc-nav-text">ARP欺骗</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">第六章 局域网（LAN）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#LLC%E5%AD%90%E5%B1%82%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-nav-number">5.0.0.1.</span> <span class="toc-nav-text">LLC子层的功能</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#MAC%E5%AD%90%E5%B1%82%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-nav-number">5.0.0.2.</span> <span class="toc-nav-text">MAC子层的功能</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6%EF%BC%88MAC%EF%BC%89%E6%96%B9%E6%B3%95"><span class="toc-nav-number">5.0.1.</span> <span class="toc-nav-text">介质访问控制（MAC）方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="toc-nav-number">5.0.2.</span> <span class="toc-nav-text">以太网</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#MAC%E5%8D%8F%E8%AE%AE%E8%A6%81%E7%82%B9"><span class="toc-nav-number">5.0.2.1.</span> <span class="toc-nav-text">MAC协议要点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91%EF%BC%88WLAN%EF%BC%89"><span class="toc-nav-number">5.0.3.</span> <span class="toc-nav-text">无线局域网（WLAN）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%BA%92%E8%BF%9E%E8%AE%BE%E5%A4%87"><span class="toc-nav-number">5.0.4.</span> <span class="toc-nav-text">数据链路层互连设备</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-nav-number">5.0.4.1.</span> <span class="toc-nav-text">网桥与交换机</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">第七章物理层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A6%82%E5%BF%B5-2"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%80%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%87%EF%BC%88%E4%BF%A1%E9%81%93%E5%AE%B9%E9%87%8F%EF%BC%89%E5%85%AC%E5%BC%8F"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">最大数据率（信道容量）公式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF%E5%92%8C%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">调制技术和编码技术</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95"><span class="toc-nav-number">6.3.1.</span> <span class="toc-nav-text">多级调制方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E5%AD%97%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF"><span class="toc-nav-number">6.3.2.</span> <span class="toc-nav-text">数字数据编码技术</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%84%89%E5%86%B2%E7%BC%96%E7%A0%81%E8%B0%83%E5%88%B6PCM"><span class="toc-nav-number">6.3.3.</span> <span class="toc-nav-text">脉冲编码调制PCM</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%EF%BC%88Nyquest%EF%BC%89%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86"><span class="toc-nav-number">6.3.3.1.</span> <span class="toc-nav-text">奈奎斯特（Nyquest）采样定理</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%8D%E7%94%A8"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text">复用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%91%E5%88%86%E5%A4%8D%E7%94%A8FDM"><span class="toc-nav-number">6.4.1.</span> <span class="toc-nav-text">频分复用FDM</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A2%E5%88%86%E5%A4%8D%E7%94%A8WDM"><span class="toc-nav-number">6.4.2.</span> <span class="toc-nav-text">波分复用WDM</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8C%89%E7%85%A7%E6%B3%A2%E9%95%BF%E5%88%92%E5%88%86%E5%AD%90%E4%BF%A1%E9%81%93"><span class="toc-nav-number">6.4.2.1.</span> <span class="toc-nav-text">按照波长划分子信道</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8TDM"><span class="toc-nav-number">6.4.3.</span> <span class="toc-nav-text">时分复用TDM</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%8C%E6%AD%A5%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8%E7%A4%BA%E4%BE%8B%EF%BC%9AE1%E5%B8%A7"><span class="toc-nav-number">6.4.4.</span> <span class="toc-nav-text">同步时分复用示例：E1帧</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%90%8C%E6%AD%A5%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8%E7%9A%84%E4%B8%8D%E8%B6%B3"><span class="toc-nav-number">6.4.4.1.</span> <span class="toc-nav-text">同步时分复用的不足</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BB%9F%E8%AE%A1%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8STDM"><span class="toc-nav-number">6.4.4.2.</span> <span class="toc-nav-text">统计时分复用STDM</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E4%BA%92%E8%BF%9E%E8%AE%BE%E5%A4%87"><span class="toc-nav-number">6.5.</span> <span class="toc-nav-text">物理层互连设备</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%AD%E7%BB%A7%E5%99%A8"><span class="toc-nav-number">6.5.0.1.</span> <span class="toc-nav-text">中继器</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#HUB%EF%BC%88%E9%9B%86%E7%BA%BF%E5%99%A8%EF%BC%89"><span class="toc-nav-number">6.5.0.2.</span> <span class="toc-nav-text">HUB（集线器）</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">总结</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%E6%A6%82%E8%AE%BA"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">第一章概论</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B1%82%E7%BA%A7%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">层级结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9A%84%E7%BB%84%E6%88%90"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">计算机网络的组成</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E8%BE%B9%E7%BC%98"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">网络边缘</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%BB%E6%9C%BA%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">主机之间通信</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E9%93%BE%E8%B7%AF"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">网络接入链路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">网络接入方式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#section"><span class="toc-nav-number">1.2.3.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E6%A0%B8%E5%BF%83"><span class="toc-nav-number">1.2.4.</span> <span class="toc-nav-text">网络核心</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E7%9B%B8%E5%85%B3"><span class="toc-nav-number">1.2.5.</span> <span class="toc-nav-text">计算相关</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%88%86%E5%B1%82%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.2.6.</span> <span class="toc-nav-text">分层体系结构</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0%E5%BA%94%E7%94%A8%E5%B1%82"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">第二章应用层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E7%9A%84%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">应用层的体系结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#cs-%E5%92%8C-p2p"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">C&#x2F;S 和 P2P</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%BF%9B%E7%A8%8B%E6%A0%87%E8%AF%86"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">进程标识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#dns"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">DNS</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dns%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-nav-number">2.3.1.</span> <span class="toc-nav-text">DNS服务器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dns%E5%90%8D%E5%AD%97%E8%A7%A3%E6%9E%90"><span class="toc-nav-number">2.3.2.</span> <span class="toc-nav-text">DNS名字解析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E8%BF%AD%E4%BB%A3%E6%9F%A5%E8%AF%A2"><span class="toc-nav-number">2.3.2.1.</span> <span class="toc-nav-text">迭代查询</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%80%92%E5%BD%92%E6%9F%A5%E8%AF%A2"><span class="toc-nav-number">2.3.2.2.</span> <span class="toc-nav-text">递归查询</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dns%E5%8D%8F%E8%AE%AE%E6%B6%88%E6%81%AF"><span class="toc-nav-number">2.3.3.</span> <span class="toc-nav-text">DNS协议消息</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#www%E4%B8%8Ehttp"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">WWW与HTTP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#http%E8%BF%9E%E6%8E%A5"><span class="toc-nav-number">2.4.1.</span> <span class="toc-nav-text">HTTP连接</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#image-20230421102029815"><span class="toc-nav-number">2.4.1.1.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#rttround-trip-time%E5%BE%80%E8%BF%94%E6%97%B6%E9%97%B4"><span class="toc-nav-number">2.4.1.2.</span> <span class="toc-nav-text">RTT(Round Trip Time)往返时间</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#http%E6%B6%88%E6%81%AF"><span class="toc-nav-number">2.4.1.3.</span> <span class="toc-nav-text">HTTP消息</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#email"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">Email</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#email%E8%BF%87%E7%A8%8B"><span class="toc-nav-number">2.5.1.</span> <span class="toc-nav-text">Email过程</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">2.5.2.</span> <span class="toc-nav-text">通信协议</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mime"><span class="toc-nav-number">2.5.2.1.</span> <span class="toc-nav-text">MIME</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#base64"><span class="toc-nav-number">2.5.2.2.</span> <span class="toc-nav-text">Base64</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ssl%E5%8D%8F%E8%AE%AE-%E4%B8%BAsmtp-%E4%B8%8Epop3%E6%8F%90%E4%BE%9B%E5%AE%89%E5%85%A8%E4%BC%A0%E8%BE%93"><span class="toc-nav-number">2.5.2.3.</span> <span class="toc-nav-text">SSL协议 为SMTP
+与POP3提供安全传输</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ftp"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">FTP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%A4%E4%B8%AAtcp%E8%BF%9E%E6%8E%A5"><span class="toc-nav-number">2.6.1.</span> <span class="toc-nav-text">两个TCP连接</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#telnet"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">Telnet</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nvt%E6%A0%BC%E5%BC%8F"><span class="toc-nav-number">2.7.1.</span> <span class="toc-nav-text">NVT格式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%AC%E7%AB%A0%E9%87%8D%E7%82%B9"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">本章重点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">第三章传输层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">传输层</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%8D%E7%94%A8%E4%B8%8E%E8%A7%A3%E5%A4%8D%E7%94%A8"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">复用与解复用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93-rdt"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">可靠数据传输 RDT</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">3.3.1.</span> <span class="toc-nav-text">数据传输协议</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%87%BA%E9%94%99%E4%B8%A2%E5%A4%B1%E5%A4%84%E7%90%86"><span class="toc-nav-number">3.3.2.</span> <span class="toc-nav-text">出错，丢失处理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-nav-number">3.3.3.</span> <span class="toc-nav-text">计算性能指标！</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%80%E6%AC%A1%E4%BC%A0%E8%BE%93"><span class="toc-nav-number">3.3.3.1.</span> <span class="toc-nav-text">一次传输</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BF%A1%E9%81%93%E5%88%A9%E7%94%A8%E7%8E%87-%E5%8F%91%E9%80%81%E6%97%B6%E9%97%B4%E6%88%90%E5%8A%9F%E4%BC%A0%E8%BE%93%E6%80%BB%E6%97%B6%E9%97%B4"><span class="toc-nav-number">3.3.3.2.</span> <span class="toc-nav-text">信道利用率
+：发送时间&#x2F;成功传输总时间</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF"><span class="toc-nav-number">3.3.4.</span> <span class="toc-nav-text">流水线</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%BF%9E%E7%BB%ADarq%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">3.3.5.</span> <span class="toc-nav-text">连续ARQ协议</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%9B%9E%E9%80%80n%E6%AD%A5%E5%8D%8F%E8%AE%AE-go-back-n"><span class="toc-nav-number">3.3.5.1.</span> <span class="toc-nav-text">回退N步协议 ： Go-Back-N</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">3.3.6.</span> <span class="toc-nav-text">选择重传协议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#udp"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">UDP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#udp%E7%9A%84%E6%95%B0%E6%8D%AE%E6%8A%A5%E6%A0%BC%E5%BC%8F"><span class="toc-nav-number">3.4.1.</span> <span class="toc-nav-text">UDP的数据报格式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A0%A1%E9%AA%8C%E5%92%8C"><span class="toc-nav-number">3.4.1.1.</span> <span class="toc-nav-text">校验和:</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#tcp"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">TCP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8A%A5%E6%96%87%E6%AE%B5"><span class="toc-nav-number">3.5.1.</span> <span class="toc-nav-text">报文段</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tcp%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E7%A4%BA%E4%BE%8B"><span class="toc-nav-number">3.5.2.</span> <span class="toc-nav-text">TCP连接建立示例</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tcp%E8%BF%9E%E6%8E%A5%E9%87%8A%E6%94%BE"><span class="toc-nav-number">3.5.3.</span> <span class="toc-nav-text">TCP连接释放</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E4%BE%8B%E9%A2%98"><span class="toc-nav-number">3.5.3.1.</span> <span class="toc-nav-text">建立连接例题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8A%A8%E6%80%81%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-nav-number">3.5.4.</span> <span class="toc-nav-text">动态滑动窗口</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tcp%E7%8E%AF%E5%A2%83%E4%B8%8Brto%E7%9A%84%E4%BC%B0%E8%AE%A1"><span class="toc-nav-number">3.5.5.</span> <span class="toc-nav-text">TCP环境下RTO的估计</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tcp%E7%9A%84%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6"><span class="toc-nav-number">3.5.6.</span> <span class="toc-nav-text">TCP的流量控制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8F%90%E9%AB%98%E6%95%88%E7%8E%87"><span class="toc-nav-number">3.5.7.</span> <span class="toc-nav-text">提高效率</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6"><span class="toc-nav-number">3.5.8.</span> <span class="toc-nav-text">拥塞控制</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%85%A2%E5%90%AF%E5%8A%A8%E9%98%B6%E6%AE%B5ss"><span class="toc-nav-number">3.5.8.1.</span> <span class="toc-nav-text">1.慢启动阶段SS</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8B%A5%E5%A1%9E%E9%81%BF%E5%85%8D%E9%98%B6%E6%AE%B5ca"><span class="toc-nav-number">3.5.8.2.</span> <span class="toc-nav-text">2.拥塞避免阶段CA</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%87%BA%E7%8E%B0%E6%95%B0%E6%8D%AE%E4%B8%A2%E5%A4%B1-md"><span class="toc-nav-number">3.5.8.3.</span> <span class="toc-nav-text">3.出现数据丢失 MD</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">第四章网络层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E7%AE%97%E6%B3%95%E8%B7%AF%E7%94%B1%E8%A1%A8%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">路由选择算法（路由表的由来）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B7%9D%E7%A6%BB%E7%9F%A2%E9%87%8F%E9%80%89%E8%B7%AF%E7%AE%97%E6%B3%95dvr"><span class="toc-nav-number">4.1.1.</span> <span class="toc-nav-text">距离矢量选路算法DVR</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%93%BE%E8%B7%AF%E7%8A%B6%E6%80%81%E9%80%89%E8%B7%AF%E7%AE%97%E6%B3%95-lsr-spf"><span class="toc-nav-number">4.1.2.</span> <span class="toc-nav-text">链路状态选路算法 LSR 、SPF</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">网络层协议</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ip%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">4.2.1.</span> <span class="toc-nav-text">IP地址</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AD%90%E7%BD%91"><span class="toc-nav-number">4.2.2.</span> <span class="toc-nav-text">子网</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81"><span class="toc-nav-number">4.2.3.</span> <span class="toc-nav-text">子网掩码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B6%85%E7%BD%91"><span class="toc-nav-number">4.2.4.</span> <span class="toc-nav-text">超网</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%A0%E7%B1%BB%E5%88%AB%E5%9C%B0%E5%9D%80-cidr"><span class="toc-nav-number">4.2.5.</span> <span class="toc-nav-text">无类别地址 CIDR</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#nat"><span class="toc-nav-number">4.2.6.</span> <span class="toc-nav-text">NAT</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ip"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">IP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dhcp"><span class="toc-nav-number">4.3.1.</span> <span class="toc-nav-text">DHCP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ip%E5%8C%85"><span class="toc-nav-number">4.3.1.1.</span> <span class="toc-nav-text">IP包</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E6%9E%84%E6%88%90"><span class="toc-nav-number">4.3.1.1.1.</span> <span class="toc-nav-text">构成</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#icmp"><span class="toc-nav-number">4.3.1.2.</span> <span class="toc-nav-text">ICMP</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E9%80%89%E8%B7%AF%E4%BD%93%E7%B3%BB"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">因特网的选路体系</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%A4%E7%B1%BB%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">4.4.1.</span> <span class="toc-nav-text">两类路由选择协议</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.4.1.1.</span> <span class="toc-nav-text">算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#rip"><span class="toc-nav-number">4.4.1.1.1.</span> <span class="toc-nav-text">RIP</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#ospf"><span class="toc-nav-number">4.4.1.1.2.</span> <span class="toc-nav-text">OSPF</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#bgp"><span class="toc-nav-number">4.4.1.1.3.</span> <span class="toc-nav-text">BGP</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%BB%84%E6%92%AD"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">组播</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%84%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">4.5.1.</span> <span class="toc-nav-text">组播地址</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#igmp"><span class="toc-nav-number">4.5.2.</span> <span class="toc-nav-text">IGMP</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82%E7%BB%84%E6%92%AD"><span class="toc-nav-number">4.5.3.</span> <span class="toc-nav-text">(应用层组播)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="toc-nav-number">4.6.</span> <span class="toc-nav-text">路由器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%98%9F%E5%88%97%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-nav-number">4.6.1.</span> <span class="toc-nav-text">队列调度算法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%B7%AF%E7%94%B1%E8%A1%A8"><span class="toc-nav-number">4.6.2.</span> <span class="toc-nav-text">路由表</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ipv6"><span class="toc-nav-number">4.7.</span> <span class="toc-nav-text">IPv6</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ipv6%E4%B8%8Eipv4%E7%9A%84%E4%BA%92%E9%80%9A"><span class="toc-nav-number">4.7.1.</span> <span class="toc-nav-text">IPv6与IPv4的互通</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-nav-number">4.8.</span> <span class="toc-nav-text">第五章 数据链路层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82"><span class="toc-nav-number">4.8.1.</span> <span class="toc-nav-text">为什么需要数据链路层？</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-nav-number">4.8.2.</span> <span class="toc-nav-text">主要功能</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%9C%8D%E5%8A%A1"><span class="toc-nav-number">4.8.3.</span> <span class="toc-nav-text">服务</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">4.8.4.</span> <span class="toc-nav-text">概念</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%92%8C%E5%B8%A7"><span class="toc-nav-number">4.8.4.1.</span> <span class="toc-nav-text">数据链路和帧</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%88%90%E5%B8%A7"><span class="toc-nav-number">4.8.5.</span> <span class="toc-nav-text">成帧</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%88%90%E5%B8%A7%E6%96%B9%E6%B3%95"><span class="toc-nav-number">4.8.5.1.</span> <span class="toc-nav-text">成帧方法</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B7%AE%E9%94%99%E6%8E%A7%E5%88%B6"><span class="toc-nav-number">4.8.6.</span> <span class="toc-nav-text">差错控制</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B7%AE%E9%94%99%E7%BA%A0%E6%AD%A3%E6%96%B9%E6%B3%95"><span class="toc-nav-number">4.8.7.</span> <span class="toc-nav-text">差错纠正方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80mac"><span class="toc-nav-number">4.8.8.</span> <span class="toc-nav-text">物理地址MAC</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#arp"><span class="toc-nav-number">4.8.8.1.</span> <span class="toc-nav-text">ARP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#arp%E7%BC%93%E5%AD%98%E8%A1%A8"><span class="toc-nav-number">4.8.8.1.1.</span> <span class="toc-nav-text">ARP缓存表</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B8%A7%E7%BB%93%E6%9E%84"><span class="toc-nav-number">4.8.9.</span> <span class="toc-nav-text">帧结构</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hdlc%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">4.8.9.1.</span> <span class="toc-nav-text">HDLC协议</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#ppp%E5%8D%8F%E8%AE%AE"><span class="toc-nav-number">4.8.9.2.</span> <span class="toc-nav-text">PPP协议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#arp%E6%AC%BA%E9%AA%97"><span class="toc-nav-number">4.8.10.</span> <span class="toc-nav-text">ARP欺骗</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E5%B1%80%E5%9F%9F%E7%BD%91lan"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">第六章 局域网（LAN）</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#llc%E5%AD%90%E5%B1%82%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-nav-number">5.0.0.1.</span> <span class="toc-nav-text">LLC子层的功能</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mac%E5%AD%90%E5%B1%82%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-nav-number">5.0.0.2.</span> <span class="toc-nav-text">MAC子层的功能</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%8B%E8%B4%A8%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6mac%E6%96%B9%E6%B3%95"><span class="toc-nav-number">5.0.1.</span> <span class="toc-nav-text">介质访问控制（MAC）方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BB%A5%E5%A4%AA%E7%BD%91"><span class="toc-nav-number">5.0.2.</span> <span class="toc-nav-text">以太网</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#mac%E5%8D%8F%E8%AE%AE%E8%A6%81%E7%82%B9"><span class="toc-nav-number">5.0.2.1.</span> <span class="toc-nav-text">MAC协议要点</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%A0%E7%BA%BF%E5%B1%80%E5%9F%9F%E7%BD%91wlan"><span class="toc-nav-number">5.0.3.</span> <span class="toc-nav-text">无线局域网（WLAN）</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%BA%92%E8%BF%9E%E8%AE%BE%E5%A4%87"><span class="toc-nav-number">5.0.4.</span> <span class="toc-nav-text">数据链路层互连设备</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BD%91%E6%A1%A5%E4%B8%8E%E4%BA%A4%E6%8D%A2%E6%9C%BA"><span class="toc-nav-number">5.0.4.1.</span> <span class="toc-nav-text">网桥与交换机</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%89%A9%E7%90%86%E5%B1%82"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">第七章物理层</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A6%82%E5%BF%B5-1"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">概念</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9C%80%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%87%E4%BF%A1%E9%81%93%E5%AE%B9%E9%87%8F%E5%85%AC%E5%BC%8F"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">最大数据率（信道容量）公式</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF%E5%92%8C%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">调制技术和编码技术</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E8%B0%83%E5%88%B6%E6%96%B9%E6%B3%95"><span class="toc-nav-number">6.3.1.</span> <span class="toc-nav-text">多级调制方法</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%95%B0%E5%AD%97%E6%95%B0%E6%8D%AE%E7%BC%96%E7%A0%81%E6%8A%80%E6%9C%AF"><span class="toc-nav-number">6.3.2.</span> <span class="toc-nav-text">数字数据编码技术</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%84%89%E5%86%B2%E7%BC%96%E7%A0%81%E8%B0%83%E5%88%B6pcm"><span class="toc-nav-number">6.3.3.</span> <span class="toc-nav-text">脉冲编码调制PCM</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9nyquest%E9%87%87%E6%A0%B7%E5%AE%9A%E7%90%86"><span class="toc-nav-number">6.3.3.1.</span> <span class="toc-nav-text">奈奎斯特（Nyquest）采样定理</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%8D%E7%94%A8"><span class="toc-nav-number">6.4.</span> <span class="toc-nav-text">复用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%91%E5%88%86%E5%A4%8D%E7%94%A8fdm"><span class="toc-nav-number">6.4.1.</span> <span class="toc-nav-text">频分复用FDM</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B3%A2%E5%88%86%E5%A4%8D%E7%94%A8wdm"><span class="toc-nav-number">6.4.2.</span> <span class="toc-nav-text">波分复用WDM</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%8C%89%E7%85%A7%E6%B3%A2%E9%95%BF%E5%88%92%E5%88%86%E5%AD%90%E4%BF%A1%E9%81%93"><span class="toc-nav-number">6.4.2.1.</span> <span class="toc-nav-text">按照波长划分子信道</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8tdm"><span class="toc-nav-number">6.4.3.</span> <span class="toc-nav-text">时分复用TDM</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%90%8C%E6%AD%A5%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8%E7%A4%BA%E4%BE%8Be1%E5%B8%A7"><span class="toc-nav-number">6.4.4.</span> <span class="toc-nav-text">同步时分复用示例：E1帧</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%90%8C%E6%AD%A5%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8%E7%9A%84%E4%B8%8D%E8%B6%B3"><span class="toc-nav-number">6.4.4.1.</span> <span class="toc-nav-text">同步时分复用的不足</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BB%9F%E8%AE%A1%E6%97%B6%E5%88%86%E5%A4%8D%E7%94%A8stdm"><span class="toc-nav-number">6.4.4.2.</span> <span class="toc-nav-text">统计时分复用STDM</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82%E4%BA%92%E8%BF%9E%E8%AE%BE%E5%A4%87"><span class="toc-nav-number">6.5.</span> <span class="toc-nav-text">物理层互连设备</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%AD%E7%BB%A7%E5%99%A8"><span class="toc-nav-number">6.5.0.1.</span> <span class="toc-nav-text">中继器</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#hub%E9%9B%86%E7%BA%BF%E5%99%A8"><span class="toc-nav-number">6.5.0.2.</span> <span class="toc-nav-text">HUB（集线器）</span></a></li></ol></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">总结</span></a></li></ol>
         
         </div>
       </aside>

