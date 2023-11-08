@@ -111,10 +111,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://sagiring.github.io/cn/Sagiring_markdown/杂七杂八/">
+  <link rel="canonical" href="https://sagiring.github.io/cn/Sagiring_markdown/pwntools - ROP类/">
   <title>
     
-      杂七杂八 - 茗茗之中的blog
+      pwntools - ROP类 - 茗茗之中的blog
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -320,19 +320,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: url('my_love1.png');
-      --intro-header-background-image-url-page: url('/my_love1.png');
+      --intro-header-background-image-url-post: url('my_love.png');
+      --intro-header-background-image-url-page: url('/my_love.png');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('my_love1.png');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/my_love1.png');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('my_love.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/my_love.png');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('my_love1.png'); */
+        /* background-image: url('my_love.png'); */
       
     }
 
@@ -356,11 +356,11 @@
               <a class="tag" href="/tags/#pwn" title="pwn">pwn</a>
               
             </div>
-            <h1>杂七杂八</h1>
+            <h1>pwntools - ROP类</h1>
             <h2 class="subheading"></h2>
             <span class="meta">
               Posted by 茗 on
-              2023-03-01
+              2023-11-08
             </span>
 
 
@@ -368,11 +368,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">1</span> Minutes
+              Estimated Reading Time <span class="post-count">3</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">399</span> In Total
+              Words <span class="post-count">579</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,68 +420,132 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="杂七杂八">杂七杂八</h1>
-<h2 id="strcmp作条件的绕过">Strcmp（）作条件的绕过</h2>
-<p>利用"\0"作为比较的第一个字符</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108093132384-1667871106786-1.png" alt="image-20221108093132384-1667871106786-1">
-<figcaption aria-hidden="true">image-20221108093132384-1667871106786-1</figcaption>
-</figure>
-<pre><code class="hljs python">r.sendlineafter(<span class="hljs-string">b&quot;Enter your flag:\n&quot;</span>,<span class="hljs-string">&#x27;\0&#x27;</span>)</code></pre>
-<p>my_read读入”\0“到s1跳过判断直接到后门函数。</p>
-<h1 id="ctf-all-in-one--firmianay">CTF All In One--firmianay</h1>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108230123280.png" alt="image-20221108230123280">
-<figcaption aria-hidden="true">image-20221108230123280</figcaption>
-</figure>
-<p>讲的特别详细 但是许多地方还看不明白 还在研究</p>
-<h2 id="格式化字符串">格式化字符串</h2>
-<p>格式字符串漏洞发生的条件就是格式字符串要求的参数和实际提供的参数不匹配。</p>
-<p>提供的参数可以手动输入</p>
-<h3 id="作用">作用</h3>
-<p>栈中数据，内存数据</p>
-<p>推算函数地址.....（补原理）</p>
-<h2 id="rop的学习理清了很多概念">ROP的学习(理清了很多概念)</h2>
-<p>返回导向编程（Return-Oriented Programming，缩写：ROP）</p>
-<p>==&gt;ROP Emporium&lt;==平台</p>
-<p>很好的平台，提供了难度逐渐上涨的rop题</p>
-<p>1.ret2text</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108225923088.png" alt="image-20221108225923088">
-<figcaption aria-hidden="true">image-20221108225923088</figcaption>
-</figure>
-<p>通过read读入一定数量的字符填满缓冲区，然后是 ROP
-链，通过覆盖栈上保存的返回地址（关了PIE）来实现函数跳转到后门函数中。这种类型的ROP名称叫ret2text.</p>
-<p>2.ret2text</p>
-<p>同样的溢出覆盖栈上地址，不过后门函数不能打印出flag。但是知道了system的函数地址</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108231326138.png" alt="image-20221108231326138">
-<figcaption aria-hidden="true">image-20221108231326138</figcaption>
-</figure>
-<p>又在.data段找到了一串字符</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108231716296.png" alt="image-20221108231716296">
-<figcaption aria-hidden="true">image-20221108231716296</figcaption>
-</figure>
-<p>刚好可以搭配system函数拿到flag，利用这两个地址（关了PIE）。所以这种方法称作ret2libc。做到这里拿到了flag但是原理还不是太明晰。</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/image-20221108232130457.png" alt="image-20221108232130457">
-<figcaption aria-hidden="true">image-20221108232130457</figcaption>
-</figure>
-<p>System()的两个地址：</p>
-<p>1.直接调用地址 （）</p>
-<p>2.System()的.plt地址</p>
-<p>学习plt延迟绑定机制（动态链接）</p>
+        <h1 id="pwntools---rop类">pwntools - ROP类</h1>
+<p>为了更好，更快的构造rop-payload。研究一下用法</p>
+<h2 id="常用">常用</h2>
+<ul>
+<li>创建ROP类实例</li>
+</ul>
+<p>贴一下ROP类的注释</p>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108173541810.png"></p>
+<p>简单的创建</p>
+<pre><code class="hljs python">rop = ROP([elf1,elf2,...]) 
+<span class="hljs-comment">#base rop.base </span>
+<span class="hljs-comment">#badchars</span></code></pre>
+<ul>
+<li>直接调用函数</li>
+</ul>
+<pre><code class="hljs python">rop = ROP(libc) <span class="hljs-comment">#自动加载ELF类的base</span>
+rop.base = orw_addr + <span class="hljs-number">0x8</span> <span class="hljs-comment">#添加rop的所在地址，方便字符串的传入</span>
+rop.<span class="hljs-built_in">open</span>(<span class="hljs-string">b&#x27;flag&#x27;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>) <span class="hljs-comment">#直接向rop类中添加函数</span>
+rop.read(<span class="hljs-number">3</span>,heap_base+<span class="hljs-number">0x200</span>,<span class="hljs-number">0x20</span>)
+rop.write(<span class="hljs-number">1</span>,heap_base+<span class="hljs-number">0x200</span>,<span class="hljs-number">0x20</span>)</code></pre>
+<ul>
+<li><p><code>rop.dump()</code></p>
+<p>可视化输出构造的rop的str</p>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174512886.png"></p></li>
+</ul>
+<pre><code class="hljs python">info(rop.dump())</code></pre>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174241740.png"></p>
+<h2 id="交互">交互</h2>
+<ul>
+<li><p>rop.chain()</p>
+<p>输出rop的bytes</p></li>
+</ul>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174600420.png"></p>
+<pre><code class="hljs python">r.send(rop.chain())
+<span class="hljs-comment">#交互</span></code></pre>
+<ul>
+<li><p>rop.build()</p>
+<pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">build</span>(<span class="hljs-params">self, base = <span class="hljs-literal">None</span>, description = <span class="hljs-literal">None</span></span>):
+<span class="hljs-comment">#Construct the ROP chain into a list of elements which can be passed to :func:.flat.</span></code></pre>
+<pre><code class="hljs python">rop.build()</code></pre>
+<p>flat交互</p></li>
+<li><p>rop.raw()</p>
+<p>手动添加数据进rop链</p>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174930111.png"></p>
+<pre><code class="hljs python">rop.raw(<span class="hljs-string">b&#x27;A&#x27;</span>*<span class="hljs-number">0x8</span> + p64(<span class="hljs-number">0x2333333</span>)) 
+<span class="hljs-comment">#[*] 0x0000:          b&#x27;AAAA&#x27; b&#x27;AAAAAAAA333\x02\x00\x00\x00\x00&#x27;</span>
+<span class="hljs-comment">#    0x0004:          b&#x27;AAAA&#x27;</span>
+<span class="hljs-comment">#    0x0008:       b&#x27;333\x02&#x27;</span>
+<span class="hljs-comment">#    0x000c: b&#x27;\x00\x00\x00\x00&#x27;</span></code></pre>
+<pre><code class="hljs python">rop.raw(<span class="hljs-string">b&#x27;A&#x27;</span>*<span class="hljs-number">0x8</span>)
+rop.call(<span class="hljs-number">0x2333333</span>)
+<span class="hljs-comment">#[*] 0x0000:          b&#x27;AAAA&#x27; b&#x27;AAAAAAAA&#x27;</span>
+<span class="hljs-comment">#    0x0004:          b&#x27;AAAA&#x27;</span>
+<span class="hljs-comment">#    0x0008:        0x2333333 0x2333333()</span></code></pre>
+<p>效果</p>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108175101858.png"></p></li>
+</ul>
+<h2 id="杂项">杂项</h2>
+<ul>
+<li><p>关于寄存器</p>
+<pre><code class="hljs python">info(rop.rdi)
+<span class="hljs-comment">#[*] Gadget(0x2858f, [&#x27;pop rdi&#x27;, &#x27;ret&#x27;], [&#x27;rdi&#x27;], 0x8)</span></code></pre>
+<pre><code class="hljs python">info(rop.rdi[<span class="hljs-number">0</span>])
+<span class="hljs-comment">#[*] 165263</span></code></pre>
+<pre><code class="hljs python"><span class="hljs-comment">#&gt;&gt;&gt; r = ROP(e)</span>
+<span class="hljs-comment">#&gt;&gt;&gt; r(&#123;&#x27;rax&#x27;: 0xdead, &#x27;rdi&#x27;: 0xbeef, &#x27;rsi&#x27;: 0xcafe&#125;)</span>
+<span class="hljs-comment">#&gt;&gt;&gt; print(r.dump())</span></code></pre></li>
+<li><p>关于函数</p>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108182005503.png"></p>
+<pre><code class="hljs python">rop.resolve(<span class="hljs-string">&#x27;read&#x27;</span>) 
+<span class="hljs-comment">#[*] 4436</span></code></pre>
+<pre><code class="hljs python">info(rop.unresolve(<span class="hljs-number">4436</span>))
+<span class="hljs-comment">#[*] read</span></code></pre>
+<ul>
+<li>杂项</li>
+</ul>
+<pre><code class="hljs python">rop.migrate(<span class="hljs-number">0x233</span>)
+<span class="hljs-comment">#[*] 0x0000:          0x3418a pop rsp; ret</span>
+<span class="hljs-comment">#    0x0004:            0x233</span></code></pre>
+<pre><code class="hljs python"><span class="hljs-comment">#[*] 0x0000:           0x1273 pop rbp; ret</span>
+<span class="hljs-comment">#    0x0004:            0x22f</span>
+<span class="hljs-comment">#    0x0008:           0x13c0 leave; ret</span></code></pre>
+<p>如果要使用函数rbp + leave的话，个人觉得不是很好用</p>
+<pre><code class="hljs python">rop.call(<span class="hljs-number">0x233</span>)
+<span class="hljs-comment">#[*] 0x0000:            0x233 0x233()</span></code></pre>
+<p>添加地址进rop链</p>
+<pre><code class="hljs python">rop.find_gadget([<span class="hljs-string">&#x27;leave&#x27;</span>,<span class="hljs-string">&#x27;ret&#x27;</span>])
+<span class="hljs-comment">#[*] Gadget(0x13c0, [&#x27;leave&#x27;, &#x27;ret&#x27;], [&#x27;ebp&#x27;, &#x27;esp&#x27;], 0x2540be403)</span></code></pre>
+<p>像ropgadget的查询</p>
+<pre><code class="hljs python">rop.setRegisters(&#123;&#123;<span class="hljs-string">&#x27;rax&#x27;</span>: <span class="hljs-number">0xdead</span>, <span class="hljs-string">&#x27;rdi&#x27;</span>: <span class="hljs-number">0xbeef</span>, <span class="hljs-string">&#x27;rsi&#x27;</span>: <span class="hljs-number">0xcafe</span>&#125;&#125;)</code></pre>
+<p>设置寄存器</p>
+<pre><code class="hljs python">rop.seach()
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">search</span>(<span class="hljs-params">self, move = <span class="hljs-number">0</span>, regs = <span class="hljs-literal">None</span>, order = <span class="hljs-string">&#x27;size&#x27;</span></span>):
+        <span class="hljs-string">&quot;&quot;&quot;Search for a gadget which matches the specified criteria.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        Arguments:</span>
+<span class="hljs-string">            move(int): Minimum number of bytes by which the stack</span>
+<span class="hljs-string">                pointer is adjusted.</span>
+<span class="hljs-string">            regs(list): Minimum list of registers which are popped off the</span>
+<span class="hljs-string">                stack.</span>
+<span class="hljs-string">            order(str): Either the string &#x27;size&#x27; or &#x27;regs&#x27;. Decides how to</span>
+<span class="hljs-string">                order multiple gadgets the fulfill the requirements.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        The search will try to minimize the number of bytes popped more than</span>
+<span class="hljs-string">        requested, the number of registers touched besides the requested and</span>
+<span class="hljs-string">        the address.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        If ``order == &#x27;size&#x27;``, then gadgets are compared lexicographically</span>
+<span class="hljs-string">        by ``(total_moves, total_regs, addr)``, otherwise by ``(total_regs, total_moves, addr)``.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string">        Returns:</span>
+<span class="hljs-string">            A :class:`.Gadget` object</span>
+<span class="hljs-string">        &quot;&quot;&quot;</span></code></pre></li>
+</ul>
+<p>最近研究到就大概就这么多，欢迎纠错补充。</p>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/cn/Sagiring_markdown/栈迁移的学习/" data-toggle="tooltip" data-placement="top" title="栈迁移的学习">&larr; Previous Post</a>
-          </li>
           
+          <li class="next">
+            <a href="/cn/Sagiring_markdown/House of cat/" data-toggle="tooltip" data-placement="top" title="House of cat">Next Post &rarr;</a>
+          </li>
           
         </ul>
 
@@ -529,7 +593,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=杂七杂八&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/Sagiring_markdown/杂七杂八/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=pwntools - ROP类&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/Sagiring_markdown/pwntools - ROP类/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -564,7 +628,7 @@
       repo: 'Sagiring.github.io',
       owner: 'Sagiring',
       admin: 'Sagiring',
-      id: 'Wed Mar 01 2023 11:46:16 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Wed Nov 08 2023 11:14:00 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -617,7 +681,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">杂七杂八</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#strcmp%E4%BD%9C%E6%9D%A1%E4%BB%B6%E7%9A%84%E7%BB%95%E8%BF%87"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Strcmp（）作条件的绕过</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#ctf-all-in-one--firmianay"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">CTF All In One--firmianay</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">格式化字符串</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">作用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#rop%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%90%86%E6%B8%85%E4%BA%86%E5%BE%88%E5%A4%9A%E6%A6%82%E5%BF%B5"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">ROP的学习(理清了很多概念)</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#pwntools---rop%E7%B1%BB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pwntools - ROP类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B8%B8%E7%94%A8"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">常用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%A4%E4%BA%92"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">交互</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9D%82%E9%A1%B9"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">杂项</span></a></li></ol></li></ol>
         
         </div>
       </aside>
