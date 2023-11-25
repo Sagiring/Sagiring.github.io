@@ -216,6 +216,28 @@
 
           
           
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
           
           
           <li>
@@ -230,31 +252,9 @@
           
           
           <li>
-            <a href="/about/">
-              
-              关于
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/categories/">
               
               分类
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/tags/">
-              
-              标签
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">323</span> In Total
+              Words <span class="post-count">327</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,58 +420,61 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1><code>pwn</code>环境搭建</h1>
+        <h1 id="pwn环境搭建"><code>pwn</code>环境搭建</h1>
 <p>新弄了台机子，重新搭下环境，整理一下各种工具。</p>
 <h2 id="pwntools">pwntools</h2>
-<pre><code class="hljs vim">sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-keyword">update</span>
-sudo apt-<span class="hljs-built_in">get</span> install <span class="hljs-keyword">python3</span> <span class="hljs-keyword">python3</span>-pip <span class="hljs-keyword">python3</span>-dev git libssl-dev libffi-dev build-essential
-sudo <span class="hljs-keyword">python3</span> -<span class="hljs-keyword">m</span> pip install --upgrade pip
-sudo <span class="hljs-keyword">python3</span> -<span class="hljs-keyword">m</span> pip install --upgrade pwntools</code></pre>
+<pre><code>sudo apt-get update
+sudo apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
+sudo python3 -m pip install --upgrade pip
+sudo python3 -m pip install --upgrade pwntools</code></pre>
 <p>学习了下ROP类的用法</p>
-<pre><code class="hljs python">elf = ELF(<span class="hljs-string">&#x27;./pwn&#x27;</span>)
-payload = ROP(elf)
-payload.puts(elf.got[<span class="hljs-string">&#x27;puts&#x27;</span>])
-payload.raw(ret)
-
-payload.elfs.append()
-payload = ROP(elf)
-payload.raw(<span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">0x30</span> + p64(stack -<span class="hljs-number">8</span>)+p64(payload.leave[<span class="hljs-number">0</span>]))</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>elf <span class="op">=</span> ELF(<span class="st">&#39;./pwn&#39;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> ROP(elf)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>payload.puts(elf.got[<span class="st">&#39;puts&#39;</span>])</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>payload.raw(ret)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>payload.elfs.append()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> ROP(elf)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>payload.raw(<span class="st">b&#39;A&#39;</span><span class="op">*</span> <span class="bn">0x30</span> <span class="op">+</span> p64(stack <span class="op">-</span><span class="dv">8</span>)<span class="op">+</span>p64(payload.leave[<span class="dv">0</span>]))</span></code></pre></div>
 <h2 id="pwndbg">pwndbg</h2>
-<pre><code class="hljs bash">sudo apt-get install gdb
-git <span class="hljs-built_in">clone</span> https://github.com/pwndbg/pwndbg
-<span class="hljs-built_in">cd</span> pwndbg
-./setup.sh</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install gdb</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/pwndbg/pwndbg</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> pwndbg</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./setup.sh</span></span></code></pre></div>
 <p>安装完成后可能会报错</p>
-<p><img src="/cn/Sagiring_markdown/pwn%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20231020204208385.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/pwn%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20231020204208385.png"></p>
 <p>利用 <code>code /mnt/c/Study_Code/pwndbg/pwndbg/memoize.py</code></p>
 <p>修改</p>
-<p><img src="/cn/Sagiring_markdown/pwn%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20231020204314337.png" alt="已修改过"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/pwn%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/image-20231020204314337.png" alt="已修改过">
+<figcaption aria-hidden="true">已修改过</figcaption>
+</figure>
 <p><code>collections.Hashable --&gt; collections.abc.Hashable</code></p>
 <p>即可</p>
-<h2 id="LibcSearcher">LibcSearcher</h2>
-<pre><code class="hljs bash">pip3 install LibcSearcher</code></pre>
+<h2 id="libcsearcher">LibcSearcher</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip3</span> install LibcSearcher</span></code></pre></div>
 <h2 id="seccomp-tools">seccomp-tools</h2>
-<pre><code class="hljs bash">sudo apt install gcc ruby-dev
-sudo gem install seccomp-tools</code></pre>
-<h2 id="one-gadget">one_gadget</h2>
-<pre><code class="hljs bash">sudo gem install one_gadget</code></pre>
-<pre><code class="hljs bash">Usage: one_gadget &lt;FILE|-b BuildID&gt; [options]
-    -b, --build-id BuildID           BuildID[sha1] of libc.
-    -f, --[no-]force-file            Force search gadgets <span class="hljs-keyword">in</span> file instead of build <span class="hljs-built_in">id</span> first.
-    -l, --level OUTPUT_LEVEL         The output level.
-                                     OneGadget automatically selects gadgets with higher successful probability.
-                                     Increase this level to ask OneGadget show more gadgets it found.
-                                     Default: 0
-    -n, --near FUNCTIONS/FILE        Order gadgets by their distance to the given <span class="hljs-built_in">functions</span> or to the GOT <span class="hljs-built_in">functions</span> of the given file.
-    -r, --[no-]raw                   Output gadgets offset only, <span class="hljs-built_in">split</span> with one space.
-    -s, --script exploit-script      Run exploit script with all possible gadgets.
-                                     The script will be run as <span class="hljs-string">&#x27;exploit-script $offset&#x27;</span>.
-        --info BuildID               Show version information given BuildID.
-        --base BASE_ADDRESS          The base address of libc.
-                                     Default: 0
-        --version                    Current gem version.</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install gcc ruby-dev</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gem install seccomp-tools</span></code></pre></div>
+<h2 id="one_gadget">one_gadget</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> gem install one_gadget</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> one_gadget <span class="op">&lt;</span>FILE<span class="kw">|</span><span class="ex">-b</span> BuildID<span class="op">&gt;</span> <span class="pp">[</span><span class="ss">options</span><span class="pp">]</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-b,</span> <span class="at">--build-id</span> BuildID           BuildID<span class="pp">[</span><span class="ss">sha1</span><span class="pp">]</span> of libc.</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-f,</span> <span class="at">--</span><span class="pp">[</span><span class="ss">no</span><span class="pp">-]</span><span class="at">force-file</span>            Force search gadgets in file instead of build id first.</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-l,</span> <span class="at">--level</span> OUTPUT_LEVEL         The output level.</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="ex">OneGadget</span> automatically selects gadgets with higher successful probability.</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="ex">Increase</span> this level to ask OneGadget show more gadgets it found.</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="ex">Default:</span> 0</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-n,</span> <span class="at">--near</span> FUNCTIONS/FILE        Order gadgets by their distance to the given functions or to the GOT functions of the given file.</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-r,</span> <span class="at">--</span><span class="pp">[</span><span class="ss">no</span><span class="pp">-]</span><span class="at">raw</span>                   Output gadgets offset only, split with one space.</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">-s,</span> <span class="at">--script</span> exploit-script      Run exploit script with all possible gadgets.</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                                     <span class="ex">The</span> script will be run as <span class="st">&#39;exploit-script $offset&#39;</span>.</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>        <span class="ex">--info</span> BuildID               Show version information given BuildID.</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="ex">--base</span> BASE_ADDRESS          The base address of libc.</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>                                     <span class="ex">Default:</span> 0</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        <span class="ex">--version</span>                    Current gem version.</span></code></pre></div>
 <h2 id="glibc-all-in-one">glibc-all-in-one</h2>
-<pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/matrix1001/glibc-all-in-one.git</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/matrix1001/glibc-all-in-one.git</span></code></pre></div>
 
 
         <hr>
@@ -621,7 +624,7 @@ sudo gem install seccomp-tools</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pwn环境搭建</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#pwntools"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">pwntools</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#pwndbg"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">pwndbg</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#LibcSearcher"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">LibcSearcher</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#seccomp-tools"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">seccomp-tools</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#one-gadget"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">one_gadget</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#glibc-all-in-one"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">glibc-all-in-one</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#pwn%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pwn环境搭建</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#pwntools"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">pwntools</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#pwndbg"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">pwndbg</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#libcsearcher"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">LibcSearcher</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#seccomp-tools"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">seccomp-tools</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#one_gadget"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">one_gadget</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#glibc-all-in-one"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">glibc-all-in-one</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1144,6 +1147,14 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<!-- 代码块收缩 -->
 		<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
 		<!-- 代码块折行 -->
+		<!-- <script src="/libs/highlight/highlight.min.js"></script> -->
+<!-- 
+		<script>
+		// hljs.debugMode()
+		// hljs.highlightAll();
+
+		</script> -->
+
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		

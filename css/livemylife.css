@@ -145,6 +145,7 @@ i.mdui-icon.material-icons.bright-mode {
 
 /* tip */
 .tip {
+  display: none;
   color: rgba(51, 51, 51, 0.9);
   text-align: left;
   font-style: italic;
@@ -167,6 +168,7 @@ li.archive-list-item:hover a {
 }
 
 .social-share-ul {
+  display: none;
   margin-top: 40px;
   padding-left: 0px !important;
   margin-bottom: 0px !important;
@@ -527,154 +529,6 @@ li.archive-list-item:hover a {
   list-style: none;
 }
 
-.hljs-operator{
-  color: #ff7b72;
-}
-
-.hljs-keyword{
-  color: #ff7b72;
-}
-.hljs-selector-tag{
-  color: #7ee787;
-}
-.hljs-built_in{
-  color: #79c0ff;
-}
-.hljs-name{
-  color: #ff7b72;
-}
-.hljs-tag {
-  color: #abb2bf!important;
-}
-
-
-
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: .18rem .4rem .22rem;
-  margin: 0;
-  color: #abb2bf!important;
-  background: #3b434d!important;
-  border-radius: 6px;
-  font-family: ui-monospace,
-  Menlo, Monaco,
-  "Cascadia Mono", "Segoe UI Mono",
-  "Roboto Mono",
-  "Oxygen Mono",
-  "Ubuntu Monospace",
-  "Source Code Pro",
-  "Fira Mono",
-  "Droid Sans Mono",
-  "Courier New", monospace;
-  font-size: 15px!important;
-  /* padding: 10px!important; */
-  line-height:25px!important;
-}
-
-.hljs-comment{
-  color: #8b949e;
-	font-style: normal;
-}
-.hljs-quote {
-  color: #a5d6ff;
-}
-
-.hljs-doctag
-.hljs-keyword{
-  color: #ff7b72;
-}
-.hljs-formula {
-  color: #c678dd!important;
-}
-
-.hljs-section,
-.hljs-name{
-  padding: 2px;
-	padding-left: 4px;
-	padding-right: 4px;
-	background-color: rgba(56, 139, 253, 0.1);
-	color: #58a6ff;
-	border-radius: 4px;
-	cursor: pointer;
-}
-.hljs-selector-tag{
-  color: rgb(165, 214, 255);
-}
-.hljs-deletion,
-.hljs-subst {
-  color: #ff7b72;
-}
-
-.hljs-literal {
-  color: #56b6c2!important;
-}
-
-.hljs-string{
-  color: #a5d6ff;
-}
-.hljs-regexp,
-.hljs-addition,
-.hljs-attribute{
-  color: #79c0ff;
-}
-.hljs-meta-string {
-  color: #a5d6ff;
-}
-
-.hljs-built_in{
-  color: #79c0ff;
-}
-.hljs-class .hljs-title {
-  color: #e6c07b!important;
-}
-
-.hljs-attr{
-  color: #79c0ff;
-}
-.hljs-variable{
-  color: #ff7b72;
-}
-.hljs-template-variable{
-  color: #ffa657 !important;
-}
-.hljs-type{
-  color: #ffb86c;
-}
-.hljs-selector-class,
-.hljs-selector-attr{
-  color: #79c0ff;
-}
-.hljs-selector-pseudo,
-.hljs-number {
-  color: #8b949e;
-	font-style: italic;
-}
-
-.hljs-symbol,
-.hljs-bullet,
-.hljs-link{
-  color: #d2a8ff;
-}
-.hljs-meta{
-  color: #8b949e;
-}
-.hljs-selector-id,
-.hljs-title {
-  color: #61aeee!important;
-}
-
-.hljs-emphasis {
-  font-style: italic!important;
-}
-
-.hljs-strong {
-  font-weight: bold!important;
-}
-
-.hljs-link {
-  text-decoration: underline!important;
-}
 
 
 
@@ -721,34 +575,8 @@ pre::before {
   display: block;
 }
 
-pre::after {
-  content: " ";
-  position: absolute;
-  border-radius: 50%;
-  background: #ff5f56;
-  width: 12px;
-  height: 12px;
-  top: 0;
-  left: 12px;
-  margin-top: 12px;
-  -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-  box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-}
 
-code {
-  font-family: ui-monospace,
-		Menlo, Monaco,
-		"Cascadia Mono", "Segoe UI Mono",
-		"Roboto Mono",
-		"Oxygen Mono",
-		"Ubuntu Monospace",
-		"Source Code Pro",
-		"Fira Mono",
-		"Droid Sans Mono",
-		"Courier New", monospace;
-  background:  #3b434d;
-  color: #BC8F8F;
-}
+
 
 .code_copy {
   position: absolute;
@@ -814,6 +642,7 @@ pre[class*="language-"] {
 }
 
 
-
-
+figcaption{
+ display: none;
+}
 
