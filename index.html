@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -241,9 +241,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -412,7 +412,9 @@
       
     </h3>
     <div class="post-content-preview">
-      香山杯决赛Awdp分享ezgame简单栈溢出，改gets，改偏移，加通防，都可以
+      香山杯决赛Awdp分享
+ezgame
+简单栈溢出，改gets，改偏移，加通防，都可以
 from AwdPwnPatcher import *
 elf = AwdPwnPatcher(&#39;./pwn&#39;)
 assembly = &#39;&#39;&#39;
@@ -420,8 +422,7 @@ mov rsi,rdi
 xor rdi,rdi
 mov rdx,1612
 syscall
-&#39;&#39;&#39;
-elf......
+&#39;&#......
     </div>
   </a>
   
@@ -454,8 +455,10 @@ elf......
       
     </h3>
     <div class="post-content-preview">
-      pwntools - ROP类为了更好，更快的构造rop-payload。研究一下用法
+      pwntools - ROP类
+为了更好，更快的构造rop-payload。研究一下用法
 常用
+
 创建ROP类实例
 
 贴一下ROP类的注释
@@ -465,11 +468,10 @@ rop = ROP([elf1,elf2,...])
 #base rop.base 
 #badchars
 
-
 直接调用函数
 
 rop = ROP(libc) #自动加载ELF类的base
-rop.base = orw_addr + 0x8 #......
+rop.base =......
     </div>
   </a>
   
@@ -502,13 +504,18 @@ rop.base = orw_addr + 0x8 #......
       
     </h3>
     <div class="post-content-preview">
-      House of cat复现hgame week4 4nswer’s gift
-题目glibc版本 2.36
+      House of cat
+复现hgame week4 4nswer's gift
+题目
+glibc版本 2.36
+
 程序逻辑
+
 给了_IO_list_all的写入机会，且大小随意指定malloc
-解题思路首先有泄露libc地址。
+解题思路
+首先有泄露libc地址。
 可以向malloc要一块很大的内存，让malloc调用mmap开辟空间。开辟出来的空间与libc偏移一致，fake_io便已知。
-高版本glibc 考虑打house of ......
+高版本gl......
     </div>
   </a>
   
@@ -541,11 +548,16 @@ rop.base = orw_addr + 0x8 #......
       
     </h3>
     <div class="post-content-preview">
-      Setcontext与Magic-Gadget题目在LargebinsAttact与TcachebinsPosioning中基本一样，只是开了沙箱ban了execve。
+      Setcontext与Magic-Gadget
+题目在LargebinsAttact与TcachebinsPosioning中基本一样，只是开了沙箱ban了execve。
+
+
+image-20231103173735695
 
 考虑使用orw，在上一篇的基础上来继续探究如何orw
-方法1考虑使用setcontext，栈迁移rop —glibc2.32
-首先先来看setcontext，以rdx为基地址设置寄存器。注意这里从setcontext + ......
+方法1
+考虑使用setcontext，栈迁移rop --glibc2.32
+首先先来看setco......
     </div>
   </a>
   
@@ -578,9 +590,11 @@ rop.base = orw_addr + 0x8 #......
       
     </h3>
     <div class="post-content-preview">
-      LargebinsAttact与TcachebinsPosioning复现hgame_week3 - large_note
+      LargebinsAttact与TcachebinsPosioning
+复现hgame_week3 - large_note
 环境 glibc-2.32
 题目
+
 看下菜单
 
 Add-note 限制了malloc大小 0x500 - 0x900
@@ -591,7 +605,9 @@ Edit-note 没有限制
 
 Show-note 没有限制
 
- 解题思路目标明确打largebin_attack往......
+
+解题思路
+目......
     </div>
   </a>
   
@@ -624,9 +640,11 @@ Show-note 没有限制
       
     </h3>
     <div class="post-content-preview">
-      Heap利用与TLS-Canary覆盖复现DASCTF Binding。
+      Heap利用与TLS-Canary覆盖
+复现DASCTF Binding。
 感谢翰青师傅的帮助。
-题目堆题 libc-2.31
+题目
+堆题 libc-2.31
 
 功能表
 
@@ -638,7 +656,8 @@ Delet里有UAF
 
 Show里也没有限制
 
-解题准备题目给了配置docker文件夹，只有libc文件，利用glibc-all-in-one查找ld文件,使用patch......
+解题准备
+题目给了配置docker文件夹，只有libc文件，利用glibc-all-......
     </div>
   </a>
   
@@ -671,11 +690,12 @@ Show里也没有限制
       
     </h3>
     <div class="post-content-preview">
-      pwn环境搭建新弄了台机子，重新搭下环境，整理一下各种工具。
-pwntoolssudo apt-get update
+      pwn环境搭建
+新弄了台机子，重新搭下环境，整理一下各种工具。
+pwntools
+sudo apt-get update
 sudo apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
-sudo python3 -m pip install --upgrade pip
-s......
+sudo python3 -m pip install --upgrad......
     </div>
   </a>
   
@@ -708,17 +728,22 @@ s......
       
     </h3>
     <div class="post-content-preview">
-      IO_2_1_stdin 与 bss_formatIO_2_1_stdin附件：
+      IO_2_1_stdin 与
+bss_format
+IO_2_1_stdin
+附件：
+
 bss数组越界
 
 
-flag在内存里，puts +  0x16D2E0的地方（这里F5之后 + 的不对，不知为何）
+flag在内存里，puts +
+0x16D2E0的地方（这里F5之后 +
+的不对，不知为何）
 
 防护全开
 总结一下，给了个bss的任意指针写！考虑打stdout泄露地址
 这里第一次接触_IO_FILE结构，久仰大名了属于是
-pwndbg&gt; ptype stdout
-type = st......
+pwndbg&gt; ptype......
     </div>
   </a>
   
@@ -751,14 +776,14 @@ type = st......
       
     </h3>
     <div class="post-content-preview">
-      堆知识合集一由于许久没有看堆题了，打算多做点题整理整理
+      堆知识合集一
+由于许久没有看堆题了，打算多做点题整理整理
 题目方面主要以hgame和ctf_all_in_one中例题为例子
-chunk结构贴一下学习的师傅文章
+chunk结构
+贴一下学习的师傅文章
 https://www.jianshu.com/p/484926468136
 https://blog.csdn.net/qq_39563369/article/details/103943077
-使用中的chunk
-
-free ch......
+使用中的chunk......
     </div>
   </a>
   
@@ -791,10 +816,14 @@ free ch......
       
     </h3>
     <div class="post-content-preview">
-      SROP简单介绍SROP，即 Sigreturn Oriented Programming，正是利用了 Sigreturn 机制的弱点，来进行攻击。
-在执行 sigreturn 系统调用的时候，不会对 signal 做检查
+      SROP
+简单介绍
+SROP，即 Sigreturn Oriented Programming，正是利用了
+Sigreturn 机制的弱点，来进行攻击。
+在执行 sigreturn 系统调用的时候，不会对 signal
+做检查
 
-简单来说就是通过sigreturn的系统调用0xf的syscall，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核态时候而sigre......
+简单来说就是通过sigreturn的系统调用0xf的syscall，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核......
     </div>
   </a>
   
@@ -1494,6 +1523,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 

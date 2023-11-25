@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -241,9 +241,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">200</span> In Total
+              Words <span class="post-count">208</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,20 +420,38 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h2 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h2><p>特点：<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121150856504.png" alt="image-20230121150856504"></p>
-<h4 id="可以看查任意地址内容"><a href="#可以看查任意地址内容" class="headerlink" title="可以看查任意地址内容"></a>可以看查任意地址内容</h4><p>%p  或 %{num}$p</p>
-<h4 id="可以任意写地址"><a href="#可以任意写地址" class="headerlink" title="可以任意写地址"></a>可以任意写地址</h4><p>%n 或 %{num}$n  须：栈中拥有指针</p>
+        <h2 id="格式化字符串">格式化字符串</h2>
+<p>特点：<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121150856504.png" alt="image-20230121150856504"></p>
+<h4 id="可以看查任意地址内容">可以看查任意地址内容</h4>
+<p>%p 或 %{num}$p</p>
+<h4 id="可以任意写地址">可以任意写地址</h4>
+<p>%n 或 %{num}$n 须：栈中拥有指针</p>
 <p>书写格式为 %{addr}c%{num}$n (一般不行 得逐字节写入)</p>
 <p>即：%{addr}c%{num}$hhn</p>
 <p>例如：写入0x40158a 到 stack_chk_fail_addr 中</p>
-<p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151552065.png" alt="image-20230121151552065"></p>
-<p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151407660.png" alt="image-20230121151407660"></p>
-<h2 id="关于stack-chk-fail"><a href="#关于stack-chk-fail" class="headerlink" title="关于stack_chk_fail"></a>关于stack_chk_fail</h2><p>是canary保护中，如果xor失败就运行</p>
-<p>栈中的canary 在rbp前的一段以\x00结尾的数 十分明显</p>
-<h2 id="printf的输出漏洞"><a href="#printf的输出漏洞" class="headerlink" title="printf的输出漏洞"></a>printf的输出漏洞</h2><p>printf输出字符串遇到/0(\x00)才会终止。</p>
-<p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151957251.png" alt="image-20230121151957251"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151552065.png" alt="image-20230121151552065">
+<figcaption aria-hidden="true">image-20230121151552065</figcaption>
+</figure>
+<figure>
+<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151407660.png" alt="image-20230121151407660">
+<figcaption aria-hidden="true">image-20230121151407660</figcaption>
+</figure>
+<h2 id="关于stack_chk_fail">关于stack_chk_fail</h2>
+<p>是canary保护中，如果xor失败就运行</p>
+<p>栈中的canary 在rbp前的一段以00结尾的数 十分明显</p>
+<h2 id="printf的输出漏洞">printf的输出漏洞</h2>
+<p>printf输出字符串遇到/0()才会终止。</p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151957251.png" alt="image-20230121151957251">
+<figcaption aria-hidden="true">image-20230121151957251</figcaption>
+</figure>
 <p>例：当读进0x100个a时末尾便不带/0，print(%s)，便会显示0x100后的栈中数据，如果刚好时push的ebp的话，可以刚好泄露栈中地址</p>
-<h2 id="关于fmtstr的使用"><a href="#关于fmtstr的使用" class="headerlink" title="关于fmtstr的使用"></a>关于fmtstr的使用</h2><p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121152310178.png" alt="image-20230121152310178"></p>
+<h2 id="关于fmtstr的使用">关于fmtstr的使用</h2>
+<figure>
+<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121152310178.png" alt="image-20230121152310178">
+<figcaption aria-hidden="true">image-20230121152310178</figcaption>
+</figure>
 <p>此题可以采用在bss段和栈中同时写入达到使用的目的</p>
 
 
@@ -584,7 +602,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">格式化字符串</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%AF%E4%BB%A5%E7%9C%8B%E6%9F%A5%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E5%86%85%E5%AE%B9"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">可以看查任意地址内容</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%AF%E4%BB%A5%E4%BB%BB%E6%84%8F%E5%86%99%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">可以任意写地址</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8Estack-chk-fail"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">关于stack_chk_fail</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#printf%E7%9A%84%E8%BE%93%E5%87%BA%E6%BC%8F%E6%B4%9E"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">printf的输出漏洞</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8Efmtstr%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">关于fmtstr的使用</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">格式化字符串</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%AF%E4%BB%A5%E7%9C%8B%E6%9F%A5%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E5%86%85%E5%AE%B9"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">可以看查任意地址内容</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%AF%E4%BB%A5%E4%BB%BB%E6%84%8F%E5%86%99%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">可以任意写地址</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8Estack_chk_fail"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">关于stack_chk_fail</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#printf%E7%9A%84%E8%BE%93%E5%87%BA%E6%BC%8F%E6%B4%9E"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">printf的输出漏洞</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8Efmtstr%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">关于fmtstr的使用</span></a></li></ol>
         
         </div>
       </aside>
@@ -1108,6 +1126,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 

