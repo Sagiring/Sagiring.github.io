@@ -219,17 +219,6 @@
           
           
           <li>
-            <a href="/about/">
-              
-              关于
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/archive/">
               
               归档
@@ -244,6 +233,17 @@
             <a href="/categories/">
               
               分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -372,7 +372,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">567</span> In Total
+              Words <span class="post-count">573</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,121 +420,147 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="pwntools---rop类">pwntools - ROP类</h1>
-<p>为了更好，更快的构造rop-payload。研究一下用法</p>
-<h2 id="常用">常用</h2>
-<ul>
+        <h1 id="pwntools-ROP类"><a href="#pwntools-ROP类" class="headerlink" title="pwntools - ROP类"></a>pwntools - ROP类</h1><p>为了更好，更快的构造rop-payload。研究一下用法</p>
+<h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><ul>
 <li>创建ROP类实例</li>
 </ul>
 <p>贴一下ROP类的注释</p>
-<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108173541810.png"></p>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108173541810.png" alt></p>
 <p>简单的创建</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>rop <span class="op">=</span> ROP([elf1,elf2,...]) </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#base rop.base </span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#badchars</span></span></code></pre></div>
+<pre><code class="lang-python">rop = ROP([elf1,elf2,...]) 
+#base rop.base 
+#badchars
+</code></pre>
 <ul>
 <li>直接调用函数</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rop <span class="op">=</span> ROP(libc) <span class="co">#自动加载ELF类的base</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>rop.base <span class="op">=</span> orw_addr <span class="op">+</span> <span class="bn">0x8</span> <span class="co">#添加rop的所在地址，方便字符串的传入</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>rop.<span class="bu">open</span>(<span class="st">b&#39;flag&#39;</span>,<span class="dv">0</span>,<span class="dv">0</span>) <span class="co">#直接向rop类中添加函数</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>rop.read(<span class="dv">3</span>,heap_base<span class="op">+</span><span class="bn">0x200</span>,<span class="bn">0x20</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>rop.write(<span class="dv">1</span>,heap_base<span class="op">+</span><span class="bn">0x200</span>,<span class="bn">0x20</span>)</span></code></pre></div>
+<pre><code class="lang-python">rop = ROP(libc) #自动加载ELF类的base
+rop.base = orw_addr + 0x8 #添加rop的所在地址，方便字符串的传入
+rop.open(b&#39;flag&#39;,0,0) #直接向rop类中添加函数
+rop.read(3,heap_base+0x200,0x20)
+rop.write(1,heap_base+0x200,0x20)
+</code></pre>
 <ul>
 <li><p><code>rop.dump()</code></p>
 <p>可视化输出构造的rop的str</p>
-<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174512886.png"></p></li>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174512886.png" alt></p>
+</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>info(rop.dump())</span></code></pre></div>
-<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174241740.png"></p>
-<h2 id="交互">交互</h2>
-<ul>
+<pre><code class="lang-python">info(rop.dump())
+</code></pre>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174241740.png" alt></p>
+<h2 id="交互"><a href="#交互" class="headerlink" title="交互"></a>交互</h2><ul>
 <li><p>rop.chain()</p>
-<p>输出rop的bytes</p></li>
+<p>输出rop的bytes</p>
+</li>
 </ul>
-<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174600420.png"></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>r.send(rop.chain())</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#交互</span></span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174600420.png" alt></p>
+<pre><code class="lang-python">r.send(rop.chain())
+#交互
+</code></pre>
 <ul>
 <li><p>rop.build()</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> build(<span class="va">self</span>, base <span class="op">=</span> <span class="va">None</span>, description <span class="op">=</span> <span class="va">None</span>):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Construct the ROP chain into a list of elements which can be passed to :func:.flat.</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rop.build()</span></code></pre></div>
-<p>flat交互</p></li>
+<pre><code class="lang-python">def build(self, base = None, description = None):
+#Construct the ROP chain into a list of elements which can be passed to :func:.flat.
+</code></pre>
+<pre><code class="lang-python">rop.build()
+</code></pre>
+<p>flat交互</p>
+</li>
+</ul>
+<ul>
 <li><p>rop.raw()</p>
 <p>手动添加数据进rop链</p>
-<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174930111.png"></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>rop.raw(<span class="st">b&#39;A&#39;</span><span class="op">*</span><span class="bn">0x8</span> <span class="op">+</span> p64(<span class="bn">0x2333333</span>)) </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] 0x0000:          b&#39;AAAA&#39; b&#39;AAAAAAAA333\x02\x00\x00\x00\x00&#39;</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    0x0004:          b&#39;AAAA&#39;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    0x0008:       b&#39;333\x02&#39;</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    0x000c: b&#39;\x00\x00\x00\x00&#39;</span></span></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>rop.raw(<span class="st">b&#39;A&#39;</span><span class="op">*</span><span class="bn">0x8</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>rop.call(<span class="bn">0x2333333</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] 0x0000:          b&#39;AAAA&#39; b&#39;AAAAAAAA&#39;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#    0x0004:          b&#39;AAAA&#39;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#    0x0008:        0x2333333 0x2333333()</span></span></code></pre></div>
-<p>效果</p>
-<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108175101858.png"></p></li>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108174930111.png" alt></p>
+<pre><code class="lang-python">rop.raw(b&#39;A&#39;*0x8 + p64(0x2333333)) 
+#[*] 0x0000:          b&#39;AAAA&#39; b&#39;AAAAAAAA333\x02\x00\x00\x00\x00&#39;
+#    0x0004:          b&#39;AAAA&#39;
+#    0x0008:       b&#39;333\x02&#39;
+#    0x000c: b&#39;\x00\x00\x00\x00&#39;
+</code></pre>
+<pre><code class="lang-python">rop.raw(b&#39;A&#39;*0x8)
+rop.call(0x2333333)
+#[*] 0x0000:          b&#39;AAAA&#39; b&#39;AAAAAAAA&#39;
+#    0x0004:          b&#39;AAAA&#39;
+#    0x0008:        0x2333333 0x2333333()
+</code></pre>
+</li>
 </ul>
-<h2 id="杂项">杂项</h2>
-<ul>
+<p>  效果</p>
+<p>  <img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108175101858.png" alt></p>
+<h2 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h2><ul>
 <li><p>关于寄存器</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>info(rop.rdi)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] Gadget(0x2858f, [&#39;pop rdi&#39;, &#39;ret&#39;], [&#39;rdi&#39;], 0x8)</span></span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>info(rop.rdi[<span class="dv">0</span>])</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] 165263</span></span></code></pre></div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;&gt;&gt; r = ROP(e)</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;&gt;&gt; r(&#123;&#39;rax&#39;: 0xdead, &#39;rdi&#39;: 0xbeef, &#39;rsi&#39;: 0xcafe&#125;)</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;&gt;&gt; print(r.dump())</span></span></code></pre></div></li>
-<li><p>关于函数</p>
-<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108182005503.png"></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rop.resolve(<span class="st">&#39;read&#39;</span>) </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] 4436</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>info(rop.unresolve(<span class="dv">4436</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] read</span></span></code></pre></div>
+<pre><code class="lang-python">info(rop.rdi)
+#[*] Gadget(0x2858f, [&#39;pop rdi&#39;, &#39;ret&#39;], [&#39;rdi&#39;], 0x8)
+</code></pre>
+<pre><code class="lang-python">info(rop.rdi[0])
+#[*] 165263
+</code></pre>
+<pre><code class="lang-python">#&gt;&gt;&gt; r = ROP(e)
+#&gt;&gt;&gt; r(&#123;&#39;rax&#39;: 0xdead, &#39;rdi&#39;: 0xbeef, &#39;rsi&#39;: 0xcafe&#125;)
+#&gt;&gt;&gt; print(r.dump())
+</code></pre>
+</li>
+</ul>
 <ul>
-<li>杂项</li>
+<li><p>关于函数</p>
+<p><img src="/cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/image-20231108182005503.png" alt></p>
+<pre><code class="lang-python">rop.resolve(&#39;read&#39;) 
+#[*] 4436
+</code></pre>
+</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>rop.migrate(<span class="bn">0x233</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] 0x0000:          0x3418a pop rsp; ret</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    0x0004:            0x233</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] 0x0000:           0x1273 pop rbp; ret</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#    0x0004:            0x22f</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#    0x0008:           0x13c0 leave; ret</span></span></code></pre></div>
+<pre><code class="lang-python">  info(rop.unresolve(4436))
+  #[*] read
+</code></pre>
+<ul>
+<li><p>杂项</p>
+<pre><code class="lang-python">rop.migrate(0x233)
+#[*] 0x0000:          0x3418a pop rsp; ret
+#    0x0004:            0x233
+</code></pre>
+<pre><code class="lang-python">#[*] 0x0000:           0x1273 pop rbp; ret
+#    0x0004:            0x22f
+#    0x0008:           0x13c0 leave; ret
+</code></pre>
 <p>如果要使用函数rbp + leave的话，个人觉得不是很好用</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>rop.call(<span class="bn">0x233</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] 0x0000:            0x233 0x233()</span></span></code></pre></div>
-<p>添加地址进rop链</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>rop.find_gadget([<span class="st">&#39;leave&#39;</span>,<span class="st">&#39;ret&#39;</span>])</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">#[*] Gadget(0x13c0, [&#39;leave&#39;, &#39;ret&#39;], [&#39;ebp&#39;, &#39;esp&#39;], 0x2540be403)</span></span></code></pre></div>
-<p>像ropgadget的查询</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>rop.setRegisters(<span class="op">&lt;!--</span>swig￼<span class="dv">0</span><span class="op">--&gt;</span>)</span></code></pre></div>
-<p>设置寄存器</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rop.seach()</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search(<span class="va">self</span>, move <span class="op">=</span> <span class="dv">0</span>, regs <span class="op">=</span> <span class="va">None</span>, order <span class="op">=</span> <span class="st">&#39;size&#39;</span>):</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">&quot;&quot;&quot;Search for a gadget which matches the specified criteria.</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co">        Arguments:</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co">            move(int): Minimum number of bytes by which the stack</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co">                pointer is adjusted.</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co">            regs(list): Minimum list of registers which are popped off the</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co">                stack.</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="co">            order(str): Either the string &#39;size&#39; or &#39;regs&#39;. Decides how to</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">                order multiple gadgets the fulfill the requirements.</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co">        The search will try to minimize the number of bytes popped more than</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co">        requested, the number of registers touched besides the requested and</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">        the address.</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co">        If ``order == &#39;size&#39;``, then gadgets are compared lexicographically</span></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co">        by ``(total_moves, total_regs, addr)``, otherwise by ``(total_regs, total_moves, addr)``.</span></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns:</span></span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="co">            A :class:`.Gadget` object</span></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="co">        &quot;&quot;&quot;</span></span></code></pre></div></li>
+</li>
 </ul>
+<pre><code class="lang-python">  rop.call(0x233)
+  #[*] 0x0000:            0x233 0x233()
+</code></pre>
+<p>  添加地址进rop链</p>
+<pre><code class="lang-python">  rop.find_gadget([&#39;leave&#39;,&#39;ret&#39;])
+  #[*] Gadget(0x13c0, [&#39;leave&#39;, &#39;ret&#39;], [&#39;ebp&#39;, &#39;esp&#39;], 0x2540be403)
+</code></pre>
+<p>  像ropgadget的查询</p>
+<pre><code class="lang-python">  rop.setRegisters(&#123;&#123;'rax': 0xdead, 'rdi': 0xbeef, 'rsi': 0xcafe&#125;&#125;)
+</code></pre>
+<p>  设置寄存器</p>
+<pre><code class="lang-python">  rop.seach()
+
+  def search(self, move = 0, regs = None, order = &#39;size&#39;):
+          &quot;&quot;&quot;Search for a gadget which matches the specified criteria.
+
+          Arguments:
+              move(int): Minimum number of bytes by which the stack
+                  pointer is adjusted.
+              regs(list): Minimum list of registers which are popped off the
+                  stack.
+              order(str): Either the string &#39;size&#39; or &#39;regs&#39;. Decides how to
+                  order multiple gadgets the fulfill the requirements.
+
+          The search will try to minimize the number of bytes popped more than
+          requested, the number of registers touched besides the requested and
+          the address.
+
+          If ``order == &#39;size&#39;``, then gadgets are compared lexicographically
+          by ``(total_moves, total_regs, addr)``, otherwise by ``(total_regs, total_moves, addr)``.
+
+          Returns:
+              A :class:`.Gadget` object
+          &quot;&quot;&quot;
+</code></pre>
 <p>最近研究到就大概就这么多，欢迎纠错补充。</p>
 
 
@@ -685,7 +711,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#pwntools---rop%E7%B1%BB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pwntools - ROP类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B8%B8%E7%94%A8"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">常用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%A4%E4%BA%92"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">交互</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9D%82%E9%A1%B9"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">杂项</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#pwntools-ROP%E7%B1%BB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">pwntools - ROP类</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B8%B8%E7%94%A8"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">常用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%A4%E4%BA%92"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">交互</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%9D%82%E9%A1%B9"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">杂项</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -1209,21 +1235,6 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
 

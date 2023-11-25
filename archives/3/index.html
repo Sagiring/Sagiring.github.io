@@ -219,17 +219,6 @@
           
           
           <li>
-            <a href="/about/">
-              
-              关于
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/archive/">
               
               归档
@@ -244,6 +233,17 @@
             <a href="/categories/">
               
               分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -412,25 +412,21 @@
       
     </h3>
     <div class="post-content-preview">
-      学习了传参方式
-64位与32位的区别
-64-&gt;rdi ......先寄存器再栈
+      学习了传参方式 64位与32位的区别64-&gt;rdi ……先寄存器再栈
 
-
-image-20230110145137612
-
-
-
-image-20230110000546106
 
 32-&gt;栈传参
-学习了call
-system函数与system函数在64位与32位下分别的区别
-32位下
+学习了call system函数与system函数在64位与32位下分别的区别32位下
+
+64位下 
 
 
-image-20230110000716996
-......
+调试过后 也确实是crash掉在
+
+set $rsp += 1 后 无法通过
+Pwndbg的一些学习指令1.file xx后
+rop —grep “pop rdi”查找这个的地址
+2.f......
     </div>
   </a>
   
@@ -463,15 +459,15 @@ image-20230110000716996
       
     </h3>
     <div class="post-content-preview">
-      栈迁移的学习
-unctf的一道题
+      栈迁移的学习unctf的一道题
 `ssize_t back()`
 `&#123;`
   `char buf[32]; // [rsp+0h] [rbp-20h] BYREF`
   `printf(&quot;gift:%p\n&quot;, buf);`
   `return read(0, buf, 0x30uLL);`
 `&#125;`
-能运行到后门函数 后门函数给了一块......
+
+能运行到后门函数 后门函数给了一块栈中的空间和开始......
     </div>
   </a>
   
@@ -504,16 +500,14 @@ unctf的一道题
       
     </h3>
     <div class="post-content-preview">
-      杂七杂八
-Strcmp（）作条件的绕过
-利用"\0"作为比较的第一个字符
-
-
-image-20221108093132384-1667871106786-1
+      杂七杂八Strcmp（）作条件的绕过利用”\0”作为比较的第一个字符
 
 r.sendlineafter(b&quot;Enter your flag:\n&quot;,&#39;\0&#39;)
+
 my_read读入”\0“到s1跳过判断直接到后门函数。
-CTF All In One--f......
+CTF All In One—firmianay
+讲的特别详细 但是许多地方还看不明白 还在研究
+格式化字符串格式字符串漏洞发生的条件就是......
     </div>
   </a>
   
@@ -1213,21 +1207,6 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
 

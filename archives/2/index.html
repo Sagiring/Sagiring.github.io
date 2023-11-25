@@ -331,17 +331,6 @@ mjx-container[display="true"] + br {
           
           
           <li>
-            <a href="/about/">
-              
-              关于
-              
-              
-            </a>
-          </li>
-          
-          
-          
-          <li>
             <a href="/archive/">
               
               归档
@@ -356,6 +345,17 @@ mjx-container[display="true"] + br {
             <a href="/categories/">
               
               分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
               
               
             </a>
@@ -524,17 +524,14 @@ mjx-container[display="true"] + br {
       
     </h3>
     <div class="post-content-preview">
-      第一章概论
-层级结构
-
-
-image-20230420164600731
-
+      第一章概论层级结构
 &#39;各层的作用&#39; -&gt; 课本
 &#39;路由器&#39; -&gt; 数据链路层
-（1） &#39;物理层&#39;：使原始的数据位流能在物理媒体上传输。
-（2） &#39;数据链路层&#39;：位流被组织成数据链协议数据单元（通常称为帧）传输。
-（3） &#39;网络层&#3......
+
+（1）    &#39;物理层&#39;：使原始的数据位流能在物理媒体上传输。
+（2）    &#39;数据链路层&#39;：位流被组织成数据链协议数据单元（通常称为帧）传输。
+（3）    &#39;网络层&#39;：数据以网络协议数据单元（分组）为单位进行传输。
+（......
     </div>
   </a>
   
@@ -567,15 +564,12 @@ image-20230420164600731
       
     </h3>
     <div class="post-content-preview">
-      序言
-个人感觉操作系统记忆背诵的知识点多杂，因而写下这篇blog方便自己记忆背诵。
-第1章 引论
-操作系统分类
-1. 无操作系统的计算机系统
+      序言个人感觉操作系统记忆背诵的知识点多杂，因而写下这篇blog方便自己记忆背诵。
+第1章 引论操作系统分类1. 无操作系统的计算机系统
 2. 单道&#39;批处理系统&#39;
     监督程序：相当于早期操作系统，负责将磁盘中程序调入内存，以及将内存中的程序交给CPU处理。
 3. 多道&#39;批处理系统&#39;
-    微观而言，在任一特定时刻，在处理机上运行的作......
+    微观而言，在任一特定时刻，在处理机上运行的作业只有&#39;一个&......
     </div>
   </a>
   
@@ -608,27 +602,12 @@ image-20230420164600731
       
     </h3>
     <div class="post-content-preview">
-      古典密码学
-代换密码
-​ 代换是古典密码中
-用到的最基本的处理技巧之一。所谓代换，就是将明文中的一个字母由其它字母、数字或符号替代的一种方法。
+      古典密码学代换密码​    代换是古典密码中 用到的最基本的处理技巧之一。所谓代换，就是将明文中的一个字母由其它字母、数字或符号替代的一种方法。
 凯撒密码
-明文，密文，密钥取
-加密：
-解密：
-仿射密码
-明文，密文，密钥且
-加密：
-解密：
-
-
-image-20230426165545280
-
-单表代换密码
-明文，密文，密钥定义在上的置换
-加密
-解密
-多表代......
+明文p ∈Z26，密文c ∈Z26 ，密钥k取[1,25]
+加密：c = E(p) = (p + k) mod 26
+解密：p = D(c) = (c – k) mod 26仿射密码
+明文p ∈Z26，密文c ∈Z26 ，密钥k=(a,b......
     </div>
   </a>
   
@@ -661,24 +640,16 @@ image-20230426165545280
       
     </h3>
     <div class="post-content-preview">
-      痛苦的环境配置
-发生了什么
-一大早起来，发现自己wsl2无法启动了，修调了3天这个问题，人麻了
+      痛苦的环境配置发生了什么一大早起来，发现自己wsl2无法启动了，修调了3天这个问题，人麻了
 1.之后直接卸载了子系统Ubuntu重装。卡在了安装界面
 
-
-img (3)
-
 2.卸载了wsl与功能，未果。
-3.关闭虚拟机平台后发现，win报"我们无法完成此操作"，关闭不成功
+3.关闭虚拟机平台后发现，win报”我们无法完成此操作”，关闭不成功
 4.试了wsl1可以正常使用，但是gdb完全调试不了
 
 
-img (2)
-
-
-
-i......
+5.在wsl到处碰壁后，我决定向vm靠边，结果装完虚拟机也打不开，开在转圈的界面
+......
     </div>
   </a>
   
@@ -711,18 +682,15 @@ i......
       
     </h3>
     <div class="post-content-preview">
-      关于发呆
-我似乎是一个很喜欢发呆的家伙。
---这是我
-
-
-image-20230327235840120
+      关于发呆我似乎是一个很喜欢发呆的家伙。
+—这是我
 
 （一点也不奇怪的图）
 喜欢和最好朋友坐在一起发呆，即使什么都不做，也感觉到非常开心。
 喜欢在骑单车的时候发呆，也许我只是喜欢发呆，而不是喜欢骑车。
 高中的时候似乎没空发呆，不知为何到了大学反而发更多的呆。
-发呆的时候在想什么呢？似乎没太关心过，可能是有趣的事情和想......
+发呆的时候在想什么呢？似乎没太关心过，可能是有趣的事情和想法吧。
+为什么要写这样的话？这是第一篇关于自己的想法，感觉还挺有趣的，便记录下......
     </div>
   </a>
   
@@ -755,14 +723,11 @@ image-20230327235840120
       
     </h3>
     <div class="post-content-preview">
-      tcache题的亿点点细节
-复现safe_note -&gt;hgame/week3
-glibc版本2.32
-写函数sendline与send一定要确定
-避免出现一些难以排查的bug，不要随便Copy....
+      tcache题的亿点点细节复现safe_note -&gt;hgame/week3glibc版本2.32
+写函数sendline与send一定要确定避免出现一些难以排查的bug，不要随便Copy….
 def edit_note(page , content):
     r.sendlineafter(b&#39;Exit&#39;,b&#39;3&#39;)
-    ......
+    r.sendlineaf......
     </div>
   </a>
   
@@ -796,15 +761,7 @@ def edit_note(page , content):
     </h3>
     <div class="post-content-preview">
       格式化字符串auto
-
-
-image-20230226173902166
-
 LibcSearcher
-
-
-image-20230226173952210
-
 查找各个版本libc算偏移！好工具
 ...
     </div>
@@ -839,11 +796,9 @@ image-20230226173952210
       
     </h3>
     <div class="post-content-preview">
-      ORW
-rop链
-payload = p64(pop_rdi) + p64(rop_addr + 0x98) + p64(pop_rsi) + p64(0)+ p64(open_addr)
+      ORWrop链payload = p64(pop_rdi) + p64(rop_addr + 0x98) + p64(pop_rsi) + p64(0)+ p64(open_addr)
 
-payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) + p64(0x30) + p64......
+payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) + p64(0x30) + p64(read_......
     </div>
   </a>
   
@@ -876,28 +831,19 @@ payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) 
       
     </h3>
     <div class="post-content-preview">
-      异或避开敏感字符检测
-本地先行异或 加码 避开字符检测
-
-
-image-20230112000449878
+      异或避开敏感字符检测本地先行异或 加码 避开字符检测
 
 将结果存入data段后
 
-
-image-20230112000625442
-
 利用ROP的XOR进行解密
-
-
-image-20230112000649256
 
 最后再读取
 
-
-image-20230112000735119
-
-`PS：查询段权......
+`PS：查询段权限 $&gt; readelf -S xxxx` 或者 vmmap
+！！！
+Send 与 Sendline 有巨大差别 不能混为一谈
+本地调试要自己加载库libc与ld！！`patchelf --set-interpreter ld路径 ./pwn`
+......
     </div>
   </a>
   
@@ -930,18 +876,15 @@ image-20230112000735119
       
     </h3>
     <div class="post-content-preview">
-      格式化字符串
-特点：
-可以看查任意地址内容
-%p 或 %{num}$p
-可以任意写地址
-%n 或 %{num}$n 须：栈中拥有指针
+      格式化字符串特点：
+可以看查任意地址内容%p  或 %{num}$p
+可以任意写地址%n 或 %{num}$n  须：栈中拥有指针
 书写格式为 %{addr}c%{num}$n (一般不行 得逐字节写入)
 即：%{addr}c%{num}$hhn
 例如：写入0x40158a 到 stack_chk_fail_addr 中
 
 
-image-202301211515520......
+关于stack_chk_fail是canary保护中，如果xor失......
     </div>
   </a>
   
@@ -1645,21 +1588,6 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
 

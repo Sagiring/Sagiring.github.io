@@ -3,8 +3,10 @@
 .sourceCode {
     display: block;
     overflow-x: auto;
-    padding: .18rem .4rem .22rem;
-    margin: 0;
+    /* padding: .18rem .4rem .22rem; */
+    margin-top: 1vw!important;
+    margin-bottom: 1vw!important;
+    padding: 0vw;
     color: #abb2bf;
     background: #3b434d!important;
     border-radius: 6px;
@@ -21,11 +23,32 @@
     font-size: 15px!important;
     line-height:25px!important;
 
-  
-    
   }
 
+.assembly{
+  display: block;
+  overflow-x: auto;
+  /* padding: .18rem .4rem .22rem; */
+  margin-top: 1vw!important;
+  margin-bottom: 1vw!important;
+  padding: 0vw;
+  color: #abb2bf;
+  background: #3b434d!important;
+  border-radius: 6px;
+  font-family: ui-monospace,
+  Menlo, Monaco,
+  "Cascadia Mono", "Segoe UI Mono",
+  "Roboto Mono",
+  "Oxygen Mono",
+  "Ubuntu Monospace",
+  "Source Code Pro",
+  "Fira Mono",
+  "Droid Sans Mono",
+  "Courier New", monospace;
+  font-size: 15px!important;
+  line-height:25px!important;
 
+}
   
 .sourceCode .op,.im,.cf,.kw{
     color: #ff7b72!important;
