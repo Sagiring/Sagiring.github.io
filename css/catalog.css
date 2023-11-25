@@ -1,6 +1,6 @@
 /*toc*/
 .toc-article {
-  position: sticky;
+  position: absolute;
   border-left: rgba(88,88,88,0.1) 1px solid;
   padding: 1em 1em 0 1em;
   margin-left: 1em;
