@@ -11,20 +11,6 @@
 
   <!-- Baidu Push -->
   
-    <script>
-      (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-      })();
-    </script>
-  
 
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -33,7 +19,7 @@
   <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="It&#39;s an IT blog..."/>
+  <meta name="description" content="人生苦短，及时行乐"/>
   <meta name="keyword" content="Sagiring,blog"/>
   <link rel="shortcut icon" href="/img/avatar/good_to_look.jpg"/>
 
@@ -69,10 +55,6 @@
       <!-- ThemeColor end -->
     
 
-    
-      <!-- viewer start (Picture preview) -->
-      <link rel="stylesheet" href="/css/viewer.min.css"/>
-      <!-- viewer end -->
     
 
     
@@ -219,9 +201,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -241,9 +223,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -372,7 +354,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">251</span> In Total
+              Words <span class="post-count">216</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,110 +402,53 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h2 id="学习了传参方式-64位与32位的区别">学习了传参方式
-64位与32位的区别</h2>
-<p>64-&gt;rdi ......先寄存器再栈</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110145137612.png" alt="image-20230110145137612">
-<figcaption aria-hidden="true">image-20230110145137612</figcaption>
-</figure>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110000546106.png" alt="image-20230110000546106">
-<figcaption aria-hidden="true">image-20230110000546106</figcaption>
-</figure>
+        <h2 id="学习了传参方式-64位与32位的区别">学习了传参方式 64位与32位的区别</h2>
+<p>64-&gt;rdi …先寄存器再栈</p>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110145137612.png" alt="image-20230110145137612"></p>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110000546106.png" alt="image-20230110000546106"></p>
 <p>32-&gt;栈传参</p>
-<h2 id="学习了call-system函数与system函数在64位与32位下分别的区别">学习了call
-system函数与system函数在64位与32位下分别的区别</h2>
+<h2 id="学习了call-system函数与system函数在64位与32位下分别的区别">学习了call system函数与system函数在64位与32位下分别的区别</h2>
 <p>32位下</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110000716996.png" alt="image-20230110000716996">
-<figcaption aria-hidden="true">image-20230110000716996</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110000716996.png" alt="image-20230110000716996"></p>
 <p>64位下</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110000751093.png" alt="image-20230110000751093">
-<figcaption aria-hidden="true">image-20230110000751093</figcaption>
-</figure>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110000800893.png" alt="image-20230110000800893">
-<figcaption aria-hidden="true">image-20230110000800893</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110000751093.png" alt="image-20230110000751093"></p>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110000800893.png" alt="image-20230110000800893"></p>
 <p>调试过后 也确实是crash掉在</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/QQ图片20230110000848.png" alt="QQ图片20230110000848">
-<figcaption aria-hidden="true">QQ图片20230110000848</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/QQ%E5%9B%BE%E7%89%8720230110000848.png" alt="QQ图片20230110000848"></p>
 <p>set $rsp += 1 后 无法通过</p>
-<h2 id="pwndbg的一些学习指令">Pwndbg的一些学习指令</h2>
+<h2 id="Pwndbg的一些学习指令">Pwndbg的一些学习指令</h2>
 <p>1.file xx后</p>
-<p>rop --grep "pop rdi"查找这个的地址</p>
-<p><code>2.find addr1，addr2，"/bin/sh" 或者 find addr1，addr2，'/','b ','i ','n'</code></p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110001635544.png" alt="image-20230110001635544">
-<figcaption aria-hidden="true">image-20230110001635544</figcaption>
-</figure>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110001619781.png" alt="image-20230110001619781">
-<figcaption aria-hidden="true">image-20230110001619781</figcaption>
-</figure>
+<p>rop --grep &quot;pop rdi&quot;查找这个的地址</p>
+<p><code>2.find addr1，addr2，&quot;/bin/sh&quot; 或者 find addr1，addr2，'/','b ','i ','n'</code></p>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110001635544.png" alt="image-20230110001635544"></p>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110001619781.png" alt="image-20230110001619781"></p>
 <p>addr通过info proc确定！</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110001557344.png" alt="image-20230110001557344">
-<figcaption aria-hidden="true">image-20230110001557344</figcaption>
-</figure>
-<ol start="3" type="1">
-<li><p>file后 p （函数名称）打印地址</p>
-<p>根据file的输出不一样的地址</p></li>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110001557344.png" alt="image-20230110001557344"></p>
+<ol start="3">
+<li>
+<p>file后  p （函数名称）打印地址</p>
+<p>根据file的输出不一样的地址</p>
+</li>
 </ol>
 <h2 id="传参">传参</h2>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110211620552.png" alt="image-20230110211620552">
-<figcaption aria-hidden="true">image-20230110211620552</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110211620552.png" alt="image-20230110211620552"></p>
 <p>深度实际操作了解了32位传参</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110211737424.png" alt="image-20230110211737424">
-<figcaption aria-hidden="true">image-20230110211737424</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110211737424.png" alt="image-20230110211737424"></p>
 <p>与64位传参</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110211811539.png" alt="image-20230110211811539">
-<figcaption aria-hidden="true">image-20230110211811539</figcaption>
-</figure>
-<h2 id="传入长参数-存入.data段">传入长参数 存入.data段</h2>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111152554274.png" alt="image-20230111152554274">
-<figcaption aria-hidden="true">image-20230111152554274</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230110211811539.png" alt="image-20230110211811539"></p>
+<h2 id="传入长参数-存入-data段">传入长参数 存入.data段</h2>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111152554274.png" alt="image-20230111152554274"></p>
 <p>查询能写入的段与rop链</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111152720187.png" alt="image-20230111152720187">
-<figcaption aria-hidden="true">image-20230111152720187</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111152720187.png" alt="image-20230111152720187"></p>
 <p>思维灵活的构造rop链 写入数据 调入函数</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111152917506.png" alt="image-20230111152917506">
-<figcaption aria-hidden="true">image-20230111152917506</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111152917506.png" alt="image-20230111152917506"></p>
 <h3 id="dword与ptr">dword与ptr</h3>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111153252335.png" alt="image-20230111153252335">
-<figcaption aria-hidden="true">image-20230111153252335</figcaption>
-</figure>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111153311017.png" alt="image-20230111153311017">
-<figcaption aria-hidden="true">image-20230111153311017</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111153252335.png" alt="image-20230111153252335"></p>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111153311017.png" alt="image-20230111153311017"></p>
 <p>64位如下（同理</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111160359954.png" alt="image-20230111160359954">
-<figcaption aria-hidden="true">image-20230111160359954</figcaption>
-</figure>
-<h2 id="system函数传参用的指针">System函数传参用的指针</h2>
-<figure>
-<img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230224110520007.png" alt="image-20230224110520007">
-<figcaption aria-hidden="true">image-20230224110520007</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230111160359954.png" alt="image-20230111160359954"></p>
+<h2 id="System函数传参用的指针">System函数传参用的指针</h2>
+<p><img src="/cn/Sagiring_markdown/%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/image-20230224110520007.png" alt="image-20230224110520007"></p>
 
 
         <hr>
@@ -542,61 +467,7 @@ system函数与system函数在64位与32位下分别的区别</h2>
         </ul>
 
         
-        <!-- tip start -->
-        <!-- tip -->
-<!-- tip start -->
-<div class="tip">
-  <!-- <p>
-    
-      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
-    
-  </p> -->
-</div>
-<!-- tip end -->
 
-        <!-- tip end -->
-        
-
-        
-        <!-- Sharing Srtart -->
-        <!-- Social Social Share Post -->
-<!-- Docs:https://github.com/overtrue/share.js -->
-
-<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
-  <ul class="list-inline text-center social-share-ul">
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-twitter">
-        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a class="social-share-icon icon-wechat">
-        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-weibo">
-        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-qq">
-        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=传参方式&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/Sagiring_markdown/传参方式/">
-        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-  </ul>
-</div>
-
-<!-- css & js -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
-<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-
-        <!-- Sharing End -->
         
         <hr>
 
@@ -673,9 +544,7 @@ system函数与system函数在64位与32位下分别的区别</h2>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AD%A6%E4%B9%A0%E4%BA%86%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F-64%E4%BD%8D%E4%B8%8E32%E4%BD%8D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">学习了传参方式
-64位与32位的区别</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AD%A6%E4%B9%A0%E4%BA%86call-system%E5%87%BD%E6%95%B0%E4%B8%8Esystem%E5%87%BD%E6%95%B0%E5%9C%A864%E4%BD%8D%E4%B8%8E32%E4%BD%8D%E4%B8%8B%E5%88%86%E5%88%AB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">学习了call
-system函数与system函数在64位与32位下分别的区别</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#pwndbg%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Pwndbg的一些学习指令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%A0%E5%8F%82"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">传参</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%A0%E5%85%A5%E9%95%BF%E5%8F%82%E6%95%B0-%E5%AD%98%E5%85%A5.data%E6%AE%B5"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">传入长参数 存入.data段</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dword%E4%B8%8Eptr"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">dword与ptr</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#system%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82%E7%94%A8%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">System函数传参用的指针</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AD%A6%E4%B9%A0%E4%BA%86%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F-64%E4%BD%8D%E4%B8%8E32%E4%BD%8D%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">学习了传参方式 64位与32位的区别</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AD%A6%E4%B9%A0%E4%BA%86call-system%E5%87%BD%E6%95%B0%E4%B8%8Esystem%E5%87%BD%E6%95%B0%E5%9C%A864%E4%BD%8D%E4%B8%8E32%E4%BD%8D%E4%B8%8B%E5%88%86%E5%88%AB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">学习了call system函数与system函数在64位与32位下分别的区别</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Pwndbg%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AD%A6%E4%B9%A0%E6%8C%87%E4%BB%A4"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Pwndbg的一些学习指令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%A0%E5%8F%82"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">传参</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%A0%E5%85%A5%E9%95%BF%E5%8F%82%E6%95%B0-%E5%AD%98%E5%85%A5-data%E6%AE%B5"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">传入长参数 存入.data段</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dword%E4%B8%8Eptr"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">dword与ptr</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#System%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82%E7%94%A8%E7%9A%84%E6%8C%87%E9%92%88"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">System函数传参用的指针</span></a></li></ol>
         
         </div>
       </aside>
@@ -795,24 +664,11 @@ system函数与system函数在64位与32位下分别的区别</span></a></li><li
   
 
   
-    <!-- Line start -->
-    <script async="text/javascript" src="/js/line.js"></script>
-    <!-- Line end -->
-  
 
 
 
 
 
-
-  <!-- viewer start -->
-  <!-- viewer start (Picture preview) -->
-  
-    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
-    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
-  
-
-  <!-- viewer end -->
 
 
 <script>
@@ -1199,6 +1055,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 

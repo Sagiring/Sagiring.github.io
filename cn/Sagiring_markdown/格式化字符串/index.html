@@ -11,20 +11,6 @@
 
   <!-- Baidu Push -->
   
-    <script>
-      (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-      })();
-    </script>
-  
 
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -33,7 +19,7 @@
   <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="It&#39;s an IT blog..."/>
+  <meta name="description" content="人生苦短，及时行乐"/>
   <meta name="keyword" content="Sagiring,blog"/>
   <link rel="shortcut icon" href="/img/avatar/good_to_look.jpg"/>
 
@@ -69,10 +55,6 @@
       <!-- ThemeColor end -->
     
 
-    
-      <!-- viewer start (Picture preview) -->
-      <link rel="stylesheet" href="/css/viewer.min.css"/>
-      <!-- viewer end -->
     
 
     
@@ -219,9 +201,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -241,9 +223,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -372,7 +354,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">208</span> In Total
+              Words <span class="post-count">202</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -423,35 +405,23 @@
         <h2 id="格式化字符串">格式化字符串</h2>
 <p>特点：<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121150856504.png" alt="image-20230121150856504"></p>
 <h4 id="可以看查任意地址内容">可以看查任意地址内容</h4>
-<p>%p 或 %{num}$p</p>
+<p>%p  或 %{num}$p</p>
 <h4 id="可以任意写地址">可以任意写地址</h4>
-<p>%n 或 %{num}$n 须：栈中拥有指针</p>
+<p>%n 或 %{num}$n  须：栈中拥有指针</p>
 <p>书写格式为 %{addr}c%{num}$n (一般不行 得逐字节写入)</p>
 <p>即：%{addr}c%{num}$hhn</p>
 <p>例如：写入0x40158a 到 stack_chk_fail_addr 中</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151552065.png" alt="image-20230121151552065">
-<figcaption aria-hidden="true">image-20230121151552065</figcaption>
-</figure>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151407660.png" alt="image-20230121151407660">
-<figcaption aria-hidden="true">image-20230121151407660</figcaption>
-</figure>
-<h2 id="关于stack_chk_fail">关于stack_chk_fail</h2>
+<p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151552065.png" alt="image-20230121151552065"></p>
+<p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151407660.png" alt="image-20230121151407660"></p>
+<h2 id="关于stack-chk-fail">关于stack_chk_fail</h2>
 <p>是canary保护中，如果xor失败就运行</p>
-<p>栈中的canary 在rbp前的一段以00结尾的数 十分明显</p>
+<p>栈中的canary 在rbp前的一段以\x00结尾的数 十分明显</p>
 <h2 id="printf的输出漏洞">printf的输出漏洞</h2>
-<p>printf输出字符串遇到/0()才会终止。</p>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151957251.png" alt="image-20230121151957251">
-<figcaption aria-hidden="true">image-20230121151957251</figcaption>
-</figure>
+<p>printf输出字符串遇到/0(\x00)才会终止。</p>
+<p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121151957251.png" alt="image-20230121151957251"></p>
 <p>例：当读进0x100个a时末尾便不带/0，print(%s)，便会显示0x100后的栈中数据，如果刚好时push的ebp的话，可以刚好泄露栈中地址</p>
 <h2 id="关于fmtstr的使用">关于fmtstr的使用</h2>
-<figure>
-<img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121152310178.png" alt="image-20230121152310178">
-<figcaption aria-hidden="true">image-20230121152310178</figcaption>
-</figure>
+<p><img src="/cn/Sagiring_markdown/%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2/image-20230121152310178.png" alt="image-20230121152310178"></p>
 <p>此题可以采用在bss段和栈中同时写入达到使用的目的</p>
 
 
@@ -471,61 +441,7 @@
         </ul>
 
         
-        <!-- tip start -->
-        <!-- tip -->
-<!-- tip start -->
-<div class="tip">
-  <!-- <p>
-    
-      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
-    
-  </p> -->
-</div>
-<!-- tip end -->
 
-        <!-- tip end -->
-        
-
-        
-        <!-- Sharing Srtart -->
-        <!-- Social Social Share Post -->
-<!-- Docs:https://github.com/overtrue/share.js -->
-
-<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
-  <ul class="list-inline text-center social-share-ul">
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-twitter">
-        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a class="social-share-icon icon-wechat">
-        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-weibo">
-        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-qq">
-        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=格式化字符串&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/Sagiring_markdown/格式化字符串/">
-        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-  </ul>
-</div>
-
-<!-- css & js -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
-<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-
-        <!-- Sharing End -->
         
         <hr>
 
@@ -602,7 +518,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">格式化字符串</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%AF%E4%BB%A5%E7%9C%8B%E6%9F%A5%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E5%86%85%E5%AE%B9"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">可以看查任意地址内容</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%AF%E4%BB%A5%E4%BB%BB%E6%84%8F%E5%86%99%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">可以任意写地址</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8Estack_chk_fail"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">关于stack_chk_fail</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#printf%E7%9A%84%E8%BE%93%E5%87%BA%E6%BC%8F%E6%B4%9E"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">printf的输出漏洞</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8Efmtstr%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">关于fmtstr的使用</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">格式化字符串</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%AF%E4%BB%A5%E7%9C%8B%E6%9F%A5%E4%BB%BB%E6%84%8F%E5%9C%B0%E5%9D%80%E5%86%85%E5%AE%B9"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">可以看查任意地址内容</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8F%AF%E4%BB%A5%E4%BB%BB%E6%84%8F%E5%86%99%E5%9C%B0%E5%9D%80"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">可以任意写地址</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8Estack-chk-fail"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">关于stack_chk_fail</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#printf%E7%9A%84%E8%BE%93%E5%87%BA%E6%BC%8F%E6%B4%9E"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">printf的输出漏洞</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8Efmtstr%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">关于fmtstr的使用</span></a></li></ol>
         
         </div>
       </aside>
@@ -722,24 +638,11 @@
   
 
   
-    <!-- Line start -->
-    <script async="text/javascript" src="/js/line.js"></script>
-    <!-- Line end -->
-  
 
 
 
 
 
-
-  <!-- viewer start -->
-  <!-- viewer start (Picture preview) -->
-  
-    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
-    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
-  
-
-  <!-- viewer end -->
 
 
 <script>
@@ -1126,6 +1029,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 

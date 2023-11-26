@@ -11,20 +11,6 @@
 
   <!-- Baidu Push -->
   
-    <script>
-      (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-      })();
-    </script>
-  
 
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -33,7 +19,7 @@
   <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="It&#39;s an IT blog..."/>
+  <meta name="description" content="人生苦短，及时行乐"/>
   <meta name="keyword" content="Sagiring,blog"/>
   <link rel="shortcut icon" href="/img/avatar/good_to_look.jpg"/>
 
@@ -69,10 +55,6 @@
       <!-- ThemeColor end -->
     
 
-    
-      <!-- viewer start (Picture preview) -->
-      <link rel="stylesheet" href="/css/viewer.min.css"/>
-      <!-- viewer end -->
     
 
     
@@ -219,9 +201,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -241,9 +223,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -321,12 +303,12 @@
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/my_love.png');
       --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/my_love (8).png');
+      --intro-header-background-image-url-page: url('/img/header_img/my_love5.png');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love.png');
       --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love (8).png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love5.png');
     }
 
     header.intro-header {
@@ -416,13 +398,14 @@
 ezgame
 简单栈溢出，改gets，改偏移，加通防，都可以
 from AwdPwnPatcher import *
-elf = AwdPwnPatcher(&#39;./pwn&#39;)
-assembly = &#39;&#39;&#39;
+elf = AwdPwnPatcher('./pwn')
+assembly = '''
 mov rsi,rdi
 xor rdi,rdi
 mov rdx,1612
 syscall
-&#39;&#......
+'''
+elf.patch_by_jmp(0x4017FF, jmp_to......
     </div>
   </a>
   
@@ -462,16 +445,16 @@ syscall
 创建ROP类实例
 
 贴一下ROP类的注释
-
+![](./pwntools - ROP类/image-20231108173541810.png)
 简单的创建
 rop = ROP([elf1,elf2,...]) 
 #base rop.base 
 #badchars
 
+
 直接调用函数
 
-rop = ROP(libc) #自动加载ELF类的base
-rop.base =......
+rop = ......
     </div>
   </a>
   
@@ -505,17 +488,15 @@ rop.base =......
     </h3>
     <div class="post-content-preview">
       House of cat
-复现hgame week4 4nswer's gift
+复现hgame week4 4nswer’s gift
 题目
 glibc版本 2.36
-
+![](./House of cat/image-20231104111534552.png)
 程序逻辑
-
+![](./House of cat/image-20231104111625351.png)
 给了_IO_list_all的写入机会，且大小随意指定malloc
 解题思路
-首先有泄露libc地址。
-可以向malloc要一块很大的内存，让malloc调用mmap开辟空间。开辟出来的空间与libc偏移一致，fake_io便已知。
-高版本gl......
+......
     </div>
   </a>
   
@@ -551,13 +532,10 @@ glibc版本 2.36
       Setcontext与Magic-Gadget
 题目在LargebinsAttact与TcachebinsPosioning中基本一样，只是开了沙箱ban了execve。
 
-
-image-20231103173735695
-
 考虑使用orw，在上一篇的基础上来继续探究如何orw
 方法1
 考虑使用setcontext，栈迁移rop --glibc2.32
-首先先来看setco......
+首先先来看setcontext，以rdx为基地址设置寄存器。注意这里从setcontext......
     </div>
   </a>
   
@@ -607,7 +585,7 @@ Show-note 没有限制
 
 
 解题思路
-目......
+目标明确打largebin_atta......
     </div>
   </a>
   
@@ -657,7 +635,7 @@ Delet里有UAF
 Show里也没有限制
 
 解题准备
-题目给了配置docker文件夹，只有libc文件，利用glibc-all-......
+题目给了配置docker文件夹，只有libc文件，利用glibc-all-in-one查找ld文件,使用pa......
     </div>
   </a>
   
@@ -695,7 +673,7 @@ Show里也没有限制
 pwntools
 sudo apt-get update
 sudo apt-get install python3 python3-pip python3-dev git libssl-dev libffi-dev build-essential
-sudo python3 -m pip install --upgrad......
+sudo python3 -m pip install --upgrade pip......
     </div>
   </a>
   
@@ -728,22 +706,13 @@ sudo python3 -m pip install --upgrad......
       
     </h3>
     <div class="post-content-preview">
-      IO_2_1_stdin 与
-bss_format
+      IO_2_1_stdin 与 bss_format
 IO_2_1_stdin
 附件：
-
+![](./IO_2_1_stdin 与 bss_format/image-20230828104230478.png)
 bss数组越界
-
-
-flag在内存里，puts +
-0x16D2E0的地方（这里F5之后 +
-的不对，不知为何）
-
-防护全开
-总结一下，给了个bss的任意指针写！考虑打stdout泄露地址
-这里第一次接触_IO_FILE结构，久仰大名了属于是
-pwndbg&gt; ptype......
+![](./IO_2_1_stdin 与 bss_format/image-20230828104328361.png)
+![](./IO_2_1_stdin 与 bss......
     </div>
   </a>
   
@@ -783,7 +752,9 @@ chunk结构
 贴一下学习的师傅文章
 https://www.jianshu.com/p/484926468136
 https://blog.csdn.net/qq_39563369/article/details/103943077
-使用中的chunk......
+使用中的chunk
+
+free ......
     </div>
   </a>
   
@@ -818,12 +789,10 @@ https://blog.csdn.net/qq_39563369/article/details/103943077
     <div class="post-content-preview">
       SROP
 简单介绍
-SROP，即 Sigreturn Oriented Programming，正是利用了
-Sigreturn 机制的弱点，来进行攻击。
-在执行 sigreturn 系统调用的时候，不会对 signal
-做检查
+SROP，即 Sigreturn Oriented Programming，正是利用了 Sigreturn 机制的弱点，来进行攻击。
+在执行 sigreturn 系统调用的时候，不会对 signal 做检查
 
-简单来说就是通过sigreturn的系统调用0xf的syscall，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核......
+简单来说就是通过sigreturn的系统调用0xf的syscall，将所有寄存器恢复成预先设置好的样子。通过栈溢出设定，从而达成控制程序的目的。出内核态时候而sig......
     </div>
   </a>
   
@@ -847,7 +816,7 @@ Sigreturn 机制的弱点，来进行攻击。
     
     
     <li class="next">
-      <a href="/cn/archives/2/">下一页 &rarr;</a>
+      <a href="/cn/archive/2/">下一页 &rarr;</a>
     </li>
     
   </ul>
@@ -918,7 +887,7 @@ Sigreturn 机制的弱点，来进行攻击。
     
 
     
-    <p>I don&#39;t know where I am going ,but I am on my way...</p>
+    <p>人生苦短，及时行乐</p>
     
 
     <!-- SNS Link -->
@@ -995,7 +964,7 @@ Sigreturn 机制的弱点，来进行攻击。
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/11/">November 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archive/2023/11/">November 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archive/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archive/2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archive/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archive/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archive/2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
 </div>
 
 
@@ -1119,24 +1088,11 @@ Sigreturn 机制的弱点，来进行攻击。
   
 
   
-    <!-- Line start -->
-    <script async="text/javascript" src="/js/line.js"></script>
-    <!-- Line end -->
-  
 
 
 
 
 
-
-  <!-- viewer start -->
-  <!-- viewer start (Picture preview) -->
-  
-    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
-    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
-  
-
-  <!-- viewer end -->
 
 
 <script>
@@ -1523,6 +1479,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 

