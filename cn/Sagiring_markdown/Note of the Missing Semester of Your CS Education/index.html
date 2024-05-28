@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+
+  <!-- Baidu Tongji -->
+  
+
+  <!-- Baidu Push -->
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="人生苦短，及时行乐"/>
+  <meta name="keyword" content="Sagiring,blog"/>
+  <link rel="shortcut icon" href="/img/avatar/good_to_look.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/highlight.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/widget.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/rocket.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/signature.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/catalog.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/livemylife.css"/>
+
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+      <!-- gitalk start -->
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"> -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/css/gitalk.css"/>
+      <!-- gitalk end -->
+    
+
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="https://sagiring.github.io/cn/Sagiring_markdown/Note of the Missing Semester of Your CS Education/">
+  <title>
+    
+      The note of the Missing Semester of Your CS Education - 茗茗之中的blog
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--dark">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'dark';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+		<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'your-community/your-room'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">茗茗之中</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">首页</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>搜索</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <!-- CDN: jsdelivr start -->
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/img/header_img/my_love.png');
+      --intro-header-background-image-url-post: url('https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.iomy_love.png');
+      --intro-header-background-image-url-page: url('https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/my_love.png');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/img/header_img/my_love.png');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.iomy_love.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/my_love.png');
+    }
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.iomy_love.png'); */
+      
+    }
+
+    
+  </style>
+  <!-- CDN: jsdelivr end -->
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#CS" title="CS">CS</a>
+              
+            </div>
+            <h1>The note of the Missing Semester of Your CS Education</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by 茗 on
+              2024-04-24
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">33</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">5.3k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+        
+
+        <p>This is a note about MIT's The Missing Semester of Your CS Education 2020, 2019.</p>
+<p>Continuously updating.</p>
+<h1 id="base-command">Base Command</h1>
+<h2 id="echo">echo</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="bu">echo</span> Hello<span class="dt">\ </span>World </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="bu">echo</span> <span class="va">$PATH</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a><span class="co">#echo prints the content which is followed.</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="co">#\ means space. Bash is space sensitive and needs to be escaped.</span></span></code></pre></div>
+<h2 id="which">which</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">which</span> echo</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="co">#which prints that if i run echo,which echo will be run and show its path.</span></span></code></pre></div>
+<h2 id="cd">cd</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="bu">cd</span> ~ </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="co">#change pwd to user/home</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true"></a><span class="bu">cd</span> / </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true"></a><span class="co">#change pwd to root</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true"></a><span class="bu">cd</span> - </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true"></a><span class="co">#change pwd to the directory you were previously in</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true"></a><span class="bu">cd</span> ../ </span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true"></a><span class="co">#change pwd to previous level</span></span></code></pre></div>
+<h2 id="pwd">pwd</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="bu">pwd</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="co">#show your crruent working directory</span></span></code></pre></div>
+<h2 id="ls">ls</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="fu">ls</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true"></a><span class="co">#show the files and directories</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true"></a><span class="fu">ls</span> -l</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true"></a><span class="co">#show more details </span></span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240422162842318.png"></p>
+<p>It shows every stuff's detail in this directory. The owner,the type of the stuff,the permissions...</p>
+<p>The permissions are divided into three groups. They are the owner,the owner's group,everyone. Each group bits mean read,write,execute. For the directory(which first bit is d), the execute bit means if you have the permission to cd to this directory. The - bit means you don't have the permission.</p>
+<h2 id="man">man</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="fu">man</span> ls</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true"></a><span class="fu">man</span> cd</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true"></a><span class="fu">man</span> ...</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true"></a><span class="fu">man</span> signal.7</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true"></a><span class="co">#show a manual page for us.Litte easy to read and navigate then --help</span></span></code></pre></div>
+<h2 id="ctrl-l">Ctrl + L</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="ex">means</span> clear</span></code></pre></div>
+<h2 id="small-tools">Small Tools</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="fu">mv</span> oldPath newPath</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true"></a><span class="co">#rename or move</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true"></a><span class="fu">cp</span> oldPath newPath</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true"></a><span class="co">#copy</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true"></a><span class="fu">rm</span> -r path </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true"></a><span class="fu">rm</span> path</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true"></a><span class="co">#delete files. -r means recursion</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true"></a><span class="fu">rmdir</span> path</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true"></a><span class="co">#delete directories.</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true"></a><span class="fu">mkdir</span> path</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true"></a><span class="fu">make</span> <span class="st">&#39;my photo&#39;</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true"></a><span class="co">#make directory. you can use &#39;&#39; or &quot;&quot; means the whole string</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true"></a></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true"></a><span class="fu">sudo</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true"></a><span class="co"># do as su</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true"></a><span class="fu">diff</span> <span class="op">&lt;(</span><span class="fu">ls</span> foo<span class="op">)</span> <span class="op">&lt;(</span><span class="fu">ls</span> bar<span class="op">)</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true"></a><span class="co">#compare the difference between two files.</span></span></code></pre></div>
+<h2 id="tldr">tldr</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true"></a><span class="ex">tldr</span> ffmpeg</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true"></a><span class="ex">tldr</span> elf</span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240422192628732.png"></p>
+<p>It shows many examples that how to use the elf. It is community maintenance.</p>
+<h2 id="find">find</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true"></a><span class="fu">find</span> . -name src -type d</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true"></a><span class="fu">find</span> . -name foo -type f</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true"></a><span class="fu">find</span> . -path <span class="st">&#39;**/test/*.py&#39;</span> -type f</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true"></a><span class="fu">find</span> . -name <span class="st">&quot;*.tmp&quot;</span> -exec rm &#123;&#125; <span class="dt">\;</span></span></code></pre></div>
+<h2 id="locate">locate</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true"></a><span class="fu">locate</span> <span class="st">&quot;search_pattern&quot;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true"></a><span class="co">#use index to fine files</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true"></a><span class="fu">updatedb</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true"></a><span class="co">#update the database (index)</span></span></code></pre></div>
+<h2 id="grep">grep</h2>
+<p>Search string</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true"></a><span class="fu">grep</span> foobar mcd.sh</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true"></a><span class="fu">grep</span> -R foobar .</span></code></pre></div>
+<h2 id="history-ctrl-r">history , Ctrl + R</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true"></a><span class="bu">history</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true"></a><span class="bu">history</span> 10 <span class="kw">|</span> <span class="fu">grep</span> ffmpeg</span></code></pre></div>
+<h2 id="redirectpipe">Redirect,Pipe</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true"></a><span class="bu">echo</span> hello <span class="op">&gt;</span> hello.txt</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true"></a><span class="fu">cat</span> <span class="op">&lt;</span> hello.txt</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true"></a><span class="fu">cat</span> <span class="op">&lt;</span> hello.txt <span class="op">&gt;</span> hello2.txt</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true"></a><span class="fu">cat</span> cat <span class="op">&lt;</span> hello.txt <span class="op">&gt;&gt;</span> hello2.txt</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true"></a><span class="co"># &gt;&gt; means append</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true"></a><span class="fu">ls</span> -l / <span class="kw">|</span> <span class="fu">tail</span> -n1 <span class="op">&gt;</span> ls.txt</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true"></a><span class="co">#print the last line of &quot;ls -l /&quot;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true"></a><span class="co">#ls don&#39;t know tail and tail don&#39;t know ls</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true"></a><span class="ex">curl</span> --head --silent google.com <span class="kw">|</span> <span class="fu">grep</span> -i content-length <span class="kw">|</span> <span class="fu">cut</span> --delimiter=<span class="st">&#39; &#39;</span> -f2</span></code></pre></div>
+<h2 id="tree">tree</h2>
+<p>A tool helps you know the structure of directories easily.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true"></a><span class="ex">tree</span></span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240422234007919.png"></p>
+<h2 id="autojump">autojump</h2>
+<p>A tool helps you jump to recent directory.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true"></a><span class="ex">autojump</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true"></a><span class="ex">j</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true"></a><span class="co">#autojump - a faster way to navigate your filesystem</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true"></a><span class="ex">j</span> opt</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true"></a><span class="co"># jump to the opt directory you have gone before.</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true"></a><span class="fu">man</span> autojump</span></code></pre></div>
+<h1 id="root-directory">Root directory</h1>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240427150116281.png"></p>
+<h2 id="bin---binaries">/bin - Binaries</h2>
+<p>The <code>/bin</code> folder contains programs that are essential for the system to boot and run. So, if you destroy this folder, your system won’t boot and run.</p>
+<h2 id="boot---boot-file">/boot - Boot File</h2>
+<p>This folder is needed to boot your system. It contains the Linux kernel, initial RAM disk image for drives need at boot time, and the bootloader.</p>
+<h2 id="dev---device-nodes">/dev - Device Nodes</h2>
+<p>An important concept of Linux – everything is a file.</p>
+<p>The <code>/dev</code> folder contains files for all devices your Linux is able to recognize.</p>
+<h2 id="etc-configuration-files">/etc – Configuration Files</h2>
+<p>The <code>/etc</code> folder comprises all system-wide configuration files and some shell scripts that are executed during the system boot. All files here are text files, so they are human readable.</p>
+<h2 id="home">/home</h2>
+<p>The home directory contains a home folder for each regular user on your Linux system.</p>
+<h2 id="lib-libraries">/lib – Libraries</h2>
+<p>You already know the <code>/bin</code> directory that contains programs, this <code>/lib</code> folder contains libraries required by those programs from the <code>/bin</code> folder.</p>
+<h2 id="lostfound-recovered-files">/lost+found – Recovered Files</h2>
+<p>This is a file system specific folder that is used for data recovery in case of file corruption. Unless something bad has happened, this folder should be empty on your system. You will have this directory if you use the <em>ext4</em> file system.</p>
+<h2 id="media-automatic-mount-point">/media – Automatic mount point</h2>
+<p>This folder is used for automatic mounting of removable media such as USB drives, CD-ROM etc. For example, if your system is configured for automatic mounting, when you insert a USB drive it will be mounted to this folder.</p>
+<h2 id="mnt-manual-mount-point">/mnt – Manual mount point</h2>
+<p>The <code>/mnt</code> folder is similar to the <code>/media</code> folder, it is also used to mount devices, but usually, it is used for manual mounting. You, of course, can manually mount your devices to <code>/media</code>, but to keep some order in your system it is better to separate these two mounting points.</p>
+<h2 id="opt-optional-software">/opt – Optional Software</h2>
+<p>This folder is not essential for your system to work. Usually, it is used to install commercial programs on your system. For example, my <em>Dropbox</em> installation is located in this folder.</p>
+<h2 id="proc-kernel-files">/proc – Kernel Files</h2>
+<p>This is a virtual file-system maintained by the Linux kernel. Usually, you do not touch anything in this folder. It is needed only for the kernel to run different processes.</p>
+<h2 id="root-root-home">/root – Root Home</h2>
+<p>This is the home directory of your root user. Don’t mix it with the <code>/</code> root directory. The <code>/</code> directory is the parental directory for the whole system, whereas this <code>/root</code> directory is the same as your user home directory but it is for the root account.</p>
+<h2 id="run-early-temp">/run – Early temp</h2>
+<p>The <code>/run</code> is a recently introduced folder that is actually a temporary file-system. It is used to store temporary files very early in system boot before the other temporary folders become available.</p>
+<h2 id="sbin-system-binaries">/sbin – System Binaries</h2>
+<p>Similar to <code>/bin</code> this folder contains binaries for essential system tasks but they are meant to be run by the super user, in other words, the administrator of the system.</p>
+<h2 id="srv-service-data">/srv – Service Data</h2>
+<p>This directory contains service files installed on your system. For example, if you installed a web-served on your Linux system, it will be located in this folder.</p>
+<h2 id="tmp-temporary-files">/tmp – Temporary Files</h2>
+<p>This is just a place where programs store temporary files on your system. This directory is usually cleaned on reboot.</p>
+<h2 id="usr-user-binaries">/usr – User Binaries</h2>
+<p>This is probably the largest folder after your home folder. It contains all programs used by a regular user.</p>
+<p><code>/usr/bin</code> contains the programs installed by your Linux distribution. There are usually thousands of programs here.</p>
+<h2 id="var-variable-files">/var – Variable Files</h2>
+<p>The <code>/var</code> contains files that are of variable content, so their content is not static and it constantly changes. For example, this is where the log files are stored. If you don’t know, a log file is a file that records all events happening in your system while it is running. These log files often help to find out if something is not working correctly in your system.</p>
+<h2 id="sys">/sys</h2>
+<p>The kernels' arguments show as a file. Change the file to control the device.</p>
+<p><strong><code>/sys/class</code></strong> is a directory in the Linux filesystem that provides a way to interact <strong>with the kernel and access information about various classes of devices and subsystems.</strong></p>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240427152101944.png"></p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true"></a><span class="bu">echo</span> 1060 <span class="kw">|</span> <span class="fu">sudo</span> tee brigthness</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true"></a><span class="co">#Change the brightness of the device to 1060</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true"></a><span class="co">#tee means write and show in shell</span></span></code></pre></div>
+<h2 id="references">References</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://averagelinuxuser.com/linux-root-folders-explained/">https://averagelinuxuser.com/linux-root-folders-explained/</a></li>
+<li><span class="citation" data-cites="The_CodeConductor/lets-understand-sys-class-in-linux-efc38a2b4900">[https://medium.com/@The_CodeConductor/lets-understand-sys-class-in-linux-efc38a2b4900]</span>(https://medium.com/<span class="citation" data-cites="The_CodeConductor/lets-understand-sys-class-in-linux-efc38a2b4900">@The_CodeConductor/lets-understand-sys-class-in-linux-efc38a2b4900</span>)</li>
+</ul>
+<h1 id="the-control-flow-functions-in-bash">The control flow functions in bash</h1>
+<h2 id="variable">variable</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true"></a><span class="va">foo=</span>bar</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true"></a><span class="bu">echo</span> <span class="va">$foo</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true"></a><span class="op">&gt;</span> <span class="ex">bar</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true"></a><span class="co">#foo = bar is wrong. Be careful with the space.</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;Hello World&quot;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true"></a><span class="op">&gt;</span><span class="ex">Hello</span> World</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true"></a><span class="co">#define a string</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;Value is </span><span class="va">$foo</span><span class="st">&quot;</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true"></a><span class="op">&gt;</span> <span class="ex">Value</span> is bar</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&#39;Value is $foo&#39;</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true"></a><span class="op">&gt;</span> <span class="ex">Value</span> is <span class="va">$foo</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true"></a><span class="co">#the difference between &quot;&quot; and &#39;&#39;</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true"></a><span class="va">foo=$(</span><span class="bu">pwd</span><span class="va">)</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true"></a><span class="co">#get the pwd&#39;s result,then give it to foo</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true"></a><span class="fu">cat</span> <span class="op">&lt;(</span><span class="fu">ls</span><span class="op">)</span> <span class="op">&lt;(</span><span class="fu">ls</span> ..<span class="op">)</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true"></a><span class="co">#() will make a tmp file to save the result</span></span></code></pre></div>
+<h2 id="special-variable">Special Variable</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true"></a><span class="va">$0</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true"></a><span class="co">#name of program</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true"></a><span class="va">$1</span>,<span class="va">$2</span>,<span class="va">$3</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true"></a><span class="co">#args</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true"></a><span class="va">$?</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true"></a><span class="co">#get the error code from the previous command</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true"></a><span class="va">$_</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true"></a><span class="co">#get the last arg of the previous command</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true"></a>!!</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true"></a><span class="co">#get the previous command</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true"></a><span class="va">$$</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true"></a><span class="co">#get previous command&#39;s pid</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true"></a></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true"></a><span class="fu">true</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true"></a><span class="fu">false</span></span></code></pre></div>
+<h2 id="connector">Connector</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true"></a><span class="kw">||</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true"></a><span class="co">#and</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true"></a><span class="kw">&amp;&amp;</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true"></a><span class="co">#or</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true"></a>;</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true"></a><span class="co">#run it anyway</span></span></code></pre></div>
+<h2 id="wildcards">Wildcards</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true"></a><span class="fu">ls</span> *.sh</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true"></a><span class="co">#show the stuff which is endwith &#39;.sh&#39;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true"></a><span class="fu">ls</span> project?</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true"></a><span class="co">#show the stuff which is project plus one any char.</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true"></a><span class="fu">touch</span> foo<span class="dt">&#123;,1,2,10&#125;</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true"></a><span class="co">#creat foo  foo1  foo10  foo2 files</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true"></a><span class="fu">touch</span> project<span class="dt">&#123;1,2&#125;</span>/test<span class="dt">&#123;1,2,3&#125;</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true"></a><span class="co">#creat 6 files with combination &#123;&#125; and &#123;&#125; </span></span></code></pre></div>
+<h2 id="function">Function</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true"></a><span class="fu">mcd()</span><span class="kw">&#123;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true"></a> <span class="fu">mkdir</span> -p <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true"></a> <span class="bu">cd</span> <span class="st">&quot;</span><span class="va">$1</span><span class="st">&quot;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true"></a><span class="kw">&#125;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true"></a><span class="co">#or </span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true"></a><span class="bu">source</span> mcd.sh </span></code></pre></div>
+<h2 id="example">Example</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true"></a><span class="co">#magic line</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;Starting program at </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">&quot;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true"></a><span class="bu">echo</span> <span class="st">&quot;Running program </span><span class="va">$0</span><span class="st"> with </span><span class="va">$#</span><span class="st"> arguments with pid </span><span class="va">$$</span><span class="st">&quot;</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true"></a><span class="kw">for</span> <span class="fu">file</span> in <span class="st">&quot;</span><span class="va">$@</span><span class="st">&quot;</span><span class="kw">;</span> <span class="kw">do</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true"></a>    <span class="fu">grep</span> foobar <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span> <span class="op">&gt;</span> /dev/null <span class="op">2&gt;</span> /dev/null</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true"></a>    <span class="co">#redirect STDOUT and STDERR to a null register</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true"></a>    </span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true"></a>    <span class="kw">if [[</span> <span class="st">&quot;</span><span class="va">$?</span><span class="st">&quot;</span> <span class="ot">-ne</span> 0<span class="kw"> ]]</span>; <span class="kw">then</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true"></a>        <span class="bu">echo</span> <span class="st">&quot;File </span><span class="va">$file</span><span class="st"> does not have any foobar, adding one.&quot;</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true"></a>        <span class="bu">echo</span> <span class="st">&quot;# foobar&quot;</span> <span class="op">&gt;&gt;</span> <span class="st">&quot;</span><span class="va">$file</span><span class="st">&quot;</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true"></a>    <span class="kw">fi</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true"></a><span class="kw">done</span></span></code></pre></div>
+<h2 id="magic-line">Magic Line</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true"></a><span class="co">#use env to find python</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true"></a><span class="im">import</span> sys</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true"></a><span class="cf">for</span> arg <span class="kw">in</span> <span class="bu">reversed</span>(sys.argv[<span class="dv">1</span>:]):</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true"></a>    <span class="bu">print</span>(arg)</span></code></pre></div>
+<p>Run it only by "script.py".</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true"></a><span class="ex">./script.py</span> a b c</span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240422192031731.png"></p>
+<h1 id="vim">Vim</h1>
+<p>Why normal mode?</p>
+<p>Normal mode is programming language of vim, which you can communicate with vim to edit code as quick as you think.</p>
+<h2 id="change-mode">Change Mode</h2>
+<p><code>i</code> =&gt; insert</p>
+<p><code>r</code> =&gt; replace</p>
+<p><code>v</code> =&gt; visual</p>
+<p><code>s-v</code> =&gt; visual-line</p>
+<p><code>c-v</code> =&gt; visual-block</p>
+<p><code>:</code> =&gt; command</p>
+<p><code>ESC</code> =&gt; normal</p>
+<h2 id="command">Command</h2>
+<p><code>:w</code> =&gt; write</p>
+<p><code>:q</code>=&gt; close the top window</p>
+<p><code>:qa</code>=&gt; close the all windows</p>
+<h2 id="navigatemove-command">Navigate,Move Command</h2>
+<p><code>h</code> =&gt;move left</p>
+<p><code>j</code> =&gt; move down</p>
+<p><code>k</code> =&gt; move up</p>
+<p><code>l</code> =&gt; move right</p>
+<p><code>w</code> =&gt; forward by on word</p>
+<p><code>b</code> =&gt; back by on word</p>
+<p><code>e</code> =&gt; forward to the tail of one word</p>
+<p><code>^</code> or <code>0</code> =&gt; head of line</p>
+<p><code>$</code> =&gt; tail of line</p>
+<p><code>Ctrl U</code> =&gt; scroll up</p>
+<p><code>Ctrl D</code> =&gt; scroll down</p>
+<p><code>G</code> =&gt; end of file</p>
+<p><code>gg</code> =&gt; head of file</p>
+<p><code>L</code> <code>M</code> <code>H</code> =&gt; move cursor to the {lowest,mid,highest} of screen</p>
+<p><code>f&#123;char&#125;</code> =&gt; move cursor to char which is first appearance in line.</p>
+<p><code>t&#123;char&#125;</code> =&gt; t means two. Similar with <code>f&#123;char&#125;</code>.</p>
+<p><code>T&#123;char&#125;</code> =&gt; Similar with <code>t&#123;char&#125;</code>. But move back.</p>
+<p><code>%</code> =&gt; to jump between matching parentheses.</p>
+<p><code>/</code> + <code>pattern</code> =&gt; search the pattern and move cursor to it.</p>
+<p><code>n</code> =&gt; to the next one.</p>
+<p><code>Ctrl w</code> + <code>jk</code> =&gt; change vim windows.</p>
+<h2 id="edit-command">Edit Command</h2>
+<p><code>i</code> =&gt; insert.</p>
+<p><code>O</code> =&gt; create a new line to insert.</p>
+<p><code>u</code> =&gt; cancel.</p>
+<p><code>Ctrl r</code> =&gt; redo.</p>
+<p><code>dd</code> =&gt; delete the whole line</p>
+<p><code>d</code> + <code>hjkl(move) w(word)e(end)</code> =&gt; delete specified direction</p>
+<p><code>c</code> + <code>e</code> =&gt; change the end and go to insert.</p>
+<p><code>cc</code> =&gt; delete the whole line and go to insert.</p>
+<p><code>x</code> =&gt; delete the char where the cursor is.</p>
+<p><code>r&#123;char&#125;</code> =&gt; replace the char where the cursor is.</p>
+<p><code>y</code> + <code>move</code> =&gt; copy. y means yank.</p>
+<p><code>yy</code> =&gt; copy the whole line.</p>
+<p><code>p</code> =&gt; paste.</p>
+<p><code>d</code> =&gt; cut</p>
+<p><code>v</code> + <code>move</code> + <code>y</code> =&gt; go to normal visual mode to select the text you want to copy.</p>
+<p><code>V</code> =&gt; select whole lines mode.</p>
+<p><code>Ctrl v</code> =&gt; select block mode.</p>
+<p><code>~</code> =&gt; switch character case</p>
+<p><code>.</code> =&gt; repeat the previous edit command.</p>
+<h2 id="count-command">Count Command</h2>
+<p><code>num</code> + <code>Move Command</code></p>
+<p><code>num</code> + <code>Edit Command</code></p>
+<p>=&gt; do the command n times</p>
+<h2 id="modifiers">Modifiers</h2>
+<p><code>a</code> =&gt; around</p>
+<p><code>i</code> =&gt; inside</p>
+<p>example:</p>
+<p><code>c i (</code> =&gt; change inside ().</p>
+<p><code>d a (</code> =&gt; delete () and itself.</p>
+<h2 id="exercise-demo">Exercise Demo</h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true"></a><span class="kw">def</span> fizz_buzz(limit):</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(limit):</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true"></a>            <span class="bu">print</span>(<span class="st">&#39;fizz&#39;</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true"></a>            <span class="bu">print</span>(<span class="st">&#39;fizz&#39;</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">3</span> <span class="kw">and</span> i <span class="op">%</span> <span class="dv">5</span>:</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true"></a>            <span class="bu">print</span>(i)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true"></a><span class="kw">def</span> main():</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true"></a>    fizz_buzz(<span class="dv">10</span>)</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true"></a><span class="co">#use vim to fix it.   </span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true"></a><span class="im">import</span> sys</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true"></a><span class="kw">def</span> fizz_buzz(limit):</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>,limit<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">3</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true"></a>            <span class="bu">print</span>(<span class="st">&#39;fizz&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">5</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true"></a>            <span class="bu">print</span>(<span class="st">&#39;buzz&#39;</span>,end<span class="op">=</span><span class="st">&#39;&#39;</span>)</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true"></a>        <span class="cf">if</span> i <span class="op">%</span> <span class="dv">3</span> <span class="kw">and</span> i <span class="op">%</span> <span class="dv">5</span>:</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true"></a>            <span class="bu">print</span>(i)</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true"></a></span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true"></a><span class="kw">def</span> main():</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true"></a>    fizz_buzz(<span class="bu">int</span>(sys.argv[<span class="dv">1</span>]))</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true"></a>    </span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true"></a>    main()</span></code></pre></div>
+<h2 id="tips">Tips</h2>
+<p>In bash or in python, you can press <code>Esc</code> to put you into normal mode. You can use <code>d</code> to delete the word. Cool.</p>
+<h1 id="data-wrangling">Data Wrangling</h1>
+<p>This will help you get useful data from a lot of data, which only use one command line. Useful.</p>
+<h2 id="tools">Tools</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true"></a><span class="ex">journalctl</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true"></a><span class="co">#print log</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true"></a><span class="fu">less</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true"></a><span class="co">#make pages</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true"></a><span class="fu">sed</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true"></a><span class="co">#stream editor</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true"></a><span class="co">#replace in the stream. Do it line by line. </span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true"></a><span class="fu">sed</span> <span class="st">&#39;s/.*Disconnected from//&#39;</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true"></a><span class="co">#use regex expression to replace</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true"></a><span class="fu">sed</span> -E <span class="st">&#39;s/(ab)*//g&#39;</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true"></a><span class="co">#use new regex rule</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true"></a><span class="fu">sed</span> -E -n <span class="st">&quot;s/.*Disconnected from user (.*) [0-9.]+ port [0-9]+/\1/p&quot;</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true"></a><span class="co">#get the secound capture gourp</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true"></a><span class="co"># use -n and p command to only print the lines which were replaced.</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true"></a><span class="fu">wc</span> </span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true"></a><span class="fu">wc</span> -l</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true"></a><span class="co">#print the num of lines</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true"></a></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true"></a><span class="fu">sort</span></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true"></a><span class="fu">sort</span> -nk1,1</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true"></a><span class="co">#-n means number sort</span></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true"></a><span class="co">#-k means split by space of input</span></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true"></a><span class="co">#1,1 start from first column and end at the first column, by this column</span></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true"></a><span class="co">#type man sort or tdlr sort to know the args</span></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true"></a></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true"></a><span class="fu">uniq</span></span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true"></a><span class="fu">uniq</span> -c</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true"></a><span class="co">#-c is count mode.</span></span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true"></a></span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true"></a><span class="fu">awk</span></span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true"></a><span class="fu">awk</span> <span class="st">&#39;&#123;print $2&#125;&#39;</span></span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true"></a><span class="co">#split by space and print the secound column</span></span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true"></a><span class="fu">awk</span> <span class="st">&#39;$1 == 1 &amp;&amp; $2 ~ /^c.*e$/ &#123;print $0&#125;&#39;</span></span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true"></a><span class="co">#it will match </span></span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true"></a><span class="co">#the first line of value is 1 and </span></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true"></a><span class="co">#the secound line which is start with c,end at e.</span></span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true"></a><span class="fu">awk</span> <span class="st">&#39;BEGIN &#123;rows = 0&#125; $1 == 1 &amp;&amp; $2 ~ /^c.*e$/ &#123;rows+=1&#125; END &#123;print rows&#125;&#39;</span></span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true"></a></span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true"></a><span class="ex">paste</span></span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true"></a><span class="ex">paste</span> -sd,</span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true"></a><span class="co">#receive a bunch of lines and pastes them together into a line</span></span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true"></a><span class="co">#use comma as delimiter</span></span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true"></a></span>
+<span id="cb27-47"><a href="#cb27-47" aria-hidden="true"></a><span class="fu">bc</span> </span>
+<span id="cb27-48"><a href="#cb27-48" aria-hidden="true"></a><span class="fu">bc</span> -l</span>
+<span id="cb27-49"><a href="#cb27-49" aria-hidden="true"></a><span class="co">#read the string and convert it to the arithmetic expression to calculate to result.</span></span>
+<span id="cb27-50"><a href="#cb27-50" aria-hidden="true"></a></span>
+<span id="cb27-51"><a href="#cb27-51" aria-hidden="true"></a><span class="ex">R</span></span>
+<span id="cb27-52"><a href="#cb27-52" aria-hidden="true"></a><span class="ex">R</span> --slave -e <span class="st">&#39;x &lt;= scan(file=&quot;stdin&quot;,quiet=TRUE); summary(x)&#39;</span></span>
+<span id="cb27-53"><a href="#cb27-53" aria-hidden="true"></a><span class="co">#statistics tool</span></span>
+<span id="cb27-54"><a href="#cb27-54" aria-hidden="true"></a></span>
+<span id="cb27-55"><a href="#cb27-55" aria-hidden="true"></a><span class="ex">gnuplot</span></span>
+<span id="cb27-56"><a href="#cb27-56" aria-hidden="true"></a><span class="ex">gnuplot</span> -p -e <span class="st">&#39;set boxwidth 0.5;plot &quot;-&quot; using 1:xtic(2) with boxes&#39;</span></span>
+<span id="cb27-57"><a href="#cb27-57" aria-hidden="true"></a><span class="co">#Visual statistical tool </span></span>
+<span id="cb27-58"><a href="#cb27-58" aria-hidden="true"></a></span>
+<span id="cb27-59"><a href="#cb27-59" aria-hidden="true"></a><span class="fu">xargs</span></span>
+<span id="cb27-60"><a href="#cb27-60" aria-hidden="true"></a><span class="fu">cat</span> log.txt <span class="kw">|</span> <span class="fu">xargs</span> echo</span>
+<span id="cb27-61"><a href="#cb27-61" aria-hidden="true"></a><span class="co"># xargs helps you use command which cannot receive a input and use args as input by |.</span></span>
+<span id="cb27-62"><a href="#cb27-62" aria-hidden="true"></a><span class="fu">find</span> /tmp -name core -type f -print <span class="kw">|</span> <span class="fu">xargs</span> /bin/rm -f</span>
+<span id="cb27-63"><a href="#cb27-63" aria-hidden="true"></a><span class="co"># Find files named core in or below the directory /tmp and delete them.  Note that this will work incorrectly if</span></span>
+<span id="cb27-64"><a href="#cb27-64" aria-hidden="true"></a><span class="fu">find</span> /tmp -name core -type f -print0 <span class="kw">|</span> <span class="fu">xargs</span> -0 /bin/rm -f</span>
+<span id="cb27-65"><a href="#cb27-65" aria-hidden="true"></a><span class="co"># Find  files named core in or below the directory /tmp and delete them, processing filenames in such a way that</span></span>
+<span id="cb27-66"><a href="#cb27-66" aria-hidden="true"></a><span class="fu">cut</span> -d: -f1 <span class="op">&lt;</span> /etc/passwd <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">xargs</span> echo</span>
+<span id="cb27-67"><a href="#cb27-67" aria-hidden="true"></a><span class="co"># Generates a compact listing of all the users on the system.</span></span></code></pre></div>
+<h2 id="demo">Demo</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true"></a><span class="fu">cat</span> log.txt <span class="kw">|</span> <span class="fu">grep</span> sshd <span class="kw">|</span> <span class="fu">sed</span> -E -n <span class="st">&quot;s/.*Disconnected from user (.*) [0-9.]+ port [0-9]+/\1/p&quot;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c <span class="kw">|</span> <span class="fu">sort</span> -nk1,1 <span class="kw">|</span><span class="fu">awk</span> <span class="st">&#39;&#123;print $2&#125;&#39;</span><span class="kw">|</span><span class="ex">paste</span> -sd,</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true"></a><span class="co"># print sshd login users by ascending order</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true"></a><span class="fu">cat</span> log.txt <span class="kw">|</span> <span class="fu">grep</span> sshd <span class="kw">|</span> <span class="fu">sed</span> -E -n <span class="st">&quot;s/.*Disconnected from user (.*) [0-9.]+ port [0-9]+/\1/p&quot;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> -c <span class="kw">|</span> <span class="fu">sort</span> -nk1,1 <span class="kw">|</span><span class="fu">awk</span> <span class="st">&#39;&#123;print $1&#125;&#39;</span><span class="kw">|</span><span class="ex">paste</span> -sd+<span class="kw">|</span><span class="fu">bc</span> -l</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true"></a><span class="co"># print the sum of logins </span></span></code></pre></div>
+<h1 id="job-control">Job Control</h1>
+<h2 id="sleep">sleep</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true"></a><span class="fu">sleep</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true"></a><span class="fu">sleep</span> 20</span></code></pre></div>
+<p><code>Ctrl + C</code> to exit the program.</p>
+<p><code>Ctrl + C</code> sends a signal to the program. Use <code>man signal</code> to see them all.</p>
+<h2 id="signal">signal</h2>
+<h3 id="demo-1">demo</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true"></a><span class="im">import</span> signal,time</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true"></a><span class="kw">def</span> handler(signum,time):</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\n</span><span class="st">I got a SIGINT, but I am not stopping&quot;</span>)</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true"></a>signal.signal(signal.SIGINT,handler)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true"></a>    time.sleep(<span class="fl">.1</span>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;</span><span class="ch">\r</span><span class="sc">&#123;&#125;</span><span class="st">&quot;</span>.<span class="bu">format</span>(i), end<span class="op">=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true"></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code></pre></div>
+<figure>
+<img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240424183853538.png" alt><figcaption>image-20240424183853538</figcaption>
+</figure>
+<p><code>Ctrl C</code> is not work, but <code>Ctrl \</code> does. Different signals were sent to the program.</p>
+<h2 id="command-1">Command</h2>
+<p><code>Ctrl C</code> and <code>Ctrl \</code> will terminate the program.</p>
+<p><code>Ctrl Z</code> will suspend the program. <code>fg</code> to continue.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true"></a><span class="fu">nohup</span> sleep 2000 <span class="kw">&amp;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true"></a><span class="co"># run this program in the background.</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true"></a><span class="co"># encapsulating the command you are executing</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true"></a><span class="co"># ignore whatever signal you get, except KILL. </span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true"></a><span class="co"># so that keep it running.</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true"></a><span class="bu">jobs</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true"></a><span class="co"># print the programs which are running or suspended</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true"></a><span class="bu">bg</span> %n</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true"></a><span class="co"># n is a number. continue the suspended program n.</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true"></a><span class="co"># send a continue signal</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true"></a><span class="bu">kill</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true"></a><span class="co"># send any sort of Unix signal</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true"></a><span class="bu">kill</span> -STOP %n</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true"></a><span class="co"># send a STOP signal</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true"></a><span class="bu">kill</span> -KILL %n</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true"></a><span class="co"># send a KILL signal</span></span></code></pre></div>
+<h1 id="terminal-multiplexer">Terminal multiplexer</h1>
+<h2 id="hierarchy">Hierarchy</h2>
+<ul>
+<li>Sessions
+<ul>
+<li>Windows
+<ul>
+<li>Panes</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>windows =&gt; tags in web browser.</p>
+<h2 id="tmux">tmux</h2>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true"></a><span class="ex">tmux</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true"></a><span class="ex">tmux</span> a -t foobar</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true"></a><span class="co"># attach to a session called foobar</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true"></a><span class="ex">tmux</span> new -t foobar</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true"></a><span class="co"># create a new session called foobar</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true"></a></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true"></a><span class="ex">tmux</span> ls</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true"></a><span class="co"># print all sessions</span></span></code></pre></div>
+<p><code>Ctrl D</code> =&gt; exit the current window.</p>
+<p><code>Ctrl B</code> =&gt; prefix. (<code>Ctrl A</code> is recommended.) Use more prefixes to detach from remote tmux.</p>
+<ul>
+<li><code>c</code> =&gt; create a new window.</li>
+<li><code>p</code> =&gt; switch to the previous window.</li>
+<li><code>n</code> =&gt; switch to the next window.</li>
+<li><code>num</code> =&gt; switch to the specific window.</li>
+<li><code>,</code> =&gt; rename the current window.</li>
+<li><code>"</code> =&gt; split the current display into two different panes.</li>
+<li><code>%</code> =&gt; split vertically.</li>
+<li><code>Direction</code> =&gt; switch between the panes.</li>
+<li><code>space</code> =&gt; switch different layout.</li>
+<li><code>z</code> =&gt; zoom the current panes.</li>
+<li><code>d</code> =&gt; detach from current session.</li>
+</ul>
+<h1 id="dotfiles">Dotfiles</h1>
+<p>alias can remap a source sequence of characters to a longer sequence.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true"></a><span class="bu">alias</span> ll=<span class="st">&quot;ls -lah&quot;</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true"></a><span class="bu">alias</span> mv=<span class="st">&quot;mv -i&quot;</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true"></a><span class="bu">alias</span> mv</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true"></a><span class="op">&gt;</span> <span class="va">mv=</span><span class="st">&quot;mv -i&quot;</span></span></code></pre></div>
+<p>However we don't want to retype it, after we get a new bash. So <code>.bashrc</code> appeared.</p>
+<h2 id="bashrc"><code>.bashrc</code></h2>
+<p>Persist the bash setting</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true"></a><span class="bu">alias</span> mv=<span class="st">&#39;mv -i&#39;</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true"></a><span class="va">PS1=</span><span class="st">&quot;&gt; &quot;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true"></a><span class="co"># PS1 is a variable which control the prompt string of your bash. </span></span></code></pre></div>
+<p>That's same as <code>.vimrc</code></p>
+<p>How to modify a dotfile? How to learn about what can be configured?</p>
+<p><a target="_blank" rel="noopener" href="https://missing-semester-cn.github.io/">https://missing-semester-cn.github.io/</a> =&gt; good resource in lecture note.</p>
+<p>main idea is many people upload the configuration in the GitHub. We can search <code>dotfile</code> to find them.</p>
+<h2 id="symlink">Symlink</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true"></a><span class="fu">ln</span> -s path/to/file symlink </span></code></pre></div>
+<p>GNU Stow =&gt; a utility for automatically and safely linking your dotfiles folder into your home directory.</p>
+<h2 id="gnu-stow">GNU Stow</h2>
+<p>Use it to make your dotfiles directory by follow steps.</p>
+<p>First, make a dotfile folder under your $home, then move your dotfiles into this folder by make corresponding folder. Here is a example for my bash, vim, neovim, tmux.</p>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240427143935308.png"></p>
+<p>Make sure the directory structure is same as before.</p>
+<p>Then use stow to make a symlink.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true"></a><span class="bu">cd</span> dotfiles</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true"></a><span class="ex">stow</span> bash #make a symlink to .bashrc.</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true"></a><span class="ex">stow</span> tmux # ...</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true"></a><span class="ex">stow</span> vim</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true"></a><span class="ex">stow</span> neovim</span></code></pre></div>
+<p>Here is the result.</p>
+<figure>
+<img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240427144357369.png" alt><figcaption>image-20240427144357369</figcaption>
+</figure>
+<figure>
+<img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240427144432860.png" alt><figcaption>image-20240427144432860</figcaption>
+</figure>
+<p>Now, you can use git to control the version of dotfiles easily.</p>
+<p>Here is my dotfile in GitHub.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Sagiring/dotfiles">https://github.com/Sagiring/dotfiles</a></li>
+</ul>
+<h1 id="remote-machine">Remote Machine</h1>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true"></a><span class="fu">ssh</span> jjgo@192.168.246.142</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true"></a><span class="fu">ssh</span> jjgo@foobar.mit.edu</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true"></a><span class="fu">ssh</span> jjgo@192.168.246.142 ls -la</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true"></a><span class="fu">ssh</span> MINIPC</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true"></a><span class="co"># execute the command on remote and send back the result.</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true"></a></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true"></a><span class="co">#SSH Keys use keypair to verify you identification.</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true"></a><span class="fu">ssh-keygen</span> -o -a 100 -t ed25519</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true"></a><span class="co"># copy key in .ssh </span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true"></a></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true"></a><span class="ex">ssh-copy-id</span> jjgo@192.168.246.142</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true"></a><span class="co"># copy key to remote.</span></span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true"></a></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true"></a><span class="fu">scp</span> note.md jjgo@192.168.246.142:foobar.md</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true"></a><span class="co">#copy more thing</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true"></a></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true"></a><span class="fu">rsync</span> -avP . jjgo@192.168.246.142:cmd</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true"></a><span class="co"># copy scores of thing. For example, use it to copy a folder.</span></span></code></pre></div>
+<p><code>.ssh/config</code> =&gt; useful configuration. You can use PC's name instead of IP to connect.</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true"></a><span class="ex">Host</span> MINIPC</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true"></a>    <span class="ex">HostName</span> IP</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true"></a>    <span class="ex">User</span> Sagiring</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true"></a>    <span class="ex">Port</span> 22</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true"></a>    <span class="ex">IdentityFile</span> path/to/privateKey</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true"></a></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true"></a><span class="ex">Host</span> github.com</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true"></a>    <span class="ex">User</span> git</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true"></a>    <span class="ex">Hostname</span> github.com</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true"></a>    <span class="ex">PreferredAuthentications</span> publickey</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true"></a>    <span class="ex">IdentityFile</span>  path/to/privateKey</span></code></pre></div>
+<h1 id="git">Git</h1>
+<p>Version control system. Git is the standard.</p>
+<figure>
+<img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240427171513321.png" alt><figcaption>image-20240427171513321</figcaption>
+</figure>
+<p>That is XKCD comic that illustrates Git's reputation.</p>
+<p>I was one of the person in the comic,absolutely.</p>
+<h2 id="the-structure-of-git">The structure of git</h2>
+<p>Here is a picture to show structure of git.</p>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240428010259445.png"></p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true"></a><span class="bu">type</span> blob <span class="op">=</span> array<span class="op">&lt;</span>byte<span class="op">&gt;</span> <span class="co">#files</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true"></a><span class="bu">type</span> tree <span class="op">=</span> Map<span class="op">&lt;</span>String,tree <span class="op">|</span> blob<span class="op">&gt;</span> <span class="co">#files or folders</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true"></a><span class="bu">type</span> Commit <span class="op">=</span> struct &#123;</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true"></a>    parents:array<span class="op">&lt;</span>commit<span class="op">&gt;</span> <span class="co">#hash accutally</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true"></a>    author:Stirng</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true"></a>    message:String</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true"></a>    snapshot:tree <span class="co">#hash accutally</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true"></a>&#125;</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true"></a><span class="bu">type</span> <span class="bu">object</span> <span class="op">=</span> blob <span class="op">|</span> tree <span class="op">|</span> commit</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true"></a></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true"></a>objects <span class="op">=</span> Map<span class="op">&lt;</span>String,<span class="bu">object</span><span class="op">&gt;</span></span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true"></a></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true"></a><span class="kw">def</span> store(o):</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true"></a>    <span class="bu">id</span> <span class="op">=</span> SHA1(o)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true"></a>    objects[<span class="bu">id</span>] <span class="op">=</span> o</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true"></a></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true"></a><span class="kw">def</span> load(<span class="bu">id</span>):</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true"></a>    <span class="cf">return</span> objects[<span class="bu">id</span>]</span></code></pre></div>
+<h2 id="base-command-1">Base Command</h2>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true"></a><span class="fu">git</span> init</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true"></a><span class="co"># git initialize</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true"></a><span class="fu">git</span> help <span class="dt">&#123;Command&#125;</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true"></a><span class="fu">git</span> status</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true"></a><span class="fu">git</span> add <span class="dt">&#123;files&#125;</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true"></a><span class="fu">git</span> commit (-a -m <span class="st">&#39;&#39;</span>)</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true"></a><span class="fu">git</span> log --all --graph --decorate --oneline</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true"></a><span class="co">#HEAD is point that point the commit where you actually are</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true"></a></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true"></a><span class="fu">git</span> checkout <span class="dt">&#123;hash|name&#125;</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true"></a><span class="fu">git</span> checkout hello.txt <span class="co">#HEAD</span></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true"></a><span class="co"># change your working directory files into &#123;hash|name&#125; status.</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true"></a><span class="co"># move HEAD point into &#123;hash&#125;-&gt;content</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true"></a></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true"></a><span class="fu">git</span> diff <span class="dt">&#123;hash&#125;</span> hello.txt</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true"></a><span class="fu">git</span> diff <span class="dt">&#123;hash&#125;</span> HEAD hello.txt</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true"></a><span class="co"># what changes from &#123;hash&#125; to HEAD</span></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true"></a><span class="fu">git</span> diff hello.txt</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true"></a><span class="co"># diff the HEAD and now status</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true"></a></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true"></a><span class="fu">git</span> branch -vv</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true"></a><span class="co"># more detail about branch</span></span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true"></a><span class="fu">git</span> branch cat</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true"></a><span class="co"># create a new branch called cat</span></span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true"></a><span class="fu">git</span> checkout cat</span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true"></a></span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true"></a><span class="fu">git</span> merge cat</span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true"></a><span class="co">#Auto-merging and merge conflict</span></span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true"></a><span class="fu">git</span> merge --abort</span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true"></a><span class="fu">git</span> add animal.py</span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true"></a><span class="fu">git</span> merge --continue</span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true"></a><span class="fu">git</span> mergetool</span></code></pre></div>
+<p>See the hash's meaning.</p>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240427230713206.png"></p>
+<h2 id="git-remote">Git Remote</h2>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true"></a><span class="fu">git</span> remote</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true"></a><span class="fu">git</span> remote add <span class="op">&lt;</span>name<span class="op">&gt;</span> <span class="op">&lt;</span>URL<span class="kw">|</span><span class="fu">ssh</span><span class="kw">|</span><span class="ex">filePath</span><span class="op">&gt;</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true"></a><span class="fu">git</span> remote add origin ../remote/</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true"></a></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true"></a></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true"></a><span class="fu">git</span> push <span class="op">&lt;</span>remote<span class="op">&gt;</span> <span class="op">&lt;</span>local branch<span class="op">&gt;</span>:<span class="op">&lt;</span>remote branch<span class="op">&gt;</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true"></a><span class="fu">git</span> push origin master:master</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true"></a><span class="co"># set git push by</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true"></a><span class="fu">git</span> branch --set-upstream-to=origin/master</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true"></a></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true"></a></span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true"></a><span class="fu">git</span> clone <span class="op">&lt;</span>url<span class="op">&gt;</span> <span class="op">&lt;</span>folder<span class="op">&gt;</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true"></a><span class="fu">git</span> clone remote/ demo2</span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true"></a></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true"></a><span class="fu">git</span> fetch</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true"></a><span class="co">#update from remote</span></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true"></a><span class="fu">git</span> merge</span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true"></a><span class="fu">git</span> pull</span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true"></a><span class="co"># same with git fetch;git merge</span></span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240428000706878.png"></p>
+<h2 id="other-command">Other Command</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true"></a><span class="fu">git</span> config</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true"></a><span class="co"># vim ~/.gitconfig</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true"></a><span class="fu">git</span> clone --shallow</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true"></a><span class="co"># only clone the lastest snapshot.</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true"></a><span class="fu">git</span> add -p animal.py</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true"></a><span class="fu">git</span> diff --cached</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true"></a><span class="fu">git</span> blame .bashrc</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true"></a><span class="fu">git</span> show bd8d1510</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true"></a><span class="co">#show more modification detail about file.</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true"></a><span class="fu">git</span> stash</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true"></a><span class="fu">git</span> stash pop</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true"></a><span class="co"># here is a img example for use it.</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true"></a></span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true"></a><span class="fu">git</span> bisect</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true"></a><span class="co"># auto find the problem commit</span></span></code></pre></div>
+<figure>
+<img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240428004636105.png" alt><figcaption>git stash</figcaption>
+</figure>
+<p><code>.gitignore</code> file =&gt; tell git which files need to be ignore.</p>
+<p>A nice book called <code>ProGit</code> is recommended to be read, if you want to know more about Git.</p>
+<h1 id="debugging-and-profiling">Debugging and Profiling</h1>
+<h2 id="debugging">Debugging</h2>
+<h3 id="printf-debugging-and-logging">Printf debugging and Logging</h3>
+<p>Here is a demo.</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true"></a><span class="im">import</span> logging</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true"></a><span class="im">import</span> sys</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true"></a><span class="kw">class</span> CustomFormatter(logging.Formatter):</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true"></a>    <span class="co">&quot;&quot;&quot;Logging Formatter to add colors and count warning / errors&quot;&quot;&quot;</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true"></a>    grey <span class="op">=</span> <span class="st">&quot;</span><span class="ch">\x1b</span><span class="st">[38;21m&quot;</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true"></a>    yellow <span class="op">=</span> <span class="st">&quot;</span><span class="ch">\x1b</span><span class="st">[33;21m&quot;</span></span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true"></a>    red <span class="op">=</span> <span class="st">&quot;</span><span class="ch">\x1b</span><span class="st">[31;21m&quot;</span></span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true"></a>    bold_red <span class="op">=</span> <span class="st">&quot;</span><span class="ch">\x1b</span><span class="st">[31;1m&quot;</span></span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true"></a>    reset <span class="op">=</span> <span class="st">&quot;</span><span class="ch">\x1b</span><span class="st">[0m&quot;</span></span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true"></a>    <span class="bu">format</span> <span class="op">=</span> <span class="st">&quot;</span><span class="sc">%(asctime)s</span><span class="st"> - </span><span class="sc">%(name)s</span><span class="st"> - </span><span class="sc">%(levelname)s</span><span class="st"> - </span><span class="sc">%(message)s</span><span class="st"> (</span><span class="sc">%(filename)s</span><span class="st">:</span><span class="sc">%(lineno)d</span><span class="st">)&quot;</span></span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true"></a></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true"></a>    FORMATS <span class="op">=</span> &#123;</span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true"></a>        logging.DEBUG: grey <span class="op">+</span> <span class="bu">format</span> <span class="op">+</span> reset,</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true"></a>        logging.INFO: grey <span class="op">+</span> <span class="bu">format</span> <span class="op">+</span> reset,</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true"></a>        logging.WARNING: yellow <span class="op">+</span> <span class="bu">format</span> <span class="op">+</span> reset,</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true"></a>        logging.ERROR: red <span class="op">+</span> <span class="bu">format</span> <span class="op">+</span> reset,</span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true"></a>        logging.CRITICAL: bold_red <span class="op">+</span> <span class="bu">format</span> <span class="op">+</span> reset</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true"></a>    &#125;</span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true"></a></span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true"></a>    <span class="kw">def</span> <span class="bu">format</span>(<span class="va">self</span>, record):</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true"></a>        log_fmt <span class="op">=</span> <span class="va">self</span>.FORMATS.get(record.levelno)</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true"></a>        formatter <span class="op">=</span> logging.Formatter(log_fmt)</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true"></a>        <span class="cf">return</span> formatter.<span class="bu">format</span>(record)</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true"></a></span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true"></a><span class="co"># create logger with &#39;spam_application&#39;</span></span>
+<span id="cb43-28"><a href="#cb43-28" aria-hidden="true"></a>logger <span class="op">=</span> logging.getLogger(<span class="st">&quot;Sample&quot;</span>)</span>
+<span id="cb43-29"><a href="#cb43-29" aria-hidden="true"></a></span>
+<span id="cb43-30"><a href="#cb43-30" aria-hidden="true"></a><span class="co"># create console handler with a higher log level</span></span>
+<span id="cb43-31"><a href="#cb43-31" aria-hidden="true"></a>ch <span class="op">=</span> logging.StreamHandler()</span>
+<span id="cb43-32"><a href="#cb43-32" aria-hidden="true"></a>ch.setLevel(logging.DEBUG)</span>
+<span id="cb43-33"><a href="#cb43-33" aria-hidden="true"></a></span>
+<span id="cb43-34"><a href="#cb43-34" aria-hidden="true"></a><span class="cf">if</span> <span class="bu">len</span>(sys.argv)<span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb43-35"><a href="#cb43-35" aria-hidden="true"></a>    <span class="cf">if</span> sys.argv[<span class="dv">1</span>] <span class="op">==</span> <span class="st">&#39;log&#39;</span>:</span>
+<span id="cb43-36"><a href="#cb43-36" aria-hidden="true"></a>        ch.setFormatter(logging.Formatter(<span class="st">&#39;</span><span class="sc">%(asctime)s</span><span class="st"> : </span><span class="sc">%(levelname)s</span><span class="st"> : </span><span class="sc">%(name)s</span><span class="st"> : </span><span class="sc">%(message)s</span><span class="st">&#39;</span>))</span>
+<span id="cb43-37"><a href="#cb43-37" aria-hidden="true"></a>    <span class="cf">elif</span> sys.argv[<span class="dv">1</span>] <span class="op">==</span> <span class="st">&#39;color&#39;</span>:</span>
+<span id="cb43-38"><a href="#cb43-38" aria-hidden="true"></a>        ch.setFormatter(CustomFormatter())</span>
+<span id="cb43-39"><a href="#cb43-39" aria-hidden="true"></a></span>
+<span id="cb43-40"><a href="#cb43-40" aria-hidden="true"></a><span class="cf">if</span> <span class="bu">len</span>(sys.argv) <span class="op">&gt;</span> <span class="dv">2</span>:</span>
+<span id="cb43-41"><a href="#cb43-41" aria-hidden="true"></a>    logger.setLevel(logging.<span class="fu">__getattribute__</span>(sys.argv[<span class="dv">2</span>]))</span>
+<span id="cb43-42"><a href="#cb43-42" aria-hidden="true"></a><span class="cf">else</span>:</span>
+<span id="cb43-43"><a href="#cb43-43" aria-hidden="true"></a>    logger.setLevel(logging.DEBUG)</span>
+<span id="cb43-44"><a href="#cb43-44" aria-hidden="true"></a></span>
+<span id="cb43-45"><a href="#cb43-45" aria-hidden="true"></a>logger.addHandler(ch)</span>
+<span id="cb43-46"><a href="#cb43-46" aria-hidden="true"></a></span>
+<span id="cb43-47"><a href="#cb43-47" aria-hidden="true"></a><span class="co"># logger.debug(&quot;debug message&quot;)</span></span>
+<span id="cb43-48"><a href="#cb43-48" aria-hidden="true"></a><span class="co"># logger.info(&quot;info message&quot;)</span></span>
+<span id="cb43-49"><a href="#cb43-49" aria-hidden="true"></a><span class="co"># logger.warning(&quot;warning message&quot;)</span></span>
+<span id="cb43-50"><a href="#cb43-50" aria-hidden="true"></a><span class="co"># logger.error(&quot;error message&quot;)</span></span>
+<span id="cb43-51"><a href="#cb43-51" aria-hidden="true"></a><span class="co"># logger.critical(&quot;critical message&quot;)</span></span>
+<span id="cb43-52"><a href="#cb43-52" aria-hidden="true"></a></span>
+<span id="cb43-53"><a href="#cb43-53" aria-hidden="true"></a><span class="im">import</span> random</span>
+<span id="cb43-54"><a href="#cb43-54" aria-hidden="true"></a><span class="im">import</span> time</span>
+<span id="cb43-55"><a href="#cb43-55" aria-hidden="true"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">100</span>):</span>
+<span id="cb43-56"><a href="#cb43-56" aria-hidden="true"></a>    i <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="dv">10</span>)</span>
+<span id="cb43-57"><a href="#cb43-57" aria-hidden="true"></a>    <span class="cf">if</span> i <span class="op">&lt;=</span> <span class="dv">4</span>:</span>
+<span id="cb43-58"><a href="#cb43-58" aria-hidden="true"></a>        logger.info(<span class="st">&quot;Value is </span><span class="sc">&#123;&#125;</span><span class="st"> - Everything is fine&quot;</span>.<span class="bu">format</span>(i))</span>
+<span id="cb43-59"><a href="#cb43-59" aria-hidden="true"></a>    <span class="cf">elif</span> i <span class="op">&lt;=</span> <span class="dv">6</span>:</span>
+<span id="cb43-60"><a href="#cb43-60" aria-hidden="true"></a>        logger.warning(<span class="st">&quot;Value is </span><span class="sc">&#123;&#125;</span><span class="st"> - System is getting hot&quot;</span>.<span class="bu">format</span>(i))</span>
+<span id="cb43-61"><a href="#cb43-61" aria-hidden="true"></a>    <span class="cf">elif</span> i <span class="op">&lt;=</span> <span class="dv">8</span>:</span>
+<span id="cb43-62"><a href="#cb43-62" aria-hidden="true"></a>        logger.error(<span class="st">&quot;Value is </span><span class="sc">&#123;&#125;</span><span class="st"> - Dangerous region&quot;</span>.<span class="bu">format</span>(i))</span>
+<span id="cb43-63"><a href="#cb43-63" aria-hidden="true"></a>    <span class="cf">else</span>:</span>
+<span id="cb43-64"><a href="#cb43-64" aria-hidden="true"></a>        logger.critical(<span class="st">&quot;Maximum value reached&quot;</span>)</span>
+<span id="cb43-65"><a href="#cb43-65" aria-hidden="true"></a>    time.sleep(<span class="fl">0.3</span>)</span>
+<span id="cb43-66"><a href="#cb43-66" aria-hidden="true"></a></span></code></pre></div>
+<p>In UNIX systems, it is commonplace for programs to write their logs under <code>/var/log</code>.</p>
+<p>For instance, the <a target="_blank" rel="noopener" href="https://www.nginx.com/">NGINX</a> webserver places its logs under <code>/var/log/nginx</code>.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true"></a><span class="ex">logger</span> <span class="st">&quot;Hello Logs&quot;</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true"></a><span class="ex">journalctl</span> --since <span class="st">&quot;1m ago&quot;</span> <span class="kw">|</span> <span class="fu">grep</span> Hello</span></code></pre></div>
+<h3 id="debuggers">Debuggers</h3>
+<p><code>gdb</code> =&gt; as a example. <code>pdb</code> =&gt; Python Debugger</p>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240428144422630.png"></p>
+<p><code>b</code> + <code>line|addr|name</code> =&gt; break point</p>
+<p><code>c</code> =&gt; continue</p>
+<p><code>r</code> =&gt; restart</p>
+<p><code>s</code> =&gt; step into</p>
+<p><code>n</code> =&gt; step over</p>
+<p><code>p</code> + <code>name</code> =&gt; print stuff</p>
+<p><code>x</code> =&gt; print memory. <code>x /gx10 addr</code> is an example.</p>
+<p><code>stack</code> =&gt; print stack</p>
+<p><code>canary</code> =&gt; print canary value.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true"></a><span class="fu">sudo</span> strace -e ls -l <span class="op">&gt;</span> /dev/null</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true"></a><span class="co"># print all syscalls that ls has executed.</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true"></a><span class="co"># man strace to see more detail</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true"></a></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true"></a><span class="co"># static analysis tools</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true"></a><span class="ex">pyflakes</span> lint.py</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true"></a><span class="ex">mypy</span> lint.py</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true"></a><span class="ex">writegoood</span> note.md</span></code></pre></div>
+<p>For web, you can just use the debugger in browser or other tools,such as <code>fiddler</code> or <code>WireShark</code>.</p>
+<h2 id="profiling">Profiling</h2>
+<h3 id="timing">Timing</h3>
+<p>A demo for Python.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true"></a><span class="im">import</span> time, random</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true"></a>n <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">10</span>) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true"></a></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true"></a><span class="co"># Get current time</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true"></a>start <span class="op">=</span> time.time()</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true"></a></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true"></a><span class="co"># Do some work</span></span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true"></a><span class="bu">print</span>(<span class="st">&quot;Sleeping for </span><span class="sc">&#123;&#125;</span><span class="st"> ms&quot;</span>.<span class="bu">format</span>(n))</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true"></a>time.sleep(n<span class="op">/</span><span class="dv">1000</span>)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true"></a></span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true"></a><span class="co"># Compute time between start and now</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true"></a><span class="bu">print</span>(time.time() <span class="op">-</span> start)</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true"></a></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true"></a><span class="co"># Output</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true"></a><span class="co"># Sleeping for 500 ms</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true"></a><span class="co"># 0.5713930130004883</span></span></code></pre></div>
+<p>However, wall clock time can be misleading since your computer might be running other processes at the same time or waiting for events to happen.</p>
+<ul>
+<li><em>Real</em> - Wall clock elapsed time from start to finish of the program, including the time taken by other processes and time taken while blocked (e.g. waiting for I/O or network)</li>
+<li><em>User</em> - Amount of time spent in the CPU running user code</li>
+<li><em>Sys</em> - Amount of time spent in the CPU running kernel code</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true"></a><span class="bu">time</span> curl https://missing.csail.mit.edu <span class="op">&amp;&gt;</span> /dev/null</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true"></a><span class="co"># real    0m0.486s</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true"></a><span class="co"># user    0m0.031s</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true"></a><span class="co"># sys     0m0.001s</span></span></code></pre></div>
+<h2 id="profilers">Profilers</h2>
+<h3 id="cpu">CPU</h3>
+<p>In Python we can use the <code>cProfile</code> module to profile time per function call. Here is a simple example that implements a rudimentary grep in Python:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true"></a><span class="ex">import</span> sys, re</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true"></a></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true"></a><span class="ex">def</span> grep(pattern, file)<span class="bu">:</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true"></a>    <span class="ex">with</span> open(file, <span class="st">&#39;r&#39;</span>) <span class="fu">as</span> f:</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true"></a>        <span class="ex">print</span>(file)</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true"></a>        <span class="kw">for</span> <span class="ex">i</span>, line in enumerate(f.readlines())<span class="bu">:</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true"></a>            <span class="ex">pattern</span> = re.compile(pattern)</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true"></a>            <span class="ex">match</span> = pattern.search(line)</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true"></a>            <span class="kw">if</span> <span class="ex">match</span> is not None:</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true"></a>                <span class="ex">print</span>(<span class="st">&quot;&#123;&#125;: &#123;&#125;&quot;</span>.format(i, line), <span class="va">end=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true"></a></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true"></a><span class="kw">if</span> <span class="ex">__name__</span> == <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true"></a>    <span class="bu">times</span> = int(sys.argv[1])</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true"></a>    <span class="ex">pattern</span> = sys.argv[2]</span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true"></a>    <span class="kw">for</span> <span class="ex">i</span> in range(times)<span class="bu">:</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true"></a>        <span class="kw">for</span> <span class="fu">file</span> in sys.argv[3:]:</span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true"></a>            <span class="fu">grep</span>(pattern, file)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true"></a><span class="ex">python</span> -m cProfile -s tottime grep.py 1000 <span class="st">&#39;^(import|\s*def)[^,]*$&#39;</span> *.py</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true"></a>[<span class="ex">omitted</span> program output]</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true"></a></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true"></a> <span class="ex">ncalls</span>  tottime  percall  cumtime  percall filename:lineno(function)</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true"></a>     <span class="ex">8000</span>    0.266    0.000    0.292    0.000 &#123;built-in method io.open&#125;</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true"></a>     <span class="ex">8000</span>    0.153    0.000    0.894    0.000 grep.py:5(grep)</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true"></a>    <span class="ex">17000</span>    0.101    0.000    0.101    0.000 &#123;built-in method builtins.print&#125;</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true"></a>     <span class="ex">8000</span>    0.100    0.000    0.129    0.000 &#123;method <span class="st">&#39;readlines&#39;</span> of <span class="st">&#39;_io._IOBase&#39;</span> objects&#125;</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true"></a>    <span class="ex">93000</span>    0.097    0.000    0.111    0.000 re.py:286(_compile)</span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true"></a>    <span class="ex">93000</span>    0.069    0.000    0.069    0.000 &#123;method <span class="st">&#39;search&#39;</span> of <span class="st">&#39;_sre.SRE_Pattern&#39;</span> objects&#125;</span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true"></a>    <span class="ex">93000</span>    0.030    0.000    0.141    0.000 re.py:231(compile)</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true"></a>    <span class="ex">17000</span>    0.019    0.000    0.029    0.000 codecs.py:318(decode)</span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true"></a>        <span class="ex">1</span>    0.017    0.017    0.911    0.911 grep.py:3(<span class="op">&lt;</span>module<span class="op">&gt;</span>)</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true"></a></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true"></a>[<span class="ex">omitted</span> lines]</span></code></pre></div>
+<p>If we used Python’s <code>cProfile</code> profiler we’d get over 2500 lines of output, and even with sorting it’d be hard to understand where the time is being spent. A quick run with <a target="_blank" rel="noopener" href="https://github.com/pyutils/line_profiler"><code>line_profiler</code></a> shows the time taken per line:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true"></a><span class="co">#!/usr/bin/env python</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true"></a><span class="im">import</span> requests</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true"></a></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true"></a><span class="co"># This is a decorator that tells line_profiler</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true"></a><span class="co"># that we want to analyze this function</span></span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true"></a><span class="at">@profile</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true"></a><span class="kw">def</span> get_urls():</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true"></a>    response <span class="op">=</span> requests.get(<span class="st">&#39;https://missing.csail.mit.edu&#39;</span>)</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true"></a>    s <span class="op">=</span> BeautifulSoup(response.content, <span class="st">&#39;lxml&#39;</span>)</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true"></a>    urls <span class="op">=</span> []</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true"></a>    <span class="cf">for</span> url <span class="kw">in</span> s.find_all(<span class="st">&#39;a&#39;</span>):</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true"></a>        urls.append(url[<span class="st">&#39;href&#39;</span>])</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true"></a></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true"></a>    get_urls()</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true"></a><span class="ex">kernprof</span> -l -v a.py</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true"></a></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true"></a><span class="ex">Total</span> time: 0.636188 s</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true"></a><span class="ex">File</span>: a.py</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true"></a><span class="ex">Function</span>: get_urls at line 5</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true"></a></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true"></a><span class="ex">Line</span> #  Hits         Time  Per Hit   % Time  Line Contents</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true"></a>==============================================================</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true"></a> <span class="ex">5</span>                                           @profile</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true"></a> <span class="ex">6</span>                                           def get_urls()<span class="bu">:</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true"></a> <span class="ex">7</span>         1     613909.0 613909.0     96.5      response = requests.get(<span class="st">&#39;https://missing.csail.mit.edu&#39;</span>)</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true"></a> <span class="ex">8</span>         1      21559.0  21559.0      3.4      s = BeautifulSoup(response.content, <span class="st">&#39;lxml&#39;</span>)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true"></a> <span class="ex">9</span>         1          2.0      2.0      0.0      urls = []</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true"></a><span class="ex">10</span>        25        685.0     27.4      0.1      for url in s.find_all(<span class="st">&#39;a&#39;</span>)<span class="bu">:</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true"></a><span class="ex">11</span>        24         33.0      1.4      0.0          urls.append(url[<span class="st">&#39;href&#39;</span>])</span></code></pre></div>
+<h2 id="memory">Memory</h2>
+<p>In languages like C or C++ memory leaks can cause your program to never release memory that it doesn’t need anymore. To help in the process of memory debugging you can use tools like <a target="_blank" rel="noopener" href="https://valgrind.org/">Valgrind</a> that will help you identify memory leaks.</p>
+<p>In garbage collected languages like Python it is still useful to use a memory profiler because as long as you have pointers to objects in memory they won’t be garbage collected. Here’s an example program and its associated output when running it with <a target="_blank" rel="noopener" href="https://pypi.org/project/memory-profiler/">memory-profiler</a> (note the decorator like in <code>line-profiler</code>).</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true"></a><span class="at">@profile</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true"></a><span class="kw">def</span> my_func():</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true"></a>    a <span class="op">=</span> [<span class="dv">1</span>] <span class="op">*</span> (<span class="dv">10</span> <span class="op">**</span> <span class="dv">6</span>)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true"></a>    b <span class="op">=</span> [<span class="dv">2</span>] <span class="op">*</span> (<span class="dv">2</span> <span class="op">*</span> <span class="dv">10</span> <span class="op">**</span> <span class="dv">7</span>)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true"></a>    <span class="kw">del</span> b</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true"></a>    <span class="cf">return</span> a</span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true"></a></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true"></a>    my_func()</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true"></a><span class="ex">python</span> -m memory_profiler example.py</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true"></a><span class="ex">Line</span> #    Mem usage  Increment   Line Contents</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true"></a>==============================================</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true"></a>     <span class="ex">3</span>                           @profile</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true"></a>     <span class="ex">4</span>      5.97 MB    0.00 MB   def my_func()<span class="bu">:</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true"></a>     <span class="ex">5</span>     13.61 MB    7.64 MB       a = [1] * (10 ** 6)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true"></a>     <span class="ex">6</span>    166.20 MB  152.59 MB       b = [2] * (2 * 10 ** 7)</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true"></a>     <span class="ex">7</span>     13.61 MB -152.59 MB       del b</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true"></a>     <span class="ex">8</span>     13.61 MB    0.00 MB       return a</span></code></pre></div>
+<h3 id="event-profiling">Event Profiling</h3>
+<p>As it was the case for <code>strace</code> for debugging, you might want to ignore the specifics of the code that you are running and treat it like a black box when profiling. The <a target="_blank" rel="noopener" href="https://www.man7.org/linux/man-pages/man1/perf.1.html"><code>perf</code></a> command abstracts CPU differences away and does not report time or memory, but instead it reports system events related to your programs. For example, <code>perf</code> can easily report poor cache locality, high amounts of page faults or livelocks.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true"></a><span class="fu">sudo</span> perf stat stress -c 1</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true"></a><span class="fu">sudo</span> perf record stress -c 1</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true"></a><span class="fu">sudo</span> perf report</span></code></pre></div>
+<h2 id="visualization">Visualization</h2>
+<p>A <a target="_blank" rel="noopener" href="http://www.brendangregg.com/flamegraphs.html">Flame Graph</a></p>
+<p>Call graphs, In Python you can use the <a target="_blank" rel="noopener" href="https://pycallgraph.readthedocs.io/"><code>pycallgraph</code></a> library to generate them.</p>
+<h2 id="resource-monitoring">Resource Monitoring</h2>
+<div class="sourceCode" id="cb55"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true"></a><span class="ex">htop</span></span></code></pre></div>
+<figure>
+<img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240428153546265.png" alt><figcaption>image-20240428153546265</figcaption>
+</figure>
+<div class="sourceCode" id="cb56"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true"></a><span class="fu">du</span> -h</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true"></a><span class="ex">ncdu</span></span></code></pre></div>
+<p><img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240428153824609.png"></p>
+<figure>
+<img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240428153946045.png" alt><figcaption>image-20240428153946045</figcaption>
+</figure>
+<div class="sourceCode" id="cb57"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true"></a><span class="ex">lsof</span></span></code></pre></div>
+<p>Lists file information about files opened by processes. It can be quite useful for checking which process has opened a specific file.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true"></a><span class="ex">hyperfine</span> --warmup 3 <span class="st">&#39;fd -e jpg&#39;</span> <span class="st">&#39;find . -iname &quot;*.jpg&quot;&#39;</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true"></a></span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true"></a><span class="ex">Benchmark</span> #1: fd -e jpg</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true"></a>  <span class="ex">Time</span> (mean ± σ)<span class="bu">:</span>      51.4 ms ±   2.9 ms    [User: 121.0 ms, System: 160.5 ms]</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true"></a>  <span class="ex">Range</span> (min … max)<span class="bu">:</span>    44.2 ms …  60.1 ms    56 runs</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true"></a></span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true"></a><span class="ex">Benchmark</span> #2: find . -iname <span class="st">&quot;*.jpg&quot;</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true"></a>  <span class="ex">Time</span> (mean ± σ)<span class="bu">:</span>      1.126 s ±  0.101 s    [User: 141.1 ms, System: 956.1 ms]</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true"></a>  <span class="ex">Range</span> (min … max)<span class="bu">:</span>    0.975 s …  1.287 s    10 runs</span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true"></a></span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true"></a><span class="ex">Summary</span></span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true"></a>  <span class="st">&#39;fd -e jpg&#39;</span> <span class="ex">ran</span></span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true"></a>   <span class="ex">21.89</span> ± 2.33 times faster than <span class="st">&#39;find . -iname &quot;*.jpg&quot;&#39;</span></span></code></pre></div>
+<h2 id="reference">Reference</h2>
+<p>More detail to see <a target="_blank" rel="noopener" href="https://missing.csail.mit.edu/2020/debugging-profiling/">https://missing.csail.mit.edu/2020/debugging-profiling/</a>.</p>
+<h1 id="metaprogramming">Metaprogramming</h1>
+<p>This class was giving concepts about version, testing, building,managing dependencies and so on. So it is recommend to watch the lecture video or read the lecture note directly.</p>
+<p><a target="_blank" rel="noopener" href="https://missing.csail.mit.edu/2020/metaprogramming/">https://missing.csail.mit.edu/2020/metaprogramming/</a></p>
+<p>Title also means <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Metaprogramming">programs that operate on programs</a>.</p>
+<h2 id="make">make</h2>
+<p>#todo</p>
+<h1 id="security-and-cryptography">Security and Cryptography</h1>
+<p><a target="_blank" rel="noopener" href="https://missing.csail.mit.edu/2020/security/">https://missing.csail.mit.edu/2020/security/</a></p>
+<h2 id="entropy">Entropy</h2>
+<h2 id="hash-functions">Hash Functions</h2>
+<div class="sourceCode" id="cb59"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true"></a><span class="bu">printf</span> <span class="st">&#39;hello&#39;</span> <span class="kw">|</span> <span class="ex">sha1sum</span></span></code></pre></div>
+<figure>
+<img src="/cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/image-20240429143139983.png" alt><figcaption>image-20240429143139983</figcaption>
+</figure>
+<ul>
+<li>non-invertiable</li>
+<li>collision resistant</li>
+</ul>
+<h2 id="key-derivation-functions">Key Derivation Functions</h2>
+<p>KDFs</p>
+<p>-slow</p>
+<h3 id="symmetric-key-cryptography">Symmetric key cryptography</h3>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/cn/Sagiring_markdown/香山杯决赛Awdp分享/" data-toggle="tooltip" data-placement="top" title="香山杯决赛Awdp分享">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <script src="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'd4759980b8c82fe1a32a',
+      clientSecret: '0e870d007deb9e146ba167987e446ea4f50dff34',
+      repo: 'Sagiring.github.io',
+      owner: 'Sagiring',
+      admin: 'Sagiring',
+      id: 'Wed Apr 24 2024 18:00:00 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: true,
+      language: 'zh-CN',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#base-command"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Base Command</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#echo"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">echo</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#which"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">which</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#cd"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">cd</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#pwd"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">pwd</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ls"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">ls</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#man"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">man</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ctrl-l"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">Ctrl + L</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#small-tools"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">Small Tools</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#tldr"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">tldr</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#find"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">find</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#locate"><span class="toc-nav-number">1.11.</span> <span class="toc-nav-text">locate</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#grep"><span class="toc-nav-number">1.12.</span> <span class="toc-nav-text">grep</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#history-ctrl-r"><span class="toc-nav-number">1.13.</span> <span class="toc-nav-text">history , Ctrl + R</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#redirectpipe"><span class="toc-nav-number">1.14.</span> <span class="toc-nav-text">Redirect,Pipe</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#tree"><span class="toc-nav-number">1.15.</span> <span class="toc-nav-text">tree</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#autojump"><span class="toc-nav-number">1.16.</span> <span class="toc-nav-text">autojump</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#root-directory"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">Root directory</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bin---binaries"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">&#x2F;bin - Binaries</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#boot---boot-file"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">&#x2F;boot - Boot File</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#dev---device-nodes"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">&#x2F;dev - Device Nodes</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#etc-configuration-files"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">&#x2F;etc – Configuration Files</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#home"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">&#x2F;home</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#lib-libraries"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">&#x2F;lib – Libraries</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#lostfound-recovered-files"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">&#x2F;lost+found – Recovered Files</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#media-automatic-mount-point"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">&#x2F;media – Automatic mount point</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mnt-manual-mount-point"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">&#x2F;mnt – Manual mount point</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#opt-optional-software"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">&#x2F;opt – Optional Software</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#proc-kernel-files"><span class="toc-nav-number">2.11.</span> <span class="toc-nav-text">&#x2F;proc – Kernel Files</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#root-root-home"><span class="toc-nav-number">2.12.</span> <span class="toc-nav-text">&#x2F;root – Root Home</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#run-early-temp"><span class="toc-nav-number">2.13.</span> <span class="toc-nav-text">&#x2F;run – Early temp</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#sbin-system-binaries"><span class="toc-nav-number">2.14.</span> <span class="toc-nav-text">&#x2F;sbin – System Binaries</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#srv-service-data"><span class="toc-nav-number">2.15.</span> <span class="toc-nav-text">&#x2F;srv – Service Data</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#tmp-temporary-files"><span class="toc-nav-number">2.16.</span> <span class="toc-nav-text">&#x2F;tmp – Temporary Files</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#usr-user-binaries"><span class="toc-nav-number">2.17.</span> <span class="toc-nav-text">&#x2F;usr – User Binaries</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#var-variable-files"><span class="toc-nav-number">2.18.</span> <span class="toc-nav-text">&#x2F;var – Variable Files</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#sys"><span class="toc-nav-number">2.19.</span> <span class="toc-nav-text">&#x2F;sys</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#references"><span class="toc-nav-number">2.20.</span> <span class="toc-nav-text">References</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#the-control-flow-functions-in-bash"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">The control flow functions in bash</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#variable"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">variable</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#special-variable"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Special Variable</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#connector"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Connector</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#wildcards"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">Wildcards</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#function"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">Function</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#example"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">Example</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#magic-line"><span class="toc-nav-number">3.7.</span> <span class="toc-nav-text">Magic Line</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#vim"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Vim</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#change-mode"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">Change Mode</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#command"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Command</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#navigatemove-command"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Navigate,Move Command</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#edit-command"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">Edit Command</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#count-command"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">Count Command</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#modifiers"><span class="toc-nav-number">4.6.</span> <span class="toc-nav-text">Modifiers</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#exercise-demo"><span class="toc-nav-number">4.7.</span> <span class="toc-nav-text">Exercise Demo</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#tips"><span class="toc-nav-number">4.8.</span> <span class="toc-nav-text">Tips</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#data-wrangling"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Data Wrangling</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#tools"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">Tools</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#demo"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">Demo</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#job-control"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Job Control</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#sleep"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">sleep</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#signal"><span class="toc-nav-number">6.2.</span> <span class="toc-nav-text">signal</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#demo-1"><span class="toc-nav-number">6.2.1.</span> <span class="toc-nav-text">demo</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#command-1"><span class="toc-nav-number">6.3.</span> <span class="toc-nav-text">Command</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#terminal-multiplexer"><span class="toc-nav-number">7.</span> <span class="toc-nav-text">Terminal multiplexer</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#hierarchy"><span class="toc-nav-number">7.1.</span> <span class="toc-nav-text">Hierarchy</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#tmux"><span class="toc-nav-number">7.2.</span> <span class="toc-nav-text">tmux</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#dotfiles"><span class="toc-nav-number">8.</span> <span class="toc-nav-text">Dotfiles</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bashrc"><span class="toc-nav-number">8.1.</span> <span class="toc-nav-text">.bashrc</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#symlink"><span class="toc-nav-number">8.2.</span> <span class="toc-nav-text">Symlink</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#gnu-stow"><span class="toc-nav-number">8.3.</span> <span class="toc-nav-text">GNU Stow</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#remote-machine"><span class="toc-nav-number">9.</span> <span class="toc-nav-text">Remote Machine</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#git"><span class="toc-nav-number">10.</span> <span class="toc-nav-text">Git</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#the-structure-of-git"><span class="toc-nav-number">10.1.</span> <span class="toc-nav-text">The structure of git</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#base-command-1"><span class="toc-nav-number">10.2.</span> <span class="toc-nav-text">Base Command</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#git-remote"><span class="toc-nav-number">10.3.</span> <span class="toc-nav-text">Git Remote</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#other-command"><span class="toc-nav-number">10.4.</span> <span class="toc-nav-text">Other Command</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#debugging-and-profiling"><span class="toc-nav-number">11.</span> <span class="toc-nav-text">Debugging and Profiling</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#debugging"><span class="toc-nav-number">11.1.</span> <span class="toc-nav-text">Debugging</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#printf-debugging-and-logging"><span class="toc-nav-number">11.1.1.</span> <span class="toc-nav-text">Printf debugging and Logging</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#debuggers"><span class="toc-nav-number">11.1.2.</span> <span class="toc-nav-text">Debuggers</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#profiling"><span class="toc-nav-number">11.2.</span> <span class="toc-nav-text">Profiling</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#timing"><span class="toc-nav-number">11.2.1.</span> <span class="toc-nav-text">Timing</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#profilers"><span class="toc-nav-number">11.3.</span> <span class="toc-nav-text">Profilers</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#cpu"><span class="toc-nav-number">11.3.1.</span> <span class="toc-nav-text">CPU</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#memory"><span class="toc-nav-number">11.4.</span> <span class="toc-nav-text">Memory</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#event-profiling"><span class="toc-nav-number">11.4.1.</span> <span class="toc-nav-text">Event Profiling</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#visualization"><span class="toc-nav-number">11.5.</span> <span class="toc-nav-text">Visualization</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#resource-monitoring"><span class="toc-nav-number">11.6.</span> <span class="toc-nav-text">Resource Monitoring</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#reference"><span class="toc-nav-number">11.7.</span> <span class="toc-nav-text">Reference</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#metaprogramming"><span class="toc-nav-number">12.</span> <span class="toc-nav-text">Metaprogramming</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#make"><span class="toc-nav-number">12.1.</span> <span class="toc-nav-text">make</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#security-and-cryptography"><span class="toc-nav-number">13.</span> <span class="toc-nav-text">Security and Cryptography</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#entropy"><span class="toc-nav-number">13.1.</span> <span class="toc-nav-text">Entropy</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#hash-functions"><span class="toc-nav-number">13.2.</span> <span class="toc-nav-text">Hash Functions</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#key-derivation-functions"><span class="toc-nav-number">13.3.</span> <span class="toc-nav-text">Key Derivation Functions</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#symmetric-key-cryptography"><span class="toc-nav-number">13.3.1.</span> <span class="toc-nav-text">Symmetric key cryptography</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#CS" title="CS">CS</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://kitamarin.cn" target="_blank">Marin</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          <!--  -->
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/Sagiring">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          <!-- 
+
+          
+
+          
+
+          
+
+          
+
+           -->
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          茗
+          2024
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script src="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/js/jquery.min.js"></script>
+
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/js/bootstrap.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/js/hux-blog.min.js"></script>
+
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/js/catalog.js"></script>
+
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+
+  
+
+  
+    <!-- Mouseclick -->
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/js/mouseclick.js"  content='' color='' ></script> -->
+    <!-- Mouseclick -->
+  
+
+  
+
+  
+
+
+
+
+  <!-- CDN: jsdelivr start -->
+  <script async="async" type="text/javascript">
+    let imgsUrl = document.getElementsByTagName("img");
+    let imgUrl = Array.from(imgsUrl);
+
+    let jsdelivr = "https://cdn.jsdelivr.net/gh/";
+    let gh = "Sagiring";
+    let ghPages = gh + ".github.io";
+    let pagePath = "cn/Sagiring_markdown/Note of the Missing Semester of Your CS Education/";
+    let jsdelivrurl;
+    if (pagePath.indexOf("index.html") != -1) {
+      jsdelivrurl = jsdelivr + gh + "/" + ghPages;
+    } else {
+      jsdelivrurl = jsdelivr + gh + "/" + ghPages + "/" + pagePath;
+    }
+    imgUrl.forEach(item => {
+      let oldUrl = item.getAttribute("src");
+      let newUrl = oldUrl.replace(oldUrl, jsdelivrurl + oldUrl).replace("..", "");
+      item.setAttribute("src", newUrl);
+    });
+  </script>
+  <!-- CDN: jsdelivr end -->
+
+
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("https://sagiring.github.io/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+              imgUrl = 'https://cdn.jsdelivr.net/gh/Sagiring/Sagiring.github.io' + imgUrl;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+
+		<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+		<!-- 代码语言 -->
+		<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+		<!-- 代码块复制 -->
+		<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+		<!-- 代码块收缩 -->
+		<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
+		<!-- 代码块折行 -->
+		<!-- <script src="/libs/highlight/highlight.min.js"></script> -->
+<!-- 
+		<script>
+		// hljs.debugMode()
+		// hljs.highlightAll();
+
+		</script> -->
+
+		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+
+		
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
+

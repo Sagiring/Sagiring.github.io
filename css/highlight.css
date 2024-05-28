@@ -1,0 +1,65 @@
+
+
+ .sourceCode{
+    display: block;
+    overflow-x: auto;
+    /* padding: .18rem .4rem .22rem; */
+    margin-top: 0vw!important;
+    margin-bottom: 0vw!important;
+    padding: 0vw;
+    color: #abb2bf;
+    background: #3b434d!important;
+    border-radius: 10px;
+    font-family: ui-monospace,
+    Menlo, Monaco,
+    "Cascadia Mono", "Segoe UI Mono",
+    "Roboto Mono",
+    "Oxygen Mono",
+    "Ubuntu Monospace",
+    "Source Code Pro",
+    "Fira Mono",
+    "Droid Sans Mono",
+    "Courier New", monospace;
+    font-size: 14px!important;
+    line-height:20px!important;
+
+  }
+
+.assembly{
+  display: block;
+  overflow-x: auto;
+  /* padding: .18rem .4rem .22rem; */
+  margin-top: 1vw!important;
+  margin-bottom: 1vw!important;
+  padding: 0vw;
+  color: #abb2bf;
+  background: #3b434d!important;
+  border-radius: 6px;
+  font-family: ui-monospace,
+  Menlo, Monaco,
+  "Cascadia Mono", "Segoe UI Mono",
+  "Roboto Mono",
+  "Oxygen Mono",
+  "Ubuntu Monospace",
+  "Source Code Pro",
+  "Fira Mono",
+  "Droid Sans Mono",
+  "Courier New", monospace;
+  font-size: 15px!important;
+  line-height:25px!important;
+
+}
+  
+.sourceCode .op,.im,.cf,.kw,.va,.at{
+    color: #ff7b72!important;
+  }
+.sourceCode .st,.ch,.ss,.sc,.dt{
+    color: #a5d6ff!important;
+  }
+.sourceCode .co{
+    color: #8b949e!important;
+}
+.sourceCode .bn,.dv,.bu,.fu,.ex{
+    color: #79c0ff!important;
+}
+
