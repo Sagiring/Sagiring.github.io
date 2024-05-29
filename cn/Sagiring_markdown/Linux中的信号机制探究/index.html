@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+
+  <!-- Baidu Tongji -->
+  
+
+  <!-- Baidu Push -->
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="人生苦短，及时行乐"/>
+  <meta name="keyword" content="Sagiring,blog"/>
+  <link rel="shortcut icon" href="/img/avatar/good_to_look.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+      <!-- gitalk start -->
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css"> -->
+      <link rel="stylesheet" href="/css/gitalk.css"/>
+      <!-- gitalk end -->
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="https://sagiring.github.io/cn/Sagiring_markdown/Linux中的信号机制探究/">
+  <title>
+    
+      Linux中的信号机制探究 - 茗茗之中的blog
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--dark">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'dark';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+		<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'your-community/your-room'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">茗茗之中</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">首页</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>搜索</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/my_love.png');
+      --intro-header-background-image-url-post: url('my_love.png');
+      --intro-header-background-image-url-page: url('/my_love.png');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love.png');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('my_love.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/my_love.png');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('my_love.png'); */
+      
+    }
+
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#CS" title="CS">CS</a>
+              
+            </div>
+            <h1>Linux中的信号机制探究</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by Sagiring on
+              2024-04-24
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">6</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">1.8k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+        
+
+        <h1 id="linux中的信号机制探究">Linux中的信号机制探究</h1>
+<h2 id="引言">引言</h2>
+<p>​ 在Linux操作系统中，进程间的通信和控制是系统稳定性和效率的关键。信号机制是Linux进程间通信的一种古老而强大的方式。信号是一种软中断，信号机制是进程间通信的一种方式，采用异步通信方式。本文将对信号使用，机制、原理、实现方式进行探究分析。</p>
+<h2 id="信号作用">信号作用</h2>
+<p>​ Linux中存在信号机制，它是一种非常基础的操作Linux系统的方式。它给所有的进程之间提供了一种相互”沟通“的和响应的方式。其中每一个信号都对应着一种特定的动作，比如控制、提醒、请求等。下图是Man pages中列出的每一种信号量的解释。</p>
+<p>​ Linux信号分为POSIX标准信号和POSIX实时信号。对应于 Linux 的信号值为 1-31 和 34-64。信号是异步的，一个进程不必通过任何操作来等待信号的到达。事实上，进程也不知道信号到底什么时候到达。</p>
+<ul>
+<li>POSIX标准信号，不支持排队，信号可能会丢失, 比如发送多次相同的信号, 进程只能收到一次. 信号值取值区间为1~31。</li>
+<li>POSIX实时信号，支持排队, 信号不会丢失, 发多少次, 就可以收到多少次. 信号值取值区间为32~64。</li>
+</ul>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191952435.png"></p>
+<p>常见POSIX标准信号作用</p>
+<ul>
+<li><strong>SIGHUP</strong> - 挂起信号
+<ul>
+<li>通常由终端挂起或控制进程发送给其子进程。</li>
+<li>默认行为是终止进程，但进程可以捕获此信号并执行清理操作。</li>
+</ul></li>
+<li><strong>SIGINT</strong> - 中断信号
+<ul>
+<li>通常由用户通过Ctrl+C发送。</li>
+<li>默认行为是终止进程，但进程可以捕获此信号以优雅地终止。</li>
+</ul></li>
+<li><strong>SIGQUIT</strong> - 退出信号
+<ul>
+<li>通常由用户通过Ctrl+。</li>
+<li>默认行为是终止进程，并生成核心转储（core dump），以便调试。</li>
+</ul></li>
+<li><strong>SIGUSR1</strong> - 用户定义信号1
+<ul>
+<li>没有默认行为，完全由应用程序定义用途。</li>
+<li>常用于进程间通信或触发自定义事件。</li>
+</ul></li>
+<li><strong>SIGSEGV</strong> - 段错误信号
+<ul>
+<li>当进程访问非法内存时触发。</li>
+<li>默认行为是终止进程并生成核心转储。</li>
+</ul></li>
+<li><strong>SIGKILL</strong> - 终止信号
+<ul>
+<li>不可被进程捕获、阻塞或忽略。</li>
+<li>总是立即终止接收进程。</li>
+</ul></li>
+<li><strong>SIGTSTP</strong> - 停止信号
+<ul>
+<li>通常由用户通过Ctrl+Z发送。</li>
+<li>默认行为是停止进程，进程可以被SIGCONT信号恢复。</li>
+</ul></li>
+</ul>
+<p>​ 这些信号各自有着各自的含义，你也可以通过自己的程序去捕获他们（可以捕获的话），去自定义这些信号的行为。如果没有自定义行为，内核将根据信号的默认行为来处理它。</p>
+<p>​ 对于自定义信号，这里有一个很简单的例子</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">from</span> signal <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="im">import</span> time</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">def</span> catched(signal,frame):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;Signal =&gt; &quot;</span>, signal, <span class="st">&quot; &lt;=catched&quot;</span> )</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="kw">def</span> main():</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    signal(SIGINT,catched)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>        time.sleep(<span class="dv">1</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="st">&quot;Waiting for signal&quot;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    main()</span></code></pre></div>
+<p>程序会一直等待信号。</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191055574.png"></p>
+<p>当使用<code>Ctrl + C</code>时</p>
+<figure>
+<img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191216858.png" alt><figcaption>image-20240528191216858</figcaption>
+</figure>
+<p>可以发现，<code>Ctrl+C</code>对应的信号<code>SIGINT</code>对应数字被捕获了，程序并未被终止。打印的数字为2是因为，每一个信号都有对应的数字与它匹配。</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191837039.png"></p>
+<p>当使用<code>Ctrl + \</code>发送<code>SIGTSTP</code>信号时，未被我们的程序捕获，从而被内核捕获，执行默认行为终止进程。</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191506666.png"></p>
+<p>当然，为了避免恶意程序捕获终止信号，导致无法退出的情况出现，Linux中有类似<code>SIGKILL</code>的信号，不能被捕获，从而杀死进程。</p>
+<h2 id="信号产生">信号产生</h2>
+<p>信号的产生通常有以下二种情况</p>
+<ul>
+<li><p>硬件方式产生</p></li>
+<li><ul>
+<li>硬件异常 =&gt; <code>SIGSEGV</code> 程序段错误，CPU检测到内存非法访问等异常，通知内核生成相应信号，并发送给发生事件的进程。</li>
+<li>硬件中断 =&gt; <code>SIGINT</code> 使用 <code>Ctrl + C</code>。</li>
+</ul></li>
+<li><p>软件方式产生</p>
+<ul>
+<li><p>通过系统调用，显示发送 =&gt; <code>SIGKILL</code> 使用<code>kill -n9 pid</code></p></li>
+<li><p>Man pages中对于软件发送信号量的简介。</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528121518194.png"></p></li>
+</ul></li>
+</ul>
+<h3 id="section"></h3>
+<h2 id="信号状态">信号状态</h2>
+<ul>
+<li><p><strong>信号阻塞 - (signal block)</strong></p>
+<ul>
+<li>一个信号被阻塞意味着，他不能被传递给其他进程（线程），直到他解除阻塞。</li>
+</ul></li>
+<li><p><strong>信号的待传递 - (Pending signals)</strong></p>
+<ul>
+<li>一个信号的待传递是指从一个信号被产生后，到一个信号被传递到目标进程（线程）前的阶段。</li>
+</ul></li>
+<li><p><strong>信号屏蔽集 - （Signal mask)</strong></p>
+<ul>
+<li>每一个进程里的线程都有一个信号屏蔽集，传递的信号如果在该集合中的信号会被阻塞。</li>
+<li>通过<code>fork</code>产生的子线程会继承父线程的屏蔽集</li>
+</ul></li>
+</ul>
+<h2 id="信号执行">信号执行</h2>
+<p>​ 无论何时，当Linux内核从内核态转换用户态执行时（比如从系统调用返回或者分配线程到CPU执行时），内核都会检查是否存在一个处于<strong>待传递</strong>、<strong>未被屏蔽</strong>、传递的对象注册了一个信号处理器的信号。如果存在，内核会执行以下准备步骤：</p>
+<ol type="1">
+<li>从待传递的信号集合中移除该信号</li>
+<li>设置信号标志和用户设定的可替换信号栈（如果存在的话）</li>
+<li>以<code>signalFrame</code>的形式保存当前进程（线程）的上下文，将其存储在栈中。保存的信息包括
+<ul>
+<li>程序计数器寄存器，即主程序中断时的下一条指令地址。</li>
+<li>恢复中断程序所需的特定于架构的寄存器状态。</li>
+<li>线程当前的信号屏蔽集。</li>
+<li>线程的替代信号栈设置。</li>
+<li>结构如图所示</li>
+</ul></li>
+<li>更新信号屏蔽集。</li>
+</ol>
+<p><code>signalFrame</code>结构如图所示</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240529003325642.png"></p>
+<p>​</p>
+<p>而后内核开始执行信号。具体步骤如下：</p>
+<ol type="1">
+<li>内核创建为信号处理器创建帧栈，将当前的程序计数器修改为信号处理器的第一条指令，设置信号处理器的返回地址指向用户空间的代码，称为<strong>信号蹦床（signal trampoline）</strong></li>
+<li>内核会把控制还给用户空间的信号处理器。</li>
+<li>当信号处理结束后，会返回<strong>信号蹦床（signal trampoline）</strong>，其负责执行<code>sigreturn</code>，<code>sigreturn</code>会使用前面存储在栈中的<code>signalFrame</code>，返回到执行信号之前的上下文。</li>
+</ol>
+<p>从内核的视角来看，对于信号处理器的执行和执行其他用户空间中的代码相同，内核并不记录下任何状态信息，所有需要的状态信息都在用户空间的栈和注册器中。</p>
+<h3 id="测试">测试</h3>
+<p>修改信号处理器为睡眠5s，并打印。在处理信号时再次发送<code>SIGINT</code>信号</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">def</span> catched(signal,frame):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;Signal =&gt; &quot;</span>, signal, <span class="st">&quot; &lt;=catched&quot;</span> )</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>    cnt <span class="op">=</span> <span class="dv">5</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="cf">while</span> cnt <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Waiting </span><span class="sc">&#123;</span>cnt<span class="sc">&#125;</span><span class="ss">s&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>        cnt <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>        time.sleep(<span class="dv">1</span>)</span></code></pre></div>
+<p>结果如下</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240529002347188.png"></p>
+<p>这里有两个细节</p>
+<ol type="1">
+<li>当信号被传递后，程序的控制转移到了信号处理器中，不再打印<code>Waiting for signal</code>到输出流。</li>
+<li>当程序在信号处理器中时，程序依然可以被传递信号（该信号不在信号屏蔽集中），且程序控制流会再次传递到新的信号处理器中，就像函数的递归调用一样。但是返回的方式不相同，存储的上下文信息也不相同。</li>
+</ol>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/Sagiring_markdown/Note of the Missing Semester of Your CS Education/" data-toggle="tooltip" data-placement="top" title="The note of the Missing Semester of Your CS Education">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/Sagiring_markdown/香山杯决赛Awdp分享/" data-toggle="tooltip" data-placement="top" title="香山杯决赛Awdp分享">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'd4759980b8c82fe1a32a',
+      clientSecret: '0e870d007deb9e146ba167987e446ea4f50dff34',
+      repo: 'Sagiring.github.io',
+      owner: 'Sagiring',
+      admin: 'Sagiring',
+      id: 'Wed Apr 24 2024 18:00:00 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: true,
+      language: 'zh-CN',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Linux中的信号机制探究</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">引言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E4%BD%9C%E7%94%A8"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">信号作用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E4%BA%A7%E7%94%9F"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">信号产生</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#section"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text"></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E7%8A%B6%E6%80%81"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">信号状态</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E6%89%A7%E8%A1%8C"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">信号执行</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">测试</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#CS" title="CS">CS</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://kitamarin.cn" target="_blank">Marin</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          <!--  -->
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/Sagiring">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          <!-- 
+
+          
+
+          
+
+          
+
+          
+
+           -->
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          Sagiring
+          2024
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+
+  
+
+  
+    <!-- Mouseclick -->
+    <!-- <script type="text/javascript" src="/js/mouseclick.js" content='' color=''></script> -->
+  
+
+  
+
+  
+
+
+
+
+
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("https://sagiring.github.io/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+
+		<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+		<!-- 代码语言 -->
+		<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+		<!-- 代码块复制 -->
+		<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+		<!-- 代码块收缩 -->
+		<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
+		<!-- 代码块折行 -->
+		<!-- <script src="/libs/highlight/highlight.min.js"></script> -->
+<!-- 
+		<script>
+		// hljs.debugMode()
+		// hljs.highlightAll();
+
+		</script> -->
+
+		<style type="text/css">code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }</style>
+
+		
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
+
