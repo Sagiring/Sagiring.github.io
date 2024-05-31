@@ -494,52 +494,6 @@ mjx-container[display="true"] + br {
   <!-- top end -->
   
 
-  <a href="/cn/Sagiring_markdown/IO_2_1_stdin 与 bss_format/">
-    <h2 class="post-title">
-      _IO_2_1_stdin_ 与 bss_format
-    </h2>
-    <h3 class="post-subtitle">
-      
-    </h3>
-    <div class="post-content-preview">
-      IO_2_1_stdin 与 bss_format
-IO_2_1_stdin
-附件：
-
-bss数组越界
-
-
-flag在内存里，puts + 0x16D2E0的地方（这里F5之后 + 的不对，不知为何）
-
-防护全开
-总结一下，给了个bss的任意指针写！考虑打stdout泄露地址
-这里第一次接触_IO_FILE结构，久仰大名了属于是
-pwndbg&gt; ptype stdout
-type = ......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Sagiring on
-    2023-08-28
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#pwn" title="pwn">pwn</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
   <a href="/cn/Sagiring_markdown/堆知识合集一/">
     <h2 class="post-title">
       堆知识合集一
@@ -925,6 +879,43 @@ image-20230226173952210
 </div>
 <hr>
 
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
+  <a href="/cn/Sagiring_markdown/ORW/">
+    <h2 class="post-title">
+      ORW
+    </h2>
+    <h3 class="post-subtitle">
+      
+    </h3>
+    <div class="post-content-preview">
+      ORW
+rop链
+payload = p64(pop_rdi) + p64(rop_addr + 0x98) + p64(pop_rsi) + p64(0)+ p64(open_addr)
+
+payload += p64(pop_rdi) + p64(3) + p64(pop_rsi) + p64(data_addr) + p64(pop_rdx) + p64(0x30) + p64(rea......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Sagiring on
+    2023-03-15
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#pwn" title="pwn">pwn</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
 
   <!-- Pager -->
   <ul class="pager">
@@ -981,7 +972,7 @@ image-20230226173952210
     
     
     
-    <a href="/tags/#CS" title="CS" rel="3">CS</a>
+    <a href="/tags/#CS" title="CS" rel="2">CS</a>
     
     
     
@@ -1052,10 +1043,6 @@ image-20230226173952210
 <div class="widget">
   <ul>
     
-    <a href="../../Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/">
-      <li>Linux中的信号机制探究</li>
-    </a>
-    
     <a href="../../Sagiring_markdown/Java%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
       <li>Java后端学习之路</li>
     </a>
@@ -1070,6 +1057,10 @@ image-20230226173952210
     
     <a href="../../Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/">
       <li>pwntools - ROP类</li>
+    </a>
+    
+    <a href="../../Sagiring_markdown/House%20of%20cat/">
+      <li>House of cat</li>
     </a>
     
   </ul>
@@ -1094,7 +1085,7 @@ image-20230226173952210
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2024/05/">May 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2024/04/">April 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/11/">November 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2024/05/">May 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2024/04/">April 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/11/">November 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../../archive/2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
 </div>
 
 
