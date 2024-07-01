@@ -89,10 +89,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://sagiring.github.io/categories/CS/">
+  <link rel="canonical" href="https://sagiring.github.io/cn/Sagiring_markdown/Linux中的信号机制探究/">
   <title>
     
-      茗茗之中的blog
+      Linux中的信号机制探究 - 茗茗之中的blog
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -298,19 +298,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/my_love5.png');
+      --intro-header-background-image-url-post: url('my_love.png');
+      --intro-header-background-image-url-page: url('/my_love.png');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love.png');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/my_love5.png');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('my_love.png');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/my_love.png');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/my_love5.png'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('my_love.png'); */
       
     }
 
@@ -328,10 +328,42 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>茗茗之中</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">人生苦短,及时行乐</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#CS" title="CS">CS</a>
+              
+            </div>
+            <h1>Linux中的信号机制探究</h1>
+            <h2 class="subheading"></h2>
+            <span class="meta">
+              Posted by Sagiring on
+              2024-05-29
+            </span>
+
+
+            
+            <!-- WordCount start -->
+            <div class="blank_box"></div>
+            <span class="meta">
+              Estimated Reading Time <span class="post-count">6</span> Minutes
+            </span>
+            <div class="blank_box"></div>
+            <span class="meta">
+              Words <span class="post-count">1.8k</span> In Total
+            </span>
+            <div class="blank_box"></div>
+            <!-- WordCount end -->
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
           </div>
           
         </div>
@@ -356,593 +388,306 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+        
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
-
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2024">
-          <span class="tag-text">2024</span>
-        </span>
-        <ul>
-          
-          <li>
-            05-29
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/Linux中的信号机制探究/" style="color: #0085a1">
-              <span>
-                Linux中的信号机制探究
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            05-20
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/Java后端学习之路/" style="color: #0085a1">
-              <span>
-                Java后端学习之路
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-24
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/Note of the Missing Semester of Your CS Education/" style="color: #0085a1">
-              <span>
-                The note of the Missing Semester of Your CS Education
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2023">
-          <span class="tag-text">2023</span>
-        </span>
-        <ul>
-          
-          <li>
-            11-25
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/香山杯决赛Awdp分享/" style="color: #0085a1">
-              <span>
-                香山杯决赛Awdp分享
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-08
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/pwntools - ROP类/" style="color: #0085a1">
-              <span>
-                pwntools - ROP类
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-04
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/House of cat/" style="color: #0085a1">
-              <span>
-                House of cat
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-03
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/Setcontext与Magic-Gadget/" style="color: #0085a1">
-              <span>
-                Setcontext与Magic-Gadget
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-02
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/LargebinsAttact与TcachebinsPosioning/" style="color: #0085a1">
-              <span>
-                LargebinsAttact与TcachebinsPosioning
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            11-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/Heap利用与TLS-Canary覆盖/" style="color: #0085a1">
-              <span>
-                Heap利用与TLS-Canary覆盖
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-20
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/pwn环境搭建/" style="color: #0085a1">
-              <span>
-                pwn环境搭建
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-28
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/IO_2_1_stdin 与 bss_format/" style="color: #0085a1">
-              <span>
-                _IO_2_1_stdin_ 与 bss_format
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/堆知识合集一/" style="color: #0085a1">
-              <span>
-                堆知识合集一
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-13
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/SROP/" style="color: #0085a1">
-              <span>
-                SROP
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-19
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/计算机网络学习/" style="color: #0085a1">
-              <span>
-                计算机网络学习
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            06-10
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/操作系统的二三事/" style="color: #0085a1">
-              <span>
-                操作系统的二三事
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            04-26
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/密码学的那些知识/" style="color: #0085a1">
-              <span>
-                密码学的那些知识
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-29
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/痛苦的环境配置/" style="color: #0085a1">
-              <span>
-                痛苦的环境配置
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-27
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/关于发呆/" style="color: #0085a1">
-              <span>
-                关于发呆
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-21
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/tcache题的亿点点细节/" style="color: #0085a1">
-              <span>
-                tcache题的亿点点细节
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/格式化字符串auto与LibcSearcher/" style="color: #0085a1">
-              <span>
-                格式化字符串auto与LibcSearcher
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-15
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/ORW/" style="color: #0085a1">
-              <span>
-                ORW
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-12
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/一些小细节/" style="color: #0085a1">
-              <span>
-                一些小细节
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-11
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/格式化字符串/" style="color: #0085a1">
-              <span>
-                格式化字符串
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-10
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/传参方式/" style="color: #0085a1">
-              <span>
-                传参方式
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/栈迁移的学习/" style="color: #0085a1">
-              <span>
-                栈迁移的学习
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            03-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/Sagiring_markdown/杂七杂八/" style="color: #0085a1">
-              <span>
-                杂七杂八
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-        </ul>
-      </div>
-      
-    </div>
-  </div>
-</div>
-
-
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Visitors -->
-<h5><a href="/">来访者</a></h5>
-
-<div class="widget">
-  <span>
-    Viewed <b><i><span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Times
-  </span>
-  <br />
-  <span>
-    <b><i><span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span></i></b> Visitors In Total
-  </span>
-</div>
-
-
-        <hr>
-    
-        <!-- Featured Tags -->
-
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#pwn" title="pwn" rel="19">pwn</a>
-    
-    
-    
-    <a href="/tags/#CS" title="CS" rel="3">CS</a>
-    
-    
-    
-    <a href="/tags/#我" title="我" rel="1">我</a>
-    
-    
-    
-    <a href="/tags/#学科" title="学科" rel="3">学科</a>
-    
-    
-  </div>
-</section>
-
-
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
-
-    
-    <img id="avatar_pic" src="/img/avatar/good_to_look.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
-
-    
-    <p>人生苦短，及时行乐</p>
-    
-
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/Sagiring">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/">
-      <li>Linux中的信号机制探究</li>
-    </a>
-    
-    <a href="../../cn/Sagiring_markdown/Java%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/">
-      <li>Java后端学习之路</li>
-    </a>
-    
-    <a href="../../cn/Sagiring_markdown/Note%20of%20the%20Missing%20Semester%20of%20Your%20CS%20Education/">
-      <li>The note of the Missing Semester of Your CS Education</li>
-    </a>
-    
-    <a href="../../cn/Sagiring_markdown/%E9%A6%99%E5%B1%B1%E6%9D%AF%E5%86%B3%E8%B5%9BAwdp%E5%88%86%E4%BA%AB/">
-      <li>香山杯决赛Awdp分享</li>
-    </a>
-    
-    <a href="../../cn/Sagiring_markdown/pwntools%20-%20ROP%E7%B1%BB/">
-      <li>pwntools - ROP类</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Friends Blog -->
-
-<h5><a href="/">链友</a></h5>
-<ul class="list-inline">
-  
-  <li><a href="https://kitamarin.cn" target="_blank">Marin</a></li>
-  
+        <h1 id="linux中的信号机制探究">Linux中的信号机制探究</h1>
+<h2 id="引言">引言</h2>
+<p>​ 在Linux操作系统中，进程间的通信和控制是系统稳定性和效率的关键。信号机制是Linux进程间通信的一种古老而强大的方式。信号是一种软中断，信号机制是进程间通信的一种方式，采用异步通信方式。本文将对信号使用，机制、原理、实现方式进行探究分析。</p>
+<h2 id="信号作用">信号作用</h2>
+<p>​ Linux中存在信号机制，它是一种非常基础的操作Linux系统的方式。它给所有的进程之间提供了一种相互”沟通“的和响应的方式。其中每一个信号都对应着一种特定的动作，比如控制、提醒、请求等。下图是Man pages中列出的每一种信号量的解释。</p>
+<p>​ Linux信号分为POSIX标准信号和POSIX实时信号。对应于 Linux 的信号值为 1-31 和 34-64。信号是异步的，一个进程不必通过任何操作来等待信号的到达。事实上，进程也不知道信号到底什么时候到达。</p>
+<ul>
+<li>POSIX标准信号，不支持排队，信号可能会丢失, 比如发送多次相同的信号, 进程只能收到一次. 信号值取值区间为1~31。</li>
+<li>POSIX实时信号，支持排队, 信号不会丢失, 发多少次, 就可以收到多少次. 信号值取值区间为32~64。</li>
 </ul>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191952435.png"></p>
+<p>常见POSIX标准信号作用</p>
+<ul>
+<li><strong>SIGHUP</strong> - 挂起信号
+<ul>
+<li>通常由终端挂起或控制进程发送给其子进程。</li>
+<li>默认行为是终止进程，但进程可以捕获此信号并执行清理操作。</li>
+</ul></li>
+<li><strong>SIGINT</strong> - 中断信号
+<ul>
+<li>通常由用户通过Ctrl+C发送。</li>
+<li>默认行为是终止进程，但进程可以捕获此信号以优雅地终止。</li>
+</ul></li>
+<li><strong>SIGQUIT</strong> - 退出信号
+<ul>
+<li>通常由用户通过Ctrl+。</li>
+<li>默认行为是终止进程，并生成核心转储（core dump），以便调试。</li>
+</ul></li>
+<li><strong>SIGUSR1</strong> - 用户定义信号1
+<ul>
+<li>没有默认行为，完全由应用程序定义用途。</li>
+<li>常用于进程间通信或触发自定义事件。</li>
+</ul></li>
+<li><strong>SIGSEGV</strong> - 段错误信号
+<ul>
+<li>当进程访问非法内存时触发。</li>
+<li>默认行为是终止进程并生成核心转储。</li>
+</ul></li>
+<li><strong>SIGKILL</strong> - 终止信号
+<ul>
+<li>不可被进程捕获、阻塞或忽略。</li>
+<li>总是立即终止接收进程。</li>
+</ul></li>
+<li><strong>SIGTSTP</strong> - 停止信号
+<ul>
+<li>通常由用户通过Ctrl+Z发送。</li>
+<li>默认行为是停止进程，进程可以被SIGCONT信号恢复。</li>
+</ul></li>
+</ul>
+<p>​ 这些信号各自有着各自的含义，你也可以通过自己的程序去捕获他们（可以捕获的话），去自定义这些信号的行为。如果没有自定义行为，内核将根据信号的默认行为来处理它。</p>
+<p>​ 对于自定义信号，这里有一个很简单的例子</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="im">from</span> signal <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true"></a><span class="im">import</span> time</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true"></a><span class="kw">def</span> catched(signal,frame):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;Signal =&gt; &quot;</span>, signal, <span class="st">&quot; &lt;=catched&quot;</span> )</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true"></a><span class="kw">def</span> main():</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true"></a>    signal(SIGINT,catched)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true"></a>        time.sleep(<span class="dv">1</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="st">&quot;Waiting for signal&quot;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">&quot;__main__&quot;</span>:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true"></a>    main()</span></code></pre></div>
+<p>程序会一直等待信号。</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191055574.png"></p>
+<p>当使用<code>Ctrl + C</code>时</p>
+<figure>
+<img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191216858.png" alt><figcaption>image-20240528191216858</figcaption>
+</figure>
+<p>可以发现，<code>Ctrl+C</code>对应的信号<code>SIGINT</code>对应数字被捕获了，程序并未被终止。打印的数字为2是因为，每一个信号都有对应的数字与它匹配。</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191837039.png"></p>
+<p>当使用<code>Ctrl + \</code>发送<code>SIGTSTP</code>信号时，未被我们的程序捕获，从而被内核捕获，执行默认行为终止进程。</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528191506666.png"></p>
+<p>当然，为了避免恶意程序捕获终止信号，导致无法退出的情况出现，Linux中有类似<code>SIGKILL</code>的信号，不能被捕获，从而杀死进程。</p>
+<h2 id="信号产生">信号产生</h2>
+<p>信号的产生通常有以下二种情况</p>
+<ul>
+<li><p>硬件方式产生</p></li>
+<li><ul>
+<li>硬件异常 =&gt; <code>SIGSEGV</code> 程序段错误，CPU检测到内存非法访问等异常，通知内核生成相应信号，并发送给发生事件的进程。</li>
+<li>硬件中断 =&gt; <code>SIGINT</code> 使用 <code>Ctrl + C</code>。</li>
+</ul></li>
+<li><p>软件方式产生</p>
+<ul>
+<li><p>通过系统调用，显示发送 =&gt; <code>SIGKILL</code> 使用<code>kill -n9 pid</code></p></li>
+<li><p>Man pages中对于软件发送信号量的简介。</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240528121518194.png"></p></li>
+</ul></li>
+</ul>
+<h3 id="section"></h3>
+<h2 id="信号状态">信号状态</h2>
+<ul>
+<li><p><strong>信号阻塞 - (signal block)</strong></p>
+<ul>
+<li>一个信号被阻塞意味着，他不能被传递给其他进程（线程），直到他解除阻塞。</li>
+</ul></li>
+<li><p><strong>信号的待传递 - (Pending signals)</strong></p>
+<ul>
+<li>一个信号的待传递是指从一个信号被产生后，到一个信号被传递到目标进程（线程）前的阶段。</li>
+</ul></li>
+<li><p><strong>信号屏蔽集 - （Signal mask)</strong></p>
+<ul>
+<li>每一个进程里的线程都有一个信号屏蔽集，传递的信号如果在该集合中的信号会被阻塞。</li>
+<li>通过<code>fork</code>产生的子线程会继承父线程的屏蔽集</li>
+</ul></li>
+</ul>
+<h2 id="信号执行">信号执行</h2>
+<p>​ 无论何时，当Linux内核从内核态转换用户态执行时（比如从系统调用返回或者分配线程到CPU执行时），内核都会检查是否存在一个处于<strong>待传递</strong>、<strong>未被屏蔽</strong>、传递的对象注册了一个信号处理器的信号。如果存在，内核会执行以下准备步骤：</p>
+<ol type="1">
+<li>从待传递的信号集合中移除该信号</li>
+<li>设置信号标志和用户设定的可替换信号栈（如果存在的话）</li>
+<li>以<code>signalFrame</code>的形式保存当前进程（线程）的上下文，将其存储在栈中。保存的信息包括
+<ul>
+<li>程序计数器寄存器，即主程序中断时的下一条指令地址。</li>
+<li>恢复中断程序所需的特定于架构的寄存器状态。</li>
+<li>线程当前的信号屏蔽集。</li>
+<li>线程的替代信号栈设置。</li>
+</ul></li>
+<li>更新信号屏蔽集。</li>
+</ol>
+<p><code>signalFrame</code>结构如图所示</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240529003325642.png"></p>
+<p>​</p>
+<p>而后内核开始执行信号。具体步骤如下：</p>
+<ol type="1">
+<li>内核创建为信号处理器创建帧栈，将当前的程序计数器修改为信号处理器的第一条指令，设置信号处理器的返回地址指向用户空间的代码，称为<strong>信号蹦床（signal trampoline）</strong></li>
+<li>内核会把控制还给用户空间的信号处理器。</li>
+<li>当信号处理结束后，会返回<strong>信号蹦床（signal trampoline）</strong>，其负责执行<code>sigreturn</code>，<code>sigreturn</code>会使用前面存储在栈中的<code>signalFrame</code>，返回到执行信号之前的上下文。</li>
+</ol>
+<p>从内核的视角来看，对于信号处理器的执行和执行其他用户空间中的代码相同，内核并不记录下任何状态信息，所有需要的状态信息都在用户空间的栈和注册器中。</p>
+<h3 id="测试">测试</h3>
+<p>修改信号处理器为睡眠5s，并打印。在处理信号时再次发送<code>SIGINT</code>信号</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="kw">def</span> catched(signal,frame):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a>    <span class="bu">print</span>(<span class="st">&quot;Signal =&gt; &quot;</span>, signal, <span class="st">&quot; &lt;=catched&quot;</span> )</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true"></a>    cnt <span class="op">=</span> <span class="dv">5</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true"></a>    <span class="cf">while</span> cnt <span class="op">&gt;=</span> <span class="dv">0</span>:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true"></a>        <span class="bu">print</span>(<span class="ss">f&quot;Waiting </span><span class="sc">&#123;</span>cnt<span class="sc">&#125;</span><span class="ss">s&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true"></a>        cnt <span class="op">-=</span> <span class="dv">1</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true"></a>        time.sleep(<span class="dv">1</span>)</span></code></pre></div>
+<p>结果如下</p>
+<p><img src="/cn/Sagiring_markdown/Linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6/image-20240529002347188.png"></p>
+<p>这里有两个细节</p>
+<ol type="1">
+<li>当信号被传递后，程序的控制转移到了信号处理器中，不再打印<code>Waiting for signal</code>到输出流。</li>
+<li>当程序在信号处理器中时，程序依然可以被传递信号（该信号不在信号屏蔽集中），且程序控制流会再次传递到新的信号处理器中，就像函数的递归调用一样。但是返回的方式不相同，存储的上下文信息也不相同。</li>
+</ol>
 
 
         <hr>
-    
-        <!-- Archives -->
+        <!-- Pager -->
+        <ul class="pager">
+          
+          
+          <li class="next">
+            <a href="/cn/Sagiring_markdown/Java后端学习之路/" data-toggle="tooltip" data-placement="top" title="Java后端学习之路">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
 
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archive/2024/05/">May 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archive/2024/04/">April 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archive/2023/11/">November 2023</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archive/2023/10/">October 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archive/2023/08/">August 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archive/2023/06/">June 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archive/2023/04/">April 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archive/2023/03/">March 2023</a><span class="archive-list-count">10</span></li></ul>
-</div>
+        
 
-
+        
         <hr>
-    
-        <!-- Categories -->
 
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#pwn">
-      <li>pwn</li>
-    </a>
-    
-    <a href="/categories/#CS">
-      <li>CS</li>
-    </a>
-    
-    <a href="/categories/#自己的知识">
-      <li>自己的知识</li>
-    </a>
-    
-    <a href="/categories/#密码学">
-      <li>密码学</li>
-    </a>
-    
-    <a href="/categories/#操作系统">
-      <li>操作系统</li>
-    </a>
-    
-    <a href="/categories/#计算机网络">
-      <li>计算机网络</li>
-    </a>
-    
-  </ul>
-</div>
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+  <!-- gitalk start -->
+  <!-- Docs:https://github.com/gitalk/gitalk/blob/master/readme-cn.md -->
+
+  <div id="gitalk-container"></div>
+
+  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.js"></script> -->
+    <script src="/js/comment/gitalk.js"></script>
+  
+
+  <script>
+    var gitalk = new Gitalk({
+      clientID: 'd4759980b8c82fe1a32a',
+      clientSecret: '0e870d007deb9e146ba167987e446ea4f50dff34',
+      repo: 'Sagiring.github.io',
+      owner: 'Sagiring',
+      admin: 'Sagiring',
+      id: 'Wed May 29 2024 10:24:00 GMT+0800', // Ensure uniqueness and length less than 50
+      distractionFreeMode: false, // Facebook-like distraction free mode
+      perPage: 10,
+      pagerDirection: 'last',
+      createIssueManually: true,
+      language: 'zh-CN',
+      proxy: 'https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    });
+    gitalk.render('gitalk-container');
+
+    var gtFolded = () => {
+      setTimeout(function () {
+        let markdownBody = document.getElementsByClassName("markdown-body");
+        let list = Array.from(markdownBody);
+        list.forEach(item => {
+          if (item.clientHeight > 250) {
+            item.classList.add('gt-comment-body-folded');
+            item.style.maxHeight = '250px';
+            item.title = 'Click to Expand';
+            item.onclick = function () {
+              item.classList.remove('gt-comment-body-folded');
+              item.style.maxHeight = '';
+              item.title = '';
+              item.onclick = null;
+            };
+          }
+        })
+      }, 800);
+    }
+  </script>
+
+  <!-- gitalk end -->
 
 
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
         <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
     
-</div>
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#linux%E4%B8%AD%E7%9A%84%E4%BF%A1%E5%8F%B7%E6%9C%BA%E5%88%B6%E6%8E%A2%E7%A9%B6"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Linux中的信号机制探究</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">引言</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E4%BD%9C%E7%94%A8"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">信号作用</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E4%BA%A7%E7%94%9F"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">信号产生</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#section"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text"></span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E7%8A%B6%E6%80%81"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">信号状态</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BF%A1%E5%8F%B7%E6%89%A7%E8%A1%8C"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">信号执行</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">测试</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
 
 
-    
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#CS" title="CS">CS</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+        <hr>
+        <h5>链友</h5>
+        <ul class="list-inline">
+
+          
+          <li>
+            <a href="https://kitamarin.cn" target="_blank">Marin</a>
+          </li>
+          
+        </ul>
+        
+      </div>
+    </div>
   </div>
-</div>
+</article>
+
+
+
+
+
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
